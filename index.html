@@ -48,24 +48,40 @@
 
 <p></p><p></p><p></p><p></p><p></p>
 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      <tr>
+    <tr>
         <td width="100%" valign="middle">
-          <heading>News</heading>
-          <p>
-      <li> <strongsmall>[2023/11]</strongsmall> &nbsp;&nbsp;<smalll>🔥🔥🔥 We release a GitHub repository to promote medical Large Language Models research with the vision of applying LLM to real-life medical scenarios: <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/AI-in-Health/MedLLMsPracticalGuide?logoColor=%23C8A2C8&color=%23DCC6E0"> <a href="https://github.com/AI-in-Health/MedLLMsPracticalGuide">A Practical Guide for Medical Large Language Models </a>. </smalll><br/> 
-      <li> <strongsmall>[2023/11]</strongsmall> &nbsp;&nbsp;<smalll>🔥🔥🔥 How could LMMs contribute to social good? We are excited to release a new preliminary explorations of GPT-4V(ison) for social multimedia: <a href="https://arxiv.org/abs/2311.07547">GPT-4V(ision) as A Social Media Analysis Engine.</a> </smalll><br/>          
-      <li> <strongsmall>[2023/09]</strongsmall> &nbsp;&nbsp;<smalll>Join the  <a href="https://www.cs.rochester.edu/u/jluo/#Prospective">VIStA Lab</a> as a Ph.D. student working on vision and language.</smalll><br/>
-      <li> <strongsmall>[2023/07]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by ACMMM 2023.</smalll><br/>
-		  <li> <strongsmall>[2023/05]</strongsmall> &nbsp;&nbsp;<smalll>I was awarded the 2023 Peking University Excellent Graduation Thesis.</smalll><br/>
-		  <li> <strongsmall>[2023/04]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by TIP 2023.</smalll><br/>
-		  <li> <strongsmall>[2023/04]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by IJCAI 2023.</smalll><br/>
-		   <li> <strongsmall>[2023/02]</strongsmall> &nbsp;&nbsp;<smalll>1 paper (Top 10% Highlight) is accepted by CVPR 2023.</smalll><br/>
-		   <li> <strongsmall>[2022/09]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by ICRA 2023.</smalll><br/>
-		  <li> <strongsmall>[2022/09]</strongsmall> &nbsp;&nbsp;<smalll>1 paper (Spotlight) is accepted by NeurIPS 2022.</smalll><br/>
-          </p>
+            <heading>News</heading>
+            <p>
+                <li> <strongsmall>[2023/11]</strongsmall> &nbsp;&nbsp;<smalll>🔥🔥🔥 We release a GitHub repository to promote medical Large Language Models research with the vision of applying LLM to real-life medical scenarios: <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/AI-in-Health/MedLLMsPracticalGuide?logoColor=%23C8A2C8&color=%23DCC6E0"> <a href="https://github.com/AI-in-Health/MedLLMsPracticalGuide">A Practical Guide for Medical Large Language Models </a>. </smalll><br/> 
+                <li> <strongsmall>[2023/11]</strongsmall> &nbsp;&nbsp;<smalll>🔥🔥🔥 How could LMMs contribute to social good? We are excited to release a new preliminary explorations of GPT-4V(ison) for social multimedia: <a href="https://arxiv.org/abs/2311.07547">GPT-4V(ision) as A Social Media Analysis Engine.</a> </smalll><br/>          
+                <li> <strongsmall>[2023/09]</strongsmall> &nbsp;&nbsp;<smalll>Join the  <a href="https://www.cs.rochester.edu/u/jluo/#Prospective">VIStA Lab</a> as a Ph.D. student working on vision and language.</smalll><br/>
+                <li> <strongsmall>[2023/07]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by ACMMM 2023.</smalll><br/>
+                <li class="hidden-news"><strongsmall>[2023/05]</strongsmall> &nbsp;&nbsp;<smalll>I was awarded the 2023 Peking University Excellent Graduation Thesis.</smalll><br/>
+                <li class="hidden-news"><strongsmall>[2023/04]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by TIP 2023.</smalll><br/>
+                <li class="hidden-news"><strongsmall>[2023/04]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by IJCAI 2023.</smalll><br/>
+                <li class="hidden-news"><strongsmall>[2023/02]</strongsmall> &nbsp;&nbsp;<smalll>1 paper (Top 10% Highlight) is accepted by CVPR 2023.</smalll><br/>
+                <li class="hidden-news"> <strongsmall>[2022/09]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by ICRA 2023.</smalll><br/>
+                <li class="hidden-news"> <strongsmall>[2022/09]</strongsmall> &nbsp;&nbsp;<smalll>1 paper (Spotlight) is accepted by NeurIPS 2022.</smalll><br/> 
+            </p>
         </td>
-      </tr>
+    </tr>
 </table>
+
+<button onclick="toggleNews()">Show More</button>
+
+<script>
+function toggleNews() {
+    var hiddenNews = document.querySelectorAll('.hidden-news');
+
+    hiddenNews.forEach(function(news) {
+        if (news.style.display === 'none' || news.style.display === '') {
+            news.style.display = 'list-item';
+        } else {
+            news.style.display = 'none';
+        }
+    });
+}
+</script>
 
 
 
@@ -217,7 +233,7 @@
   </tr>
         </table>
 
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+<!-- <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
   <tr onmouseout="aperture_stop()" onmouseover="aperture_start()" >
     <td width="15%">
       <img src='project/TR_ICRA2023.png', width="200" height="150">
@@ -237,7 +253,7 @@
     In this paper, we propose a Time-variant Relation-aware TRansformer, which aims to model the temporal change of relations in dynamic scene graphs. </p>
     </td>
   </tr>
-        </table>
+        </table> -->
 
 <p></p><p></p><p></p><p></p><p></p>
 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
@@ -303,7 +319,7 @@
       <p align="left"><font size="2">
         <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Finfaaa.github.io&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
       <p align="left"><font size="2">
-      Last updated on Oct, 2023
+      Last updated on Dec, 2023
       <p align="middle"><font size="2"></font>      
       This awesome template borrowed from <a href="https://people.eecs.berkeley.edu/~barron/">this good man</a>~
       </tbody></table>

@@ -126,6 +126,10 @@ name {
   -webkit-transition: opacity .2s ease-in-out;
 }
 
+.hidden-news {
+  display: none;
+}
+
 span.highlight {
   background-color: #ffffd0;
 }

@@ -620,3 +620,62 @@ h2.section-title {
     font-size: 1.1rem; 
   }
 }
+
+    /* =========================================
+       7. Bilibili 视频与讲座
+       ========================================= */
+    .video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        background: #000;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .custom-list { line-height: 1.8; padding-left: 20px; }
+    .custom-list li { margin-bottom: 8px; }
+    .tag-label { font-weight: 700; color: #444; font-size: 0.95rem; }
+
+            .interests-container {
+            display: flex;
+            align-items: center; /* 垂直居中 */
+            gap: 40px;           /* 间距 */
+            background: #fcfcfc; /* 极淡的背景色，区分层次 */
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .interests-text {
+            flex: 1; /* 文字占据剩余空间 */
+        }
+
+        .interests-photo {
+            width: 320px;        /* 固定图片区域宽度 */
+            flex-shrink: 0;
+        }
+
+        .life-img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* 柔和阴影 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: block;
+        }
+
+        /* 悬停时图片轻微浮起，增加精致感 */
+        .life-img:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }

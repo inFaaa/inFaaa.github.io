@@ -9,6 +9,116 @@
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
   <link rel="icon" type="image/png" href="image/logo_hjf.png">
   
+  <style>
+  /* Global Styles */
+  body {
+    font-family: 'Lato', Verdana, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Section Containers */
+  .section-container {
+    background-color: #f8f9fa;
+    border-left: 4px solid #1772d0;
+    padding: 20px 25px;
+    margin: 30px 0;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+
+  /* Headings */
+  heading {
+    color: #1772d0;
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 20px;
+    display: block;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+  }
+
+  /* Lists */
+  ul.styled-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  ul.styled-list li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 20px;
+  }
+  ul.styled-list li::before {
+    content: "•";
+    color: #1772d0;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+
+  /* Images */
+  .logo-img {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    background: white;
+    padding: 5px;
+    max-width: 100px;
+  }
+  .logo-img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Publications */
+  .pub-table {
+    border-radius: 8px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #eee;
+  }
+  .pub-table:hover {
+    background-color: #f0f7ff !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-color: #1772d0;
+  }
+  .pub-img {
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  /* Buttons */
+  button {
+    background-color: #1772d0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    transition: background-color 0.2s;
+    margin-top: 15px;
+  }
+  button:hover {
+    background-color: #125ace;
+  }
+
+  /* Links */
+  a {
+    color: #1772d0;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  a:hover {
+    color: #f09228;
+  }
+</style>
 </head>
  
   <body>
@@ -25,32 +135,51 @@
         </p>
 		<p>
       <p>✨Bonjour, I am a Ph.D. candidate in the Department of Computer Science, <a href="https://www.rochester.edu/">University of Rochester (UR)</a>, advised by <a href="https://www.cs.rochester.edu/u/jluo/">Prof. Jiebo Luo</a>. </p>
+      Prior to that, I got my master's degree from <a href="https://www.pku.edu.cn/">Peking University (PKU)</a>, advised by <a href="https://yuanli2333.github.io/">Prof. Li Yuan</a> and <a href="https://sites.google.com/view/jie-chen-2020/home">Prof. Jie Chen</a>. And I obtained the honored bachelor's degree from <a href="https://en.uestc.edu.cn/">University of Electronic Science and Technology of China (UESTC)</a>.  
+
       <p>
-        My long-term goal is to build <em>multimodal, interactive AI systems</em> that can ground, reason, and generate across real-world signals for understanding human language, assisting decision-making, and addressing pressing social challenges in domains such as robotics and medicine.
+        My long-term goal is to build <em>multimodal, interactive AI systems</em> that ground, reason, and generate within a closed loop to address challenges in robotics and medicine. I conceptualize this pursuit as the <strong>Prometheus</strong>, a framework designed to bridge digital intelligence and physical reality:
+      </p>
+
+      <p>
+      <div style="background-color: #f8f9fa; border-left: 4px solid #1772d0; padding: 15px 20px; margin: 20px 0; border-radius: 0 5px 5px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+        <ul style="list-style-type: none; padding-left: 0; margin: 0;">
+          <li style="margin-bottom: 12px;">
+            <span style="color: #1772d0; font-weight: bold; font-size: 1.1em;">(1) Distilling the Spark from Reality</span><br>
+            <span style="color: #444; display: block; margin-top: 4px;">Grounding autonomous intelligence in real-world environments via continuous human feedback.</span>
+          </li>
+          <li style="margin-bottom: 12px;">
+            <span style="color: #1772d0; font-weight: bold; font-size: 1.1em;">(2) Self-Evolving Generative Reasoning</span><br>
+            <span style="color: #444; display: block; margin-top: 4px;">Aligning generative models with reward mechanisms to transition from passive recognition to faithful understanding.</span>
+          </li>
+          <li>
+            <span style="color: #1772d0; font-weight: bold; font-size: 1.1em;">(3) Towards Agentic Autonomy</span><br>
+            <span style="color: #444; display: block; margin-top: 4px;">Developing Agentic systems equipped with planning, memory, and tool-use capabilities. This architecture enables models to autonomously learn and evolve, transforming abstract reasoning into tangible impact across complex benchmarks and real-world applications.</span>
+          </li>
+        </ul>
+      </div>
+
+        <p style="text-align:center; margin-top:25px; margin-bottom: 25px;">
+          <img src="image/Research_Map.png" alt="Research Map" style="max-width:100%; height:auto; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+          <br />
+          <em style="font-size:0.9em; color:#666; display: block; margin-top: 10px;"><strong>Research Map:</strong> A schematic overview of my research vision—the "Prometheus Project"—which aims to ground autonomous intelligence in multimodal reality for continuous learning and reasoning.</em>
         </p>
-        
-        <p>
-        Toward this vision, my research focuses on <strong>vision and language</strong>, with a particular interest in <strong>efficient, faithful, and scalable reasoning for vision–language understanding and generation</strong>.
-        </p>
-        
-        Prior to that, I got my master's degree from <a href="https://www.pku.edu.cn/">Peking University (PKU)</a>, advised by <a href="https://yuanli2333.github.io/">Prof. Li Yuan</a> and <a href="https://sites.google.com/view/jie-chen-2020/home">Prof. Jie Chen</a>. 
-    And I obtained the honored bachelor's degree from <a href="https://en.uestc.edu.cn/">University of Electronic Science and Technology of China (UESTC)</a>.  
     </p>
-
-
-        <p align=center>
-          <a href="mailto:vhjf305@gmail.com">Email</a> &nbsp/&nbsp
-	        <a href="https://scholar.google.com/citations?user=2t7iBnkAAAAJ&hl=en&oi=ao">Google Scholar</a> &nbsp/&nbsp
-          <a href="https://github.com/inFaaa">Github</a> &nbsp/&nbsp
-          <a href="https://twitter.com/vhjf36495872?s=21&t=F9wouyOg6_aJ83H0oZ92yQ">Twitter</a> &nbsp/&nbsp
-          <a href="https://www.zhihu.com/people/vm2016">Zhihu</a>  &nbsp/&nbsp
-          <a href="https://www.linkedin.com/in/jinfa-huang-262a2929b/">LinkedIn</a> 
+        <p align="center" style="margin-top: 20px;">
+          <a href="mailto:vhjf305@gmail.com" style="text-decoration: none; color: #333;"><span style="border-bottom: 1px solid #333;">Email</span></a> &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+          <a href="https://scholar.google.com/citations?user=2t7iBnkAAAAJ&hl=en&oi=ao" style="text-decoration: none; color: #333;"><span style="border-bottom: 1px solid #333;">Google Scholar</span></a> &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+          <a href="https://github.com/inFaaa" style="text-decoration: none; color: #333;"><span style="border-bottom: 1px solid #333;">Github</span></a> &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+          <a href="https://twitter.com/vhjf36495872?s=21&t=F9wouyOg6_aJ83H0oZ92yQ" style="text-decoration: none; color: #333;"><span style="border-bottom: 1px solid #333;">Twitter</span></a> &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+          <a href="https://www.zhihu.com/people/vm2016" style="text-decoration: none; color: #333;"><span style="border-bottom: 1px solid #333;">Zhihu</span></a>  &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+          <a href="https://www.linkedin.com/in/jinfa-huang-262a2929b/" style="text-decoration: none; color: #333;"><span style="border-bottom: 1px solid #333;">LinkedIn</span></a> 
         </p>
 
         </td>
-        <td width="33%">
-          <img src="image/photo.jpg" width="300" onmouseover="this.src='image/photo5.jpg';" />
-          <div style="text-align: center;"><em>Winter 2024, Puerto Rico✨</em></div>
+        <td width="33%" valign="top" style="padding-left: 20px;">
+          <div style="position: relative; display: inline-block;">
+            <img src="image/photo.jpg" width="300" onmouseover="this.src='image/photo5.jpg';" onmouseout="this.src='image/photo.jpg';" style="border-radius: 10px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); transition: transform 0.3s ease;" onmouseenter="this.style.transform='scale(1.02)'" onmouseleave="this.style.transform='scale(1)'" />
+          </div>
+          <div style="text-align: center; margin-top: 10px; font-family: 'Lato', sans-serif; color: #555;"><em>Winter 2024, Puerto Rico✨</em></div>
       </td>
       <!-- <td style="padding: 10% 2% 10% 2%;width:70%;max-width:70%">
         <img src="images/photo.jpg" style="float:center" width="78%" alt="photo">
@@ -60,65 +189,59 @@
   </table> 
 
 <p></p><p></p><p></p><p></p><p></p>
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-    <tr>
-        <td width="100%" valign="middle">
-            <heading>News</heading>
-            <p>
-                <li> <strongsmall>[2025/11]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper (QuoTA) is accepted by AAAI 2026.</smalll><br/> 
-                <li> <strongsmall>[2025/10]</strongsmall> &nbsp;&nbsp;<smalll> I am excited to be selected as a volunteer at NeurIPS 2025! See you at San Diego 🏖️! </smalll><br/>
-                <li> <strongsmall>[2025/09]</strongsmall> &nbsp;&nbsp;<smalll> 1 survey paper (Next-Gen AIGC) is accepted by the Frontiers of Computer Science 2025.</smalll><br/>
-                <li> <strongsmall>[2025/09]</strongsmall> &nbsp;&nbsp;<smalll> 2 paper (OpenS2V-Nexus and VideoRAG) are accepted by NeurIPS main and D&B track 2025.</smalll><br/> 
-                <li class="hidden-news"> <strongsmall>[2025/08]</strongsmall> &nbsp;&nbsp;<smalll> <a href="https://academicminute.org/jiebo-luo-university-of-rochester-text-to-video-ai-blossoms-with-new-metamorphic-video-capabilities/">"Text-to-Video AI Blossoms with New Metamorphic Video Capabilities" </a> is a recorded segment by <a href="https://academicminute.org/">The Academic Minute</a>.</smalll><br/> 
-                <li class="hidden-news"> <strongsmall>[2025/08]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper (TACO) is accepted by EMNLP Main 2025.</smalll><br/> 
-                <li class="hidden-news"> <strongsmall>[2025/07]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper (MoE-LLaVA) is accepted by TMM 2025.</smalll><br/> 
-                <li class="hidden-news">
-                  <strongsmall>[2025/07]</strongsmall> &nbsp;&nbsp;<smalll> 🔥🔥🔥 We release the companion GitHub repo: <a href="https://github.com/multimodal-art-projection/LatentCoT-Horizon">LatentCoT-Horizon</a> for our paper <a href="https://arxiv.org/abs/2507.06203">A Survey on Latent Reasoning</a>, aiming to consolidate and promote the latest research, code, and practical resources on latent reasoning:&nbsp;
-                    <img alt="GitHub Repo stars"
-                        src="https://img.shields.io/github/stars/multimodal-art-projection/LatentCoT-Horizon?logoColor=%23C8A2C8&color=%23DCC6E0">
-                  </smalll>.
-                  <br/>
-                </li> 
-                <li class="hidden-news"> <strongsmall>[2025/06]</strongsmall> &nbsp;&nbsp;<smalll> Finally, finished my <strong>cold start</strong> stage, my research career has achieved <a href="https://scholar.google.com/citations?user=2t7iBnkAAAAJ&hl=en&oi=ao"><img src="https://img.shields.io/badge/google%20citations-1000%2B-9cf.svg?style=flat&labelColor=f6f6f6&logo=google%20scholar" alt="Google Citations: 1k+" /></a>! </smalll><br/>   
-                <li class="hidden-news"> <strongsmall>[2025/05]</strongsmall> &nbsp;&nbsp;<smalll> Our workshop on <a href="https://mllm-mucg.github.io/MM2025/">MLLM for Unified Comprehension and Generation (MUCG) </a> will be presented on @ACMMM2025!</smalll><br/>   
-                <li class="hidden-news"> <strongsmall>[2025/05]</strongsmall> &nbsp;&nbsp;<smalll> MagicTime (TPAMI 2025) is posted by <a href="https://www.rochester.edu/newscenter/ai-text-to-video-ai-metamorphic-capabilities-649992/">University of Rochester News</a>.</smalll><br/>   
-                <li class="hidden-news"> <strongsmall>[2025/04]</strongsmall> &nbsp;&nbsp;<smalll> 🎉🎉🎉 I have officially passed my area/qualification exam and am now a Ph.D. candidate!</smalll><br/>  
-                <li class="hidden-news"> <strongsmall>[2025/04]</strongsmall> &nbsp;&nbsp;<smalll> 🔥🔥🔥 1 paper (MagicTime) is accepted by TPAMI 2025.</smalll><br/>  
-                <li class="hidden-news"> <strongsmall>[2025/03]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper (AR-Visual Survey) is accepted by TMLR 2025.</smalll><br/>  
-                <li class="hidden-news"> <strongsmall>[2025/02]</strongsmall> &nbsp;&nbsp;<smalll> 🔥🔥🔥 1 paper (ConsisID) is accepted by CVPR 2025 Highlight (Top 3%) 🌟.</smalll><br/>  
-                <li class="hidden-news"> <strongsmall>[2025/01]</strongsmall> &nbsp;&nbsp;<smalll> 2 papers (1 Poster and 1 Spotlight) are accepted by ICLR 2025.</smalll><br/>  
-                <li class="hidden-news"> <strongsmall>[2025/01]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper (Medical LLM Survey) is accepted by Nature Reviews Bioengineering 2025.</smalll><br/>  
-                <li class="hidden-news"> <strongsmall>[2025/01]</strongsmall> &nbsp;&nbsp;<smalll> Started the research internship at Google, USA, supervised by <a href="https://scholar.google.com/citations?user=umEBJkQAAAAJ&hl=en">Jiageng Zhang</a> and <a href="https://scholar.google.com/citations?user=Nun8Dy0AAAAJ&hl=en&authuser=1">Dr. Eric Li</a>.</smalll><br/>
-                <li class="hidden-news"><strongsmall>[2024/12]</strongsmall> &nbsp;&nbsp;<smalll> Happy New Year🥳! 1 paper (PromptLLM) is accepted by TPAMI 2025.</smalll><br/>  
-                <li class="hidden-news"><strongsmall>[2024/12]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper is accepted by AAAI 2025.</smalll><br/>  
-                <li class="hidden-news"><strongsmall>[2024/12]</strongsmall> &nbsp;&nbsp;<smalll> 1 short paper is accepted by COLING 2025.</smalll><br/>  
-                <li class="hidden-news"><strongsmall>[2024/11]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper is accepted by ACM Transactions on Intelligent Systems and Technology (TIST) 2024.</smalll><br/>  
-                <li class="hidden-news"><strongsmall>[2024/11]</strongsmall> &nbsp;&nbsp;<smalll> Winter is coming❄️! 1 paper is accepted by npj Digital Medicine (Impact Factor: 15.357).</smalll><br/>  
-                <li class="hidden-news"><strongsmall>[2024/11]</strongsmall> &nbsp;&nbsp;<smalll> 1 survey is accepted by CAAI Transactions on Intelligence Technology (Impact Factor: 8.4), which aims at promoting camouflaged object detection and beyond tasks: <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/ChunmingHe/awesome-concealed-object-segmentation?logoColor=%23C8A2C8&color=%23DCC6E0"> <a href="https://github.com/ChunmingHe/awesome-concealed-object-segmentation">Awesome Concealed Object Segmentation</a></smalll>.<br/> 
-                <li class="hidden-news"><strongsmall>[2024/10]</strongsmall> &nbsp;&nbsp;<smalll> 🔥🔥🔥 We release a GitHub repository and survey aim at promoting the application of autoregressive models in vision domain: <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/ChaofanTao/Autoregressive-Models-in-Vision-Survey?logoColor=%23C8A2C8&color=%23DCC6E0"> <a href="https://github.com/ChaofanTao/Autoregressive-Models-in-Vision-Survey">Awesome Autoregressive Models in Vision</a></smalll>.<br/> 
-                <li class="hidden-news"><strongsmall>[2024/09]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper (Spotlight) is accepted by NeurIPS 2024 Datasets & Benchmarks Track.</smalll><br/>  
-                <li class="hidden-news"><strongsmall>[2024/09]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper is accepted by EMNLP 2024 Findings.</smalll><br/>              
-                <li class="hidden-news"><strongsmall>[2024/06]</strongsmall> &nbsp;&nbsp;<smalll>🔥🔥🔥 We are excited to present <a href="https://pku-yuangroup.github.io/ChronoMagic-Bench/">𝐂𝐡𝐫𝐨𝐧𝐨𝐌𝐚𝐠𝐢𝐜-𝐁𝐞𝐧𝐜𝐡</a>, a benchmark for metamorphic evaluation of text-to-video generation, which provides valuable insights for T2V models selection.  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/PKU-YuanGroup/ChronoMagic-Bench?logoColor=%23C8A2C8&color=%23DCC6E0"> </smalll><br/>
-                <li class="hidden-news"><strongsmall>[2024/05]</strongsmall> &nbsp;&nbsp;<smalll> Started the research internship at ByteDance Seed, Bellevue, USA, supervised by  <a href="https://qzyou.github.io/">Quanzeng You</a> & <a href="https://sites.google.com/view/yongfei-liu/">Yongfei Liu</a> & <a href="https://scholar.google.com/citations?user=B1EhbCsAAAAJ&hl=en">Jianbo Yuan</a>.</smalll><br/>
-                <li class="hidden-news"><strongsmall>[2024/05]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper is accepted by ACL 2024 Findings.</smalll><br/></li>
-                <li class="hidden-news"><strongsmall>[2024/04]</strongsmall> &nbsp;&nbsp;<smalll>🔥🔥🔥 We are thrilled to present <a href="https://pku-yuangroup.github.io/MagicTime">𝐌𝐚𝐠𝐢𝐜𝐓𝐢𝐦𝐞</a>, a metamorphic time-lapse video generation model and a new dataset ChronoMagic, support U-Net or DiT-based T2V frameworks.  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/PKU-YuanGroup/MagicTime?logoColor=%23C8A2C8&color=%23DCC6E0"> </a></smalll><br/>
-                <li class="hidden-news"><strongsmall>[2024/01]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper is accepted by ICLR 2024.</smalll><br/>
-                <li class="hidden-news"><strongsmall>[2023/11]</strongsmall> &nbsp;&nbsp;<smalll>🔥🔥🔥 We release a GitHub repository to promote medical Large Language Models research with the vision of applying LLM to real-life medical scenarios: <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/AI-in-Health/MedLLMsPracticalGuide?logoColor=%23C8A2C8&color=%23DCC6E0"> <a href="https://github.com/AI-in-Health/MedLLMsPracticalGuide">A Practical Guide for Medical Large Language Models. </a></smalll><br/> 
-                <li class="hidden-news"><strongsmall>[2023/11]</strongsmall> &nbsp;&nbsp;<smalll>🔥🔥🔥 How could LMMs contribute to social good? We are excited to release a new preliminary explorations of GPT-4V(ison) for social multimedia: <a href="https://arxiv.org/abs/2311.07547">GPT-4V(ision) as A Social Media Analysis Engine.</a> </smalll><br/>          
-                <li class="hidden-news"><strongsmall>[2023/09]</strongsmall> &nbsp;&nbsp;<smalll>Join the  <a href="https://www.cs.rochester.edu/u/jluo/#Prospective">VIStA Lab</a> as a Ph.D. student working on vision and language.</smalll><br/>
-                <li class="hidden-news"><strongsmall>[2023/07]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by ACMMM 2023.</smalll><br/>
-                <li class="hidden-news"><strongsmall>[2023/05]</strongsmall> &nbsp;&nbsp;<smalll>I was awarded the 2023 Peking University Excellent Graduation Thesis.</smalll><br/>
-                <li class="hidden-news"><strongsmall>[2023/04]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by TIP 2023.</smalll><br/>
-                <li class="hidden-news"><strongsmall>[2023/04]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by IJCAI 2023.</smalll><br/>
-                <li class="hidden-news"><strongsmall>[2023/02]</strongsmall> &nbsp;&nbsp;<smalll>1 paper (Top 10% Highlight) is accepted by CVPR 2023.</smalll><br/>
-                <li class="hidden-news"> <strongsmall>[2022/09]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by ICRA 2023.</smalll><br/>
-                <li class="hidden-news"> <strongsmall>[2022/09]</strongsmall> &nbsp;&nbsp;<smalll>1 paper (Spotlight) is accepted by NeurIPS 2022.</smalll><br/> 
-            </p>
-        </td>
-    </tr>
-</table>
-
-<button onclick="toggleNews()">Show More</button>
+<div class="section-container">
+    <heading>News</heading>
+    <ul class="styled-list">
+        <li> <strongsmall>[2025/11]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper (QuoTA) is accepted by AAAI 2026.</smalll></li> 
+        <li> <strongsmall>[2025/10]</strongsmall> &nbsp;&nbsp;<smalll> I am excited to be selected as a volunteer at NeurIPS 2025! See you at San Diego 🏖️! </smalll></li>
+        <li> <strongsmall>[2025/09]</strongsmall> &nbsp;&nbsp;<smalll> 1 survey paper (Next-Gen AIGC) is accepted by the Frontiers of Computer Science 2025.</smalll></li>
+        <li> <strongsmall>[2025/09]</strongsmall> &nbsp;&nbsp;<smalll> 2 paper (OpenS2V-Nexus and VideoRAG) are accepted by NeurIPS main and D&B track 2025.</smalll></li> 
+        <li class="hidden-news"> <strongsmall>[2025/08]</strongsmall> &nbsp;&nbsp;<smalll> <a href="https://academicminute.org/jiebo-luo-university-of-rochester-text-to-video-ai-blossoms-with-new-metamorphic-video-capabilities/">"Text-to-Video AI Blossoms with New Metamorphic Video Capabilities" </a> is a recorded segment by <a href="https://academicminute.org/">The Academic Minute</a>.</smalll></li> 
+        <li class="hidden-news"> <strongsmall>[2025/08]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper (TACO) is accepted by EMNLP Main 2025.</smalll></li> 
+        <li class="hidden-news"> <strongsmall>[2025/07]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper (MoE-LLaVA) is accepted by TMM 2025.</smalll></li> 
+        <li class="hidden-news">
+            <strongsmall>[2025/07]</strongsmall> &nbsp;&nbsp;<smalll> 🔥🔥🔥 We release the companion GitHub repo: <a href="https://github.com/multimodal-art-projection/LatentCoT-Horizon">LatentCoT-Horizon</a> for our paper <a href="https://arxiv.org/abs/2507.06203">A Survey on Latent Reasoning</a>, aiming to consolidate and promote the latest research, code, and practical resources on latent reasoning:&nbsp;
+            <img alt="GitHub Repo stars"
+                src="https://img.shields.io/github/stars/multimodal-art-projection/LatentCoT-Horizon?logoColor=%23C8A2C8&color=%23DCC6E0">
+            </smalll>.
+        </li> 
+        <li class="hidden-news"> <strongsmall>[2025/06]</strongsmall> &nbsp;&nbsp;<smalll> Finally, finished my <strong>cold start</strong> stage, my research career has achieved <a href="https://scholar.google.com/citations?user=2t7iBnkAAAAJ&hl=en&oi=ao"><img src="https://img.shields.io/badge/google%20citations-1000%2B-9cf.svg?style=flat&labelColor=f6f6f6&logo=google%20scholar" alt="Google Citations: 1k+" /></a>! </smalll></li>   
+        <li class="hidden-news"> <strongsmall>[2025/05]</strongsmall> &nbsp;&nbsp;<smalll> Our workshop on <a href="https://mllm-mucg.github.io/MM2025/">MLLM for Unified Comprehension and Generation (MUCG) </a> will be presented on @ACMMM2025!</smalll></li>   
+        <li class="hidden-news"> <strongsmall>[2025/05]</strongsmall> &nbsp;&nbsp;<smalll> MagicTime (TPAMI 2025) is posted by <a href="https://www.rochester.edu/newscenter/ai-text-to-video-ai-metamorphic-capabilities-649992/">University of Rochester News</a>.</smalll></li>   
+        <li class="hidden-news"> <strongsmall>[2025/04]</strongsmall> &nbsp;&nbsp;<smalll> 🎉🎉🎉 I have officially passed my area/qualification exam and am now a Ph.D. candidate!</smalll></li>  
+        <li class="hidden-news"> <strongsmall>[2025/04]</strongsmall> &nbsp;&nbsp;<smalll> 🔥🔥🔥 1 paper (MagicTime) is accepted by TPAMI 2025.</smalll></li>  
+        <li class="hidden-news"> <strongsmall>[2025/03]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper (AR-Visual Survey) is accepted by TMLR 2025.</smalll></li>  
+        <li class="hidden-news"> <strongsmall>[2025/02]</strongsmall> &nbsp;&nbsp;<smalll> 🔥🔥🔥 1 paper (ConsisID) is accepted by CVPR 2025 Highlight (Top 3%) 🌟.</smalll></li>  
+        <li class="hidden-news"> <strongsmall>[2025/01]</strongsmall> &nbsp;&nbsp;<smalll> 2 papers (1 Poster and 1 Spotlight) are accepted by ICLR 2025.</smalll></li>  
+        <li class="hidden-news"> <strongsmall>[2025/01]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper (Medical LLM Survey) is accepted by Nature Reviews Bioengineering 2025.</smalll></li>  
+        <li class="hidden-news"> <strongsmall>[2025/01]</strongsmall> &nbsp;&nbsp;<smalll> Started the research internship at Google, USA, supervised by <a href="https://scholar.google.com/citations?user=umEBJkQAAAAJ&hl=en">Jiageng Zhang</a> and <a href="https://scholar.google.com/citations?user=Nun8Dy0AAAAJ&hl=en&authuser=1">Dr. Eric Li</a>.</smalll></li>
+        <li class="hidden-news"><strongsmall>[2024/12]</strongsmall> &nbsp;&nbsp;<smalll> Happy New Year🥳! 1 paper (PromptLLM) is accepted by TPAMI 2025.</smalll></li>  
+        <li class="hidden-news"><strongsmall>[2024/12]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper is accepted by AAAI 2025.</smalll></li>  
+        <li class="hidden-news"><strongsmall>[2024/12]</strongsmall> &nbsp;&nbsp;<smalll> 1 short paper is accepted by COLING 2025.</smalll></li>  
+        <li class="hidden-news"><strongsmall>[2024/11]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper is accepted by ACM Transactions on Intelligent Systems and Technology (TIST) 2024.</smalll></li>  
+        <li class="hidden-news"><strongsmall>[2024/11]</strongsmall> &nbsp;&nbsp;<smalll> Winter is coming❄️! 1 paper is accepted by npj Digital Medicine (Impact Factor: 15.357).</smalll></li>  
+        <li class="hidden-news"><strongsmall>[2024/11]</strongsmall> &nbsp;&nbsp;<smalll> 1 survey is accepted by CAAI Transactions on Intelligence Technology (Impact Factor: 8.4), which aims at promoting camouflaged object detection and beyond tasks: <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/ChunmingHe/awesome-concealed-object-segmentation?logoColor=%23C8A2C8&color=%23DCC6E0"> <a href="https://github.com/ChunmingHe/awesome-concealed-object-segmentation">Awesome Concealed Object Segmentation</a></smalll>.</li> 
+        <li class="hidden-news"><strongsmall>[2024/10]</strongsmall> &nbsp;&nbsp;<smalll> 🔥🔥🔥 We release a GitHub repository and survey aim at promoting the application of autoregressive models in vision domain: <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/ChaofanTao/Autoregressive-Models-in-Vision-Survey?logoColor=%23C8A2C8&color=%23DCC6E0"> <a href="https://github.com/ChaofanTao/Autoregressive-Models-in-Vision-Survey">Awesome Autoregressive Models in Vision</a></smalll>.</li> 
+        <li class="hidden-news"><strongsmall>[2024/09]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper (Spotlight) is accepted by NeurIPS 2024 Datasets & Benchmarks Track.</smalll></li>  
+        <li class="hidden-news"><strongsmall>[2024/09]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper is accepted by EMNLP 2024 Findings.</smalll></li>              
+        <li class="hidden-news"><strongsmall>[2024/06]</strongsmall> &nbsp;&nbsp;<smalll>🔥🔥🔥 We are excited to present <a href="https://pku-yuangroup.github.io/ChronoMagic-Bench/">𝐂𝐡𝐫𝐨𝐧𝐨𝐌𝐚𝐠𝐢𝐜-𝐁𝐞𝐧𝐜𝐡</a>, a benchmark for metamorphic evaluation of text-to-video generation, which provides valuable insights for T2V models selection.  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/PKU-YuanGroup/ChronoMagic-Bench?logoColor=%23C8A2C8&color=%23DCC6E0"> </smalll></li>
+        <li class="hidden-news"><strongsmall>[2024/05]</strongsmall> &nbsp;&nbsp;<smalll> Started the research internship at ByteDance Seed, Bellevue, USA, supervised by  <a href="https://qzyou.github.io/">Quanzeng You</a> & <a href="https://sites.google.com/view/yongfei-liu/">Yongfei Liu</a> & <a href="https://scholar.google.com/citations?user=B1EhbCsAAAAJ&hl=en">Jianbo Yuan</a>.</smalll></li>
+        <li class="hidden-news"><strongsmall>[2024/05]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper is accepted by ACL 2024 Findings.</smalll></li>
+        <li class="hidden-news"><strongsmall>[2024/04]</strongsmall> &nbsp;&nbsp;<smalll>🔥🔥🔥 We are thrilled to present <a href="https://pku-yuangroup.github.io/MagicTime">𝐌𝐚𝐠𝐢𝐜𝐓𝐢𝐦𝐞</a>, a metamorphic time-lapse video generation model and a new dataset ChronoMagic, support U-Net or DiT-based T2V frameworks.  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/PKU-YuanGroup/MagicTime?logoColor=%23C8A2C8&color=%23DCC6E0"> </a></smalll></li>
+        <li class="hidden-news"><strongsmall>[2024/01]</strongsmall> &nbsp;&nbsp;<smalll> 1 paper is accepted by ICLR 2024.</smalll></li>
+        <li class="hidden-news"><strongsmall>[2023/11]</strongsmall> &nbsp;&nbsp;<smalll>🔥🔥🔥 We release a GitHub repository to promote medical Large Language Models research with the vision of applying LLM to real-life medical scenarios: <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/AI-in-Health/MedLLMsPracticalGuide?logoColor=%23C8A2C8&color=%23DCC6E0"> <a href="https://github.com/AI-in-Health/MedLLMsPracticalGuide">A Practical Guide for Medical Large Language Models. </a></smalll></li> 
+        <li class="hidden-news"><strongsmall>[2023/11]</strongsmall> &nbsp;&nbsp;<smalll>🔥🔥🔥 How could LMMs contribute to social good? We are excited to release a new preliminary explorations of GPT-4V(ison) for social multimedia: <a href="https://arxiv.org/abs/2311.07547">GPT-4V(ision) as A Social Media Analysis Engine.</a> </smalll></li>          
+        <li class="hidden-news"><strongsmall>[2023/09]</strongsmall> &nbsp;&nbsp;<smalll>Join the  <a href="https://www.cs.rochester.edu/u/jluo/#Prospective">VIStA Lab</a> as a Ph.D. student working on vision and language.</smalll></li>
+        <li class="hidden-news"><strongsmall>[2023/07]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by ACMMM 2023.</smalll></li>
+        <li class="hidden-news"><strongsmall>[2023/05]</strongsmall> &nbsp;&nbsp;<smalll>I was awarded the 2023 Peking University Excellent Graduation Thesis.</smalll></li>
+        <li class="hidden-news"><strongsmall>[2023/04]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by TIP 2023.</smalll></li>
+        <li class="hidden-news"><strongsmall>[2023/04]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by IJCAI 2023.</smalll></li>
+        <li class="hidden-news"><strongsmall>[2023/02]</strongsmall> &nbsp;&nbsp;<smalll>1 paper (Top 10% Highlight) is accepted by CVPR 2023.</smalll></li>
+        <li class="hidden-news"> <strongsmall>[2022/09]</strongsmall> &nbsp;&nbsp;<smalll>1 paper is accepted by ICRA 2023.</smalll></li>
+        <li class="hidden-news"> <strongsmall>[2022/09]</strongsmall> &nbsp;&nbsp;<smalll>1 paper (Spotlight) is accepted by NeurIPS 2022.</smalll></li> 
+    </ul>
+    <button onclick="toggleNews()">Show More</button>
+</div>
 
 <script>
 function toggleNews() {
@@ -136,140 +259,111 @@ function toggleNews() {
 
 
 <p></p><p></p><p></p><p></p><p></p>
-  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      <tr>
-        <td width="100%" valign="middle">
-          <heading>Education</heading>
-        </td>
-      </tr>
-      </table>
-  
-  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-  <tr>
-      <td width="10%">
-        <img src='image/UR_logo.webp' width="100">
-      </td>
-
-      <td width="75%" valign="middle">
-      <p>
-      <stronghuge>University of Rochester (UR), USA</stronghuge><br />
-      PH.D. Student in Computer Science &nbsp;&nbsp;&nbsp;&nbsp; &bull; Sep. 2023 - Present <br />
-      Advisor: <a href="https://www.cs.rochester.edu/u/jluo/">Prof. Jiebo Luo</a>
-      </p>
-    </td>
-  </tr>
-
-  <tr>
-      <td width="10%">
-        <img src='image/pku_logo.png' width="100">
-      </td>
-
-      <td width="75%" valign="middle">
-      <p>
-      <stronghuge>Peking University (PKU), China</stronghuge><br />
-      Master Degree in Computer Science &nbsp;&nbsp;&nbsp;&nbsp; &bull; Sep. 2020 - Jun. 2023 <br />
-      Advisors:  <a href="https://yuanli2333.github.io/">Prof. Li Yuan</a> and <a href="https://sites.google.com/view/jie-chen-2020/home">Prof. Jie Chen</a>
-      </p>
-    </td>
-  </tr>
-
-    <tr>
-        <td width="10%">
-          <img src='image/uestc_icon1.png' width="100">
-        </td>
-
-        <td width="75%" valign="middle">
-        <p>
-        <stronghuge>University of Electronic Science and Technology of China (UESTC), China</stronghuge><br />
-        Bachelor Degree in Software Engineering &nbsp;&nbsp;&nbsp;&nbsp; &bull; Sep. 2016 - Jun. 2020 <br />
-        Advisors:  <a href="https://en.uestc.edu.cn/info/1074/2171.htm">Prof. Xucheng Luo</a> 
-        </p>
-      </td>
-    </tr>
-  </table>
+  <div class="section-container">
+    <heading>Education</heading>
+    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+        <tr>
+            <td width="10%">
+                <img src='image/UR_logo.webp' width="100">
+            </td>
+            <td width="75%" valign="middle">
+                <p>
+                    <stronghuge>University of Rochester (UR), USA</stronghuge><br />
+                    PH.D. Student in Computer Science &nbsp;&nbsp;&nbsp;&nbsp; &bull; Sep. 2023 - Present <br />
+                    Advisor: <a href="https://www.cs.rochester.edu/u/jluo/">Prof. Jiebo Luo</a>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="10%">
+                <img src='image/pku_logo.png' width="100">
+            </td>
+            <td width="75%" valign="middle">
+                <p>
+                    <stronghuge>Peking University (PKU), China</stronghuge><br />
+                    Master Degree in Computer Science &nbsp;&nbsp;&nbsp;&nbsp; &bull; Sep. 2020 - Jun. 2023 <br />
+                    Advisors: <a href="https://yuanli2333.github.io/">Prof. Li Yuan</a> and <a href="https://sites.google.com/view/jie-chen-2020/home">Prof. Jie Chen</a>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="10%">
+                <img src='image/uestc_icon1.png' width="100">
+            </td>
+            <td width="75%" valign="middle">
+                <p>
+                    <stronghuge>University of Electronic Science and Technology of China (UESTC), China</stronghuge><br />
+                    Bachelor Degree in Software Engineering &nbsp;&nbsp;&nbsp;&nbsp; &bull; Sep. 2016 - Jun. 2020 <br />
+                    Advisors: <a href="https://en.uestc.edu.cn/info/1074/2171.htm">Prof. Xucheng Luo</a>
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
 
   <p></p><p></p><p></p><p></p><p></p>
 
-  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-  <tr>
-    <td width="100%" valign="middle">
-      <heading>Selected Research Experience</heading>
-    </td>
-  </tr>
-  </table>
-
-  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-    <tr>
-      <td width="12%">
-        <a href="https://research.google/">
-        <img src='image/Google-logo-vector-01.svg' width="100">
-      </a>
-      </td>
-
-      <td width="80%" valign="middle">
-        <p>
-        <stronghuge>Google Research, USA</stronghuge><br />
-        <huge><em>Student Researcher</em></huge>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &bull; Sep. 2025 - Now <br />
-        Advisors: &nbsp;  <a href="https://scholar.google.com/citations?user=xrND8B8AAAAJ&hl=en">Dr. Junfeng He</a>
-        </p>
-      </td>
-    </tr>
-  </tr>
-
-  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-    <tr>
-      <td width="12%">
-        <a href="https://www.aboutamazon.com/">
-        <img src='image/amazon.png' width="100">
-      </a>
-      </td>
-
-      <td width="80%" valign="middle">
-        <p>
-        <stronghuge>International Machine Learning, Amazon, USA</stronghuge><br />
-        <huge><em>Applied Scientist Intern</em></huge>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &bull; Jul. 2025 - Sep. 2025 <br />
-        Advisors: &nbsp;  <a href="https://scholar.google.com/citations?user=j6cZk58AAAAJ&hl=en">Dr. Yang Liu</a>, <a href="https://scholar.google.com/citations?user=0Uc6o6EAAAAJ&hl=en">Dr. Chien-Chih Wang</a> and <a href="https://harryliew.github.io/">Dr. Huidong Liu</a>
-        </p>
-      </td>
-    </tr>
-  </tr>
-
-  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-    <tr>
-      <td width="12%">
-        <a href="https://research.google/">
-        <img src='image/Google-logo-vector-01.svg' width="100">
-      </a>
-      </td>
-
-      <td width="80%" valign="middle">
-        <p>
-        <stronghuge>Core ML Applied ML, Google, USA</stronghuge><br />
-        <huge><em>Student Researcher</em></huge>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &bull; Jan. 2025 - May. 2025 <br />
-        Advisors: &nbsp;  <a href="https://scholar.google.com/citations?user=umEBJkQAAAAJ&hl=en">Jiageng Zhang</a> and <a href="https://scholar.google.com/citations?user=Nun8Dy0AAAAJ&hl=en&authuser=1">Dr. Eric Li</a>
-        </p>
-      </td>
-    </tr>
-  </tr>
-
-
-
-  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-    <tr>
-      <td width="10%">
-        <a href="https://www.bytedance.com/en/">
-        <img src='image/bytedance_logo.png' width="100">
-        </a>
-      </td>
-
-      <td width="80%" valign="middle">
-      <p>
-      <stronghuge>Seed Foundation Model, ByteDance, USA</stronghuge><br />
-      <huge><em>Research Intern</em></huge>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &bull; May. 2024 - Aug. 2024 <br />
-      Advisors: &nbsp;  <a href="https://qzyou.github.io/">Dr. Quanzeng You</a> & <a href="https://sites.google.com/view/yongfei-liu/">Dr. Yongfei Liu</a> & <a href="https://scholar.google.com/citations?user=B1EhbCsAAAAJ&hl=en">Dr. Jianbo Yuan</a>
-      </p>
-    </td>
-  </tr>
+  <div class="section-container">
+    <heading>Selected Research Experience</heading>
+    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+        <tr>
+            <td width="12%">
+                <a href="https://research.google/">
+                    <img src='image/Google-logo-vector-01.svg' width="100">
+                </a>
+            </td>
+            <td width="80%" valign="middle">
+                <p>
+                    <stronghuge>Google Research, USA</stronghuge><br />
+                    <huge><em>Student Researcher</em></huge>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &bull; Sep. 2025 - Now <br />
+                    Advisors: &nbsp; <a href="https://scholar.google.com/citations?user=xrND8B8AAAAJ&hl=en">Dr. Junfeng He</a>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="12%">
+                <a href="https://www.aboutamazon.com/">
+                    <img src='image/amazon.png' width="100">
+                </a>
+            </td>
+            <td width="80%" valign="middle">
+                <p>
+                    <stronghuge>International Machine Learning, Amazon, USA</stronghuge><br />
+                    <huge><em>Applied Scientist Intern</em></huge>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &bull; Jul. 2025 - Sep. 2025 <br />
+                    Advisors: &nbsp; <a href="https://scholar.google.com/citations?user=j6cZk58AAAAJ&hl=en">Dr. Yang Liu</a>, <a href="https://scholar.google.com/citations?user=0Uc6o6EAAAAJ&hl=en">Dr. Chien-Chih Wang</a> and <a href="https://harryliew.github.io/">Dr. Huidong Liu</a>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="12%">
+                <a href="https://research.google/">
+                    <img src='image/Google-logo-vector-01.svg' width="100">
+                </a>
+            </td>
+            <td width="80%" valign="middle">
+                <p>
+                    <stronghuge>Core ML Applied ML, Google, USA</stronghuge><br />
+                    <huge><em>Student Researcher</em></huge>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &bull; Jan. 2025 - May. 2025 <br />
+                    Advisors: &nbsp; <a href="https://scholar.google.com/citations?user=umEBJkQAAAAJ&hl=en">Jiageng Zhang</a> and <a href="https://scholar.google.com/citations?user=Nun8Dy0AAAAJ&hl=en&authuser=1">Dr. Eric Li</a>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="10%">
+                <a href="https://www.bytedance.com/en/">
+                    <img src='image/bytedance_logo.png' width="100">
+                </a>
+            </td>
+            <td width="80%" valign="middle">
+                <p>
+                    <stronghuge>Seed Foundation Model, ByteDance, USA</stronghuge><br />
+                    <huge><em>Research Intern</em></huge>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &bull; May. 2024 - Aug. 2024 <br />
+                    Advisors: &nbsp; <a href="https://qzyou.github.io/">Dr. Quanzeng You</a> & <a href="https://sites.google.com/view/yongfei-liu/">Dr. Yongfei Liu</a> & <a href="https://scholar.google.com/citations?user=B1EhbCsAAAAJ&hl=en">Dr. Jianbo Yuan</a>
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
 
   <!-- <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
     <tr>
@@ -323,16 +417,11 @@ function toggleNews() {
   </tr> -->
 
 <p></p><p></p><p></p><p></p><p></p>
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      <tr>
-        <td width="100%" valign="middle">
-          <heading>Selected Publication</heading>
-          <p>
-            My current research mainly focuses on the vision+language, generative model. *Equal Contribution. 
-            </p>
-        </td>
-      </tr>
-      </table>
+      <div class="section-container">
+    <heading>Selected Publication</heading>
+    <p>
+        My current research mainly focuses on the vision+language, generative model. *Equal Contribution. 
+    </p>
 
 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
   <tr onmouseout="aperture_stop()" onmouseover="aperture_start()" bgcolor="#ffffd0">
@@ -549,17 +638,16 @@ function toggleNews() {
     </p>
   </td>
 </tr>
-</table> -->
+</table>
 
 <p></p><p></p><p></p><p></p><p></p>
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      <tr>
-        <td width="100%" valign="middle">
-          <heading>Selected Survey</heading>
-          <div style="line-height:25px">
-          <p>
+</div>
+<div class="section-container">
+    <heading>Selected Survey</heading>
+    <div style="line-height:25px">
+        <p>
             I am a primary maintainer and organizer for the following survey GitHub repositories, a role that stems from my personal interest in tracking and sharing the latest research.
-          </p>
+        </p>
             <ul>
                 <li> 
                     <stronghuge>[Arxiv 2025]</stronghuge> &nbsp;&nbsp; 
@@ -638,23 +726,20 @@ function toggleNews() {
 </table> -->
 
 <p></p><p></p><p></p><p></p><p></p>
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      <tr>
-        <td width="100%" valign="middle">
-          <heading>Activities</heading>
-          <div style="line-height:25px">
-          <p>
-          <li> "OpenS2V-Nexus: A Detailed Benchmark and Million-Scale Dataset for Subject-to-Video Generation“, University of Rochester, GIDS-10th Anniversary, 2025.09, [<a href="https://www.hajim.rochester.edu/dsc/anniversary.html">Poster</a>] 
-          <li> "Text-to-video AI blossoms with New Metamorphic Video Capabilities“, University of Rochester News, 2025.05, [<a href="https://www.rochester.edu/newscenter/ai-text-to-video-ai-metamorphic-capabilities-649992/">News</a>] 
-          <li> "MagicTime: Time-lapse Video Generation Models as Metamorphic Simulators", NYC Computer Vision Day, 2025.02, [<a href="https://cs.nyu.edu/~fouhey/NYCVision2025/">Poster</a>] 
+</div>
+<div class="section-container">
+    <heading>Activities</heading>
+    <div style="line-height:25px">
+        <ul class="styled-list">
+          <li> "OpenS2V-Nexus: A Detailed Benchmark and Million-Scale Dataset for Subject-to-Video Generation“, University of Rochester, GIDS-10th Anniversary, 2025.09, [<a href="https://www.hajim.rochester.edu/dsc/anniversary.html">Poster</a>] </li>
+          <li> "Text-to-video AI blossoms with New Metamorphic Video Capabilities“, University of Rochester News, 2025.05, [<a href="https://www.rochester.edu/newscenter/ai-text-to-video-ai-metamorphic-capabilities-649992/">News</a>] </li>
+          <li> "MagicTime: Time-lapse Video Generation Models as Metamorphic Simulators", NYC Computer Vision Day, 2025.02, [<a href="https://cs.nyu.edu/~fouhey/NYCVision2025/">Poster</a>] </li>
           <li> "Can Video Generation Models as World Simulators?“, 3D视觉工坊, 2025.01, [<a href="https://mp.weixin.qq.com/s/-5lmd0ZRw1IKHFgom_sbzg">Live</a>] 
-		<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113802641150520&bvid=BV1pHc7e1E2u&cid=27792247451&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-		  <br/>
-          </p>
-          </div>
-        </td>
-      </tr>
-</table>
+		<br/><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113802641150520&bvid=BV1pHc7e1E2u&cid=27792247451&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+		  </li>
+        </ul>
+    </div>
+</div>
 
 
 
@@ -700,24 +785,26 @@ function toggleNews() {
 </table>
 
 <p></p><p></p><p></p><p></p><p></p>
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+<div class="section-container">
+    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
       <tr>
         <td width="40%">
-          <img src='image/rushrushrush.jpg', width="400" height="200">
+          <img src='image/rushrushrush.jpg', width="400" height="200" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
         </td>
         <td width="100%" valign="middle">
           <heading>Academic Service</heading>
           <div style="line-height:25px">
-          <p>
-		  <li> <stronghuge>Program Member:</stronghuge> &nbsp; MUCG@ACMMM2025, ER@NeurIPS2025<br/>
-		  <li> <stronghuge>PC Member:</stronghuge> &nbsp; CVPR'23/24/25/26, NeurIPS'22/23/25, ICLR'23/24/25/26, ICCV'23/25, ACM MM'24/25, ECCV'24, AAAI'25/26, COLM'25, ACL'25/26<br/>
-		  <li> <stronghuge>Journal Reviewer:</stronghuge> &nbsp; IEEE TPAMI(x2), IJCV, IEEE TCSVT, NEJM AI <br/>
-		  <li> <stronghuge>Volunteer:</stronghuge> &nbsp; NeurIPS 2025<br/>  
-          </p>
+          <ul class="styled-list">
+		  <li> <stronghuge>Program Member:</stronghuge> &nbsp; MUCG@ACMMM2025, ER@NeurIPS2025</li>
+		  <li> <stronghuge>PC Member:</stronghuge> &nbsp; CVPR'23/24/25/26, NeurIPS'22/23/25, ICLR'23/24/25/26, ICCV'23/25, ACM MM'24/25, ECCV'24, AAAI'25/26, COLM'25, ACL'25/26</li>
+		  <li> <stronghuge>Journal Reviewer:</stronghuge> &nbsp; IEEE TPAMI(x2), IJCV, IEEE TCSVT, NEJM AI </li>
+		  <li> <stronghuge>Volunteer:</stronghuge> &nbsp; NeurIPS 2025</li>  
+          </ul>
           </div>
         </td>
       </tr>
-</table>
+    </table>
+</div>
 
 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
     <tbody><tr>

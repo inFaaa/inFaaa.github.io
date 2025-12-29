@@ -690,3 +690,10 @@ height: 100%;
     transform: translateY(-3px) scale(1.01);
     box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
+
+/* 让图标和文字之间保留一点空隙 */
+.social-btn i {
+    margin-right: 6px;
+    font-size: 0.95em; /* 图标稍微调整大小，保持视觉平衡 */
+}
+

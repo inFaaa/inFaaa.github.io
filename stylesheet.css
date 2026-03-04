@@ -81,7 +81,7 @@
   /* Noticeable light gray background (Apple Store style) */
   --bg-card: #ffffff;
   /* Pure white for cards popping against the gray */
-  --highlight-bg: #f5f5f7;
+  --highlight-bg: #e5e5ea;
   --border-color: rgba(0, 0, 0, 0.04);
   /* Ultra-subtle border */
   --shadow-color: rgba(0, 0, 0, 0.05);
@@ -231,13 +231,19 @@ h6 {
 a {
   color: var(--primary-color);
   text-decoration: none;
-  transition: color 0.2s ease;
+  font-weight: 500;
+  /* slight emphasis on links */
+  transition: all 0.2s ease;
 }
 
 a:hover,
 a:focus {
-  text-decoration: underline;
-  color: #0f5bb5;
+  text-decoration: none;
+  /* remove default underline */
+  color: var(--primary-hover);
+  background-color: var(--nav-link-hover-bg);
+  /* subtle backing */
+  border-radius: 4px;
 }
 
 /* 兼容旧代码的辅助类 */
@@ -300,7 +306,7 @@ h2.section-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 2.6rem;
   font-weight: 600;
-  color: #111;
+  color: var(--text-color);
   line-height: 1;
   letter-spacing: 0.5px;
 }
@@ -309,7 +315,7 @@ h2.section-title {
   font-family: "LXGW WenKai", "KaiTi", "STKaiti", serif;
   font-size: 1.3rem;
   font-weight: 400;
-  color: #888;
+  color: var(--text-muted);
   line-height: 1;
 }
 
@@ -365,7 +371,7 @@ h2.section-title {
 .photo-caption {
   margin-top: 10px;
   font-size: 0.9rem;
-  color: var(--gray-text);
+  color: var(--text-muted);
   font-style: italic;
   font-family: 'Lato', sans-serif;
 }
@@ -384,13 +390,14 @@ h2.section-title {
 .social-btn {
   display: inline-block;
   padding: 5px 14px;
-  background-color: #f3f4f6;
-  color: #444 !important;
+  background-color: var(--highlight-bg);
+  /* Adapts to dark mode automatically */
+  color: var(--text-color) !important;
   border-radius: 50px;
   /* 胶囊形状 */
   font-size: 0.82rem;
   font-weight: 500;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-color);
   text-decoration: none !important;
   transition: all 0.2s ease;
 }
@@ -443,7 +450,7 @@ h2.section-title {
 
 .vision-intro {
   margin-bottom: 20px;
-  color: #444;
+  color: var(--text-color);
 }
 
 .vision-cards {
@@ -477,7 +484,7 @@ h2.section-title {
 
 .v-desc {
   font-size: 0.9em;
-  color: #555;
+  color: var(--text-muted);
   line-height: 1.5;
 }
 
@@ -555,27 +562,30 @@ h2.section-title {
 
 .btn-show-more {
   background: var(--bg-card);
-  /* Pure white button on gray background */
   border: 1px solid var(--border-color);
   padding: 10px 24px;
-  border-radius: 24px;
-  /* Pill shape */
+  border-radius: 20px;
+  /* Softer pill */
   cursor: pointer;
   font-family: 'Inter', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
+  /* Bolder button text */
   font-size: 0.95rem;
-  color: var(--text-color);
-  transition: all 0.3s ease;
+  color: var(--primary-color);
+  /* Make text blue to indicate action */
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   margin-top: 15px;
   display: block;
   box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .btn-show-more:hover {
-  background-color: var(--bg-color);
-  color: var(--primary-color);
-  transform: translateY(-2px);
+  background-color: var(--primary-color);
+  color: #fff;
+  transform: scale(1.02);
+  /* Spring scale instead of Y transform */
   box-shadow: 0 4px 12px var(--shadow-color);
+  border-color: var(--primary-color);
 }
 
 /* =========================================
@@ -614,14 +624,14 @@ h2.section-title {
 
 .experience-details strong {
   font-size: 1.05rem;
-  color: #000;
+  color: var(--text-color);
   display: block;
   margin-bottom: 2px;
 }
 
 .experience-details span {
   font-size: 0.92rem;
-  color: #333;
+  color: var(--text-muted);
 }
 
 .experience-details em {
@@ -677,19 +687,19 @@ h2.section-title {
   font-weight: 700;
   display: block;
   margin-bottom: 5px;
-  color: #000;
+  color: var(--text-color);
   line-height: 1.4;
 }
 
 .paper-authors {
-  color: #444;
+  color: var(--text-muted);
   margin-bottom: 6px;
   display: block;
   line-height: 1.5;
 }
 
 .paper-authors a {
-  color: #444;
+  color: var(--text-muted);
 }
 
 .paper-authors a:hover {
@@ -697,19 +707,20 @@ h2.section-title {
 }
 
 .paper-authors strong {
-  color: #000;
+  color: var(--text-color);
 }
 
 .paper-venue {
   display: block;
   margin-bottom: 8px;
   font-style: italic;
-  color: var(--gray-text);
+  color: var(--text-muted);
 }
 
 .highlight-venue {
-  color: #000;
-  font-weight: 600;
+  color: var(--text-color);
+  /* Match theme dark/light */
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -733,7 +744,7 @@ h2.section-title {
 
 .paper-desc {
   font-size: 0.85rem;
-  color: #555;
+  color: var(--text-muted);
   margin-top: 8px;
   text-align: justify;
 }
@@ -779,11 +790,11 @@ h2.section-title {
    ========================================= */
 .footer {
   margin-top: 50px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border-color);
   padding-top: 30px;
   text-align: center;
   font-size: 0.85rem;
-  color: var(--gray-text);
+  color: var(--text-muted);
   padding-bottom: 30px;
 }
 

@@ -9,6 +9,7 @@
   src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAUi-qNiXg7eU0.woff2) format('woff2');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+
 @font-face {
   font-family: 'Lato';
   font-style: italic;
@@ -16,6 +17,7 @@
   src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAXC-qNiXg7Q.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
 @font-face {
   font-family: 'Lato';
   font-style: italic;
@@ -23,6 +25,7 @@
   src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_FQftx9897sxZ.woff2) format('woff2');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+
 @font-face {
   font-family: 'Lato';
   font-style: italic;
@@ -30,6 +33,7 @@
   src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_Gwftx9897g.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
 @font-face {
   font-family: 'Lato';
   font-style: normal;
@@ -37,6 +41,7 @@
   src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2) format('woff2');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+
 @font-face {
   font-family: 'Lato';
   font-style: normal;
@@ -44,6 +49,7 @@
   src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
 @font-face {
   font-family: 'Lato';
   font-style: normal;
@@ -51,6 +57,7 @@
   src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwaPGQ3q5d0N7w.woff2) format('woff2');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+
 @font-face {
   font-family: 'Lato';
   font-style: normal;
@@ -63,11 +70,75 @@
    2. 全局变量 (Variables)
    ========================================= */
 :root {
-  --primary-color: #1772d0; /* 链接主色调 */
-  --text-color: #333;
-  --bg-color: #f8f9fa;
-  --highlight-bg: #ffffd0;  /* 论文高亮背景色 */
-  --gray-text: #666;
+  /* Apple Light Mode (True Tone / Store Feel) - Deeper contrast against cards */
+  --primary-color: #0066cc;
+  /* Apple System Blue */
+  --primary-hover: #005bb5;
+  --text-color: #1d1d1f;
+  /* Apple Text Color */
+  --text-muted: #86868b;
+  --bg-color: #f2f2f7;
+  /* Noticeable light gray background (Apple Store style) */
+  --bg-card: #ffffff;
+  /* Pure white for cards popping against the gray */
+  --highlight-bg: #f5f5f7;
+  --border-color: rgba(0, 0, 0, 0.04);
+  /* Ultra-subtle border */
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  /* Slightly stronger shadow for depth */
+  --accent-red: #ff3b30;
+
+  /* Frosted Glass Nav */
+  --nav-bg: rgba(242, 242, 247, 0.72);
+  /* Matches background but frosted */
+  --nav-border: rgba(0, 0, 0, 0.1);
+  --nav-text: #1d1d1f;
+  --nav-link: #86868b;
+  --nav-link-hover-bg: rgba(0, 0, 0, 0.05);
+  --nav-link-hover: #1d1d1f;
+
+  --name-gradient: none;
+  --name-fill: var(--text-color);
+}
+
+[data-theme="dark"] {
+  /* Apple Dark Mode - Deep grays and pitch black */
+  --primary-color: #0a84ff;
+  /* Apple System Blue (Dark) */
+  --primary-hover: #409cff;
+  --text-color: #f5f5f7;
+  --text-muted: #a1a1a6;
+  --bg-color: #000000;
+  /* Pitch Black */
+  --bg-card: #1c1c1e;
+  /* Dark Gray elevated */
+  --highlight-bg: #2c2c2e;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --accent-red: #ff453a;
+
+  /* Dark Frosted Glass Nav */
+  --nav-bg: rgba(28, 28, 30, 0.72);
+  --nav-border: rgba(255, 255, 255, 0.1);
+  --nav-text: #f5f5f7;
+  --nav-link: #a1a1a6;
+  --nav-link-hover-bg: rgba(255, 255, 255, 0.1);
+  --nav-link-hover: #f5f5f7;
+
+  --name-gradient: linear-gradient(135deg, #0a84ff, #bf5af2);
+  --name-fill: transparent;
+}
+
+/* Base element transitions */
+body,
+.top-nav,
+.container,
+.profile-photo-box,
+.vision-box,
+.v-card,
+.btn-show-more,
+a {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* =========================================
@@ -77,10 +148,10 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid #e8e8e8;
+  background: var(--nav-bg) !important;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--nav-border) !important;
   padding: 0 20px;
 }
 
@@ -94,22 +165,26 @@
 }
 
 .nav-name {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #000;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--nav-text);
+  letter-spacing: -0.02em;
+  /* Apple SF Pro style tight kerning */
 }
 
 .nav-links {
   display: flex;
-  gap: 6px;
+  gap: 8px;
+  /* Slightly wider gap */
 }
 
 .nav-links a {
   font-family: 'Inter', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: #555;
+  font-size: 0.85rem;
+  font-weight: 600;
+  /* Bolder weight as requested */
+  color: var(--nav-link);
   text-decoration: none;
   padding: 6px 14px;
   border-radius: 20px;
@@ -133,15 +208,23 @@ html {
    ========================================= */
 body {
   font-family: 'Inter', 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
+  /* Slightly larger base font for Apple readability */
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--bg-color);
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  /* Apple crisp text rendering */
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Lato', sans-serif;
 }
 
@@ -151,7 +234,8 @@ a {
   transition: color 0.2s ease;
 }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
   text-decoration: underline;
   color: #0f5bb5;
 }
@@ -170,23 +254,31 @@ strong {
 }
 
 .container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 30px 40px;
-  background: #fff;
-  box-shadow: 0 0 40px rgba(0,0,0,0.04);
+  max-width: 1040px;
+  /* Slightly wider for modern feel */
+  margin: 15px auto 40px auto;
+  /* Tighter against nav bar */
+  padding: 30px 60px 40px 60px;
+  /* Reduced overall padding aggressively */
+  background: var(--bg-card) !important;
+  box-shadow: 0 4px 24px var(--shadow-color), 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+  border-radius: 28px;
+  border: 1px solid var(--border-color);
+  /* Restored subtle border for edge definition */
 }
 
 h2.section-title {
   font-size: 1.35rem;
   font-weight: 700;
   border-bottom: none;
-  border-left: 4px solid var(--primary-color);
+  border-left: 4px solid var(--primary-color) !important;
   padding-left: 12px;
   padding-bottom: 0;
-  margin-top: 35px;
-  margin-bottom: 18px;
-  color: #111;
+  margin-top: 25px;
+  /* Tighter header margins */
+  margin-bottom: 12px;
+  /* Tighter spacing below title */
+  color: var(--text-color) !important;
 }
 
 /* =========================================
@@ -197,8 +289,10 @@ h2.section-title {
   justify-content: center;
   align-items: baseline;
   gap: 12px;
-  margin-top: 10px;
-  margin-bottom: 28px;
+  margin-top: 0px;
+  /* Remove extra margin */
+  margin-bottom: 24px;
+  /* Slightly tighter */
   flex-wrap: wrap;
 }
 
@@ -225,8 +319,10 @@ h2.section-title {
 .profile-body {
   display: flex;
   align-items: flex-start;
-  gap: 40px;
-  margin-bottom: 20px;
+  gap: 30px;
+  /* Condensed gap */
+  margin-bottom: 15px;
+  /* tighter spacing against map */
 }
 
 .profile-bio {
@@ -235,30 +331,34 @@ h2.section-title {
 
 .bio-text {
   font-size: 0.95rem;
-  margin-bottom: 12px;
-  color: #444;
+  margin-bottom: 8px;
+  /* Compacted text blocks */
+  color: var(--text-color) !important;
 }
 
 .profile-photo-box {
   width: 250px;
   flex-shrink: 0;
   text-align: center;
-  background: #fff;
-  padding: 10px;               /* 卡片外框内边距 */
-  border: 1px solid #eee;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
+  background: var(--bg-card) !important;
+  padding: 18px;
+  /* Exaggerated inner padding */
+  border: 1px solid var(--border-color) !important;
+  border-radius: 24px;
+  /* Apple squircle feel */
+  box-shadow: 0 16px 32px var(--shadow-color) !important;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
 }
 
 .profile-photo-box:hover {
-  transform: translateY(-5px); /* 悬停上浮 */
-  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  transform: translateY(-8px) scale(1.02);
+  /* Apple hover pop */
+  box-shadow: 0 24px 48px var(--shadow-color) !important;
 }
 
 .avatar-img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 16px;
   display: block;
 }
 
@@ -274,7 +374,8 @@ h2.section-title {
    6. 社交按钮 (Social Links - Pill Style)
    ========================================= */
 .social-links-bar {
-  margin-top: 18px;
+  margin-top: 10px;
+  /* Move buttons closer to bio text */
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -285,7 +386,8 @@ h2.section-title {
   padding: 5px 14px;
   background-color: #f3f4f6;
   color: #444 !important;
-  border-radius: 50px;       /* 胶囊形状 */
+  border-radius: 50px;
+  /* 胶囊形状 */
   font-size: 0.82rem;
   font-weight: 500;
   border: 1px solid #e5e7eb;
@@ -305,12 +407,15 @@ h2.section-title {
    7. 愿景与地图 (Vision & Research Map)
    ========================================= */
 .vision-box {
-  background-color: #f8f9fa;
+  background-color: var(--bg-card);
+  /* Make text boxes match the card feel */
   border-left: 4px solid var(--primary-color);
-  padding: 20px 25px;
-  margin: 25px 0;
-  border-radius: 0 8px 8px 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  padding: 24px 30px;
+  margin: 30px 0;
+  border-radius: 0 16px 16px 0;
+  /* Softer radius */
+  box-shadow: 0 4px 12px var(--shadow-color);
+  /* Apple floating feel */
 }
 
 .vision-box ul {
@@ -335,26 +440,33 @@ h2.section-title {
 .vision-section-full {
   margin: 40px 0;
 }
+
 .vision-intro {
   margin-bottom: 20px;
   color: #444;
 }
+
 .vision-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
+
 .v-card {
-  background: #f8f9fa;
+  background: var(--bg-card);
+  /* Separate from page background */
   border-top: 3px solid var(--primary-color);
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  transition: transform 0.2s;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px var(--shadow-color);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
 }
+
 .v-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 16px 32px var(--shadow-color);
 }
+
 .v-title {
   color: var(--primary-color);
   font-weight: 700;
@@ -362,6 +474,7 @@ h2.section-title {
   font-size: 1.05em;
   display: block;
 }
+
 .v-desc {
   font-size: 0.9em;
   color: #555;
@@ -372,20 +485,31 @@ h2.section-title {
 .map-section-full {
   text-align: center;
   margin-bottom: 10px;
-  background: #fff;
+  /* Reduced bottom gap to bring news closer */
+  background: transparent;
+  /* Remove stark white background box behind map */
   padding: 0;
 }
+
 .research-map-img {
-  max-width: 75%;
+  max-width: 65%;
+  /* Tighter width allows image to take less vertical space */
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  border: 1px solid #eee;
+  box-shadow: 0 4px 15px var(--shadow-color) !important;
+  border: 1px solid var(--border-color) !important;
 }
+
 .map-caption {
-  margin-top: 8px;
-  font-size: 0.85rem;
-  color: #666;
+  margin-top: 12px;
+  /* Move caption right next to picture */
+  margin-bottom: 0px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* =========================================
@@ -394,13 +518,17 @@ h2.section-title {
 .news-list {
   list-style: none;
   padding: 0;
+  margin-bottom: 0;
+  /* Clear space before show more */
 }
 
 .news-list li {
-  margin-bottom: 10px;
+  margin-bottom: 6px;
+  /* Super tight news lines */
   display: flex;
   gap: 12px;
-  align-items: flex-start;
+  align-items: baseline;
+  /* Align perfectly vertical */
 }
 
 .news-date {
@@ -426,23 +554,28 @@ h2.section-title {
 }
 
 .btn-show-more {
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 8px 20px;
-  border-radius: 20px;
+  background: var(--bg-card);
+  /* Pure white button on gray background */
+  border: 1px solid var(--border-color);
+  padding: 10px 24px;
+  border-radius: 24px;
+  /* Pill shape */
   cursor: pointer;
   font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
-  color: #555;
-  transition: all 0.2s;
-  margin-top: 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  margin-top: 15px;
   display: block;
+  box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .btn-show-more:hover {
-  background-color: #f4f4f4;
-  color: #000;
-  border-color: #999;
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 /* =========================================
@@ -458,14 +591,16 @@ h2.section-title {
 }
 
 .logo-box {
-  width: 90px;        /* 固定Logo宽度 */
+  width: 90px;
+  /* 固定Logo宽度 */
   min-width: 90px;
   display: flex;
   justify-content: center;
 }
 
 .logo-box img {
-  width: 100%;         /* 强制宽度占满盒子 */
+  width: 100%;
+  /* 强制宽度占满盒子 */
   height: auto;
   max-height: 60px;
   object-fit: contain;
@@ -503,15 +638,22 @@ h2.section-title {
   display: flex;
   gap: 25px;
   margin-bottom: 25px;
-  padding: 15px;
-  border-radius: 10px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid transparent;
+  padding: 24px;
+  border-radius: 20px;
+  background-color: var(--bg-card);
+  /* Ensure explicit card color */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  /* Base soft shadow */
+  transition: background-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  border: 1px solid var(--border-color);
 }
 
 .paper-item:hover {
-  background-color: var(--highlight-bg); 
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  background-color: var(--bg-card) !important;
+  /* Keep white on hover, rely on shadow */
+  box-shadow: 0 16px 32px var(--shadow-color), 0 4px 8px rgba(0, 0, 0, 0.03) !important;
+  border-color: transparent;
+  transform: translateY(-4px) scale(1.01);
 }
 
 .paper-img {
@@ -521,9 +663,9 @@ h2.section-title {
 
 .paper-img img {
   width: 100%;
-  border-radius: 4px;
-  border: 1px solid #eee;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: 0 4px 12px var(--shadow-color) !important;
 }
 
 .paper-text {
@@ -549,9 +691,11 @@ h2.section-title {
 .paper-authors a {
   color: #444;
 }
+
 .paper-authors a:hover {
   text-decoration: underline;
 }
+
 .paper-authors strong {
   color: #000;
 }
@@ -613,9 +757,22 @@ h2.section-title {
 }
 
 /* 旧代码保留 - 淡入淡出图片效果 (如未使用可删除) */
-.one { width: 160px; height: 160px; position: relative; }
-.two { width: 160px; height: 160px; position: absolute; transition: opacity .2s ease-in-out; }
-.fade { transition: opacity .2s ease-in-out; }
+.one {
+  width: 160px;
+  height: 160px;
+  position: relative;
+}
+
+.two {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  transition: opacity .2s ease-in-out;
+}
+
+.fade {
+  transition: opacity .2s ease-in-out;
+}
 
 /* =========================================
    12. 页脚 (Footer)
@@ -641,63 +798,87 @@ h2.section-title {
    ========================================= */
 /* 手机端适配 */
 @media (max-width: 768px) {
-    .interests-container {
-        flex-direction: column-reverse;
-        padding: 15px;
-        text-align: left;
-    }
-    .interests-photo {
-        width: 100%;
-    }
+  .interests-container {
+    flex-direction: column-reverse;
+    padding: 15px;
+    text-align: left;
+  }
+
+  .interests-photo {
+    width: 100%;
+  }
 }
+
 @media (max-width: 768px) {
+
   /* 导航栏 */
-  .nav-name { display: none; }
-  .nav-links { gap: 2px; }
-  .nav-links a { font-size: 0.75rem; padding: 5px 10px; }
+  .nav-name {
+    display: none;
+  }
+
+  .nav-links {
+    gap: 2px;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
 
   /* 头部与名字 */
   .main-header-container {
     gap: 10px;
     margin-bottom: 30px;
   }
-  .name-en-center { font-size: 2rem; }
-  .name-cn-center { font-size: 1.6rem; }
-  
+
+  .name-en-center {
+    font-size: 2rem;
+  }
+
+  .name-cn-center {
+    font-size: 1.6rem;
+  }
+
   /* 简介布局 */
   .profile-body {
     flex-direction: column-reverse;
     align-items: center;
     text-align: center;
   }
-  .profile-photo-box { 
-    width: 200px; 
-    margin-bottom: 20px; 
+
+  .profile-photo-box {
+    width: 200px;
+    margin-bottom: 20px;
   }
-  .social-links-bar { 
-    justify-content: center; 
-    gap: 10px; 
+
+  .social-links-bar {
+    justify-content: center;
+    gap: 10px;
   }
 
   /* 论文与经历 */
-  .paper-item { 
-    flex-direction: column; 
-    gap: 15px; 
+  .paper-item {
+    flex-direction: column;
+    gap: 15px;
   }
-  .paper-img { 
-    width: 100%; 
-    max-width: 300px; 
-    margin: 0 auto; 
+
+  .paper-img {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
   }
-  .experience-item { 
-    gap: 15px; 
+
+  .experience-item {
+    gap: 15px;
   }
-  .logo-box { 
-    width: 70px; 
-    min-width: 70px; 
+
+  .logo-box {
+    width: 70px;
+    min-width: 70px;
   }
-  .experience-details strong { 
-    font-size: 1.1rem; 
+
+  .experience-details strong {
+    font-size: 1.1rem;
   }
 }
 
@@ -705,64 +886,257 @@ h2.section-title {
 14. Bilibili 视频与讲座
 ========================================= */
 .video-container {
-position: relative;
-width: 80%;
-padding-bottom: 45%; /* 16:9 aspect ratio */
-height: 0;
-background: #000;
-border-radius: 8px;
-overflow: hidden;
-margin-top: 15px;
-box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: relative;
+  width: 80%;
+  padding-bottom: 45%;
+  /* 16:9 aspect ratio */
+  height: 0;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 .video-container iframe {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.custom-list { line-height: 1.8; padding-left: 20px; }
-.custom-list li { margin-bottom: 8px; }
-.tag-label { font-weight: 700; color: #444; font-size: 0.95rem; }
+.custom-list {
+  line-height: 1.8;
+  padding-left: 20px;
+}
 
-    .interests-container {
-    display: flex;
-    align-items: center; /* 垂直居中 */
-    gap: 40px;           /* 间距 */
-    background: #fcfcfc; /* 极淡的背景色，区分层次 */
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #f0f0f0;
+.custom-list li {
+  margin-bottom: 8px;
+}
+
+.tag-label {
+  font-weight: 700;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.interests-container {
+  display: flex;
+  align-items: center;
+  /* 垂直居中 */
+  gap: 40px;
+  /* 间距 */
+  background: #fcfcfc;
+  /* 极淡的背景色，区分层次 */
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
 }
 
 .interests-text {
-    flex: 1; /* 文字占据剩余空间 */
+  flex: 1;
+  /* 文字占据剩余空间 */
 }
 
 .interests-photo {
-    width: 280px;        /* 固定图片区域宽度 */
-    flex-shrink: 0;
+  width: 280px;
+  /* 固定图片区域宽度 */
+  flex-shrink: 0;
 }
 
 .life-img {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* 柔和阴影 */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: block;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  /* 柔和阴影 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
 }
 
 /* 悬停时图片轻微浮起，增加精致感 */
 .life-img:hover {
-    transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 /* 让图标和文字之间保留一点空隙 */
 .social-btn i {
-    margin-right: 6px;
-    font-size: 0.95em; /* 图标稍微调整大小，保持视觉平衡 */
+  margin-right: 6px;
+  font-size: 0.95em;
+  /* 图标稍微调整大小，保持视觉平衡 */
 }
 
+/* =========================================
+   15. Day/Night Theme Overrides
+   ========================================= */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.top-nav {
+  background: var(--nav-bg) !important;
+  border-bottom-color: var(--nav-border) !important;
+}
+
+.nav-name {
+  color: var(--nav-text) !important;
+}
+
+.nav-links a {
+  color: var(--nav-link) !important;
+}
+
+.nav-links a:hover {
+  background-color: var(--nav-link-hover-bg) !important;
+  color: var(--nav-link-hover) !important;
+}
+
+.container {
+  background-color: var(--bg-card) !important;
+  box-shadow: 0 0 40px var(--shadow-color) !important;
+  border: 1px solid var(--border-color);
+}
+
+h2.section-title {
+  color: var(--text-color) !important;
+  border-left-color: var(--primary-color) !important;
+}
+
+.name-en-center {
+  background: var(--name-gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: var(--name-fill) !important;
+  color: var(--text-color) !important;
+}
+
+.name-cn-center {
+  color: var(--text-muted) !important;
+}
+
+.bio-text {
+  color: var(--text-color) !important;
+}
+
+.profile-photo-box {
+  background: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: 0 10px 30px var(--shadow-color) !important;
+}
+
+.social-btn {
+  background-color: var(--bg-card) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: 0 2px 5px var(--shadow-color) !important;
+}
+
+.social-btn:hover {
+  background-color: var(--primary-color) !important;
+  color: #ffffff !important;
+  border-color: var(--primary-color) !important;
+}
+
+.vision-box,
+.v-card {
+  background-color: var(--bg-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.map-section-full {
+  background: var(--bg-card) !important;
+}
+
+.research-map-img {
+  border-color: var(--border-color) !important;
+  box-shadow: 0 4px 15px var(--shadow-color) !important;
+}
+
+[data-theme="dark"] .research-map-img {
+  filter: invert(0.88) hue-rotate(180deg);
+}
+
+[data-theme="dark"] .logo-box img {
+  filter: brightness(0.9) contrast(1.1);
+}
+
+.news-date {
+  color: var(--text-color) !important;
+}
+
+.hidden-news a,
+.news-content a {
+  color: var(--primary-color) !important;
+}
+
+.btn-show-more {
+  background: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-muted) !important;
+}
+
+.btn-show-more:hover {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+
+.experience-details strong {
+  color: var(--text-color) !important;
+}
+
+.experience-details span,
+.experience-details em {
+  color: var(--text-muted) !important;
+}
+
+.paper-title {
+  color: var(--text-color) !important;
+}
+
+.paper-authors {
+  color: var(--text-muted) !important;
+}
+
+.paper-authors strong {
+  color: var(--text-color) !important;
+}
+
+.highlight-venue {
+  color: var(--text-color) !important;
+}
+
+.paper-desc {
+  color: var(--text-muted) !important;
+}
+
+.paper-item:hover {
+  background-color: var(--highlight-bg) !important;
+}
+
+.tag-label {
+  color: var(--text-color) !important;
+}
+
+.footer {
+  border-top-color: var(--border-color) !important;
+  color: var(--text-muted) !important;
+}
+
+.interests-container {
+  background: var(--bg-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+a {
+  color: var(--primary-color);
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+[data-theme="dark"] .video-container {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+}

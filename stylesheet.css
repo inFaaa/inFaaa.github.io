@@ -807,78 +807,103 @@ h2.section-title {
   .interests-photo {
     width: 100%;
   }
-}
-
-@media (max-width: 768px) {
 
   /* 导航栏 */
   .nav-name {
-    display: none;
+    display: block;
+    font-size: 1.1rem;
   }
 
   .nav-links {
-    gap: 2px;
+    gap: 4px;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 2px;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
   }
 
   .nav-links a {
-    font-size: 0.75rem;
-    padding: 5px 10px;
+    font-size: 0.8rem;
+    padding: 5px 8px;
+  }
+
+  /* 主容器与间距缩减 */
+  .container {
+    margin: 10px 15px 30px 15px;
+    /* Less side margin */
+    padding: 25px 20px 30px 20px;
+    /* Vastly reduced inner padding for phones */
+    border-radius: 20px;
   }
 
   /* 头部与名字 */
   .main-header-container {
-    gap: 10px;
-    margin-bottom: 30px;
+    gap: 8px;
+    margin-bottom: 20px;
   }
 
   .name-en-center {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .name-cn-center {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 
   /* 简介布局 */
   .profile-body {
     flex-direction: column-reverse;
+    /* Picture on top */
     align-items: center;
     text-align: center;
+    gap: 20px;
   }
 
   .profile-photo-box {
-    width: 200px;
-    margin-bottom: 20px;
+    width: 220px;
+    margin-bottom: 5px;
   }
 
   .social-links-bar {
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
   }
 
   /* 论文与经历 */
   .paper-item {
     flex-direction: column;
     gap: 15px;
+    padding: 16px;
   }
 
   .paper-img {
     width: 100%;
-    max-width: 300px;
+    max-width: 100%;
     margin: 0 auto;
   }
 
   .experience-item {
-    gap: 15px;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
   }
 
   .logo-box {
-    width: 70px;
-    min-width: 70px;
+    width: 60px;
+    min-width: 60px;
+    margin: 0 auto;
   }
 
   .experience-details strong {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+  }
+
+  /* 地图宽度占满 */
+  .research-map-img {
+    max-width: 95%;
   }
 }
 

@@ -130,13 +130,13 @@
       <li>
         <span class="news-date">[2026/06]</span>
         <span class="news-content">
-          I will attend CVPR 2026 in Denver this June. Feel free to connect 🤝
+          I will attend <a href="https://cvpr.thecvf.com/">CVPR 2026</a> in Denver this June. Feel free to connect 🤝
         </span>
       </li>
       <li>
         <span class="news-date">[2026/04]</span>
         <span class="news-content">
-          I will join Meta Superintelligence this summer as a Research Scientist Intern, focusing on video generation.
+          I will join <a href="https://ai.meta.com/">Meta Superintelligence</a> this summer as a Research Scientist Intern, focusing on video generation.
         </span>
       </li>
       <li>
@@ -152,18 +152,19 @@
             for accelerating agentic MLLMs and omni-modal LLMs deployment.
           </span>
       </li>
-      <li><span class="news-date">[2025/11]</span><span class="news-content">1 paper (QuoTA) accepted by AAAI
-          2026.</span></li>
-      <li><span class="news-date">[2025/10]</span><span class="news-content">I am excited to be selected as a volunteer
-          at NeurIPS 2025! See you in San Diego 🏖️!</span></li>
-
-      <!-- 隐藏的新闻 -->
-      <div class="hidden-news" id="more-news">
+    </ul>
+    <!-- 隐藏的新闻 -->
+    <div class="hidden-news" id="more-news">
+      <ul class="news-list">
+        <li><span class="news-date">[2025/11]</span><span class="news-content">1 paper (QuoTA) accepted by AAAI
+            2026.</span></li>
+        <li><span class="news-date">[2025/10]</span><span class="news-content">I am excited to be selected as a volunteer
+            at NeurIPS 2025! See you in San Diego 🏖️!</span></li>
+        <li><span class="news-date">[2025/09]</span><span class="news-content">1 survey paper (Next-Gen AIGC) accepted by
+            Frontiers of Computer Science 2025.</span></li>
+        <li><span class="news-date">[2025/09]</span><span class="news-content">2 papers (OpenS2V-Nexus and VideoRAG)
+            accepted by NeurIPS main and D&B track 2025.</span></li>
         <li>
-      <li><span class="news-date">[2025/09]</span><span class="news-content">1 survey paper (Next-Gen AIGC) accepted by
-          Frontiers of Computer Science 2025.</span></li>
-      <li><span class="news-date">[2025/09]</span><span class="news-content">2 papers (OpenS2V-Nexus and VideoRAG)
-          accepted by NeurIPS main and D&B track 2025.</span></li>
           <span class="news-date">[2025/08]</span>
           <span class="news-content">
             <a
@@ -253,9 +254,10 @@
         </li>
         <li><span class="news-date">[2022/09]</span><span class="news-content">1 paper (Spotlight) accepted by NeurIPS
             2022.</span></li>
-      </div>
-    </ul>
-    <button class="btn-show-more" onclick="toggleNews()" id="news-toggle-btn">Show More</button>
+      </ul>
+    </div>
+    <button class="btn-show-more" onclick="toggleNews()" id="news-toggle-btn" aria-expanded="false"
+      aria-controls="more-news">Show More</button>
 
     <!-- ================= 教育背景 (Education) ================= -->
     <h2 class="section-title" id="education">Education</h2>
@@ -576,7 +578,8 @@
     <div class="video-container">
       <iframe
         src="//player.bilibili.com/player.html?isOutside=true&aid=113802641150520&bvid=BV1pHc7e1E2u&cid=27792247451&p=1"
-        scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" loading="lazy"
+        title="Research video"></iframe>
     </div>
 
     <!-- ================== 9. Service, Teaching & Life ================== -->
@@ -679,13 +682,16 @@
     function toggleNews() {
       var hiddenNews = document.getElementById('more-news');
       var btn = document.getElementById('news-toggle-btn');
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
 
-      if (hiddenNews.style.display === 'block') {
+      if (expanded) {
         hiddenNews.style.display = 'none';
         btn.textContent = 'Show More';
+        btn.setAttribute('aria-expanded', 'false');
       } else {
         hiddenNews.style.display = 'block';
         btn.textContent = 'Show Less';
+        btn.setAttribute('aria-expanded', 'true');
       }
     }
   </script>

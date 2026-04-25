@@ -301,7 +301,8 @@ h2.section-title {
   font-size: 1.35rem;
   font-weight: 700;
   border-bottom: none;
-  border-left: 4px solid var(--primary-color) !important;
+  border-left: 4px solid transparent !important;
+  border-image: linear-gradient(180deg, #f0bd7a 0%, #8ea9c8 55%, #7f97b3 100%) 1;
   padding-left: 12px;
   padding-bottom: 0;
   margin-top: 25px;
@@ -309,6 +310,10 @@ h2.section-title {
   margin-bottom: 12px;
   /* Tighter spacing below title */
   color: var(--text-color) !important;
+}
+
+[data-theme="dark"] h2.section-title {
+  border-image: linear-gradient(180deg, #d8a66f 0%, #9bb7d5 55%, #7f97b3 100%) 1;
 }
 
 /* =========================================
@@ -394,10 +399,13 @@ h2.section-title {
 
 .photo-caption {
   margin-top: 10px;
-  font-size: 0.9rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
-  font-style: italic;
-  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.45;
+  font-family: 'Inter', 'Lato', sans-serif;
 }
 
 /* =========================================
@@ -535,9 +543,12 @@ h2.section-title {
   margin-top: 12px;
   /* Move caption right next to picture */
   margin-bottom: 0px;
-  font-size: 0.9rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.45;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -568,6 +579,14 @@ h2.section-title {
   color: var(--text-color);
   font-size: 0.9em;
   font-family: 'Lato', sans-serif;
+  background: color-mix(in srgb, var(--monet-mist) 72%, var(--bg-card));
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 1px 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.35;
 }
 
 .news-content {
@@ -1000,16 +1019,22 @@ h2.section-title {
 
 .monet-quote {
   margin: 8px 0 0 0;
-  font-size: 0.84rem;
-  line-height: 1.5;
+  font-size: 0.78rem;
+  line-height: 1.45;
   color: var(--text-muted);
   font-style: normal;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
 }
 
 .interests-photo {
   width: 280px;
   /* 固定图片区域宽度 */
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .life-img {
@@ -1019,6 +1044,11 @@ h2.section-title {
   /* 柔和阴影 */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: block;
+}
+
+.interests-photo .monet-quote {
+  margin-top: 8px;
+  text-align: center;
 }
 
 /* 悬停时图片轻微浮起，增加精致感 */

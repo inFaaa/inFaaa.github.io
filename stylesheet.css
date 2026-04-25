@@ -70,31 +70,30 @@
    2. 全局变量 (Variables)
    ========================================= */
 :root {
-  /* Apple Light Mode (True Tone / Store Feel) - Deeper contrast against cards */
-  --primary-color: #0066cc;
-  /* Apple System Blue */
-  --primary-hover: #005bb5;
+  /* Apple-minimal with subtle Monet-inspired palette */
+  --primary-color: #5f7fa3;
+  --primary-hover: #4f6f92;
   --text-color: #1d1d1f;
-  /* Apple Text Color */
-  --text-muted: #86868b;
-  --bg-color: #f2f2f7;
-  /* Noticeable light gray background (Apple Store style) */
+  --text-muted: #6f6f74;
+  --bg-color: #f5f6f9;
   --bg-card: #ffffff;
-  /* Pure white for cards popping against the gray */
-  --highlight-bg: #e5e5ea;
-  --border-color: rgba(0, 0, 0, 0.04);
-  /* Ultra-subtle border */
-  --shadow-color: rgba(0, 0, 0, 0.05);
-  /* Slightly stronger shadow for depth */
+  --highlight-bg: #edf1f6;
+  --border-color: rgba(60, 78, 98, 0.1);
+  --shadow-color: rgba(43, 57, 72, 0.08);
   --accent-red: #ff3b30;
+  --monet-mist: #edf2f7;
+  --monet-lavender: #e9e6f4;
+  --monet-sage: #e2ecdf;
+  --monet-water: #dde9f4;
+  --impression-sun: rgba(245, 210, 146, 0.12);
+  --impression-shadow: rgba(55, 73, 94, 0.1);
 
   /* Frosted Glass Nav */
-  --nav-bg: rgba(242, 242, 247, 0.72);
-  /* Matches background but frosted */
-  --nav-border: rgba(0, 0, 0, 0.1);
+  --nav-bg: rgba(245, 246, 249, 0.76);
+  --nav-border: rgba(60, 78, 98, 0.15);
   --nav-text: #1d1d1f;
   --nav-link: #86868b;
-  --nav-link-hover-bg: rgba(0, 0, 0, 0.05);
+  --nav-link-hover-bg: rgba(95, 127, 163, 0.12);
   --nav-link-hover: #1d1d1f;
 
   --name-gradient: none;
@@ -102,27 +101,29 @@
 }
 
 [data-theme="dark"] {
-  /* Apple Dark Mode - Deep grays and pitch black */
-  --primary-color: #0a84ff;
-  /* Apple System Blue (Dark) */
-  --primary-hover: #409cff;
+  --primary-color: #9bb7d5;
+  --primary-hover: #b3c9df;
   --text-color: #f5f5f7;
-  --text-muted: #a1a1a6;
+  --text-muted: #b8b8bd;
   --bg-color: #000000;
-  /* Pitch Black */
   --bg-card: #1c1c1e;
-  /* Dark Gray elevated */
-  --highlight-bg: #2c2c2e;
-  --border-color: rgba(255, 255, 255, 0.1);
+  --highlight-bg: #2a2d33;
+  --border-color: rgba(180, 198, 216, 0.2);
   --shadow-color: rgba(0, 0, 0, 0.5);
   --accent-red: #ff453a;
+  --monet-mist: #2b3138;
+  --monet-lavender: #2f2b3b;
+  --monet-sage: #27352e;
+  --monet-water: #273241;
+  --impression-sun: rgba(244, 189, 122, 0.08);
+  --impression-shadow: rgba(0, 0, 0, 0.45);
 
   /* Dark Frosted Glass Nav */
-  --nav-bg: rgba(28, 28, 30, 0.72);
-  --nav-border: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(28, 28, 30, 0.76);
+  --nav-border: rgba(180, 198, 216, 0.2);
   --nav-text: #f5f5f7;
   --nav-link: #a1a1a6;
-  --nav-link-hover-bg: rgba(255, 255, 255, 0.1);
+  --nav-link-hover-bg: rgba(155, 183, 213, 0.18);
   --nav-link-hover: #f5f5f7;
 
   --name-gradient: linear-gradient(135deg, #0a84ff, #bf5af2);
@@ -173,6 +174,12 @@ a {
   /* Apple SF Pro style tight kerning */
 }
 
+.nav-sunrise {
+  font-size: 0.75em;
+  margin-left: 3px;
+  vertical-align: text-top;
+}
+
 .nav-links {
   display: flex;
   gap: 8px;
@@ -192,8 +199,8 @@ a {
 }
 
 .nav-links a:hover {
-  background-color: #f0f0f0;
-  color: #000;
+  background-color: var(--nav-link-hover-bg);
+  color: var(--nav-link-hover);
   text-decoration: none;
 }
 
@@ -213,6 +220,11 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--bg-color);
+  background-image:
+    radial-gradient(circle at 10% 6%, var(--impression-sun) 0%, transparent 30%),
+    radial-gradient(circle at 18% 14%, var(--monet-lavender) 0%, transparent 34%),
+    radial-gradient(circle at 84% 12%, var(--monet-water) 0%, transparent 35%),
+    radial-gradient(circle at 76% 84%, var(--monet-sage) 0%, transparent 38%);
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
@@ -267,10 +279,22 @@ strong {
   padding: 30px 60px 40px 60px;
   /* Reduced overall padding aggressively */
   background: var(--bg-card) !important;
-  box-shadow: 0 4px 24px var(--shadow-color), 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+  box-shadow: 0 12px 34px var(--impression-shadow), 0 2px 6px rgba(0, 0, 0, 0.03) !important;
   border-radius: 28px;
   border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
   /* Restored subtle border for edge definition */
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 16% 10%, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 80% 88%, rgba(255, 255, 255, 0.12) 0%, transparent 44%);
 }
 
 h2.section-title {
@@ -403,11 +427,11 @@ h2.section-title {
 }
 
 .social-btn:hover {
-  background-color: var(--primary-color);
-  color: #fff !important;
+  background-color: color-mix(in srgb, var(--primary-color) 10%, var(--bg-card));
+  color: var(--text-color) !important;
   border-color: var(--primary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(23, 114, 208, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px var(--shadow-color);
 }
 
 /* =========================================
@@ -503,7 +527,7 @@ h2.section-title {
   /* Tighter width allows image to take less vertical space */
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 4px 15px var(--shadow-color) !important;
+  box-shadow: 0 8px 22px var(--impression-shadow) !important;
   border: 1px solid var(--border-color) !important;
 }
 
@@ -661,9 +685,9 @@ h2.section-title {
 .paper-item:hover {
   background-color: var(--bg-card) !important;
   /* Keep white on hover, rely on shadow */
-  box-shadow: 0 16px 32px var(--shadow-color), 0 4px 8px rgba(0, 0, 0, 0.03) !important;
+  box-shadow: 0 12px 24px var(--impression-shadow), 0 4px 8px rgba(0, 0, 0, 0.03) !important;
   border-color: transparent;
-  transform: translateY(-4px) scale(1.01);
+  transform: translateY(-2px);
 }
 
 .paper-img {
@@ -963,16 +987,23 @@ h2.section-title {
   /* 垂直居中 */
   gap: 40px;
   /* 间距 */
-  background: #fcfcfc;
-  /* 极淡的背景色，区分层次 */
+  background: linear-gradient(135deg, var(--monet-mist), var(--bg-card));
   padding: 25px;
   border-radius: 12px;
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--border-color);
 }
 
 .interests-text {
   flex: 1;
   /* 文字占据剩余空间 */
+}
+
+.monet-quote {
+  margin: 8px 0 0 0;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  font-style: normal;
 }
 
 .interests-photo {
@@ -984,7 +1015,7 @@ h2.section-title {
 .life-img {
   width: 100%;
   border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 24px var(--impression-shadow);
   /* 柔和阴影 */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: block;
@@ -992,8 +1023,8 @@ h2.section-title {
 
 /* 悬停时图片轻微浮起，增加精致感 */
 .life-img:hover {
-  transform: translateY(-3px) scale(1.01);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px var(--impression-shadow);
 }
 
 /* 让图标和文字之间保留一点空隙 */
@@ -1031,7 +1062,7 @@ body {
 
 .container {
   background-color: var(--bg-card) !important;
-  box-shadow: 0 0 40px var(--shadow-color) !important;
+  box-shadow: 0 12px 34px var(--impression-shadow) !important;
   border: 1px solid var(--border-color);
 }
 
@@ -1070,8 +1101,8 @@ h2.section-title {
 }
 
 .social-btn:hover {
-  background-color: var(--primary-color) !important;
-  color: #ffffff !important;
+  background-color: color-mix(in srgb, var(--primary-color) 10%, var(--bg-card)) !important;
+  color: var(--text-color) !important;
   border-color: var(--primary-color) !important;
 }
 
@@ -1161,7 +1192,7 @@ h2.section-title {
 }
 
 .interests-container {
-  background: var(--bg-color) !important;
+  background: linear-gradient(135deg, var(--monet-mist), var(--bg-card)) !important;
   border-color: var(--border-color) !important;
 }
 

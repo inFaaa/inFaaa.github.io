@@ -1,70 +1,7 @@
 /* =========================================
-   1. 字体定义 (Fonts)
+   1. Fonts — Geist (display + body) + Geist Mono (numerals) + LXGW WenKai (CJK)
+   Loaded from Google Fonts in index.html.
    ========================================= */
-/* latin-ext & latin for Lato (Italic, Bold, Regular) */
-@font-face {
-  font-family: 'Lato';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAUi-qNiXg7eU0.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-  font-family: 'Lato';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAXC-qNiXg7Q.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: 'Lato';
-  font-style: italic;
-  font-weight: 700;
-  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_FQftx9897sxZ.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-  font-family: 'Lato';
-  font-style: italic;
-  font-weight: 700;
-  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_Gwftx9897g.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwaPGQ3q5d0N7w.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwiPGQ3q5d0.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 
 /* =========================================
    2. 全局变量 (Variables)
@@ -80,7 +17,7 @@
   --highlight-bg: #edf1f6;
   --border-color: rgba(60, 78, 98, 0.1);
   --shadow-color: rgba(43, 57, 72, 0.08);
-  --accent-red: #ff3b30;
+  --accent-red: #b8624a;
   --monet-mist: #edf2f7;
   --monet-lavender: #e9e6f4;
   --monet-sage: #e2ecdf;
@@ -95,22 +32,19 @@
   --nav-link: #86868b;
   --nav-link-hover-bg: rgba(95, 127, 163, 0.12);
   --nav-link-hover: #1d1d1f;
-
-  --name-gradient: none;
-  --name-fill: var(--text-color);
 }
 
 [data-theme="dark"] {
   --primary-color: #9bb7d5;
   --primary-hover: #b3c9df;
-  --text-color: #f5f5f7;
-  --text-muted: #b8b8bd;
-  --bg-color: #000000;
-  --bg-card: #1c1c1e;
-  --highlight-bg: #2a2d33;
-  --border-color: rgba(180, 198, 216, 0.2);
-  --shadow-color: rgba(0, 0, 0, 0.5);
-  --accent-red: #ff453a;
+  --text-color: #ecedf2;
+  --text-muted: #a8acb6;
+  --bg-color: #0c0e13;
+  --bg-card: #161922;
+  --highlight-bg: #232734;
+  --border-color: rgba(180, 198, 216, 0.16);
+  --shadow-color: rgba(8, 10, 16, 0.55);
+  --accent-red: #d68a72;
   --monet-mist: #2b3138;
   --monet-lavender: #2f2b3b;
   --monet-sage: #27352e;
@@ -125,9 +59,6 @@
   --nav-link: #a1a1a6;
   --nav-link-hover-bg: rgba(155, 183, 213, 0.18);
   --nav-link-hover: #f5f5f7;
-
-  --name-gradient: linear-gradient(135deg, #0a84ff, #bf5af2);
-  --name-fill: transparent;
 }
 
 /* Base element transitions */
@@ -166,18 +97,12 @@ a {
 }
 
 .nav-name {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Geist', system-ui, -apple-system, sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--nav-text);
   letter-spacing: -0.02em;
   /* Apple SF Pro style tight kerning */
-}
-
-.nav-sunrise {
-  font-size: 0.75em;
-  margin-left: 3px;
-  vertical-align: text-top;
 }
 
 .nav-links {
@@ -187,7 +112,7 @@ a {
 }
 
 .nav-links a {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Geist', system-ui, -apple-system, sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   /* Bolder weight as requested */
@@ -214,7 +139,7 @@ html {
    4. 基础样式 (Global Reset & Base)
    ========================================= */
 body {
-  font-family: 'Inter', 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: 'Geist', system-ui, -apple-system, sans-serif;
   font-size: 15px;
   /* Slightly larger base font for Apple readability */
   line-height: 1.6;
@@ -237,7 +162,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Geist', system-ui, -apple-system, sans-serif;
 }
 
 a {
@@ -260,7 +185,7 @@ a:focus {
 
 /* 兼容旧代码的辅助类 */
 heading {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: 'Geist', system-ui, -apple-system, sans-serif;
   font-size: 22px;
   font-weight: bold;
   display: block;
@@ -298,22 +223,14 @@ strong {
 }
 
 h2.section-title {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  border-bottom: none;
-  border-left: 4px solid transparent !important;
-  border-image: linear-gradient(180deg, #f0bd7a 0%, #8ea9c8 55%, #7f97b3 100%) 1;
-  padding-left: 12px;
-  padding-bottom: 0;
-  margin-top: 25px;
-  /* Tighter header margins */
-  margin-bottom: 12px;
-  /* Tighter spacing below title */
+  letter-spacing: -0.015em;
+  border: none;
+  padding: 0;
+  margin-top: 56px;
+  margin-bottom: 18px;
   color: var(--text-color) !important;
-}
-
-[data-theme="dark"] h2.section-title {
-  border-image: linear-gradient(180deg, #d8a66f 0%, #9bb7d5 55%, #7f97b3 100%) 1;
 }
 
 /* =========================================
@@ -321,23 +238,21 @@ h2.section-title {
    ========================================= */
 .main-header-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: baseline;
-  gap: 12px;
-  margin-top: 0px;
-  /* Remove extra margin */
-  margin-bottom: 24px;
-  /* Slightly tighter */
+  gap: 14px;
+  margin-top: 8px;
+  margin-bottom: 28px;
   flex-wrap: wrap;
 }
 
 .name-en-center {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 2.6rem;
-  font-weight: 600;
+  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+  font-weight: 700;
   color: var(--text-color);
-  line-height: 1;
-  letter-spacing: 0.5px;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
 }
 
 .name-cn-center {
@@ -366,35 +281,35 @@ h2.section-title {
 
 .bio-text {
   font-size: 0.95rem;
-  margin-bottom: 8px;
-  /* Compacted text blocks */
+  margin-bottom: 10px;
+  max-width: 68ch;
+  text-wrap: pretty;
   color: var(--text-color) !important;
 }
 
 .profile-photo-box {
-  width: 250px;
+  width: 220px;
   flex-shrink: 0;
   text-align: center;
-  background: var(--bg-card) !important;
-  padding: 18px;
-  /* Exaggerated inner padding */
-  border: 1px solid var(--border-color) !important;
-  border-radius: 24px;
-  /* Apple squircle feel */
-  box-shadow: 0 16px 32px var(--shadow-color) !important;
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+  background: transparent;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  align-self: flex-start;
+  margin-top: 6px;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .profile-photo-box:hover {
-  transform: translateY(-8px) scale(1.02);
-  /* Apple hover pop */
-  box-shadow: 0 24px 48px var(--shadow-color) !important;
+  transform: translateY(-2px);
 }
 
 .avatar-img {
   width: 100%;
-  border-radius: 16px;
+  border-radius: 14px;
   display: block;
+  box-shadow: 0 12px 28px var(--shadow-color);
 }
 
 .photo-caption {
@@ -405,7 +320,7 @@ h2.section-title {
   text-transform: uppercase;
   font-variant-numeric: tabular-nums;
   line-height: 1.45;
-  font-family: 'Inter', 'Lato', sans-serif;
+  font-family: 'Geist', system-ui, -apple-system, sans-serif;
 }
 
 /* =========================================
@@ -446,15 +361,10 @@ h2.section-title {
    7. 愿景与地图 (Vision & Research Map)
    ========================================= */
 .vision-box {
-  background-color: var(--bg-card);
-  /* Make text boxes match the card feel */
-  border-left: 4px solid var(--primary-color);
-  padding: 24px 30px;
-  margin: 30px 0;
-  border-radius: 0 16px 16px 0;
-  /* Softer radius */
-  box-shadow: 0 4px 12px var(--shadow-color);
-  /* Apple floating feel */
+  padding: 8px 0 8px 0;
+  margin: 24px 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .vision-box ul {
@@ -492,18 +402,13 @@ h2.section-title {
 }
 
 .v-card {
-  background: var(--bg-card);
-  /* Separate from page background */
-  border-top: 3px solid var(--primary-color);
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px var(--shadow-color);
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+  background: transparent;
+  padding: 20px 0;
+  border-top: 1px solid var(--border-color);
 }
 
-.v-card:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 16px 32px var(--shadow-color);
+.v-card:hover .v-title {
+  color: var(--primary-hover);
 }
 
 .v-title {
@@ -520,38 +425,32 @@ h2.section-title {
   line-height: 1.5;
 }
 
-/* 地图 */
+/* Research Map */
 .map-section-full {
   text-align: center;
-  margin-bottom: 10px;
-  /* Reduced bottom gap to bring news closer */
+  margin: 24px 0 16px 0;
   background: transparent;
-  /* Remove stark white background box behind map */
   padding: 0;
 }
 
 .research-map-img {
-  max-width: 65%;
-  /* Tighter width allows image to take less vertical space */
+  display: block;
+  max-width: 80%;
   height: auto;
-  border-radius: 8px;
+  margin: 0 auto;
+  border-radius: 10px;
   box-shadow: 0 8px 22px var(--impression-shadow) !important;
   border: 1px solid var(--border-color) !important;
 }
 
 .map-caption {
-  margin-top: 12px;
-  /* Move caption right next to picture */
-  margin-bottom: 0px;
-  font-size: 0.78rem;
+  margin: 14px auto 0 auto;
+  max-width: 70ch;
+  font-size: 0.82rem;
   color: var(--text-muted);
-  line-height: 1.45;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  font-variant-numeric: tabular-nums;
-  max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  text-wrap: pretty;
 }
 
 /* =========================================
@@ -574,19 +473,14 @@ h2.section-title {
 }
 
 .news-date {
-  font-weight: 700;
-  min-width: 80px;
-  color: var(--text-color);
-  font-size: 0.9em;
-  font-family: 'Lato', sans-serif;
-  background: color-mix(in srgb, var(--monet-mist) 72%, var(--bg-card));
-  border: 1px solid var(--border-color);
-  border-radius: 999px;
-  padding: 1px 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1.35;
+  font-weight: 500;
+  min-width: 78px;
+  color: var(--text-muted);
+  font-size: 0.82em;
+  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
 }
 
 .news-content {
@@ -610,7 +504,7 @@ h2.section-title {
   border-radius: 20px;
   /* Softer pill */
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Geist', system-ui, -apple-system, sans-serif;
   font-weight: 600;
   /* Bolder button text */
   font-size: 0.95rem;
@@ -624,11 +518,9 @@ h2.section-title {
 
 .btn-show-more:hover {
   background-color: var(--primary-color);
-  color: #fff;
-  transform: scale(1.02);
-  /* Spring scale instead of Y transform */
-  box-shadow: 0 4px 12px var(--shadow-color);
+  color: var(--bg-card);
   border-color: var(--primary-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 /* =========================================
@@ -678,7 +570,7 @@ h2.section-title {
 }
 
 .experience-details em {
-  color: var(--gray-text);
+  color: var(--text-muted);
   font-style: normal;
   display: block;
   margin-top: 2px;
@@ -689,24 +581,20 @@ h2.section-title {
    ========================================= */
 .paper-item {
   display: flex;
-  gap: 25px;
-  margin-bottom: 25px;
-  padding: 24px;
-  border-radius: 20px;
-  background-color: var(--bg-card);
-  /* Ensure explicit card color */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
-  /* Base soft shadow */
-  transition: background-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  border: 1px solid var(--border-color);
+  gap: 28px;
+  padding: 28px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s ease;
 }
 
-.paper-item:hover {
-  background-color: var(--bg-card) !important;
-  /* Keep white on hover, rely on shadow */
-  box-shadow: 0 12px 24px var(--impression-shadow), 0 4px 8px rgba(0, 0, 0, 0.03) !important;
-  border-color: transparent;
-  transform: translateY(-2px);
+.paper-item:last-of-type {
+  border-bottom: none;
+}
+
+.paper-item:hover .paper-title {
+  color: var(--primary-color);
 }
 
 .paper-img {
@@ -716,9 +604,8 @@ h2.section-title {
 
 .paper-img img {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px solid var(--border-color) !important;
-  box-shadow: 0 4px 12px var(--shadow-color) !important;
 }
 
 .paper-text {
@@ -789,7 +676,9 @@ h2.section-title {
   font-size: 0.85rem;
   color: var(--text-muted);
   margin-top: 8px;
-  text-align: justify;
+  max-width: 68ch;
+  text-align: left;
+  text-wrap: pretty;
 }
 
 /* =========================================
@@ -805,27 +694,11 @@ h2.section-title {
 }
 
 .tag-label {
-  font-weight: 700;
-  color: #444;
-  font-size: 0.95rem;
-}
-
-/* 旧代码保留 - 淡入淡出图片效果 (如未使用可删除) */
-.one {
-  width: 160px;
-  height: 160px;
-  position: relative;
-}
-
-.two {
-  width: 160px;
-  height: 160px;
-  position: absolute;
-  transition: opacity .2s ease-in-out;
-}
-
-.fade {
-  transition: opacity .2s ease-in-out;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
 }
 
 /* =========================================
@@ -910,19 +783,18 @@ h2.section-title {
   /* 简介布局 */
   .profile-body {
     flex-direction: column-reverse;
-    /* Picture on top */
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     gap: 20px;
   }
 
   .profile-photo-box {
-    width: 220px;
+    width: 200px;
     margin-bottom: 5px;
   }
 
   .social-links-bar {
-    justify-content: center;
+    justify-content: flex-start;
     gap: 8px;
   }
 
@@ -930,7 +802,7 @@ h2.section-title {
   .paper-item {
     flex-direction: column;
     gap: 15px;
-    padding: 16px;
+    padding: 20px 0;
   }
 
   .paper-img {
@@ -940,25 +812,22 @@ h2.section-title {
   }
 
   .experience-item {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 14px;
   }
 
   .logo-box {
-    width: 60px;
-    min-width: 60px;
-    margin: 0 auto;
+    width: 56px;
+    min-width: 56px;
+    margin: 0;
   }
 
   .experience-details strong {
     font-size: 1.05rem;
   }
 
-  /* 地图宽度占满 */
-  .research-map-img {
-    max-width: 95%;
-  }
 }
 
 /* =========================================
@@ -970,11 +839,11 @@ h2.section-title {
   padding-bottom: 45%;
   /* 16:9 aspect ratio */
   height: 0;
-  background: #000;
-  border-radius: 8px;
+  background: var(--bg-color);
+  border-radius: 12px;
   overflow: hidden;
   margin-top: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px var(--shadow-color);
 }
 
 .video-container iframe {
@@ -985,36 +854,19 @@ h2.section-title {
   height: 100%;
 }
 
-.custom-list {
-  line-height: 1.8;
-  padding-left: 20px;
-}
-
-.custom-list li {
-  margin-bottom: 8px;
-}
-
-.tag-label {
-  font-weight: 700;
-  color: #444;
-  font-size: 0.95rem;
-}
-
 .interests-container {
   display: flex;
-  align-items: center;
-  /* 垂直居中 */
-  gap: 40px;
-  /* 间距 */
-  background: linear-gradient(135deg, var(--monet-mist), var(--bg-card));
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 56px;
+  background: transparent;
+  padding: 8px 0;
+  border: none;
 }
 
 .interests-text {
-  flex: 1;
-  /* 文字占据剩余空间 */
+  flex: 0 1 auto;
+  max-width: 56ch;
 }
 
 .monet-quote {
@@ -1029,8 +881,7 @@ h2.section-title {
 }
 
 .interests-photo {
-  width: 280px;
-  /* 固定图片区域宽度 */
+  width: 340px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -1098,14 +949,9 @@ body {
 
 h2.section-title {
   color: var(--text-color) !important;
-  border-left-color: var(--primary-color) !important;
 }
 
 .name-en-center {
-  background: var(--name-gradient) !important;
-  background-clip: text !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: var(--name-fill) !important;
   color: var(--text-color) !important;
 }
 
@@ -1118,9 +964,9 @@ h2.section-title {
 }
 
 .profile-photo-box {
-  background: var(--bg-card) !important;
-  border-color: var(--border-color) !important;
-  box-shadow: 0 10px 30px var(--shadow-color) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .social-btn {
@@ -1138,8 +984,8 @@ h2.section-title {
 
 .vision-box,
 .v-card {
-  background-color: var(--bg-color) !important;
-  border-color: var(--primary-color) !important;
+  background-color: transparent !important;
+  border-color: var(--border-color) !important;
 }
 
 .map-section-full {
@@ -1160,7 +1006,7 @@ h2.section-title {
 }
 
 .news-date {
-  color: var(--text-color) !important;
+  color: var(--text-muted) !important;
 }
 
 .hidden-news a,
@@ -1209,11 +1055,7 @@ h2.section-title {
 }
 
 .paper-item:hover {
-  background-color: var(--highlight-bg) !important;
-}
-
-.tag-label {
-  color: var(--text-color) !important;
+  background-color: transparent !important;
 }
 
 .footer {
@@ -1222,8 +1064,8 @@ h2.section-title {
 }
 
 .interests-container {
-  background: linear-gradient(135deg, var(--monet-mist), var(--bg-card)) !important;
-  border-color: var(--border-color) !important;
+  background: transparent !important;
+  border: none !important;
 }
 
 a {
@@ -1235,5 +1077,5 @@ a:hover {
 }
 
 [data-theme="dark"] .video-container {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 8px 24px var(--shadow-color);
 }

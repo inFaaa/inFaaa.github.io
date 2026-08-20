@@ -285,6 +285,12 @@ h2.section-title {
   color: var(--text-color) !important;
 }
 
+.research-statement {
+  max-width: none;
+  white-space: nowrap;
+  letter-spacing: -0.015em;
+}
+
 .profile-photo-box {
   width: 220px;
   flex-shrink: 0;
@@ -724,6 +730,10 @@ h2.section-title {
    ========================================= */
 /* 手机端适配 */
 @media (max-width: 768px) {
+  .research-statement {
+    white-space: normal;
+  }
+
   .interests-container {
     flex-direction: column-reverse;
     padding: 15px;

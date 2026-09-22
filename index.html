@@ -19,7 +19,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&family=LXGW+WenKai:wght@400;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="stylesheet.css?v=07eada0fb9b4">
+  <link rel="stylesheet" href="stylesheet.css?v=e0b7388c7090">
   <script>
     const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -40,9 +40,11 @@
         <a href="#education">Education</a>
         <a href="#service">Service</a>
         <a href="#interests">Interests</a>
-        <a href="javascript:void(0);" id="theme-toggle" title="Toggle Mode" style="padding: 6px 10px;"><i
-            class="fas fa-moon"></i></a>
       </div>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Dark mode"
+        aria-pressed="false" title="Switch to dark mode">
+        <i class="fas fa-moon" aria-hidden="true"></i>
+      </button>
     </div>
   </nav>
 
@@ -674,8 +676,7 @@
     <div class="interests-container">
       <div class="interests-text">
         <ul class="custom-list">
-          <li><strong>Film photography:</strong> Lately obsessed with disposable film cameras,
-            capturing everyday moments as they unfold.</li>
+          <li><strong>Film photography:</strong> Capturing moments with disposable cameras.</li>
           <li><strong>Anime:</strong> Love, sports, and sci-fi, e.g., <a href="https://www.anime-gintama.com/"><em>Gintama</em></a> and <a href="https://frieren-anime.jp/"><em>Frieren</em></a>.</li>
           <li><strong>Literature:</strong> <a href="https://en.wikipedia.org/wiki/Wang_Xiaobo">Xiaobo Wang</a> & <a
               href="https://en.wikipedia.org/wiki/Friedrich_Nietzsche">Friedrich Nietzsche</a>.</li>
@@ -777,17 +778,22 @@
       selectResearchFromHash();
       window.addEventListener('hashchange', selectResearchFromHash);
 
-      const themeIcon = document.querySelector('#theme-toggle i');
-      if (document.documentElement.getAttribute('data-theme') === 'dark') {
-        themeIcon.className = 'fas fa-sun';
-      }
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = themeToggle.querySelector('i');
+      const syncThemeToggle = () => {
+        const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        themeIcon.className = dark ? 'fas fa-sun' : 'fas fa-moon';
+        themeToggle.setAttribute('aria-pressed', String(dark));
+        themeToggle.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+      };
+      syncThemeToggle();
 
-      document.getElementById('theme-toggle').addEventListener('click', () => {
+      themeToggle.addEventListener('click', () => {
         const root = document.documentElement;
         const newTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         root.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
-        themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        syncThemeToggle();
       });
     });
 

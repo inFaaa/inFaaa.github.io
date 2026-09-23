@@ -783,19 +783,24 @@ h2.section-title {
   display: block;
 }
 
-.logo-box .amazon-logo {
+.logo-box .amazon-logo,
+.logo-box .meta-logo,
+.logo-box .school-logo {
   width: 100%;
 }
 
-.logo-box .amazon-logo-dark {
+.logo-box .amazon-logo-dark,
+.logo-box .theme-logo-dark {
   display: none;
 }
 
-[data-theme="dark"] .logo-box .amazon-logo-light {
+[data-theme="dark"] .logo-box .amazon-logo-light,
+[data-theme="dark"] .logo-box .theme-logo-light {
   display: none;
 }
 
-[data-theme="dark"] .logo-box .amazon-logo-dark {
+[data-theme="dark"] .logo-box .amazon-logo-dark,
+[data-theme="dark"] .logo-box .theme-logo-dark {
   display: block;
   filter: none;
 }

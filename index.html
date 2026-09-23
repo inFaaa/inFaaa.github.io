@@ -19,7 +19,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&family=LXGW+WenKai:wght@400;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="stylesheet.css?v=30e3ab7cbaaf">
+  <link rel="stylesheet" href="stylesheet.css?v=deebaad7d9d3">
   <script>
     const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -571,8 +571,10 @@
 
       <div class="experience-item">
         <div class="logo-box">
-          <a href="https://www.linkedin.com/company/10667/">
-            <img src="image/optimized/meta_logo.webp" alt="Meta" width="270" height="116" loading="lazy" decoding="async">
+          <!-- Meta SVG: https://commons.wikimedia.org/wiki/File:Meta_Platforms_Inc._logo.svg (white wordmark for dark mode). -->
+          <a href="https://www.linkedin.com/company/10667/" class="meta-logo">
+            <img class="theme-logo-light" src="image/optimized/meta-logo-light.svg" alt="Meta" width="948" height="191" loading="lazy" decoding="async">
+            <img class="theme-logo-dark" src="image/optimized/meta-logo-dark.svg" alt="Meta" width="948" height="191" loading="lazy" decoding="async">
           </a>
         </div>
         <div class="experience-details">
@@ -647,7 +649,11 @@
       <h2 class="section-title" id="education" data-section-tone="water">Education</h2>
 
       <div class="experience-item">
-        <div class="logo-box"><img src='image/optimized/UR_logo.webp' alt="UR Logo" width="270" height="260" loading="lazy" decoding="async"></div>
+        <div class="logo-box">
+          <a class="school-logo" href="https://www.rochester.edu/" aria-label="Visit the University of Rochester website">
+            <img src="image/optimized/UR_logo.webp" alt="UR Logo" width="270" height="260" loading="lazy" decoding="async">
+          </a>
+        </div>
         <div class="experience-details">
           <strong>University of Rochester (UR), USA</strong>
           <span>Ph.D. Candidate in Computer Science &bull; Sep. 2023 - Present</span><br>
@@ -656,7 +662,13 @@
       </div>
 
       <div class="experience-item">
-        <div class="logo-box"><img src='image/optimized/pku_logo.webp' alt="PKU Logo" width="225" height="225" loading="lazy" decoding="async"></div>
+        <div class="logo-box">
+          <!-- Official red and reversed marks: https://vim.pku.edu.cn/xzzq/ -->
+          <a class="school-logo" href="https://www.pku.edu.cn/" aria-label="Visit the Peking University website">
+            <img class="theme-logo-light" src="image/optimized/pku-logo-light.png" alt="PKU Logo" width="360" height="360" loading="lazy" decoding="async">
+            <img class="theme-logo-dark" src="image/optimized/pku-logo-dark.png" alt="PKU Logo" width="360" height="360" loading="lazy" decoding="async">
+          </a>
+        </div>
         <div class="experience-details">
           <strong>Peking University (PKU), China</strong>
           <span>Master's Degree in Computer Science &bull; Sep. 2020 - Jun. 2023</span><br>
@@ -666,7 +678,12 @@
       </div>
 
       <div class="experience-item">
-        <div class="logo-box"><img src='image/optimized/uestc_icon1.webp' alt="UESTC Logo" width="229" height="220" loading="lazy" decoding="async"></div>
+        <div class="logo-box">
+          <!-- Transparent seal: https://www.urongda.com/logos/4151010614 -->
+          <a class="school-logo" href="https://www.uestc.edu.cn/" aria-label="Visit the University of Electronic Science and Technology of China website">
+            <img src="image/optimized/uestc-logo-transparent.png" alt="UESTC Logo" width="1024" height="1022" loading="lazy" decoding="async">
+          </a>
+        </div>
         <div class="experience-details">
           <strong>University of Electronic Science and Technology of China (UESTC), China</strong>
           <span>Bachelor's Degree in Software Engineering &bull; Sep. 2016 - Jun. 2020</span><br>

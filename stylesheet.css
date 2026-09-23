@@ -64,7 +64,7 @@
 /* Base element transitions */
 body,
 .top-nav,
-.container,
+.section-card,
 .profile-photo-box,
 .vision-box,
 .v-card,
@@ -238,26 +238,39 @@ strong {
 }
 
 .container {
-  max-width: 1040px;
-  /* Slightly wider for modern feel */
-  margin: 15px auto 40px auto;
-  /* Tighter against nav bar */
-  padding: 30px 60px 40px 60px;
-  /* Reduced overall padding aggressively */
-  background: var(--bg-card) !important;
-  box-shadow: 0 12px 34px var(--impression-shadow), 0 2px 6px rgba(0, 0, 0, 0.03) !important;
-  border-radius: 28px;
+  width: calc(100% - 30px);
+  max-width: 1132px;
+  margin: 15px auto 40px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.section-card {
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 30px 45px;
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
-  position: relative;
-  overflow: hidden;
-  /* Restored subtle border for edge definition */
+  border-radius: 24px;
+  box-shadow: 0 5px 20px var(--shadow-color);
+}
+
+.section-card > :last-child {
+  margin-bottom: 0;
+}
+
+.section-card > h2[id],
+.section-card > .news-header > h2[id] {
+  scroll-margin-top: 30px;
 }
 
 /* Quiet section divisions keep the reading surface free of decorative panels. */
 h2.section-title,
 .news-header {
   position: relative;
-  margin: 48px 0 22px;
+  margin: 0 0 22px;
   padding: 0 0 12px;
   border: 0;
   border-bottom: 1px solid var(--border-color);
@@ -350,9 +363,11 @@ h2.section-title {
     "bio photo";
   align-items: start;
   column-gap: 30px;
-  /* Expand into the existing gutter so the text keeps its original width. */
-  margin: 0 -28px 8px;
-  padding: 28px;
+  /* Match the section cards while retaining the original text width. */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 30px 45px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 24px;
   background: linear-gradient(115deg,
       var(--profile-start) 0%, var(--profile-middle) 55%, var(--profile-end) 100%);
@@ -389,6 +404,7 @@ h2.section-title {
 .profile-body > .main-header-container {
   grid-area: name;
   min-width: 0;
+  scroll-margin-top: 38px;
 }
 
 .profile-bio {
@@ -951,13 +967,28 @@ h2.section-title {
   --thread-color: #c3aceb;
 }
 
+.research-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 704px;
+  gap: 8px 16px;
+}
+
+.research-toolbar .research-note {
+  margin-left: auto;
+}
+
 .research-tabs {
   display: grid;
+  flex: 1 1 400px;
+  min-width: 0;
+  box-sizing: border-box;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  max-width: 560px;
+  max-width: 570px;
   gap: 4px;
   padding: 4px;
-  margin-top: 18px;
+  margin: 0;
   border: 1px solid var(--border-color);
   border-radius: 12px;
   background: var(--highlight-bg);
@@ -986,9 +1017,33 @@ h2.section-title {
   box-shadow: 0 1px 5px var(--shadow-color);
 }
 
+.research-scope {
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: var(--text-muted);
+}
+
+.research-heading-meta {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 100%;
+  gap: 6px 10px;
+}
+
+.research-heading-meta > a {
+  display: inline-flex;
+}
+
 .research-note {
-  margin: 10px 0 0;
+  margin: 0;
   font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: nowrap;
   color: var(--text-muted);
 }
 
@@ -1087,7 +1142,7 @@ h2.section-title {
    12. 页脚 (Footer)
    ========================================= */
 .footer {
-  margin-top: 28px;
+  margin-top: 0;
   border-top: 1px solid var(--border-color);
   padding-top: 22px;
   text-align: center;
@@ -1099,6 +1154,7 @@ h2.section-title {
 .map-container {
   width: 100%;
   max-width: 500px;
+  overflow-x: auto;
   margin: 0 auto 20px auto;
   text-align: center;
 }
@@ -1150,11 +1206,22 @@ h2.section-title {
 
   /* 主容器与间距缩减 */
   .container {
-    margin: 10px 15px 30px 15px;
-    /* Less side margin */
-    padding: 25px 20px 30px 20px;
-    /* Vastly reduced inner padding for phones */
+    margin: 10px 15px 30px;
+    gap: 20px;
+  }
+
+  .section-card {
+    padding: 25px 20px;
     border-radius: 20px;
+  }
+
+  .section-card > h2[id],
+  .section-card > .news-header > h2[id] {
+    scroll-margin-top: 25px;
+  }
+
+  .profile-body > .main-header-container {
+    scroll-margin-top: 33px;
   }
 
   /* 头部与名字 */
@@ -1173,9 +1240,8 @@ h2.section-title {
 
   /* 简介布局 */
   .profile-body {
-    margin-inline: -12px;
-    padding: 20px 12px;
-    border-radius: 18px;
+    padding: 25px 20px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1312,13 +1378,6 @@ h2.section-title {
   overflow-wrap: anywhere;
 }
 
-.service-teaching-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: 32px;
-  margin-top: 48px;
-}
-
 .map-container img {
   max-width: 100%;
   height: auto;
@@ -1371,12 +1430,6 @@ body {
 .nav-links a:hover {
   background-color: var(--nav-link-hover-bg) !important;
   color: var(--nav-link-hover) !important;
-}
-
-.container {
-  background-color: var(--bg-card) !important;
-  box-shadow: 0 12px 34px var(--impression-shadow) !important;
-  border: 1px solid var(--border-color);
 }
 
 h2.section-title {

@@ -931,6 +931,10 @@ h2.section-title {
 }
 
 /* Research categories and survey resources. */
+.highlight {
+  --thread-color: var(--accent-red);
+}
+
 .perception {
   --thread-color: #24679c;
 }
@@ -967,7 +971,7 @@ h2.section-title {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  max-width: 704px;
+  max-width: 840px;
   gap: 8px 16px;
 }
 
@@ -977,11 +981,11 @@ h2.section-title {
 
 .research-tabs {
   display: grid;
-  flex: 1 1 400px;
+  flex: 1 1 520px;
   min-width: 0;
   box-sizing: border-box;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  max-width: 570px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  max-width: 704px;
   gap: 4px;
   padding: 4px;
   margin: 0;
@@ -1032,6 +1036,13 @@ h2.section-title {
   line-height: 1.5;
   letter-spacing: normal;
   color: var(--text-muted);
+}
+
+.research-all-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: normal;
+  white-space: nowrap;
 }
 
 .research-heading-meta {
@@ -1106,6 +1117,10 @@ h2.section-title {
   max-width: 95ch;
 }
 
+.research-contribution-wide {
+  max-width: none;
+}
+
 .research-tab:focus-visible,
 .research-panel:focus-visible,
 .research-work a:focus-visible {
@@ -1116,6 +1131,10 @@ h2.section-title {
 @media (max-width: 600px) {
   .research-tabs {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .research-tab.highlight {
+    grid-column: 1 / -1;
   }
 
   .research-tab {
@@ -1304,6 +1323,66 @@ h2.section-title {
 /* =========================================
 14. Bilibili 视频与讲座
 ========================================= */
+.talks-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.talk-entry {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.talk-entry:first-child {
+  padding-top: 0;
+}
+
+.talk-entry:last-child {
+  border-bottom: 0;
+}
+
+.talk-date {
+  color: var(--text-muted);
+  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.talk-details {
+  min-width: 0;
+}
+
+.talk-title {
+  margin: 0;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.talk-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 600px) {
+  .talk-entry {
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+
 .video-container {
   position: relative;
   width: 80%;

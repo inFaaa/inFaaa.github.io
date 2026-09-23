@@ -19,7 +19,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&family=LXGW+WenKai:wght@400;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="stylesheet.css?v=8f79cb99a2b5">
+  <link rel="stylesheet" href="stylesheet.css?v=30e3ab7cbaaf">
   <script>
     const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -283,6 +283,8 @@
       <!-- ================= Research categories ================= -->
       <h2 class="section-title" id="publications" data-section-tone="periwinkle">
         Selected Research
+        <a class="research-all-link" href="https://scholar.google.com/citations?user=2t7iBnkAAAAJ&amp;hl=en&amp;oi=ao"
+          target="_blank" rel="noopener noreferrer" aria-label="View all publications on Google Scholar (opens in a new tab)">[ALL]</a>
         <span class="research-heading-meta">
           <a href="https://scholar.google.com/citations?user=2t7iBnkAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener noreferrer">
             <img alt="3,178 Google Scholar citations" src="https://img.shields.io/badge/Cited%20by-3178-5f7fa3?style=flat"
@@ -293,8 +295,13 @@
       </h2>
       <div class="research-toolbar">
         <div class="research-tabs" role="tablist" aria-label="Research categories">
+          <button type="button" class="research-tab highlight" role="tab" id="tab-highlight"
+            aria-controls="highlight" aria-selected="true" tabindex="0">
+            <i class="fa-solid fa-star research-tab-icon" aria-hidden="true"></i>
+            <span>Highlight</span>
+          </button>
           <button type="button" class="research-tab perception" role="tab" id="tab-perception"
-            aria-controls="perception" aria-selected="true" tabindex="0">
+            aria-controls="perception" aria-selected="false" tabindex="-1">
             <i class="fa-solid fa-eye research-tab-icon" aria-hidden="true"></i>
             <span>Perception</span>
           </button>
@@ -317,8 +324,8 @@
         <span class="research-note">(* Equal contribution)</span>
       </div>
 
-      <section class="research-panel perception" id="perception" role="tabpanel"
-        aria-labelledby="tab-perception" tabindex="0">
+      <section class="research-panel highlight" id="highlight" role="tabpanel"
+        aria-labelledby="tab-highlight" tabindex="0">
         <article class="research-work">
           <div class="research-work-heading">
             <h3><a href="https://arxiv.org/abs/2603.23483">SpecEyes: Accelerating Agentic Multimodal LLMs via Speculative Perception and Planning</a></h3>
@@ -328,7 +335,50 @@
             <a href="https://arxiv.org/abs/2603.23483">Paper</a>
             <a href="https://github.com/MAC-AutoML/SpecEyes">Code</a>
           </div>
-          <p class="research-authors">Haoyu Huang*, <strong>Jinfa Huang*</strong>, Zhongwei Wan, Xiawu Zheng, Rongrong Ji, Jiebo Luo</p>
+          <p class="research-authors"><strong>Jinfa Huang*</strong>, Haoyu Huang*, Zhongwei Wan, Xiawu Zheng, Rongrong Ji, Jiebo Luo</p>
+          <p class="research-contribution">Accelerates agentic visual reasoning with a lightweight speculative planner and confidence-based gating, reducing costly tool-use loops while preserving accuracy.</p>
+        </article>
+        <article class="research-work">
+          <div class="research-work-heading">
+            <h3><a href="https://arxiv.org/abs/2404.05014">MagicTime: Time-lapse Video Generation Models as Metamorphic Simulators</a></h3>
+          </div>
+          <div class="paper-links">
+            <span class="research-venue">TPAMI 2025</span>
+            <a href="https://arxiv.org/abs/2404.05014">Paper</a>
+            <a href="https://github.com/PKU-YuanGroup/MagicTime">Code</a>
+            <a href="https://pku-yuangroup.github.io/MagicTime/">Project</a>
+            <a href="https://academicminute.org/jiebo-luo-university-of-rochester-text-to-video-ai-blossoms-with-new-metamorphic-video-capabilities/">Talk</a>
+            <a href="https://www.rochester.edu/newscenter/ai-text-to-video-ai-metamorphic-capabilities-649992/">News</a>
+          </div>
+          <p class="research-authors">Shenghai Yuan*, <strong>Jinfa Huang*</strong>, Yujun Shi, Yongqi Xu, Ruijie Zhu, Bin Lin, Xinhua Cheng, Li Yuan, Jiebo Luo</p>
+          <p class="research-contribution">Generates time-lapse videos of evolving objects and scenes from language, learning patterns of physical transformation as a step toward metamorphic world simulation.</p>
+        </article>
+        <article class="research-work">
+          <div class="research-work-heading">
+            <h3><a href="https://arxiv.org/abs/2211.11427">Expectation-Maximization Contrastive Learning for Compact Video-and-Language Representations</a></h3>
+          </div>
+          <div class="paper-links">
+            <span class="research-venue">NeurIPS 2022 · Spotlight</span>
+            <a href="https://arxiv.org/abs/2211.11427">Paper</a>
+            <a href="https://github.com/jpthu17/EMCL">Code</a>
+          </div>
+          <p class="research-authors">Peng Jin*, <strong>Jinfa Huang*</strong>, Fenglin Liu, Xian Wu, Shen Ge, Guoli Song, David A. Clifton, Jie Chen</p>
+          <p class="research-contribution research-contribution-wide">Builds compact shared video-language representations with expectation-maximization, reducing semantic redundancy for cross-modal retrieval.</p>
+        </article>
+      </section>
+
+      <section class="research-panel perception" id="perception" role="tabpanel"
+        aria-labelledby="tab-perception" tabindex="0" hidden>
+        <article class="research-work">
+          <div class="research-work-heading">
+            <h3><a href="https://arxiv.org/abs/2603.23483">SpecEyes: Accelerating Agentic Multimodal LLMs via Speculative Perception and Planning</a></h3>
+          </div>
+          <div class="paper-links">
+            <span class="research-venue">ECCV 2026</span>
+            <a href="https://arxiv.org/abs/2603.23483">Paper</a>
+            <a href="https://github.com/MAC-AutoML/SpecEyes">Code</a>
+          </div>
+          <p class="research-authors"><strong>Jinfa Huang*</strong>, Haoyu Huang*, Zhongwei Wan, Xiawu Zheng, Rongrong Ji, Jiebo Luo</p>
           <p class="research-contribution">Accelerates agentic visual reasoning with a lightweight speculative planner and confidence-based gating, reducing costly tool-use loops while preserving accuracy.</p>
         </article>
         <article class="research-work">
@@ -379,7 +429,7 @@
             <a href="https://github.com/jpthu17/EMCL">Code</a>
           </div>
           <p class="research-authors">Peng Jin*, <strong>Jinfa Huang*</strong>, Fenglin Liu, Xian Wu, Shen Ge, Guoli Song, David A. Clifton, Jie Chen</p>
-          <p class="research-contribution">Builds compact shared video-language representations with expectation-maximization, reducing semantic redundancy for cross-modal retrieval.</p>
+          <p class="research-contribution research-contribution-wide">Builds compact shared video-language representations with expectation-maximization, reducing semantic redundancy for cross-modal retrieval.</p>
         </article>
         <article class="research-work">
           <div class="research-work-heading">
@@ -390,7 +440,7 @@
             <a href="https://arxiv.org/abs/2311.07547">Paper</a>
             <a href="https://github.com/VIStA-H/GPT-4V_Social_Media">Code</a>
           </div>
-          <p class="research-authors">Hanjia Lyu, <strong>Jinfa Huang</strong>, Daoan Zhang, Yongsheng Yu, Xinyi Mou, Jinsheng Pan, Zhengyuan Yang, Zhongyu Wei, Jiebo Luo</p>
+          <p class="research-authors">Hanjia Lyu*, <strong>Jinfa Huang*</strong>, Daoan Zhang*, Yongsheng Yu*, Xinyi Mou*, Jinsheng Pan, Zhengyuan Yang, Zhongyu Wei, Jiebo Luo</p>
           <p class="research-contribution">Examines multimodal social-media understanding across five tasks, identifying strengths in image-text interpretation and limitations in reasoning and factual reliability.</p>
         </article>
       </section>
@@ -630,29 +680,59 @@
 
       <!-- Talks, presentations, and media -->
       <h2 class="section-title" id="talks" data-section-tone="sage">Talks, Presentations &amp; Media</h2>
-      <ul class="custom-list">
+      <ul class="talks-list" role="list">
         <!-- <li>"OpenS2V-Nexus: A Detailed Benchmark and Million-Scale Dataset for Subject-to-Video Generation“, University of
           Rochester, GIDS-10th Anniversary, 2025.09, [<a
             href="https://www.hajim.rochester.edu/dsc/anniversary.html">Poster</a>] </li> -->
-        <li>"<strong>SpecEyes: Accelerating Agentic Multimodal LLMs via Speculative
-            Perception and Planning</strong>", Finger Lakes S&T Showcase, 2026.04,
-          [<a href="https://www.rochester.edu/coe/finger-lakes-science-and-technology-showcase/2026showcase/">Poster</a>]
+        <li class="talk-entry">
+          <time class="talk-date" datetime="2026-04">2026.04</time>
+          <div class="talk-details">
+            <h3 class="talk-title">SpecEyes: Accelerating Agentic Multimodal LLMs via Speculative Perception and Planning</h3>
+            <p class="talk-meta">
+              <span>Finger Lakes S&amp;T Showcase</span>
+              <a href="https://www.rochester.edu/coe/finger-lakes-science-and-technology-showcase/2026showcase/">[Poster]</a>
+            </p>
+          </div>
         </li>
-        <li>"<strong>Text-to-Video AI Blossoms</strong>", The Academic Minute, 2025.08,
-          [<a href="https://academicminute.org/jiebo-luo-university-of-rochester-text-to-video-ai-blossoms-with-new-metamorphic-video-capabilities/">Listen</a>]
+        <li class="talk-entry">
+          <time class="talk-date" datetime="2025-08">2025.08</time>
+          <div class="talk-details">
+            <h3 class="talk-title">Text-to-Video AI Blossoms</h3>
+            <p class="talk-meta">
+              <span>The Academic Minute</span>
+              <a href="https://academicminute.org/jiebo-luo-university-of-rochester-text-to-video-ai-blossoms-with-new-metamorphic-video-capabilities/">[Listen]</a>
+            </p>
+          </div>
         </li>
-        <li>"<strong>Text-to-video AI blossoms with New Metamorphic Video
-            Capabilities</strong>", University of Rochester
-          News, 2025.05,
-          [<a href="https://www.rochester.edu/newscenter/ai-text-to-video-ai-metamorphic-capabilities-649992/">News</a>]
+        <li class="talk-entry">
+          <time class="talk-date" datetime="2025-05">2025.05</time>
+          <div class="talk-details">
+            <h3 class="talk-title">Text-to-video AI blossoms with New Metamorphic Video Capabilities</h3>
+            <p class="talk-meta">
+              <span>University of Rochester News</span>
+              <a href="https://www.rochester.edu/newscenter/ai-text-to-video-ai-metamorphic-capabilities-649992/">[News]</a>
+            </p>
+          </div>
         </li>
-        <li>"<strong>MagicTime: Time-lapse Video Generation Models as Metamorphic
-            Simulators</strong>", NYC Computer
-          Vision Day, 2025.02,
-          [<a href="https://cs.nyu.edu/~fouhey/NYCVision2025/">Poster</a>] </li>
-        <li>"<strong>Can Video Generation Models Serve as World
-            Simulators?</strong>", 3D Vision Workshop, 2025.01, [<a
-            href="https://mp.weixin.qq.com/s/-5lmd0ZRw1IKHFgom_sbzg">Live</a>]
+        <li class="talk-entry">
+          <time class="talk-date" datetime="2025-02">2025.02</time>
+          <div class="talk-details">
+            <h3 class="talk-title">MagicTime: Time-lapse Video Generation Models as Metamorphic Simulators</h3>
+            <p class="talk-meta">
+              <span>NYC Computer Vision Day</span>
+              <a href="https://cs.nyu.edu/~fouhey/NYCVision2025/">[Poster]</a>
+            </p>
+          </div>
+        </li>
+        <li class="talk-entry">
+          <time class="talk-date" datetime="2025-01">2025.01</time>
+          <div class="talk-details">
+            <h3 class="talk-title">Can Video Generation Models Serve as World Simulators?</h3>
+            <p class="talk-meta">
+              <span>3D Vision Workshop</span>
+              <a href="https://mp.weixin.qq.com/s/-5lmd0ZRw1IKHFgom_sbzg">[Live]</a>
+            </p>
+          </div>
         </li>
       </ul>
 

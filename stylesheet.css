@@ -346,9 +346,9 @@ h2.section-title {
    5. 简介与头像 (Bio & Profile Photo)
    ========================================= */
 .profile-body {
-  --profile-start: #496f91;
-  --profile-middle: #64618b;
-  --profile-end: #736482;
+  --profile-start: #344573;
+  --profile-middle: #535879;
+  --profile-end: #736780;
   --text-color: #f8f9fc;
   --text-muted: #eef2fa;
   --primary-color: #ffffff;
@@ -376,9 +376,9 @@ h2.section-title {
 }
 
 [data-theme="dark"] .profile-body {
-  --profile-start: #38546d;
-  --profile-middle: #494767;
-  --profile-end: #594a63;
+  --profile-start: #293653;
+  --profile-middle: #41435e;
+  --profile-end: #594e68;
 }
 
 .profile-body .bio-text a {

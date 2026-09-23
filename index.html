@@ -19,7 +19,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&family=LXGW+WenKai:wght@400;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="stylesheet.css?v=441953389809">
+  <link rel="stylesheet" href="stylesheet.css?v=8f79cb99a2b5">
   <script>
     const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -294,13 +294,25 @@
       <div class="research-toolbar">
         <div class="research-tabs" role="tablist" aria-label="Research categories">
           <button type="button" class="research-tab perception" role="tab" id="tab-perception"
-            aria-controls="perception" aria-selected="true" tabindex="0">Perception</button>
+            aria-controls="perception" aria-selected="true" tabindex="0">
+            <i class="fa-solid fa-eye research-tab-icon" aria-hidden="true"></i>
+            <span>Perception</span>
+          </button>
           <button type="button" class="research-tab evaluation" role="tab" id="tab-evaluation"
-            aria-controls="evaluation" aria-selected="false" tabindex="-1">Evaluation</button>
+            aria-controls="evaluation" aria-selected="false" tabindex="-1">
+            <i class="fa-solid fa-list-check research-tab-icon" aria-hidden="true"></i>
+            <span>Evaluation</span>
+          </button>
           <button type="button" class="research-tab simulation" role="tab" id="tab-simulation"
-            aria-controls="simulation" aria-selected="false" tabindex="-1">Simulator</button>
+            aria-controls="simulation" aria-selected="false" tabindex="-1">
+            <i class="fa-solid fa-cube research-tab-icon" aria-hidden="true"></i>
+            <span>Simulator</span>
+          </button>
           <button type="button" class="research-tab surveys" role="tab" id="tab-surveys"
-            aria-controls="surveys" aria-selected="false" tabindex="-1">Surveys</button>
+            aria-controls="surveys" aria-selected="false" tabindex="-1">
+            <i class="fa-solid fa-book-open research-tab-icon" aria-hidden="true"></i>
+            <span>Surveys</span>
+          </button>
         </div>
         <span class="research-note">(* Equal contribution)</span>
       </div>

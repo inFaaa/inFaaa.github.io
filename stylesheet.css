@@ -16,14 +16,14 @@
   --bg-card: #ffffff;
   --highlight-bg: #edf1f6;
   --border-color: rgba(60, 78, 98, 0.1);
-  --shadow-color: rgba(43, 57, 72, 0.08);
+  --shadow-color: rgba(43, 57, 72, 0.04);
   --accent-red: #b8624a;
   --monet-mist: #edf2f7;
   --monet-lavender: #e9e6f4;
   --monet-sage: #e2ecdf;
   --monet-water: #dde9f4;
   --impression-sun: rgba(245, 210, 146, 0.12);
-  --impression-shadow: rgba(55, 73, 94, 0.1);
+  --impression-shadow: rgba(55, 73, 94, 0.05);
 
   /* Frosted Glass Nav */
   --nav-bg: rgba(245, 246, 249, 0.76);
@@ -43,14 +43,14 @@
   --bg-card: #161922;
   --highlight-bg: #232734;
   --border-color: rgba(180, 198, 216, 0.16);
-  --shadow-color: rgba(8, 10, 16, 0.55);
+  --shadow-color: rgba(8, 10, 16, 0.28);
   --accent-red: #d68a72;
   --monet-mist: #2b3138;
   --monet-lavender: #2f2b3b;
   --monet-sage: #27352e;
   --monet-water: #273241;
   --impression-sun: rgba(244, 189, 122, 0.08);
-  --impression-shadow: rgba(0, 0, 0, 0.45);
+  --impression-shadow: rgba(0, 0, 0, 0.22);
 
   /* Dark Frosted Glass Nav */
   --nav-bg: rgba(28, 28, 30, 0.76);
@@ -254,7 +254,7 @@ strong {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 24px;
-  box-shadow: 0 5px 20px var(--shadow-color);
+  box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .section-card > :last-child {
@@ -368,11 +368,10 @@ h2.section-title {
   margin: 0;
   padding: 30px 45px;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 24px;
+  border-radius: 0;
   background: linear-gradient(115deg,
       var(--profile-start) 0%, var(--profile-middle) 55%, var(--profile-end) 100%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14),
-    0 10px 26px rgba(51, 65, 93, 0.12);
+  box-shadow: none;
 }
 
 [data-theme="dark"] .profile-body {
@@ -452,7 +451,7 @@ h2.section-title {
   object-position: center;
   border-radius: 14px;
   display: block;
-  box-shadow: 0 12px 28px var(--shadow-color);
+  box-shadow: 0 3px 10px var(--shadow-color);
 }
 
 .profile-photo-switch {
@@ -992,6 +991,10 @@ h2.section-title {
 }
 
 .research-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
   border: 0;
   border-radius: 8px;
   padding: 10px 8px;
@@ -1000,8 +1003,17 @@ h2.section-title {
   font: inherit;
   font-size: 0.88rem;
   font-weight: 600;
+  white-space: nowrap;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.research-tab-icon {
+  flex-shrink: 0;
+  width: 1.05em;
+  font-size: 0.95em;
+  line-height: 1;
+  text-align: center;
 }
 
 .research-tab:hover {
@@ -1101,17 +1113,14 @@ h2.section-title {
   outline-offset: 4px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .research-tabs {
-    grid-template-columns: repeat(4, auto);
-    gap: 2px;
-    overflow-x: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .research-tab {
-    padding: 10px 3px;
-    font-size: 0.75rem;
-    white-space: nowrap;
+    padding: 10px 8px;
+    font-size: 0.8rem;
   }
 }
 
@@ -1150,10 +1159,11 @@ h2.section-title {
 
 .map-container {
   width: 100%;
-  max-width: 500px;
+  max-width: 300px;
   overflow-x: auto;
   margin: 0 auto 20px auto;
   text-align: center;
+  filter: saturate(0.55);
 }
 
 /* =========================================
@@ -1238,7 +1248,6 @@ h2.section-title {
   /* 简介布局 */
   .profile-body {
     padding: 25px 20px;
-    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1360,7 +1369,7 @@ h2.section-title {
   width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 10px 24px var(--impression-shadow);
+  box-shadow: 0 3px 12px var(--impression-shadow);
   /* 柔和阴影 */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: block;
@@ -1391,7 +1400,7 @@ h2.section-title {
 /* 悬停时图片轻微浮起，增加精致感 */
 .life-img:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px var(--impression-shadow);
+  box-shadow: 0 5px 16px var(--impression-shadow);
 }
 
 /* 让图标和文字之间保留一点空隙 */

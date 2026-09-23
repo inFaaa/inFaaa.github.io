@@ -317,8 +317,9 @@ h2.section-title {
    ========================================= */
 .main-header-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: baseline;
+  text-align: center;
   gap: 14px;
   margin-top: 8px;
   margin-bottom: 28px;
@@ -1257,6 +1258,7 @@ h2.section-title {
 
   /* 头部与名字 */
   .main-header-container {
+    align-self: stretch;
     gap: 8px;
     margin-bottom: 0;
   }

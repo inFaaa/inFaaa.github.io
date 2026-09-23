@@ -357,7 +357,7 @@ h2.section-title {
   --highlight-bg: rgba(255, 255, 255, 0.14);
   --nav-link-hover-bg: rgba(0, 0, 0, 0.08);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 220px;
+  grid-template-columns: minmax(0, 1fr) 260px;
   grid-template-areas:
     "name photo"
     "bio photo";
@@ -429,7 +429,7 @@ h2.section-title {
 
 .profile-photo-box {
   grid-area: photo;
-  width: 220px;
+  width: 260px;
   max-width: 100%;
   flex-shrink: 0;
   text-align: center;
@@ -438,18 +438,18 @@ h2.section-title {
   border: none;
   border-radius: 0;
   box-shadow: none;
-  align-self: start;
-  margin-top: 8px;
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.profile-photo-box:hover {
-  transform: translateY(-2px);
+  align-self: center;
+  justify-self: center;
+  margin: 0;
 }
 
 .avatar-img {
   width: 100%;
   height: auto;
+  /* Keep both photos and the controls stationary when switching. */
+  aspect-ratio: 800 / 531;
+  object-fit: cover;
+  object-position: center;
   border-radius: 14px;
   display: block;
   box-shadow: 0 12px 28px var(--shadow-color);
@@ -516,11 +516,10 @@ h2.section-title {
 }
 
 .photo-caption {
-  margin-top: 10px;
+  margin: 4px 0 0;
   font-size: 0.78rem;
   color: var(--text-muted);
   letter-spacing: 0.03em;
-  text-transform: uppercase;
   font-variant-numeric: tabular-nums;
   line-height: 1.45;
   font-family: 'Geist', system-ui, -apple-system, sans-serif;
@@ -1249,9 +1248,7 @@ h2.section-title {
 
   .profile-photo-box {
     order: 1;
-    width: 200px;
-    margin-top: 6px;
-    margin-bottom: 5px;
+    width: 240px;
   }
 
   .profile-bio {

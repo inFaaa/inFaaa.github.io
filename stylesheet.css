@@ -1168,6 +1168,71 @@ h2.section-title {
   margin-bottom: 10px;
 }
 
+/* Academic service: roles on the left, annual conference lists on the right. */
+.service-list {
+  margin: 0;
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 24px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.service-row:first-child {
+  padding-top: 0;
+}
+
+.service-row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.service-row dt {
+  font-weight: 600;
+}
+
+.service-row dd {
+  min-width: 0;
+  margin: 0;
+}
+
+.service-years {
+  display: grid;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.service-years li {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 12px;
+}
+
+.service-years time {
+  color: var(--text-muted);
+  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 600px) {
+  .service-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .service-years li {
+    gap: 8px;
+  }
+}
+
 .tag-label {
   font-weight: 600;
   color: var(--text-muted);

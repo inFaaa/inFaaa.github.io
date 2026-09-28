@@ -19,7 +19,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&family=LXGW+WenKai:wght@400;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="stylesheet.css?v=c05d37d08dd9">
+  <link rel="stylesheet" href="stylesheet.css?v=ce21568f5ca0">
   <script>
     const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -29,10 +29,16 @@
 <body>
 
   <!-- ================== 顶部导航栏 ================== -->
-  <nav class="top-nav">
+  <nav class="top-nav" aria-label="Primary navigation">
     <div class="nav-inner">
       <span class="nav-name">Jinfa Huang</span>
-      <div class="nav-links">
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+        Menu
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+          <path d="m4 6 4 4 4-4" />
+        </svg>
+      </button>
+      <div class="nav-links" id="primary-navigation">
         <a href="#about">Home</a>
         <a href="#news">News</a>
         <a href="#publications">Research</a>
@@ -288,7 +294,7 @@
           target="_blank" rel="noopener noreferrer" aria-label="View all publications on Google Scholar (opens in a new tab)">[ALL]</a>
         <span class="research-heading-meta">
           <a href="https://scholar.google.com/citations?user=2t7iBnkAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener noreferrer">
-            <img alt="3,178 Google Scholar citations" src="https://img.shields.io/badge/Cited%20by-3178-5f7fa3?style=flat"
+            <img alt="3,195 Google Scholar citations" src="https://img.shields.io/badge/Cited%20by-3195-5f7fa3?style=flat"
               style="vertical-align: text-bottom; object-fit: contain;" width="110" height="20" loading="lazy" decoding="async">
           </a>
           <span class="research-scope">(Multimodal generation and understanding)</span>
@@ -775,7 +781,7 @@
             <!-- Other PC service: MUCG@ACMMM2025, ER@NeurIPS2025 -->
             <ul class="service-years" role="list">
               <li><time datetime="2027">2027</time><span>ICLR, AAAI</span></li>
-              <li><time datetime="2026">2026</time><span>CVPR, ICLR, <strong>ECCV (Outstanding Reviewer)</strong>, AAAI, ACL</span></li>
+              <li><time datetime="2026">2026</time><span>CVPR, ICLR, ECCV (Outstanding Reviewer), AAAI, ACL</span></li>
               <li><time datetime="2025">2025</time><span>CVPR, NeurIPS (Volunteer), ICLR, ICCV, ACM MM, AAAI, COLM, ACL</span></li>
               <li><time datetime="2024">2024</time><span>CVPR, NeurIPS, ICLR, ACM MM, ECCV</span></li>
               <li><time datetime="2023">2023</time><span>CVPR, NeurIPS, ICLR, ICCV</span></li>
@@ -861,6 +867,45 @@
   <!-- ================= 脚本 ================= -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      const topNav = document.querySelector('.top-nav');
+      const navToggle = document.getElementById('nav-toggle');
+      const navLinks = document.getElementById('primary-navigation');
+      const mobileNav = window.matchMedia('(max-width: 768px)');
+      const setNavOpen = (open, restoreFocus = false) => {
+        navToggle.setAttribute('aria-expanded', String(open));
+        topNav.toggleAttribute('data-menu-open', open);
+        if (restoreFocus) navToggle.focus({ preventScroll: true });
+      };
+      navToggle.addEventListener('click', () => {
+        setNavOpen(navToggle.getAttribute('aria-expanded') !== 'true');
+      });
+      navLinks.addEventListener('click', event => {
+        const link = event.target.closest('a');
+        if (!link || !mobileNav.matches) return;
+        setNavOpen(false);
+        const destination = document.getElementById(link.hash.slice(1));
+        if (destination) {
+          destination.tabIndex = -1;
+          destination.focus({ preventScroll: true });
+        }
+      });
+      topNav.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+          event.preventDefault();
+          setNavOpen(false, true);
+        }
+      });
+      document.addEventListener('click', event => {
+        if (!topNav.contains(event.target) && navToggle.getAttribute('aria-expanded') === 'true') {
+          setNavOpen(false, navLinks.contains(document.activeElement));
+        }
+      });
+      document.addEventListener('focusin', event => {
+        if (!topNav.contains(event.target)) setNavOpen(false);
+      });
+      mobileNav.addEventListener('change', () => setNavOpen(false));
+      topNav.setAttribute('data-menu-ready', '');
+
       const profilePhoto = document.getElementById('profile-photo');
       const photoOptions = [...document.querySelectorAll('.photo-option')];
       const selectPhoto = option => {

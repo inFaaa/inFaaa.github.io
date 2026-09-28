@@ -108,6 +108,16 @@ a {
   /* Apple SF Pro style tight kerning */
 }
 
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle:focus-visible,
+.nav-links a:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
 .nav-links {
   display: flex;
   flex: 0 1 auto;
@@ -1306,6 +1316,71 @@ h2.section-title {
   .nav-links a {
     font-size: 0.8rem;
     padding: 5px 8px;
+  }
+
+  /* Keep the scrollable links as a fallback until the menu is initialized. */
+  .top-nav[data-menu-ready] .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    gap: 8px;
+    min-height: 40px;
+    margin-left: auto;
+    padding: 0 12px;
+    border: 1px solid var(--nav-border);
+    border-radius: 10px;
+    background: var(--nav-link-hover-bg);
+    color: var(--nav-text);
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .nav-toggle svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .nav-toggle[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+  }
+
+  .top-nav[data-menu-ready] .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 15px;
+    right: 15px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+    box-sizing: border-box;
+    max-height: calc(100vh - 72px);
+    max-height: calc(100dvh - 72px);
+    margin: 0;
+    padding: 8px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    white-space: normal;
+    background: var(--bg-card);
+    border: 1px solid var(--nav-border);
+    border-radius: 14px;
+    box-shadow: 0 8px 24px var(--shadow-color);
+  }
+
+  .top-nav[data-menu-ready][data-menu-open] .nav-links {
+    display: grid;
+  }
+
+  .top-nav[data-menu-ready] .nav-links a {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 44px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--nav-text) !important;
   }
 
   /* 主容器与间距缩减 */

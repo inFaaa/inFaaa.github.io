@@ -1747,6 +1747,15 @@ h2.section-title {
   color: var(--text-muted) !important;
 }
 
+.experience-details .experience-award {
+  color: #946515 !important;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .experience-details .experience-award {
+  color: #e8bc6a !important;
+}
+
 .paper-title {
   color: var(--text-color) !important;
 }

@@ -19,7 +19,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&family=LXGW+WenKai:wght@400;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="stylesheet.css?v=cb30fdca69c3">
+  <link rel="stylesheet" href="stylesheet.css?v=77db3e889db2">
   <script>
     const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -894,12 +894,9 @@
         <div class="interests-text">
           <ul class="custom-list">
             <li><strong>Film photography:</strong> Capturing moments with disposable cameras.</li>
-            <li><strong>Tennis:</strong> Around NTRP 3.0. Goal: 3.5 before Ph.D. graduation.</li>
             <li><strong>Anime:</strong> Love, sports, and sci-fi, e.g., <a href="https://www.anime-gintama.com/"><em>Gintama</em></a> and <a href="https://frieren-anime.jp/"><em>Frieren</em></a>.</li>
             <li><strong>Literature:</strong> <a href="https://en.wikipedia.org/wiki/Wang_Xiaobo">Xiaobo Wang</a> & <a
                 href="https://en.wikipedia.org/wiki/Friedrich_Nietzsche">Friedrich Nietzsche</a>.</li>
-            <li><strong>Art:</strong> <a href="https://en.wikipedia.org/wiki/Claude_Monet">Claude Monet</a> fan; seen around
-              90 original works so far.</li>
             <li>
               <strong>Coding:</strong> Maintainer of
               <a href="https://github.com/inFaaa/PKU-Beamer-Theme">PKU-Beamer-Theme</a>
@@ -927,19 +924,54 @@
     </section>
 
     <!-- ================= 页脚与地图 ================= -->
-    <div class="footer">
-      <div id="clustrmaps-container" class="map-container">
-        <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=SyeUVfbLgTPj_Jd0Sk1e10UKgOSeqim_lijx_SJdDeA&cl=ffffff&w=a"></script>
+    <footer class="footer">
+      <div id="clustrmaps-container" class="map-container" role="group" aria-label="Visitor locations around the world">
+        <script type="text/javascript" id="mmvst_globe" src="https://mapmyvisitors.com/globe.js?d=SyeUVfbLgTPj_Jd0Sk1e10UKgOSeqim_lijx_SJdDeA&amp;w=144"></script>
         <noscript><a href="https://mapmyvisitors.com/web/1c589" title="Visit tracker"><img src="https://mapmyvisitors.com/map.png?d=SyeUVfbLgTPj_Jd0Sk1e10UKgOSeqim_lijx_SJdDeA&cl=ffffff" alt="Visitor map" width="500" height="250" loading="lazy" decoding="async"></a></noscript>
       </div>
 
-      <p>
-        My hometown is Guangdong; you can call me by my Cantonese name, Gamfaat Wong.<br>
-        Inspired by <a href="https://people.eecs.berkeley.edu/~efros/">Alexei (Alyosha) Efros</a>, I believe in
-        <a href="http://slow-science.org/">Slow Science</a> and try to practice it in my own research.<br>
-        Last updated in October 2026.
-      </p>
-    </div>
+      <div class="footer-content">
+        <div class="footer-note">
+          <p class="footer-intro">I am from <span class="footer-phrase">Guangdong <span aria-hidden="true">🫖</span>.</span> <span class="footer-name">My Cantonese name <span class="footer-phrase">is <strong>Gamfaat Wong</strong>.</span></span></p>
+          <p>Good ideas, like good tea, take time.
+            <span class="footer-practice">I try to practice <span class="footer-phrase"><a href="http://slow-science.org/">Slow Science</a> <span aria-hidden="true">🐢</span></span> <span class="footer-phrase">in my research.</span></span></p>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-meta">
+            <span>&copy; 2026 Jinfa Huang</span>
+            <span>Last updated <time datetime="2026-10">Oct 2026</time></span>
+          </div>
+          <div class="footer-progress" role="group" aria-label="Personal milestones">
+            <div class="footer-milestone">
+              <div class="milestone-label">
+                <span><span aria-hidden="true">🎾</span> Tennis</span>
+                <span class="milestone-value">NTRP 3.0 <span aria-hidden="true">→</span><span class="sr-only">toward</span> 3.5</span>
+              </div>
+              <div class="tennis-level" role="meter" aria-label="Tennis NTRP level" aria-valuemin="1" aria-valuemax="5" aria-valuenow="3" aria-valuetext="Current level 3.0; next goal 3.5. Displayed scale: 1.0 to 5.0.">
+                <div class="level-track" aria-hidden="true">
+                  <span class="level-fill"></span>
+                  <span class="level-current"></span>
+                  <span class="level-goal"></span>
+                </div>
+                <div class="level-ticks" aria-hidden="true">
+                  <span>1.0</span><span>2.0</span><span class="level-current-label">3.0</span><span>4.0</span><span>5.0</span>
+                </div>
+              </div>
+            </div>
+            <div class="footer-milestone">
+              <div class="milestone-label">
+                <span><span aria-hidden="true">🎨</span> Monet collection</span>
+                <span class="milestone-value">~90 / <a href="https://wpi.art/2023/12/06/introducing-claude-monet-the-revised-catalogue-raisonne-the-pastels/" title="Approximate total; Monet’s catalogue is still being revised">~2,000</a></span>
+              </div>
+              <progress class="collection-progress" value="90" max="2000" aria-label="Monet original works seen" aria-valuetext="About 90 original works seen, out of roughly 2,000 works">About 90 of roughly 2,000 works</progress>
+              <div class="level-ticks" aria-hidden="true">
+                <span>0</span><span>500</span><span>1,000</span><span>1,500</span><span>2,000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
 
   </div>
 

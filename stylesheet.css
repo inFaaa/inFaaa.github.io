@@ -463,8 +463,7 @@ h2.section-title {
 .avatar-img {
   width: 100%;
   height: auto;
-  /* Keep both photos and the controls stationary when switching. */
-  aspect-ratio: 800 / 531;
+  aspect-ratio: 1;
   object-fit: cover;
   object-position: center;
   border-radius: 14px;
@@ -472,8 +471,22 @@ h2.section-title {
   box-shadow: 0 3px 10px var(--shadow-color);
 }
 
+.avatar-img.portrait-img {
+  /* Fit the top-cropped portrait into the original compact photo area. */
+  width: auto;
+  height: 100%;
+  aspect-ratio: 800 / 1090;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
 .profile-photo-switch {
-  display: block;
+  /* Preserve the first photo layout without stretching the text panel. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  height: 260px;
   width: 100%;
   padding: 0;
   border: 0;
@@ -533,6 +546,7 @@ h2.section-title {
 }
 
 .photo-caption {
+  min-height: 1.6em;
   margin: 4px 0 0;
   font-size: 0.78rem;
   color: var(--text-muted);
@@ -1431,6 +1445,10 @@ h2.section-title {
   .profile-photo-box {
     order: 1;
     width: 240px;
+  }
+
+  .profile-photo-switch {
+    height: 240px;
   }
 
   .profile-bio {

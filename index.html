@@ -11,24 +11,26 @@
   <title>Jinfa Huang - Ph.D. Candidate at the University of Rochester</title>
 
   <!-- 网站图标 -->
-  <link rel="icon" type="image/png" href="https://infaaa.github.io/image/optimized/favicon.png" sizes="64x64">
+  <link rel="icon" type="image/svg+xml" href="image/optimized/jinfa-eye.svg" sizes="any">
 
   <!-- 引入 Google Fonts (学术常用字体) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&family=LXGW+WenKai:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap"
     rel="stylesheet">
   <style id="original-homepage-css">
 /* =========================================
-   1. Fonts — Geist (display + body) + Geist Mono (numerals) + LXGW WenKai (CJK)
-   Loaded from Google Fonts in index.html.
+   1. Fonts — Hanken Grotesk (text + visuals), Google Sans Code (code), LXGW WenKai (CJK)
+   English fonts load from Google Fonts; the Chinese name keeps its local font stack.
    ========================================= */
 
 /* =========================================
    2. 全局变量 (Variables)
    ========================================= */
 :root {
+  --font-sans: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-code: 'Google Sans Code', ui-monospace, SFMono-Regular, Menlo, monospace;
   /* Apple-minimal with subtle Monet-inspired palette */
   --primary-color: #5f7fa3;
   --primary-hover: #4f6f92;
@@ -120,7 +122,7 @@ a {
 }
 
 .nav-name {
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--nav-text);
@@ -128,6 +130,15 @@ a {
   white-space: nowrap;
   flex-shrink: 0;
   /* Apple SF Pro style tight kerning */
+}
+
+.nav-mascot {
+  display: inline-block;
+  width: 32px;
+  height: 24px;
+  margin-right: 7px;
+  object-fit: contain;
+  vertical-align: -4px;
 }
 
 .nav-toggle {
@@ -158,7 +169,7 @@ a {
 
 .nav-links a {
   flex-shrink: 0;
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 600;
   /* Bolder weight as requested */
@@ -213,7 +224,7 @@ html {
    4. 基础样式 (Global Reset & Base)
    ========================================= */
 body {
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   font-size: 15px;
   line-height: 1.6;
   color: var(--text-color);
@@ -235,7 +246,25 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+}
+
+
+button,
+input,
+select,
+textarea,
+svg text,
+svg tspan {
+  font-family: var(--font-sans);
+}
+
+pre,
+code,
+kbd,
+samp,
+.code-block {
+  font-family: var(--font-code);
 }
 
 a {
@@ -258,7 +287,7 @@ a:focus {
 
 /* 兼容旧代码的辅助类 */
 heading {
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   font-size: 22px;
   font-weight: bold;
   display: block;
@@ -359,7 +388,7 @@ h2.section-title {
 }
 
 .name-en-center {
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(2.4rem, 5.5vw, 3.6rem);
   font-weight: 700;
   color: var(--text-color);
@@ -505,6 +534,18 @@ h2.section-title {
   cursor: pointer;
 }
 
+.research-direction-icon {
+  width: 17px;
+  height: 17px;
+  margin-right: 6px;
+  vertical-align: -3px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .research-direction-note {
   margin: 0 0 6px;
   color: var(--text-muted);
@@ -637,7 +678,7 @@ h2.section-title {
   letter-spacing: 0.03em;
   font-variant-numeric: tabular-nums;
   line-height: 1.45;
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
 }
 
 /* =========================================
@@ -807,7 +848,7 @@ h2.section-title {
   min-width: 78px;
   color: var(--text-muted);
   font-size: 0.82em;
-  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-sans);
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
   line-height: 1.4;
@@ -1325,7 +1366,7 @@ h2.section-title {
 
 .service-years time {
   color: var(--text-muted);
-  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-sans);
   font-size: 0.8rem;
   font-variant-numeric: tabular-nums;
 }
@@ -1664,6 +1705,12 @@ h2.section-title {
     font-size: 1.1rem;
   }
 
+  .nav-mascot {
+    width: 28px;
+    height: 21px;
+    margin-right: 6px;
+  }
+
   .nav-links {
     gap: 4px;
     overflow-x: auto;
@@ -1841,7 +1888,7 @@ h2.section-title {
 }
 
 /* =========================================
-14. Bilibili 视频与讲座
+14. 讲座
 ========================================= */
 .talks-list {
   list-style: none;
@@ -1868,7 +1915,7 @@ h2.section-title {
 
 .talk-date {
   color: var(--text-muted);
-  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-sans);
   font-size: 0.8rem;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -1903,26 +1950,7 @@ h2.section-title {
   }
 }
 
-.video-container {
-  position: relative;
-  width: 80%;
-  padding-bottom: 45%;
-  /* 16:9 aspect ratio */
-  height: 0;
-  background: var(--bg-color);
-  border-radius: 12px;
-  overflow: hidden;
-  margin-top: 15px;
-  box-shadow: 0 4px 16px var(--shadow-color);
-}
 
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
 
 .interests-container {
   display: flex;
@@ -2170,9 +2198,6 @@ a:hover {
   color: var(--primary-hover);
 }
 
-[data-theme="dark"] .video-container {
-  box-shadow: 0 8px 24px var(--shadow-color);
-}
 
   </style>
   <script>
@@ -2257,7 +2282,7 @@ a:hover {
   justify-content: space-between;
   margin-bottom: 16px;
   color: var(--rm-color);
-  font: 10px/1 'Geist Mono', ui-monospace, monospace;
+  font: 10px/1 var(--font-sans);
   letter-spacing: .06em;
   opacity: .7;
   pointer-events: none;
@@ -2287,7 +2312,7 @@ a:hover {
   border-radius: 3px;
   background: transparent;
   color: var(--text-muted);
-  font: 10px/1.4 'Geist Mono', ui-monospace, monospace;
+  font: 10px/1.4 var(--font-sans);
   cursor: pointer;
 }
 #research-map .rm-focus-ticks button:hover,
@@ -2465,7 +2490,7 @@ a:hover {
   font-size: 11px;
   font-weight: 500;
   line-height: 21px;
-  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-family: var(--font-sans);
 }
 #research-map .rm-topic-title {
   font-size: 14px;
@@ -2705,6 +2730,188 @@ a:hover {
 }
 </style>
 
+<style id="homepage-outline-css">
+/* Consistent card outlines and spacing across the full homepage. */
+:root {
+  --outer-radius: 16px;
+  --inner-radius: 8px;
+}
+[data-theme="dark"] {
+  --bg-color: #191c22;
+  --bg-card: #181c23;
+  --highlight-bg: #232833;
+  --text-color: #edf0f6;
+  --text-muted: #aab1bf;
+  --border-color: rgba(194, 209, 235, .14);
+  --primary-color: #b8cce8;
+  --primary-hover: #d9e4f5;
+  --nav-bg: rgba(25, 28, 34, .9);
+  --nav-border: rgba(194, 209, 235, .14);
+  --nav-text: #edf0f6;
+  --nav-link: #aab1bf;
+}
+[data-theme="dark"] body {
+  background-image:
+    radial-gradient(ellipse at 0 0, rgba(101, 87, 125, .13), transparent 45%),
+    radial-gradient(ellipse at 100% 70%, rgba(73, 117, 103, .08), transparent 45%);
+}
+.top-nav { padding-inline: 24px; }
+.nav-inner { max-width: 1100px; height: 60px; }
+.nav-name { font-size: 17px; font-weight: 650; }
+.nav-links { gap: 14px; }
+.nav-links a { font-size: 12px; }
+.container { width: calc(100% - 48px); max-width: 1100px; margin: 20px auto 38px; gap: 24px; }
+.section-card { padding: 34px 38px; border-radius: var(--outer-radius); box-shadow: none; }
+h2.section-title,
+.news-header { padding-bottom: 0; border-bottom: 0; margin-bottom: 22px; }
+h2.section-title:not(#news)::after,
+.news-header::after { content: none; }
+h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
+.profile-body {
+  --profile-start: #34415c;
+  --profile-middle: #45475d;
+  --profile-end: #565061;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  grid-template-areas: "name name" "bio photo";
+  column-gap: 34px;
+  padding: 36px 38px;
+  border-radius: var(--outer-radius);
+}
+[data-theme="dark"] .profile-body {
+  --profile-start: #2b354d;
+  --profile-middle: #3d3d51;
+  --profile-end: #484252;
+}
+.main-header-container { justify-content: space-between; align-items: center; flex-wrap: nowrap; text-align: left; margin: 0 0 22px; gap: 16px; }
+.profile-name { display: flex; align-items: baseline; flex-shrink: 0; gap: 8px 14px; }
+.profile-name > span { white-space: nowrap; }
+.main-header-container .social-links-bar { flex-wrap: nowrap; justify-content: flex-end; margin: 0 0 0 auto; gap: 7px; }
+.main-header-container .social-btn { padding: 6px 10px; white-space: nowrap; }
+.name-en-center { font-size: 44px; line-height: 1.2; letter-spacing: -.04em; }
+.name-cn-center { font-size: 19px; }
+.profile-bio > .bio-text { max-width: none; margin: 0 0 18px; font-size: 14px; line-height: 1.85; text-wrap: wrap; }
+.profile-bio > .research-statement {
+  max-width: 520px;
+  text-wrap: balance;
+  padding: 12px 15px;
+  border-radius: var(--inner-radius);
+  border-color: rgba(211, 224, 255, .16);
+  background: rgba(211, 224, 255, .05);
+  line-height: 1.65;
+}
+.research-statement .keep-together { white-space: nowrap; }
+.research-directions { max-width: none; gap: 10px; margin-bottom: 18px; }
+.research-directions-label { font-size: 10px; letter-spacing: .1em; }
+.research-direction { padding: 13px 15px; border-radius: var(--inner-radius); border-color: rgba(211, 224, 255, .16); background: rgba(211, 224, 255, .035); }
+.research-direction-disclosure summary { font-size: 13px; }
+.research-direction > p { font-size: 12px; line-height: 1.65; }
+.social-btn { padding: 6px 13px; font-size: 11px; }
+.profile-photo-box { width: 190px; }
+.profile-photo-switch { height: 254px; }
+.avatar-img { border-radius: var(--inner-radius); box-shadow: none; }
+.photo-caption { font-size: 11px; }
+#research-map .rm-columns { gap: 24px; }
+#research-map .rm-axis-header {
+  --rm-corner-length: 16px;
+  --rm-corner-stroke: 1px;
+  border-radius: var(--inner-radius);
+  border-color: var(--border-color);
+}
+#research-map .rm-axis-header::before { border-radius: inherit; opacity: .6; }
+#research-map .rm-axis-header::after { opacity: .2; }
+#research-map .rm-viewfinder-status { opacity: .6; }
+#research-map .rm-axis-header h3 { font-size: 20px; }
+#research-map .rm-topic,
+#research-map .rm-toggle-all,
+.rv-section .rv-view-tabs { border-radius: var(--inner-radius); }
+#research-map .rm-topic > summary { border-radius: var(--inner-radius); }
+#research-map .rm-topic[open] > summary { border-radius: var(--inner-radius) var(--inner-radius) 0 0; }
+.rv-section .rv-view-tab { min-height: 38px; border-radius: 5px; font-size: 12px; font-weight: 500; }
+.rv-section .rv-view-tab[aria-selected="true"] { box-shadow: none; }
+.experience-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 34px; align-items: start; }
+#research-experience-card .experience-item {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  align-items: start;
+  gap: 16px;
+  margin: 0;
+  padding: 20px 0;
+  border-top: 1px solid var(--border-color);
+}
+#research-experience-card .logo-box { width: 100px; min-width: 0; height: 38px; align-items: center; }
+#research-experience-card .logo-box a { display: block; width: var(--company-logo-width, 100%); }
+#research-experience-card .logo-box .meta-logo { --company-logo-width: 90%; }
+#research-experience-card .logo-box .google-logo { --company-logo-width: 82%; }
+#research-experience-card .logo-box .amazon-logo { --company-logo-width: 88%; }
+#research-experience-card .logo-box .bytedance-logo { --company-logo-width: 100%; }
+#research-experience-card .logo-box img { width: 100%; height: auto; max-height: none; }
+#research-experience-card .experience-details strong,
+#research-experience-card .experience-details h3 { margin: 0 0 5px; font-size: 14px; line-height: 1.5; font-weight: 600; }
+#research-experience-card .experience-details span,
+#research-experience-card .experience-details em { font-size: 12px; line-height: 1.65; }
+#research-experience-card .experience-details strong a { color: inherit; font-weight: inherit; }
+#research-experience-card .experience-details strong a:hover { color: var(--primary-color); }
+#research-experience-card .experience-role { margin-top: 5px; }
+#research-experience-card .experience-role + .experience-role { margin-top: 7px; }
+#research-experience-card .experience-position { display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px 10px; }
+#research-experience-card .experience-position .experience-award { font-size: 11px; white-space: nowrap; }
+@media (max-width: 1000px) and (min-width: 769px) {
+  .profile-body { column-gap: 24px; grid-template-columns: minmax(0, 1fr) 170px; padding-inline: 28px; }
+  .profile-photo-box { width: 170px; }
+  .profile-photo-switch { height: 232px; }
+  .name-en-center { font-size: 32px; }
+  .name-cn-center { font-size: 17px; }
+  .main-header-container { gap: 12px; }
+  .profile-name { gap: 9px; }
+  .main-header-container .social-links-bar { gap: 5px; }
+  .main-header-container .social-btn { padding: 5px 6px; font-size: 10px; }
+}
+@media (max-width: 900px) {
+  .experience-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 768px) {
+  .top-nav { padding-inline: 16px; }
+  .nav-inner { height: 56px; }
+  .nav-name { font-size: 16px; }
+  .container { width: calc(100% - 32px); margin: 16px auto 30px; gap: 20px; }
+  .section-card { padding: 25px 24px; }
+  .profile-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 150px;
+    grid-template-areas: "name photo" "bio bio";
+    align-items: center;
+    gap: 22px 20px;
+    padding: 26px 24px;
+  }
+  .profile-body > .main-header-container { margin: 0; align-self: center; align-items: flex-start; flex-wrap: wrap; }
+  .profile-name { flex-wrap: wrap; flex-shrink: 1; }
+  .main-header-container .social-links-bar { flex-wrap: wrap; justify-content: flex-start; margin-left: 0; }
+  .main-header-container .social-btn { padding: 5px 8px; font-size: 10px; }
+  .name-en-center { font-size: 34px; line-height: 1.2; }
+  .name-cn-center { font-size: 18px; }
+  .profile-photo-box { width: 150px; }
+  .profile-photo-switch { height: 200px; }
+  .research-directions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 540px) {
+  .section-card { padding: 24px 20px; }
+  .profile-body { grid-template-columns: minmax(0, 1fr) 104px; gap: 20px 12px; padding: 24px 20px; }
+  .main-header-container { gap: 9px; }
+  .name-en-center { font-size: 30px; }
+  .name-cn-center { font-size: 17px; }
+  .profile-photo-box { width: 104px; }
+  .profile-photo-switch { height: 142px; }
+  .photo-controls { margin-top: 2px; }
+  .photo-caption { font-size: 9px; }
+  .profile-bio > .bio-text { font-size: 13px; line-height: 1.8; }
+  .research-directions { grid-template-columns: minmax(0, 1fr); }
+  #research-map .rm-axis-header h3 { font-size: 18px; }
+  #research-map .rm-topic-title { font-size: 13px; }
+  #research-experience-card .experience-item { grid-template-columns: 80px minmax(0, 1fr); gap: 13px; }
+  #research-experience-card .logo-box { width: 80px; }
+}
+</style>
+
 </head>
 
 <body>
@@ -2712,7 +2919,7 @@ a:hover {
   <!-- ================== 顶部导航栏 ================== -->
   <nav class="top-nav" aria-label="Primary navigation">
     <div class="nav-inner">
-      <span class="nav-name">Jinfa Huang</span>
+      <span class="nav-name"><img class="nav-mascot" src="image/optimized/jinfa-eye.svg" width="32" height="24" alt="" aria-hidden="true">Jinfa Huang</span>
       <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
         Menu
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
@@ -2740,40 +2947,10 @@ a:hover {
     <!-- ================== Profile: name, biography, and photo ================== -->
     <div class="profile-body">
       <div class="main-header-container" id="about">
-        <span class="name-en-center">Jinfa Huang</span>
-        <span class="name-cn-center">( 黄锦发 )</span>
-      </div>
-      <div class="profile-bio">
-        <p class="bio-text">
-          Bonjour 👋 I am a Ph.D. candidate in the Department of Computer Science at the
-          <a href="https://www.rochester.edu/">University of Rochester</a>, advised by
-          <a href="https://www.cs.rochester.edu/u/jluo/">Prof. Jiebo Luo</a>.
-          Previously, I earned my master's degree from <a href="https://www.pku.edu.cn/">Peking University (PKU)</a>
-          under the supervision of <a href="https://yuanli2333.github.io/">Prof. Li Yuan</a> and
-          <a href="https://sites.google.com/view/jie-chen-2020/home">Prof. Jie Chen</a>,
-          and my bachelor's degree with honors from the
-          <a href="https://en.uestc.edu.cn/">University of Electronic Science and Technology of China</a>.
-        </p>
-        <p class="bio-text research-statement">
-          <strong>Research Interest:</strong> I study <strong style="color: var(--accent-red);">vision-language alignment</strong> for agentic AI, connecting multimodal understanding with visual generation.
-        </p>
-        <section class="research-directions" aria-label="Recent research focus">
-          <p class="research-directions-label"><span aria-hidden="true">🔥</span> Recent Focus</p>
-          <article class="research-direction">
-            <details class="research-direction-disclosure">
-              <summary role="heading" aria-level="3">Visual Coding</summary>
-              <p class="research-direction-note">Visual coding offers structured, editable representations, while diffusion adds flexible generation. Together, they may support controllable world models.</p>
-            </details>
-            <p>Exploring hybrid visual coding + diffusion as a pathway toward world models.</p>
-          </article>
-          <article class="research-direction">
-            <details class="research-direction-disclosure">
-              <summary role="heading" aria-level="3">Helmholtz Agent</summary>
-              <p class="research-direction-note">The name connects Helmholtz free energy with Hinton et al.'s wake-sleep algorithm, which we adapt into an agentic learning loop over real and imagined experience.</p>
-            </details>
-            <p>Using generative models to construct environments toward Multimodal RSI.</p>
-          </article>
-        </section>
+        <div class="profile-name">
+          <span class="name-en-center">Jinfa Huang</span>
+          <span class="name-cn-center">( 黄锦发 )</span>
+        </div>
         <div class="social-links-bar">
           <a href="mailto:vhjf305@gmail.com" class="social-btn">
             <i class="fa-solid fa-envelope"></i> Email
@@ -2795,20 +2972,53 @@ a:hover {
             <i class="fa-brands fa-linkedin"></i> LinkedIn
           </a>
         </div>
+      </div>
+      <div class="profile-bio">
+        <p class="bio-text">
+          Bonjour 👋 I am a Ph.D. candidate in the Department of Computer Science at the
+          <a href="https://www.rochester.edu/">University of Rochester</a>, advised by
+          <a href="https://www.cs.rochester.edu/u/jluo/">Prof. Jiebo Luo</a>.
+          Previously, I earned my master's degree from <a href="https://www.pku.edu.cn/">Peking University (PKU)</a>
+          under the supervision of <a href="https://yuanli2333.github.io/">Prof. Li Yuan</a> and
+          <a href="https://sites.google.com/view/jie-chen-2020/home">Prof. Jie Chen</a>,
+          and my bachelor's degree with honors from the
+          <a href="https://en.uestc.edu.cn/">University of Electronic Science and Technology of China</a>.
+        </p>
+        <p class="bio-text research-statement">
+          <strong>Research Interest:</strong> I study <strong style="color: var(--accent-red);">vision-language alignment</strong> for <span class="keep-together">agentic AI</span>, connecting multimodal understanding with visual generation.
+        </p>
+        <section class="research-directions" aria-label="Recent research focus">
+          <p class="research-directions-label"><span aria-hidden="true">🔥</span> Recent Focus</p>
+          <article class="research-direction">
+            <details class="research-direction-disclosure">
+              <summary role="heading" aria-level="3"><svg class="research-direction-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m7 7-5 5 5 5m10-10 5 5-5 5M14 4l-4 16"/></svg>Visual Coding</summary>
+              <p class="research-direction-note">Visual coding offers structured, editable representations, while diffusion adds flexible generation. Together, they may support controllable world models.</p>
+            </details>
+            <p>Exploring hybrid visual coding + diffusion as a pathway toward world models.</p>
+          </article>
+          <article class="research-direction">
+            <details class="research-direction-disclosure">
+              <summary role="heading" aria-level="3"><svg class="research-direction-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 11a8 8 0 0 0-14-4l-3 3m0-6v6h6M4 13a8 8 0 0 0 14 4l3-3m0 6v-6h-6"/><circle cx="12" cy="12" r="2"/></svg>Helmholtz Agent</summary>
+              <p class="research-direction-note">The name connects Helmholtz free energy with Hinton et al.'s wake-sleep algorithm, which we adapt into an agentic learning loop over real and imagined experience.</p>
+            </details>
+            <p>Using generative models to construct environments toward Multimodal RSI.</p>
+          </article>
+        </section>
+
 
         <!-- 美化后的头像框 -->
       </div>
       <div class="profile-photo-box">
         <button type="button" class="profile-photo-switch" id="profile-photo-next"
           aria-label="Show next profile photo" aria-describedby="photo-status" title="Click to switch photos">
-          <img src="https://infaaa.github.io/image/optimized/photo10.webp" alt="Jinfa Huang against a blue background" class="avatar-img portrait-img" id="profile-photo"
+          <img src="image/optimized/portrait-slate-blue.webp" alt="Jinfa Huang against a graphite blue-gray background" class="avatar-img portrait-img" id="profile-photo"
             width="800" height="1200" fetchpriority="high" decoding="async">
         </button>
-        <span class="sr-only" id="photo-status" role="status" aria-live="polite" aria-atomic="true">Photo 1 of 3: Jinfa Huang against a blue background</span>
+        <span class="sr-only" id="photo-status" role="status" aria-live="polite" aria-atomic="true">Photo 1 of 3: Jinfa Huang against a graphite blue-gray background</span>
         <div class="photo-controls" role="group" aria-label="Choose profile photo">
           <button type="button" class="photo-option" aria-label="Show portrait photo" title="Show portrait photo"
-            aria-pressed="true" data-photo-src="https://infaaa.github.io/image/optimized/photo10.webp" data-photo-crop="portrait"
-            data-photo-alt="Jinfa Huang against a blue background" data-photo-width="800" data-photo-height="1200"
+            aria-pressed="true" data-photo-src="image/optimized/portrait-slate-blue.webp" data-photo-crop="portrait"
+            data-photo-alt="Jinfa Huang against a graphite blue-gray background" data-photo-width="800" data-photo-height="1200"
             data-photo-caption="@Menlo Park, Oct 2026"></button>
           <button type="button" class="photo-option" aria-label="Show city photo" title="Show city photo"
             aria-pressed="false" data-photo-src="https://infaaa.github.io/image/optimized/photo9.webp"
@@ -2823,12 +3033,174 @@ a:hover {
       </div>
     </div>
 
+    <section class="section-card" aria-labelledby="news">
+      <!-- ================= 新闻 (News) ================= -->
+      <div class="news-header" data-section-tone="mist">
+        <h2 class="section-title" id="news">News</h2>
+        <button type="button" class="btn-show-more" onclick="toggleNews()" id="news-toggle-btn"
+          aria-expanded="false" aria-controls="more-news">Show More</button>
+      </div>
+      <ul class="news-list">
+        <li>
+          <span class="news-date">[2026/10]</span>
+          <span class="news-content">
+            Released <a href="https://huggingface.co/papers/2610.22341">3DCodeVerse</a>, <a href="https://huggingface.co/papers/2609.38119">VideoLoop</a>, and <a href="https://arxiv.org/pdf/2610.22264">SCOPE</a>
+            for 3D Coding, long-form video understanding, and text-to-image prompt optimization.
+          </span>
+        </li>
+        <li>
+          <span class="news-date">[2026/09]</span>
+          <span class="news-content">
+            Passed my thesis proposal defense, <em>Toward Vision-Language Alignment for Agentic AI</em>,
+            and was officially admitted to Ph.D. candidacy.
+          </span>
+        </li>
+        <!-- <li>
+          <span class="news-date">[2026/06]</span>
+          <span class="news-content">
+            I will attend <a href="https://cvpr.thecvf.com/">CVPR 2026</a> in Denver this June. Feel free to connect.
+          </span>
+        </li> -->
+        <li>
+          <span class="news-date">[2026/07]</span>
+          <span class="news-content">
+            Selected as <a href="https://eccv.ecva.net/Conferences/2026/ProgramCommittee#outstanding-reviewer">ECCV 2026</a> Outstanding Reviewer.
+          </span>
+        </li>
+        <li>
+          <span class="news-date">[2026/06]</span>
+          <span class="news-content">
+            1 paper (SpecEyes) accepted by ECCV 2026.
+          </span>
+        </li>
+      </ul>
+      <!-- 隐藏的新闻 -->
+      <div class="hidden-news" id="more-news">
+        <ul class="news-list">
+          <li>
+            <span class="news-date">[2026/06]</span>
+            <span class="news-content">
+              I have joined <a href="https://ai.meta.com/">Meta Superintelligence Lab</a> as a Research Scientist Intern, focusing on agentic video generation.
+            </span>
+          </li>
+          <li>
+            <span class="news-date">[2026/04]</span>
+            <span class="news-content">
+              Won <a href="https://www.meshy.ai/zh/blog/fellowship-2026">Meshy Fellowship</a> Finalist Prize (Global Top 20).
+            </span>
+          </li>
+          <li>
+            <span class="news-date">[2026/03]</span>
+            <span class="news-content">
+              Released <a href="https://arxiv.org/abs/2603.23483">SpecEyes</a> and <a href="https://arxiv.org/abs/2603.16859">SocialOmni</a>
+              for efficient agentic visual reasoning and evaluation of audio-visual social interaction.
+            </span>
+          </li>
+          <li><span class="news-date">[2025/11]</span><span class="news-content">1 paper (QuoTA) accepted by AAAI
+              2026.</span></li>
+          <li><span class="news-date">[2025/10]</span><span class="news-content">I am excited to be selected as a volunteer
+              at NeurIPS 2025. See you in San Diego.</span></li>
+          <li><span class="news-date">[2025/09]</span><span class="news-content">1 survey paper (Next-Gen AIGC) accepted by
+              Frontiers of Computer Science 2025.</span></li>
+          <li><span class="news-date">[2025/09]</span><span class="news-content">2 papers (OpenS2V-Nexus and VideoRAG)
+              accepted by NeurIPS main and D&B track 2025.</span></li>
+          <li>
+            <span class="news-date">[2025/08]</span>
+            <span class="news-content">
+              <a
+                href="https://academicminute.org/jiebo-luo-university-of-rochester-text-to-video-ai-blossoms-with-new-metamorphic-video-capabilities/">"Text-to-Video
+                AI Blossoms"</a> featured by The Academic Minute.
+            </span>
+          </li>
+          <li><span class="news-date">[2025/08]</span><span class="news-content">1 paper (TACO) accepted by EMNLP Main
+              2025.</span></li>
+          <li><span class="news-date">[2025/07]</span><span class="news-content">1 paper (MoE-LLaVA) accepted by TMM
+              2025.</span></li>
+          <li>
+            <span class="news-date">[2025/07]</span>
+            <span class="news-content">
+              Released <a href="https://github.com/multimodal-art-projection/LatentCoT-Horizon">LatentCoT-Horizon</a> repo
+              for Survey on Latent Reasoning.
+              <img alt="GitHub Stars"
+                src="https://img.shields.io/github/stars/multimodal-art-projection/LatentCoT-Horizon?style=flat&logo=github&labelColor=white" style="object-fit: contain;" width="110" height="20" loading="lazy" decoding="async">
+            </span>
+          </li>
+          <li><span class="news-date">[2025/06]</span><span class="news-content">Research career has achieved <a
+                href="https://scholar.google.com/citations?user=2t7iBnkAAAAJ">1000+ Google Citations</a>.</span></li>
+          <li><span class="news-date">[2025/05]</span><span class="news-content">Workshop on <a
+                href="https://mllm-mucg.github.io/MM2025/">MUCG</a> will be presented at ACMMM 2025.</span></li>
+          <li><span class="news-date">[2025/05]</span><span class="news-content">MagicTime featured by <a
+                href="https://www.rochester.edu/newscenter/ai-text-to-video-ai-metamorphic-capabilities-649992/">University
+                of Rochester News</a>.</span></li>
+          <li><span class="news-date">[2025/04]</span><span class="news-content">Passed my area exam.</span></li>
+          <li><span class="news-date">[2025/04]</span><span class="news-content">MagicTime accepted by <strong>TPAMI
+                2025</strong>.</span></li>
+          <li><span class="news-date">[2025/03]</span><span class="news-content">AR-Visual Survey accepted by TMLR
+              2025.</span></li>
+          <li><span class="news-date">[2025/02]</span><span class="news-content">ConsisID accepted by <strong>CVPR 2025
+                Highlight</strong> (Top 3%).</span></li>
+          <li><span class="news-date">[2025/01]</span><span class="news-content">2 papers (1 Poster, 1 Spotlight) accepted
+              by ICLR 2025.</span></li>
+          <li><span class="news-date">[2025/01]</span><span class="news-content">Medical LLM Survey accepted by
+              <strong>Nature Reviews Bioengineering 2025</strong>.</span></li>
+          <li><span class="news-date">[2025/01]</span><span class="news-content">Started research internship at Google,
+              USA.</span></li>
+          <li><span class="news-date">[2024/12]</span><span class="news-content">PromptLLM accepted by TPAMI 2025.</span>
+          </li>
+          <li><span class="news-date">[2024/12]</span><span class="news-content">1 paper accepted by AAAI 2025.</span>
+          </li>
+          <li><span class="news-date">[2024/12]</span><span class="news-content">1 short paper accepted by COLING
+              2025.</span></li>
+          <li><span class="news-date">[2024/11]</span><span class="news-content">1 paper accepted by TIST 2024.</span>
+          </li>
+          <li><span class="news-date">[2024/11]</span><span class="news-content">1 paper accepted by npj Digital
+              Medicine.</span></li>
+          <li><span class="news-date">[2024/11]</span><span class="news-content">1 survey accepted by CAAI Transactions on
+              Intelligence Technology.</span></li>
+          <li><span class="news-date">[2024/10]</span><span class="news-content">Released <a
+                href="https://github.com/ChaofanTao/Autoregressive-Models-in-Vision-Survey">Autoregressive Models in
+                Vision Survey</a>.</span></li>
+          <li><span class="news-date">[2024/09]</span><span class="news-content">1 paper (Spotlight) accepted by NeurIPS
+              2024 Datasets & Benchmarks Track.</span></li>
+          <li><span class="news-date">[2024/09]</span><span class="news-content">1 paper accepted by EMNLP 2024
+              Findings.</span></li>
+          <li><span class="news-date">[2024/06]</span><span class="news-content">Released <a
+                href="https://pku-yuangroup.github.io/ChronoMagic-Bench/">ChronoMagic-Bench</a>.</span></li>
+          <li><span class="news-date">[2024/05]</span><span class="news-content">Started research internship at ByteDance
+              Seed, USA.</span></li>
+          <li><span class="news-date">[2024/05]</span><span class="news-content">1 paper accepted by ACL 2024
+              Findings.</span></li>
+          <li><span class="news-date">[2024/04]</span><span class="news-content">Released <a
+                href="https://pku-yuangroup.github.io/MagicTime">MagicTime</a>.</span></li>
+          <li><span class="news-date">[2024/01]</span><span class="news-content">1 paper accepted by ICLR 2024.</span>
+          </li>
+          <li><span class="news-date">[2023/11]</span><span class="news-content">Released <a
+                href="https://github.com/AI-in-Health/MedLLMsPracticalGuide">MedLLMsPracticalGuide</a>.</span></li>
+          <li><span class="news-date">[2023/11]</span><span class="news-content">Released <a
+                href="https://arxiv.org/abs/2311.07547">GPT-4V(ision) Analysis</a>.</span></li>
+          <li><span class="news-date">[2023/09]</span><span class="news-content">Join the VIStA Lab as a Ph.D.
+              student.</span></li>
+          <li><span class="news-date">[2023/07]</span><span class="news-content">1 paper accepted by ACMMM 2023.</span>
+          </li>
+          <li><span class="news-date">[2023/05]</span><span class="news-content">Awarded 2023 Peking University Excellent
+              Graduation Thesis.</span></li>
+          <li><span class="news-date">[2023/04]</span><span class="news-content">1 paper accepted by TIP 2023.</span></li>
+          <li><span class="news-date">[2023/04]</span><span class="news-content">1 paper accepted by IJCAI 2023.</span>
+          </li>
+          <li><span class="news-date">[2023/02]</span><span class="news-content">1 paper (Top 10% Highlight) accepted by
+              CVPR 2023.</span></li>
+          <li><span class="news-date">[2022/09]</span><span class="news-content">1 paper accepted by ICRA 2023.</span>
+          </li>
+          <li><span class="news-date">[2022/09]</span><span class="news-content">1 paper (Spotlight) accepted by NeurIPS
+              2022.</span></li>
+        </ul>
+      </div>
+    </section>
+
     <!-- Research overview: two independent, expandable research threads. -->
     <section class="section-card rm-section rv-section" id="research-map" aria-labelledby="rv-title" data-rv-merged="true">
       <h2 class="section-title rv-heading" id="rv-title" data-section-tone="periwinkle" tabindex="-1">
-        Research
-        <a class="research-all-link" href="https://scholar.google.com/citations?user=2t7iBnkAAAAJ&amp;hl=en&amp;oi=ao"
-          target="_blank" rel="noopener noreferrer" aria-label="View all publications on Google Scholar (opens in a new tab)">[ALL]</a>
+        Research Map
         <span class="research-heading-meta">
           <a href="https://scholar.google.com/citations?user=2t7iBnkAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener noreferrer">
             <img alt="3,413 Google Scholar citations" src="https://img.shields.io/badge/Cited%20by-3413-5f7fa3?style=flat"
@@ -3388,249 +3760,84 @@ a:hover {
     
     </section>
 
-    <section class="section-card" aria-labelledby="news">
-      <!-- ================= 新闻 (News) ================= -->
-      <div class="news-header" data-section-tone="mist">
-        <h2 class="section-title" id="news">News</h2>
-        <button type="button" class="btn-show-more" onclick="toggleNews()" id="news-toggle-btn"
-          aria-expanded="false" aria-controls="more-news">Show More</button>
-      </div>
-      <ul class="news-list">
-        <li>
-          <span class="news-date">[2026/10]</span>
-          <span class="news-content">
-            Released <a href="https://huggingface.co/papers/2610.22341">3DCodeVerse</a>, <a href="https://huggingface.co/papers/2609.38119">VideoLoop</a>, and <a href="https://arxiv.org/pdf/2610.22264">SCOPE</a>
-            for 3D Coding, long-form video understanding, and text-to-image prompt optimization.
-          </span>
-        </li>
-        <li>
-          <span class="news-date">[2026/09]</span>
-          <span class="news-content">
-            Passed my thesis proposal defense, <em>Toward Vision-Language Alignment for Agentic AI</em>,
-            and was officially admitted to Ph.D. candidacy.
-          </span>
-        </li>
-        <!-- <li>
-          <span class="news-date">[2026/06]</span>
-          <span class="news-content">
-            I will attend <a href="https://cvpr.thecvf.com/">CVPR 2026</a> in Denver this June. Feel free to connect.
-          </span>
-        </li> -->
-        <li>
-          <span class="news-date">[2026/07]</span>
-          <span class="news-content">
-            Selected as <a href="https://eccv.ecva.net/Conferences/2026/ProgramCommittee#outstanding-reviewer">ECCV 2026</a> Outstanding Reviewer.
-          </span>
-        </li>
-        <li>
-          <span class="news-date">[2026/06]</span>
-          <span class="news-content">
-            1 paper (SpecEyes) accepted by ECCV 2026.
-          </span>
-        </li>
-      </ul>
-      <!-- 隐藏的新闻 -->
-      <div class="hidden-news" id="more-news">
-        <ul class="news-list">
-          <li>
-            <span class="news-date">[2026/06]</span>
-            <span class="news-content">
-              I have joined <a href="https://ai.meta.com/">Meta Superintelligence Lab</a> as a Research Scientist Intern, focusing on agentic video generation.
-            </span>
-          </li>
-          <li>
-            <span class="news-date">[2026/04]</span>
-            <span class="news-content">
-              Won <a href="https://www.meshy.ai/zh/blog/fellowship-2026">Meshy Fellowship</a> Finalist Prize (Global Top 20).
-            </span>
-          </li>
-          <li>
-            <span class="news-date">[2026/03]</span>
-            <span class="news-content">
-              Released <a href="https://arxiv.org/abs/2603.23483">SpecEyes</a> and <a href="https://arxiv.org/abs/2603.16859">SocialOmni</a>
-              for efficient agentic visual reasoning and evaluation of audio-visual social interaction.
-            </span>
-          </li>
-          <li><span class="news-date">[2025/11]</span><span class="news-content">1 paper (QuoTA) accepted by AAAI
-              2026.</span></li>
-          <li><span class="news-date">[2025/10]</span><span class="news-content">I am excited to be selected as a volunteer
-              at NeurIPS 2025. See you in San Diego.</span></li>
-          <li><span class="news-date">[2025/09]</span><span class="news-content">1 survey paper (Next-Gen AIGC) accepted by
-              Frontiers of Computer Science 2025.</span></li>
-          <li><span class="news-date">[2025/09]</span><span class="news-content">2 papers (OpenS2V-Nexus and VideoRAG)
-              accepted by NeurIPS main and D&B track 2025.</span></li>
-          <li>
-            <span class="news-date">[2025/08]</span>
-            <span class="news-content">
-              <a
-                href="https://academicminute.org/jiebo-luo-university-of-rochester-text-to-video-ai-blossoms-with-new-metamorphic-video-capabilities/">"Text-to-Video
-                AI Blossoms"</a> featured by The Academic Minute.
-            </span>
-          </li>
-          <li><span class="news-date">[2025/08]</span><span class="news-content">1 paper (TACO) accepted by EMNLP Main
-              2025.</span></li>
-          <li><span class="news-date">[2025/07]</span><span class="news-content">1 paper (MoE-LLaVA) accepted by TMM
-              2025.</span></li>
-          <li>
-            <span class="news-date">[2025/07]</span>
-            <span class="news-content">
-              Released <a href="https://github.com/multimodal-art-projection/LatentCoT-Horizon">LatentCoT-Horizon</a> repo
-              for Survey on Latent Reasoning.
-              <img alt="GitHub Stars"
-                src="https://img.shields.io/github/stars/multimodal-art-projection/LatentCoT-Horizon?style=flat&logo=github&labelColor=white" style="object-fit: contain;" width="110" height="20" loading="lazy" decoding="async">
-            </span>
-          </li>
-          <li><span class="news-date">[2025/06]</span><span class="news-content">Research career has achieved <a
-                href="https://scholar.google.com/citations?user=2t7iBnkAAAAJ">1000+ Google Citations</a>.</span></li>
-          <li><span class="news-date">[2025/05]</span><span class="news-content">Workshop on <a
-                href="https://mllm-mucg.github.io/MM2025/">MUCG</a> will be presented at ACMMM 2025.</span></li>
-          <li><span class="news-date">[2025/05]</span><span class="news-content">MagicTime featured by <a
-                href="https://www.rochester.edu/newscenter/ai-text-to-video-ai-metamorphic-capabilities-649992/">University
-                of Rochester News</a>.</span></li>
-          <li><span class="news-date">[2025/04]</span><span class="news-content">Passed my area exam.</span></li>
-          <li><span class="news-date">[2025/04]</span><span class="news-content">MagicTime accepted by <strong>TPAMI
-                2025</strong>.</span></li>
-          <li><span class="news-date">[2025/03]</span><span class="news-content">AR-Visual Survey accepted by TMLR
-              2025.</span></li>
-          <li><span class="news-date">[2025/02]</span><span class="news-content">ConsisID accepted by <strong>CVPR 2025
-                Highlight</strong> (Top 3%).</span></li>
-          <li><span class="news-date">[2025/01]</span><span class="news-content">2 papers (1 Poster, 1 Spotlight) accepted
-              by ICLR 2025.</span></li>
-          <li><span class="news-date">[2025/01]</span><span class="news-content">Medical LLM Survey accepted by
-              <strong>Nature Reviews Bioengineering 2025</strong>.</span></li>
-          <li><span class="news-date">[2025/01]</span><span class="news-content">Started research internship at Google,
-              USA.</span></li>
-          <li><span class="news-date">[2024/12]</span><span class="news-content">PromptLLM accepted by TPAMI 2025.</span>
-          </li>
-          <li><span class="news-date">[2024/12]</span><span class="news-content">1 paper accepted by AAAI 2025.</span>
-          </li>
-          <li><span class="news-date">[2024/12]</span><span class="news-content">1 short paper accepted by COLING
-              2025.</span></li>
-          <li><span class="news-date">[2024/11]</span><span class="news-content">1 paper accepted by TIST 2024.</span>
-          </li>
-          <li><span class="news-date">[2024/11]</span><span class="news-content">1 paper accepted by npj Digital
-              Medicine.</span></li>
-          <li><span class="news-date">[2024/11]</span><span class="news-content">1 survey accepted by CAAI Transactions on
-              Intelligence Technology.</span></li>
-          <li><span class="news-date">[2024/10]</span><span class="news-content">Released <a
-                href="https://github.com/ChaofanTao/Autoregressive-Models-in-Vision-Survey">Autoregressive Models in
-                Vision Survey</a>.</span></li>
-          <li><span class="news-date">[2024/09]</span><span class="news-content">1 paper (Spotlight) accepted by NeurIPS
-              2024 Datasets & Benchmarks Track.</span></li>
-          <li><span class="news-date">[2024/09]</span><span class="news-content">1 paper accepted by EMNLP 2024
-              Findings.</span></li>
-          <li><span class="news-date">[2024/06]</span><span class="news-content">Released <a
-                href="https://pku-yuangroup.github.io/ChronoMagic-Bench/">ChronoMagic-Bench</a>.</span></li>
-          <li><span class="news-date">[2024/05]</span><span class="news-content">Started research internship at ByteDance
-              Seed, USA.</span></li>
-          <li><span class="news-date">[2024/05]</span><span class="news-content">1 paper accepted by ACL 2024
-              Findings.</span></li>
-          <li><span class="news-date">[2024/04]</span><span class="news-content">Released <a
-                href="https://pku-yuangroup.github.io/MagicTime">MagicTime</a>.</span></li>
-          <li><span class="news-date">[2024/01]</span><span class="news-content">1 paper accepted by ICLR 2024.</span>
-          </li>
-          <li><span class="news-date">[2023/11]</span><span class="news-content">Released <a
-                href="https://github.com/AI-in-Health/MedLLMsPracticalGuide">MedLLMsPracticalGuide</a>.</span></li>
-          <li><span class="news-date">[2023/11]</span><span class="news-content">Released <a
-                href="https://arxiv.org/abs/2311.07547">GPT-4V(ision) Analysis</a>.</span></li>
-          <li><span class="news-date">[2023/09]</span><span class="news-content">Join the VIStA Lab as a Ph.D.
-              student.</span></li>
-          <li><span class="news-date">[2023/07]</span><span class="news-content">1 paper accepted by ACMMM 2023.</span>
-          </li>
-          <li><span class="news-date">[2023/05]</span><span class="news-content">Awarded 2023 Peking University Excellent
-              Graduation Thesis.</span></li>
-          <li><span class="news-date">[2023/04]</span><span class="news-content">1 paper accepted by TIP 2023.</span></li>
-          <li><span class="news-date">[2023/04]</span><span class="news-content">1 paper accepted by IJCAI 2023.</span>
-          </li>
-          <li><span class="news-date">[2023/02]</span><span class="news-content">1 paper (Top 10% Highlight) accepted by
-              CVPR 2023.</span></li>
-          <li><span class="news-date">[2022/09]</span><span class="news-content">1 paper accepted by ICRA 2023.</span>
-          </li>
-          <li><span class="news-date">[2022/09]</span><span class="news-content">1 paper (Spotlight) accepted by NeurIPS
-              2022.</span></li>
-        </ul>
-      </div>
-    </section>
+
 
     
 
-    <section class="section-card" aria-labelledby="experience">
+    <section class="section-card" id="research-experience-card" aria-labelledby="experience">
       <!-- ================== Research Experience ================== -->
       <h2 class="section-title" id="experience" data-section-tone="lavender">Research Experience</h2>
 
-      <div class="experience-item">
-        <div class="logo-box">
-          <!-- Meta SVG: https://commons.wikimedia.org/wiki/File:Meta_Platforms_Inc._logo.svg (white wordmark for dark mode). -->
-          <a href="https://www.linkedin.com/company/10667/" class="meta-logo">
-            <img class="theme-logo-light" src="https://infaaa.github.io/image/optimized/meta-logo-light.svg" alt="Meta" width="948" height="191" loading="lazy" decoding="async">
-            <img class="theme-logo-dark" src="https://infaaa.github.io/image/optimized/meta-logo-dark.svg" alt="Meta" width="948" height="191" loading="lazy" decoding="async">
-          </a>
-        </div>
-        <div class="experience-details">
-          <strong>Meta Superintelligence Lab, Multimedia Applied Research, USA</strong>
-          <span>Research Scientist Intern &bull; Jun 2026 - Present</span><br>
-          <em>Advisors: <a href="https://scholar.google.com/citations?user=Hs923REAAAAJ&hl=en">Dr. Yusheng Xie</a> and <a href="https://www.alithabet.com/">Dr. Ali K. Thabet</a></em>
-        </div>
-      </div>
+      <div class="experience-grid">
+        <article class="experience-item">
+          <div class="logo-box">
+            <!-- Meta SVG: https://commons.wikimedia.org/wiki/File:Meta_Platforms_Inc._logo.svg (white wordmark for dark mode). -->
+            <a href="https://www.linkedin.com/company/10667/" class="meta-logo">
+              <img class="theme-logo-light" src="image/optimized/meta-logo-light.svg" alt="Meta" width="948" height="191" loading="lazy" decoding="async">
+              <img class="theme-logo-dark" src="image/optimized/meta-logo-dark.svg" alt="Meta" width="948" height="191" loading="lazy" decoding="async">
+            </a>
+          </div>
+          <div class="experience-details">
+            <strong>Meta Superintelligence Lab, MovieGen Team, USA</strong>
+            <span>Research Scientist Intern &bull; Jun 2026 - Present</span><br>
+            <em>Advisors: <a href="https://scholar.google.com/citations?user=Hs923REAAAAJ&hl=en">Dr. Yusheng Xie</a> and <a href="https://www.alithabet.com/">Dr. Ali K. Thabet</a></em>
+          </div>
+        </article>
 
-      <div class="experience-item">
-        <div class="logo-box">
-          <a href="https://research.google/">
-            <img src="https://infaaa.github.io/image/Google-logo-vector-01.svg" alt="Google" width="512" height="512" loading="lazy" decoding="async">
-          </a>
-        </div>
-        <div class="experience-details">
-          <strong>Google Research, HCAI-ML, USA</strong>
-          <span>Student Researcher &bull; Sep. 2025 - Dec. 2025</span><br>
-          <em>Advisor: <a href="https://scholar.google.com/citations?user=xrND8B8AAAAJ&hl=en">Dr. Junfeng He</a></em>
-          <span class="experience-award">Awarded Google Peer Bonus &bull; Dec. 2025</span>
-        </div>
-      </div>
+        <article class="experience-item">
+          <div class="logo-box">
+            <a href="https://research.google/" class="google-logo">
+              <img src="image/Google-logo-vector-01.svg" alt="Google" width="512" height="168" loading="lazy" decoding="async">
+            </a>
+          </div>
+          <div class="experience-details experience-google">
+            <strong><a href="https://research.google/">Google Research</a> / <a href="https://cloud.google.com/">Google Cloud</a>, USA</strong>
+            <div class="experience-position">
+              <span>Student Researcher</span>
+              <span class="experience-award">Awarded Google Peer Bonus &bull; Dec. 2025</span>
+            </div>
+            <div class="experience-role">
+              <span>HCAI-ML &bull; Sep. 2025 - Dec. 2025</span><br>
+              <em>Advisor: <a href="https://scholar.google.com/citations?user=xrND8B8AAAAJ&hl=en">Dr. Junfeng He</a></em>
+            </div>
+            <div class="experience-role">
+              <span>Core ML Applied ML &bull; Jan. 2025 - May. 2025</span><br>
+              <em>Advisors: <a href="https://scholar.google.com/citations?user=umEBJkQAAAAJ&hl=en">Jiageng Zhang</a>, <a href="https://scholar.google.com/citations?user=Nun8Dy0AAAAJ&hl=en&authuser=1">Dr. Eric Li</a></em>
+            </div>
+          </div>
+        </article>
 
-      <div class="experience-item">
-        <div class="logo-box">
-          <!-- Official Amazon wordmarks: https://press.aboutamazon.com/logos -->
-          <a href="https://www.aboutamazon.com/" class="amazon-logo">
-            <img class="amazon-logo-light" src="https://infaaa.github.io/image/optimized/amazon-logo-light.webp" alt="Amazon" width="300" height="101" loading="lazy" decoding="async">
-            <img class="amazon-logo-dark" src="https://infaaa.github.io/image/optimized/amazon-logo-dark.svg" alt="Amazon" width="100" height="33" loading="lazy" decoding="async">
-          </a>
-        </div>
-        <div class="experience-details">
-          <strong>Amazon, International Machine Learning, USA</strong>
-          <span>Applied Scientist Intern &bull; Jul. 2025 - Sep. 2025</span><br>
-          <em>Advisors: <a href="https://scholar.google.com/citations?user=j6cZk58AAAAJ&hl=en">Dr. Yang Liu</a>, <a
-              href="https://scholar.google.com/citations?user=0Uc6o6EAAAAJ&hl=en">Dr. Chien-Chih Wang</a>, <a
-              href="https://harryliew.github.io/">Dr. Huidong Liu</a></em>
-        </div>
-      </div>
+        <article class="experience-item">
+          <div class="logo-box">
+            <!-- Official Amazon wordmarks: https://press.aboutamazon.com/logos -->
+            <a href="https://www.aboutamazon.com/" class="amazon-logo">
+              <img class="amazon-logo-light" src="image/optimized/amazon-logo-light.webp" alt="Amazon" width="300" height="101" loading="lazy" decoding="async">
+              <img class="amazon-logo-dark" src="image/optimized/amazon-logo-dark.svg" alt="Amazon" width="100" height="33" loading="lazy" decoding="async">
+            </a>
+          </div>
+          <div class="experience-details">
+            <strong>Amazon, International Machine Learning, USA</strong>
+            <span>Applied Scientist Intern &bull; Jul. 2025 - Sep. 2025</span><br>
+            <em>Advisors: <a href="https://scholar.google.com/citations?user=j6cZk58AAAAJ&hl=en">Dr. Yang Liu</a>, <a
+                href="https://scholar.google.com/citations?user=0Uc6o6EAAAAJ&hl=en">Dr. Chien-Chih Wang</a>, <a
+                href="https://harryliew.github.io/">Dr. Huidong Liu</a></em>
+          </div>
+        </article>
 
-      <div class="experience-item">
-        <div class="logo-box">
-          <a href="https://research.google/">
-            <img src="https://infaaa.github.io/image/Google-logo-vector-01.svg" alt="Google" width="512" height="512" loading="lazy" decoding="async">
-          </a>
-        </div>
-        <div class="experience-details">
-          <strong>Google, Core ML Applied ML, USA</strong>
-          <span>Student Researcher &bull; Jan. 2025 - May. 2025</span><br>
-          <em>Advisors: <a href="https://scholar.google.com/citations?user=umEBJkQAAAAJ&hl=en">Jiageng Zhang</a>, <a
-              href="https://scholar.google.com/citations?user=Nun8Dy0AAAAJ&hl=en&authuser=1">Dr. Eric Li</a></em>
-        </div>
-      </div>
-
-      <div class="experience-item">
-        <div class="logo-box">
-          <a href="https://www.bytedance.com/en/">
-            <img src='https://infaaa.github.io/image/optimized/bytedance_logo.webp' alt="ByteDance" width="270" height="47" loading="lazy" decoding="async">
-          </a>
-        </div>
-        <div class="experience-details">
-          <strong>ByteDance, Seed Foundation Model, USA</strong>
-          <span>Research Intern &bull; May 2024 - Aug. 2024</span><br>
-          <em>Advisors: <a href="https://qzyou.github.io/">Dr. Quanzeng You</a>, <a
-              href="https://sites.google.com/view/yongfei-liu/">Dr. Yongfei Liu</a>, <a
-              href="https://scholar.google.com/citations?user=B1EhbCsAAAAJ&hl=en">Dr. Jianbo Yuan</a></em>
-        </div>
+        <article class="experience-item">
+          <div class="logo-box">
+            <a href="https://www.bytedance.com/en/" class="bytedance-logo">
+              <img src='image/optimized/bytedance_logo.webp' alt="ByteDance" width="270" height="47" loading="lazy" decoding="async">
+            </a>
+          </div>
+          <div class="experience-details">
+            <strong>ByteDance, Seed Foundation Model, USA</strong>
+            <span>Research Intern &bull; May 2024 - Aug. 2024</span><br>
+            <em>Advisors: <a href="https://qzyou.github.io/">Dr. Quanzeng You</a>, <a
+                href="https://sites.google.com/view/yongfei-liu/">Dr. Yongfei Liu</a>, <a
+                href="https://scholar.google.com/citations?user=B1EhbCsAAAAJ&hl=en">Dr. Jianbo Yuan</a></em>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -3676,8 +3883,7 @@ a:hover {
         </div>
         <div class="experience-details">
           <strong>University of Electronic Science and Technology of China (UESTC), China</strong>
-          <span>Bachelor's Degree in Software Engineering &bull; Sep. 2016 - Jun. 2020</span><br>
-          <em>Advisor: <a href="https://ieeexplore.ieee.org/author/37288619300">Prof. Xucheng Luo</a> </em>
+          <span>Bachelor's Degree in Software Engineering &bull; Sep. 2016 - Jun. 2020</span>
         </div>
       </div>
     </section>
@@ -3753,13 +3959,6 @@ a:hover {
         </li>
       </ul>
 
-      <!-- Bilibili Video Container (Restored) -->
-      <div class="video-container">
-        <iframe
-          src="//player.bilibili.com/player.html?isOutside=true&aid=113802641150520&bvid=BV1pHc7e1E2u&cid=27792247451&p=1"
-          scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" loading="lazy"
-          title="Research video"></iframe>
-      </div>
     </section>
 
     <!-- ================== 9. Service, Teaching & Life ================== -->

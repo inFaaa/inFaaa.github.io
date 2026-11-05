@@ -1943,11 +1943,37 @@ h2.section-title {
   font-size: 0.85rem;
 }
 
+.talk-date-range { display: block; margin-top: 3px; font-size: 0.7rem; }
+.talk-group { min-width: 0; }
+.talk-group > summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  list-style: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.talk-group > summary::-webkit-details-marker { display: none; }
+.talk-group > summary:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 5px; }
+.talk-group > summary:hover .talk-title { color: var(--primary-color); }
+.talk-group-label { min-width: 0; }
+.talk-group-label .talk-title { display: block; }
+.talk-group-chevron { flex: 0 0 16px; width: 16px; height: 16px; margin-top: 4px; color: var(--text-muted); }
+.talk-group[open] > summary .talk-group-chevron { transform: rotate(180deg); }
+.talk-appearances { list-style: none; margin: 14px 0 0; padding: 0; }
+.talk-appearances .talk-entry { padding: 12px 0; }
+.talk-appearances .talk-entry:first-child { border-top: 1px solid var(--border-color); }
+.talk-appearances .talk-entry:last-child { padding-bottom: 0; }
+.talk-appearances .talk-title { font-size: 0.85rem; font-weight: 500; }
+.talk-appearances .talk-meta { font-size: 0.8rem; }
+
 @media (max-width: 600px) {
   .talk-entry {
     grid-template-columns: 3.5rem minmax(0, 1fr);
     gap: 12px;
   }
+  .talk-appearances .talk-entry { grid-template-columns: minmax(0, 1fr); gap: 3px; }
 }
 
 
@@ -2771,11 +2797,14 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
   --profile-start: #34415c;
   --profile-middle: #45475d;
   --profile-end: #565061;
+  width: 100%;
+  min-width: 0;
+  align-self: center;
   grid-template-columns: minmax(0, 1fr) 190px;
   grid-template-areas: "name name" "bio photo";
   column-gap: 34px;
   padding: 36px 38px;
-  border-radius: var(--outer-radius);
+  border-radius: 0;
 }
 [data-theme="dark"] .profile-body {
   --profile-start: #2b354d;
@@ -2789,7 +2818,10 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
 .main-header-container .social-btn { padding: 6px 10px; white-space: nowrap; }
 .name-en-center { font-size: 44px; line-height: 1.2; letter-spacing: -.04em; }
 .name-cn-center { font-size: 19px; }
-.profile-bio > .bio-text { max-width: none; margin: 0 0 18px; font-size: 14px; line-height: 1.85; text-wrap: wrap; }
+.profile-bio > .bio-text { box-sizing: border-box; width: 100%; max-width: none; margin: 0 0 18px; font-size: 14px; line-height: 1.85; text-wrap: wrap; overflow-wrap: break-word; }
+.profile-bio > .bio-text:first-child { font-size: 17px; line-height: 1.7; text-wrap: balance; }
+.profile-bio .bio-person,
+.profile-bio .bio-phrase { white-space: nowrap; }
 .profile-bio > .research-statement {
   max-width: 520px;
   text-wrap: balance;
@@ -2820,7 +2852,8 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
 #research-map .rm-axis-header::before { border-radius: inherit; opacity: .6; }
 #research-map .rm-axis-header::after { opacity: .2; }
 #research-map .rm-viewfinder-status { opacity: .6; }
-#research-map .rm-axis-header h3 { font-size: 20px; }
+#research-map .rm-axis-header h3 { font-size: 20px; align-items: center; justify-content: center; text-align: center; }
+#research-map .rm-axis-header .rm-axis-icon { margin-top: 0; }
 #research-map .rm-topic,
 #research-map .rm-toggle-all,
 .rv-section .rv-view-tabs { border-radius: var(--inner-radius); }
@@ -2904,12 +2937,178 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
   .photo-controls { margin-top: 2px; }
   .photo-caption { font-size: 9px; }
   .profile-bio > .bio-text { font-size: 13px; line-height: 1.8; }
+  .profile-bio > .bio-text:first-child { font-size: 15px; line-height: 1.75; }
   .research-directions { grid-template-columns: minmax(0, 1fr); }
   #research-map .rm-axis-header h3 { font-size: 18px; }
   #research-map .rm-topic-title { font-size: 13px; }
   #research-experience-card .experience-item { grid-template-columns: 80px minmax(0, 1fr); gap: 13px; }
   #research-experience-card .logo-box { width: 80px; }
 }
+/* Center the globe, footer text, and personal milestones. */
+.footer {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 18px;
+  text-align: center;
+}
+.footer .map-container {
+  display: grid;
+  place-items: center;
+  margin-inline: auto;
+}
+.footer .map-container .mmvst_outer,
+.footer .map-container .mmvst_globe {
+  margin-inline: auto;
+}
+.footer-content {
+  max-width: 820px;
+  margin-inline: auto;
+}
+.footer-note {
+  max-width: 760px;
+  margin-inline: auto;
+}
+.footer-note p { text-wrap: balance; }
+.footer-bottom {
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.footer-meta { align-items: center; }
+.footer-progress {
+  flex: none;
+  width: min(100%, 520px);
+  max-width: none;
+  margin-inline: auto;
+  gap: 24px;
+}
+.milestone-label { justify-content: center; }
+@media (max-width: 480px) {
+  .footer-progress { width: min(100%, 260px); gap: 16px; }
+}
+
+/* Personal interests: aligned descriptions beside the painting. */
+#personal-interests-card .interests-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  align-items: start;
+  gap: 40px;
+  padding: 0;
+}
+#personal-interests-card .interests-list { margin: 0; padding-left: 30px; max-width: none; }
+#personal-interests-card .interest-icon {
+  position: absolute;
+  top: 1px;
+  left: -30px;
+  width: 22px;
+  height: 22px;
+  color: var(--interest-icon-color, #668b9d);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#personal-interests-card .interest-icon .icon-tint { fill: currentColor; fill-opacity: .16; stroke: none; }
+#personal-interests-card .interest-icon-camera { --interest-icon-color: #668b9d; }
+#personal-interests-card .interest-icon-anime { --interest-icon-color: #b97d8a; }
+#personal-interests-card .interest-icon-book { --interest-icon-color: #aa8a52; }
+#personal-interests-card .interest-icon-code { --interest-icon-color: #6e9580; }
+[data-theme="dark"] #personal-interests-card .interest-icon { color: color-mix(in srgb, var(--interest-icon-color) 75%, white); }
+#personal-interests-card .interest-row {
+  display: grid;
+  grid-template-columns: 118px minmax(0, 1fr);
+  gap: 18px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 14px;
+  line-height: 1.65;
+}
+#personal-interests-card .interest-row:first-child { padding-top: 0; }
+#personal-interests-card .interest-row:last-child { padding-bottom: 0; border-bottom: 0; }
+#personal-interests-card dt { position: relative; font-weight: 600; color: var(--text-color); }
+#personal-interests-card dd { min-width: 0; margin: 0; color: var(--text-muted); }
+#personal-interests-card .interest-coding-intro { margin: 0 0 6px; }
+#personal-interests-card .interest-projects { list-style: none; margin: 0; padding: 0; }
+#personal-interests-card .interest-projects li { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; }
+#personal-interests-card .interest-projects li + li { margin-top: 7px; }
+#personal-interests-card .interest-projects a { min-width: 0; overflow-wrap: anywhere; }
+#personal-interests-card .interest-projects img { flex: 0 0 110px; width: 110px; height: 20px; object-fit: contain; }
+#personal-interests-card .interests-photo { width: 100%; margin: 0; align-items: stretch; }
+#personal-interests-card .life-img,
+#personal-interests-card .life-img:hover { border-radius: 4px; box-shadow: none; transform: none; }
+#personal-interests-card .monet-quote {
+  margin: 10px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: normal;
+  text-wrap: wrap;
+}
+#personal-interests-card .artwork-credit { color: var(--text-muted); }
+@media (max-width: 1000px) and (min-width: 801px) {
+  #personal-interests-card .interests-container { grid-template-columns: minmax(0, 1fr) 250px; gap: 28px; }
+  #personal-interests-card .interest-row { grid-template-columns: 108px minmax(0, 1fr); gap: 14px; }
+}
+@media (max-width: 800px) {
+  #personal-interests-card .interests-container { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  #personal-interests-card .interests-photo { width: min(100%, 360px); justify-self: center; }
+}
+@media (max-width: 540px) {
+  #personal-interests-card .interest-row { grid-template-columns: minmax(0, 1fr); gap: 3px; }
+}
+
+/* Keep research actions compact while questions expand below them. */
+#research-map .rm-header-controls { position: relative; }
+#research-map .rm-header-controls .rm-questions > summary {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: fit-content;
+  max-width: calc(100% - 108px);
+  gap: 8px;
+}
+#research-map .rm-header-controls .rm-questions > summary .rm-chevron { flex-shrink: 0; }
+#research-map .rm-header-controls .rm-toggle-all {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: auto;
+  min-height: 32px;
+  margin: 0;
+  padding: 6px 2px;
+  gap: 6px;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 500;
+}
+#research-map .rm-header-controls .rm-toggle-all:hover {
+  color: var(--rm-color);
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+#research-map .rm-header-controls .rm-toggle-all > span { font-size: 15px; }
+
+/* Give timeline dates a little more weight without changing other metadata. */
+:root { --date-color: #5f6875; }
+[data-theme="dark"] { --date-color: #bbc3cf; }
+.news-date { color: var(--date-color) !important; }
+.talk-date { color: var(--date-color); font-size: 13px; font-weight: 500; }
+.talk-date-range { font-size: 12px; }
+#research-experience-card .experience-details .experience-date {
+  color: var(--date-color) !important;
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.footer-meta .footer-updated { font-size: 12px; }
 </style>
 
 </head>
@@ -2930,8 +3129,8 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
         <a href="#about">Home</a>
         <a href="#news">News</a>
         <a href="#research-map">Research</a>
-        <a href="#experience">Experience</a>
         <a href="#education">Education</a>
+        <a href="#experience">Internships</a>
         <a href="#service">Service</a>
         <a href="#interests">Interests</a>
       </div>
@@ -2977,12 +3176,12 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
         <p class="bio-text">
           Bonjour 👋 I am a Ph.D. candidate in the Department of Computer Science at the
           <a href="https://www.rochester.edu/">University of Rochester</a>, advised by
-          <a href="https://www.cs.rochester.edu/u/jluo/">Prof. Jiebo Luo</a>.
+          <a class="bio-person" href="https://www.cs.rochester.edu/u/jluo/">Prof. Jiebo Luo</a>.
           Previously, I earned my master's degree from <a href="https://www.pku.edu.cn/">Peking University (PKU)</a>
-          under the supervision of <a href="https://yuanli2333.github.io/">Prof. Li Yuan</a> and
-          <a href="https://sites.google.com/view/jie-chen-2020/home">Prof. Jie Chen</a>,
-          and my bachelor's degree with honors from the
-          <a href="https://en.uestc.edu.cn/">University of Electronic Science and Technology of China</a>.
+          under the supervision of <a class="bio-person" href="https://yuanli2333.github.io/">Prof. Li Yuan</a> <span class="bio-phrase">and
+          <a class="bio-person" href="https://sites.google.com/view/jie-chen-2020/home">Prof. Jie Chen</a></span>,
+          <span class="bio-phrase">and my</span> bachelor's degree with honors from the
+          <a href="https://en.uestc.edu.cn/">University of Electronic Science <span class="bio-phrase">and Technology</span> of China</a>.
         </p>
         <p class="bio-text research-statement">
           <strong>Research Interest:</strong> I study <strong style="color: var(--accent-red);">vision-language alignment</strong> for <span class="keep-together">agentic AI</span>, connecting multimodal understanding with visual generation.
@@ -3201,6 +3400,7 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
     <section class="section-card rm-section rv-section" id="research-map" aria-labelledby="rv-title" data-rv-merged="true">
       <h2 class="section-title rv-heading" id="rv-title" data-section-tone="periwinkle" tabindex="-1">
         Research Map
+        <a class="research-all-link" href="https://scholar.google.com/citations?user=2t7iBnkAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener noreferrer" aria-label="All publications on Google Scholar">[ALL]</a>
         <span class="research-heading-meta">
           <a href="https://scholar.google.com/citations?user=2t7iBnkAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener noreferrer">
             <img alt="3,413 Google Scholar citations" src="https://img.shields.io/badge/Cited%20by-3413-5f7fa3?style=flat"
@@ -3239,16 +3439,18 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
               </svg>
               <span>Multimodal Perception<br>and Understanding</span>
             </h3>
-            <details class="rm-questions">
-              <summary><span>Research questions</span><span class="rm-chevron" aria-hidden="true"></span></summary>
-              <p>How should machines represent and understand the multimodal world?</p>
-              <p>How can multimodal models become capable and efficient agents?</p>
-            </details>
-            <button type="button" class="rm-toggle-all" data-rm-axis="understanding" aria-expanded="false" aria-controls="rm-understanding-topics" hidden>Show all work <span aria-hidden="true">+</span></button>
+            <div class="rm-header-controls">
+              <details class="rm-questions">
+                <summary><span>Research questions</span><span class="rm-chevron" aria-hidden="true"></span></summary>
+                <p>How should machines represent and understand the multimodal world?</p>
+                <p>How can multimodal models become capable and efficient agents?</p>
+              </details>
+              <button type="button" class="rm-toggle-all" data-rm-axis="understanding" aria-expanded="false" aria-controls="rm-understanding-topics" hidden>Expand all <span aria-hidden="true">+</span></button>
+            </div>
             <div class="rm-viewfinder-meter" hidden>
               <div class="rm-focus-scale">
                 <div class="rm-focus-ticks" role="group" aria-label="Focus a research topic: Multimodal Perception and Understanding">
-                  <button type="button" data-rm-focus="0" data-rm-active>0</button>
+                  <button type="button" data-rm-focus="0" data-rm-active>00</button>
                   <button type="button" data-rm-focus="1" aria-expanded="false">01</button>
                   <button type="button" data-rm-focus="2" aria-expanded="false">02</button>
                   <button type="button" data-rm-focus="3" aria-expanded="false">03</button>
@@ -3356,16 +3558,18 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
               </svg>
               <span>Multimodal Understanding<br>for Visual Generation</span>
             </h3>
-            <details class="rm-questions">
-              <summary><span>Research questions</span><span class="rm-chevron" aria-hidden="true"></span></summary>
-              <p>How can understanding improve generation data, control, and feedback?</p>
-              <p>How can we reliably measure generation capabilities and progress?</p>
-            </details>
-            <button type="button" class="rm-toggle-all" data-rm-axis="generation" aria-expanded="false" aria-controls="rm-generation-topics" hidden>Show all work <span aria-hidden="true">+</span></button>
+            <div class="rm-header-controls">
+              <details class="rm-questions">
+                <summary><span>Research questions</span><span class="rm-chevron" aria-hidden="true"></span></summary>
+                <p>How can understanding improve generation data, control, and feedback?</p>
+                <p>How can we reliably measure generation capabilities and progress?</p>
+              </details>
+              <button type="button" class="rm-toggle-all" data-rm-axis="generation" aria-expanded="false" aria-controls="rm-generation-topics" hidden>Expand all <span aria-hidden="true">+</span></button>
+            </div>
             <div class="rm-viewfinder-meter" hidden>
               <div class="rm-focus-scale">
                 <div class="rm-focus-ticks" role="group" aria-label="Focus a research topic: Visual Generation">
-                  <button type="button" data-rm-focus="0" data-rm-active>0</button>
+                  <button type="button" data-rm-focus="0" data-rm-active>00</button>
                   <button type="button" data-rm-focus="1" aria-expanded="false">01</button>
                   <button type="button" data-rm-focus="2" aria-expanded="false">02</button>
                   <button type="button" data-rm-focus="3" aria-expanded="false">03</button>
@@ -3764,83 +3968,6 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
 
     
 
-    <section class="section-card" id="research-experience-card" aria-labelledby="experience">
-      <!-- ================== Research Experience ================== -->
-      <h2 class="section-title" id="experience" data-section-tone="lavender">Research Experience</h2>
-
-      <div class="experience-grid">
-        <article class="experience-item">
-          <div class="logo-box">
-            <!-- Meta SVG: https://commons.wikimedia.org/wiki/File:Meta_Platforms_Inc._logo.svg (white wordmark for dark mode). -->
-            <a href="https://www.linkedin.com/company/10667/" class="meta-logo">
-              <img class="theme-logo-light" src="image/optimized/meta-logo-light.svg" alt="Meta" width="948" height="191" loading="lazy" decoding="async">
-              <img class="theme-logo-dark" src="image/optimized/meta-logo-dark.svg" alt="Meta" width="948" height="191" loading="lazy" decoding="async">
-            </a>
-          </div>
-          <div class="experience-details">
-            <strong>Meta Superintelligence Lab, MovieGen Team, USA</strong>
-            <span>Research Scientist Intern &bull; Jun 2026 - Present</span><br>
-            <em>Advisors: <a href="https://scholar.google.com/citations?user=Hs923REAAAAJ&hl=en">Dr. Yusheng Xie</a> and <a href="https://www.alithabet.com/">Dr. Ali K. Thabet</a></em>
-          </div>
-        </article>
-
-        <article class="experience-item">
-          <div class="logo-box">
-            <a href="https://research.google/" class="google-logo">
-              <img src="image/Google-logo-vector-01.svg" alt="Google" width="512" height="168" loading="lazy" decoding="async">
-            </a>
-          </div>
-          <div class="experience-details experience-google">
-            <strong><a href="https://research.google/">Google Research</a> / <a href="https://cloud.google.com/">Google Cloud</a>, USA</strong>
-            <div class="experience-position">
-              <span>Student Researcher</span>
-              <span class="experience-award">Awarded Google Peer Bonus &bull; Dec. 2025</span>
-            </div>
-            <div class="experience-role">
-              <span>HCAI-ML &bull; Sep. 2025 - Dec. 2025</span><br>
-              <em>Advisor: <a href="https://scholar.google.com/citations?user=xrND8B8AAAAJ&hl=en">Dr. Junfeng He</a></em>
-            </div>
-            <div class="experience-role">
-              <span>Core ML Applied ML &bull; Jan. 2025 - May. 2025</span><br>
-              <em>Advisors: <a href="https://scholar.google.com/citations?user=umEBJkQAAAAJ&hl=en">Jiageng Zhang</a>, <a href="https://scholar.google.com/citations?user=Nun8Dy0AAAAJ&hl=en&authuser=1">Dr. Eric Li</a></em>
-            </div>
-          </div>
-        </article>
-
-        <article class="experience-item">
-          <div class="logo-box">
-            <!-- Official Amazon wordmarks: https://press.aboutamazon.com/logos -->
-            <a href="https://www.aboutamazon.com/" class="amazon-logo">
-              <img class="amazon-logo-light" src="image/optimized/amazon-logo-light.webp" alt="Amazon" width="300" height="101" loading="lazy" decoding="async">
-              <img class="amazon-logo-dark" src="image/optimized/amazon-logo-dark.svg" alt="Amazon" width="100" height="33" loading="lazy" decoding="async">
-            </a>
-          </div>
-          <div class="experience-details">
-            <strong>Amazon, International Machine Learning, USA</strong>
-            <span>Applied Scientist Intern &bull; Jul. 2025 - Sep. 2025</span><br>
-            <em>Advisors: <a href="https://scholar.google.com/citations?user=j6cZk58AAAAJ&hl=en">Dr. Yang Liu</a>, <a
-                href="https://scholar.google.com/citations?user=0Uc6o6EAAAAJ&hl=en">Dr. Chien-Chih Wang</a>, <a
-                href="https://harryliew.github.io/">Dr. Huidong Liu</a></em>
-          </div>
-        </article>
-
-        <article class="experience-item">
-          <div class="logo-box">
-            <a href="https://www.bytedance.com/en/" class="bytedance-logo">
-              <img src='image/optimized/bytedance_logo.webp' alt="ByteDance" width="270" height="47" loading="lazy" decoding="async">
-            </a>
-          </div>
-          <div class="experience-details">
-            <strong>ByteDance, Seed Foundation Model, USA</strong>
-            <span>Research Intern &bull; May 2024 - Aug. 2024</span><br>
-            <em>Advisors: <a href="https://qzyou.github.io/">Dr. Quanzeng You</a>, <a
-                href="https://sites.google.com/view/yongfei-liu/">Dr. Yongfei Liu</a>, <a
-                href="https://scholar.google.com/citations?user=B1EhbCsAAAAJ&hl=en">Dr. Jianbo Yuan</a></em>
-          </div>
-        </article>
-      </div>
-    </section>
-
     <section class="section-card" aria-labelledby="education">
       <!-- ================= 教育背景 (Education) ================= -->
       <h2 class="section-title" id="education" data-section-tone="water">Education</h2>
@@ -3888,6 +4015,85 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
       </div>
     </section>
 
+    <section class="section-card" id="research-experience-card" aria-labelledby="experience">
+      <!-- ================== Internship Experience ================== -->
+      <h2 class="section-title" id="experience" data-section-tone="lavender">Internship Experience</h2>
+
+      <div class="experience-grid">
+        <article class="experience-item">
+          <div class="logo-box">
+            <!-- Meta SVG: https://commons.wikimedia.org/wiki/File:Meta_Platforms_Inc._logo.svg (white wordmark for dark mode). -->
+            <a href="https://www.linkedin.com/company/10667/" class="meta-logo">
+              <img class="theme-logo-light" src="image/optimized/meta-logo-light.svg" alt="Meta" width="948" height="191" loading="lazy" decoding="async">
+              <img class="theme-logo-dark" src="image/optimized/meta-logo-dark.svg" alt="Meta" width="948" height="191" loading="lazy" decoding="async">
+            </a>
+          </div>
+          <div class="experience-details">
+            <strong>Meta Superintelligence Lab, MovieGen Team, USA</strong>
+            <span>Research Scientist Intern &bull; <span class="experience-date">Jun 2026 - Present</span></span><br>
+            <em>Advisors: <a href="https://scholar.google.com/citations?user=Hs923REAAAAJ&hl=en">Dr. Yusheng Xie</a> and <a href="https://www.alithabet.com/">Dr. Ali K. Thabet</a></em>
+          </div>
+        </article>
+
+        <article class="experience-item">
+          <div class="logo-box">
+            <a href="https://research.google/" class="google-logo">
+              <img src="image/Google-logo-vector-01.svg" alt="Google" width="512" height="168" loading="lazy" decoding="async">
+            </a>
+          </div>
+          <div class="experience-details experience-google">
+            <strong><a href="https://research.google/">Google Research</a> / <a href="https://cloud.google.com/">Google Cloud</a>, USA</strong>
+            <div class="experience-position">
+              <span>Student Researcher</span>
+              <span class="experience-award">Awarded Google Peer Bonus &bull; Dec. 2025</span>
+            </div>
+            <div class="experience-role">
+              <span>HCAI-ML &bull; <span class="experience-date">Sep. 2025 - Dec. 2025</span></span><br>
+              <em>Advisor: <a href="https://scholar.google.com/citations?user=xrND8B8AAAAJ&hl=en">Dr. Junfeng He</a></em>
+            </div>
+            <div class="experience-role">
+              <span>Core ML Applied ML &bull; <span class="experience-date">Jan. 2025 - May. 2025</span></span><br>
+              <em>Advisors: <a href="https://scholar.google.com/citations?user=umEBJkQAAAAJ&hl=en">Jiageng Zhang</a>, <a href="https://scholar.google.com/citations?user=Nun8Dy0AAAAJ&hl=en&authuser=1">Dr. Eric Li</a></em>
+            </div>
+          </div>
+        </article>
+
+        <article class="experience-item">
+          <div class="logo-box">
+            <!-- Official Amazon wordmarks: https://press.aboutamazon.com/logos -->
+            <a href="https://www.aboutamazon.com/" class="amazon-logo">
+              <img class="amazon-logo-light" src="image/optimized/amazon-logo-light.webp" alt="Amazon" width="300" height="101" loading="lazy" decoding="async">
+              <img class="amazon-logo-dark" src="image/optimized/amazon-logo-dark.svg" alt="Amazon" width="100" height="33" loading="lazy" decoding="async">
+            </a>
+          </div>
+          <div class="experience-details">
+            <strong>Amazon, International Machine Learning, USA</strong>
+            <span>Applied Scientist Intern &bull; <span class="experience-date">Jul. 2025 - Sep. 2025</span></span><br>
+            <em>Advisors: <a href="https://scholar.google.com/citations?user=j6cZk58AAAAJ&hl=en">Dr. Yang Liu</a>, <a
+                href="https://scholar.google.com/citations?user=0Uc6o6EAAAAJ&hl=en">Dr. Chien-Chih Wang</a>, <a
+                href="https://harryliew.github.io/">Dr. Huidong Liu</a></em>
+          </div>
+        </article>
+
+        <article class="experience-item">
+          <div class="logo-box">
+            <a href="https://www.bytedance.com/en/" class="bytedance-logo">
+              <img src='image/optimized/bytedance_logo.webp' alt="ByteDance" width="270" height="47" loading="lazy" decoding="async">
+            </a>
+          </div>
+          <div class="experience-details">
+            <strong>ByteDance, Seed Foundation Model, USA</strong>
+            <span>Research Intern &bull; <span class="experience-date">May 2024 - Aug. 2024</span></span><br>
+            <em>Advisors: <a href="https://qzyou.github.io/">Dr. Quanzeng You</a>, <a
+                href="https://sites.google.com/view/yongfei-liu/">Dr. Yongfei Liu</a>, <a
+                href="https://scholar.google.com/citations?user=B1EhbCsAAAAJ&hl=en">Dr. Jianbo Yuan</a></em>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+
     <section class="section-card" aria-labelledby="talks">
       <!-- ================== 9. Misc (Invited Talks & Service) ================== -->
 
@@ -3917,35 +4123,52 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
             </p>
           </div>
         </li>
-        <li class="talk-entry">
-          <time class="talk-date" datetime="2025-08">2025.08</time>
-          <div class="talk-details">
-            <h3 class="talk-title">Text-to-Video AI Blossoms</h3>
-            <p class="talk-meta">
-              <span>The Academic Minute</span>
-              <a href="https://academicminute.org/jiebo-luo-university-of-rochester-text-to-video-ai-blossoms-with-new-metamorphic-video-capabilities/">[Listen]</a>
-            </p>
+        <li class="talk-entry talk-group-entry">
+          <div class="talk-date">
+            <time datetime="2025">2025</time>
+            <span class="talk-date-range">Feb–Aug</span>
           </div>
-        </li>
-        <li class="talk-entry">
-          <time class="talk-date" datetime="2025-05">2025.05</time>
-          <div class="talk-details">
-            <h3 class="talk-title">Text-to-video AI blossoms with New Metamorphic Video Capabilities</h3>
-            <p class="talk-meta">
-              <span>University of Rochester News</span>
-              <a href="https://www.rochester.edu/newscenter/ai-text-to-video-ai-metamorphic-capabilities-649992/">[News]</a>
-            </p>
-          </div>
-        </li>
-        <li class="talk-entry">
-          <time class="talk-date" datetime="2025-02">2025.02</time>
-          <div class="talk-details">
-            <h3 class="talk-title">MagicTime: Time-lapse Video Generation Models as Metamorphic Simulators</h3>
-            <p class="talk-meta">
-              <span>NYC Computer Vision Day</span>
-              <a href="https://cs.nyu.edu/~fouhey/NYCVision2025/">[Poster]</a>
-            </p>
-          </div>
+          <details class="talk-group" id="magictime-appearances">
+            <summary>
+              <span class="talk-group-label">
+                <span class="talk-title">MagicTime: Time-lapse Video Generation Models as Metamorphic Simulators</span>
+                <span class="talk-meta">Poster &bull; News &bull; Audio</span>
+              </span>
+              <svg class="talk-group-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="m4 6 4 4 4-4" /></svg>
+            </summary>
+            <ul class="talk-appearances" role="list">
+            <li class="talk-entry">
+              <time class="talk-date" datetime="2025-08">2025.08</time>
+              <div class="talk-details">
+                <h3 class="talk-title">Text-to-Video AI Blossoms</h3>
+                <p class="talk-meta">
+                  <span>The Academic Minute</span>
+                  <a href="https://academicminute.org/jiebo-luo-university-of-rochester-text-to-video-ai-blossoms-with-new-metamorphic-video-capabilities/">[Listen]</a>
+                </p>
+              </div>
+            </li>
+            <li class="talk-entry">
+              <time class="talk-date" datetime="2025-05">2025.05</time>
+              <div class="talk-details">
+                <h3 class="talk-title">Text-to-video AI blossoms with New Metamorphic Video Capabilities</h3>
+                <p class="talk-meta">
+                  <span>University of Rochester News</span>
+                  <a href="https://www.rochester.edu/newscenter/ai-text-to-video-ai-metamorphic-capabilities-649992/">[News]</a>
+                </p>
+              </div>
+            </li>
+            <li class="talk-entry">
+              <time class="talk-date" datetime="2025-02">2025.02</time>
+              <div class="talk-details">
+                <h3 class="talk-title">MagicTime: Time-lapse Video Generation Models as Metamorphic Simulators</h3>
+                <p class="talk-meta">
+                  <span>NYC Computer Vision Day</span>
+                  <a href="https://cs.nyu.edu/~fouhey/NYCVision2025/">[Poster]</a>
+                </p>
+              </div>
+            </li>
+            </ul>
+          </details>
         </li>
         <li class="talk-entry">
           <time class="talk-date" datetime="2025-01">2025.01</time>
@@ -3988,6 +4211,7 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
       </dl>
     </section>
 
+    <!-- Teaching temporarily hidden; retained for future use.
     <section class="section-card" aria-labelledby="teaching">
       <h2 class="section-title" style="margin-top: 0;" id="teaching" data-section-tone="sand">Teaching</h2>
       <ul class="custom-list">
@@ -4001,40 +4225,48 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
           Fall 2024</li>
       </ul>
     </section>
+    -->
 
-    <section class="section-card" aria-labelledby="interests">
+    <section class="section-card" id="personal-interests-card" aria-labelledby="interests">
       <h2 class="section-title" id="interests" data-section-tone="peach">Personal Interests</h2>
-
       <div class="interests-container">
-        <div class="interests-text">
-          <ul class="custom-list">
-            <li><strong>Film photography:</strong> Capturing moments with disposable cameras.</li>
-            <li><strong>Anime:</strong> Love, sports, and sci-fi, e.g., <a href="https://www.anime-gintama.com/"><em>Gintama</em></a> and <a href="https://frieren-anime.jp/"><em>Frieren</em></a>.</li>
-            <li><strong>Literature:</strong> <a href="https://en.wikipedia.org/wiki/Wang_Xiaobo">Xiaobo Wang</a> & <a
-                href="https://en.wikipedia.org/wiki/Friedrich_Nietzsche">Friedrich Nietzsche</a>.</li>
-            <li>
-              <strong>Coding:</strong> Maintainer of
-              <a href="https://github.com/inFaaa/PKU-Beamer-Theme">PKU-Beamer-Theme</a>
-              <img alt="Stars"
-                src="https://img.shields.io/github/stars/inFaaa/PKU-Beamer-Theme?style=flat&logo=github&labelColor=white&logoColor=%23C8A2C8&color=%23DCC6E0"
-                style="vertical-align: middle; margin-left: 4px; object-fit: contain;" width="110" height="20" loading="lazy" decoding="async">
-              and
-              <a href="https://github.com/inFaaa/build-your-own-x-vibe-coding">Build-Your-Own-X-with-Vibe-Coding</a>
-              <img alt="Stars"
-                src="https://img.shields.io/github/stars/inFaaa/build-your-own-x-vibe-coding?style=flat&logo=github&labelColor=white&logoColor=%23C8A2C8&color=%23DCC6E0"
-                style="vertical-align: middle; margin-left: 4px; object-fit: contain;" width="110" height="20" loading="lazy" decoding="async">.
-            </li>
-          </ul>
-        </div>
-
-        <!-- 右侧：图片 (带精致的卡片效果) -->
-        <div class="interests-photo">
-          <img src="https://infaaa.github.io/image/optimized/Monet.webp" alt="Claude Monet painting" class="life-img" width="800" height="621" loading="lazy" decoding="async">
-          <p class="monet-quote">
-            <a href="https://en.wikipedia.org/wiki/Impression,_Sunrise">“Impression, Sunrise”</a> (1872), by <a
-              href="https://en.wikipedia.org/wiki/Claude_Monet">Claude Monet</a>.
-          </p>
-        </div>
+        <dl class="interests-text interests-list">
+          <div class="interest-row">
+            <dt><svg xmlns="http://www.w3.org/2000/svg" class="interest-icon interest-icon-camera" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect class="icon-tint" x="3" y="7" width="18" height="13" rx="2.5" fill="currentColor" fill-opacity=".12" stroke="none"/><path d="M7 7l1.5-3h7L17 7"/><rect x="3" y="7" width="18" height="13" rx="2.5"/><circle cx="12" cy="13.5" r="3.5"/><path d="M17.5 10h.5M5.5 10v6"/></svg><span>Film photography</span></dt>
+            <dd>Capturing moments with disposable cameras.</dd>
+          </div>
+          <div class="interest-row">
+            <dt><svg xmlns="http://www.w3.org/2000/svg" class="interest-icon interest-icon-anime" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path class="icon-tint" d="M4 11c0-5 3-8 8-8s8 3 8 8l-3-3-3 2-2-4-3 5-1-4z" fill="currentColor" fill-opacity=".12" stroke="none"/><ellipse cx="12" cy="12" rx="8" ry="9"/><path d="M4 11l4-4 1 4 3-5 2 4 3-2 3 3"/><circle cx="8.5" cy="13.5" r=".8" fill="currentColor" stroke="none"/><circle cx="15.5" cy="13.5" r=".8" fill="currentColor" stroke="none"/><path d="M9.5 17q2.5 2 5 0"/></svg><span>Anime</span></dt>
+            <dd>Love, sports, and sci-fi, e.g., <a href="https://www.anime-gintama.com/"><em>Gintama</em></a> and <a href="https://frieren-anime.jp/"><em>Frieren</em></a>.</dd>
+          </div>
+          <div class="interest-row">
+            <dt><svg xmlns="http://www.w3.org/2000/svg" class="interest-icon interest-icon-book" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path class="icon-tint" d="M12 6c3-2 6-2.5 9-1v14c-3-1.5-6-1-9 1z" fill="currentColor" fill-opacity=".12" stroke="none"/><path d="M12 6C9 4 6 3.5 3 5v14c3-1.5 6-1 9 1 3-2 6-2.5 9-1V5c-3-1.5-6-1-9 1zm0 0v14M6 8.5l3 1M6 12l3 1M15 9.5l3-1M15 13l3-1"/></svg><span>Literature</span></dt>
+            <dd><a href="https://en.wikipedia.org/wiki/Wang_Xiaobo">Xiaobo Wang</a> &amp; <a href="https://en.wikipedia.org/wiki/Friedrich_Nietzsche">Friedrich Nietzsche</a>.</dd>
+          </div>
+          <div class="interest-row">
+            <dt><svg xmlns="http://www.w3.org/2000/svg" class="interest-icon interest-icon-code" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path class="icon-tint" d="M5 4h14a2 2 0 0 1 2 2v3H3V6a2 2 0 0 1 2-2z" fill="currentColor" fill-opacity=".12" stroke="none"/><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M6 6.5h.01M9 6.5h.01M9 12l-3 2.5L9 17m6-5 3 2.5-3 2.5m-2-5-2 5"/></svg><span>Coding</span></dt>
+            <dd>
+              <p class="interest-coding-intro">Maintainer of</p>
+              <ul class="interest-projects" role="list">
+                <li>
+                  <a href="https://github.com/inFaaa/PKU-Beamer-Theme">PKU-Beamer-Theme</a>
+                  <img alt="GitHub stars" src="https://img.shields.io/github/stars/inFaaa/PKU-Beamer-Theme?style=flat&logo=github&labelColor=white&logoColor=%23C8A2C8&color=%23DCC6E0" width="110" height="20" loading="lazy" decoding="async">
+                </li>
+                <li>
+                  <a href="https://github.com/inFaaa/build-your-own-x-vibe-coding">Build-Your-Own-X-with-Vibe-Coding</a>
+                  <img alt="GitHub stars" src="https://img.shields.io/github/stars/inFaaa/build-your-own-x-vibe-coding?style=flat&logo=github&labelColor=white&logoColor=%23C8A2C8&color=%23DCC6E0" width="110" height="20" loading="lazy" decoding="async">
+                </li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+        <figure class="interests-photo">
+          <img src="image/optimized/Monet.webp" alt="Claude Monet painting" class="life-img" width="800" height="621" loading="lazy" decoding="async">
+          <figcaption class="monet-quote">
+            <a href="https://en.wikipedia.org/wiki/Impression,_Sunrise">“Impression, Sunrise”</a> (1872)<br>
+            <span class="artwork-credit">by <a href="https://en.wikipedia.org/wiki/Claude_Monet">Claude Monet</a>.</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
@@ -4052,10 +4284,6 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
             <span class="footer-practice">I try to practice <span class="footer-phrase"><a href="http://slow-science.org/">Slow Science</a> <span aria-hidden="true">🐢</span></span> <span class="footer-phrase">in my research.</span></span></p>
         </div>
         <div class="footer-bottom">
-          <div class="footer-meta">
-            <span>&copy; 2026 Jinfa Huang</span>
-            <span>Last updated <time datetime="2026-11">Nov 2026</time></span>
-          </div>
           <div class="footer-progress" role="group" aria-label="Personal milestones">
             <div class="footer-milestone">
               <div class="milestone-label">
@@ -4083,6 +4311,10 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
                 <span>0</span><span>500</span><span>1,000</span><span>1,500</span><span>2,000</span>
               </div>
             </div>
+          </div>
+          <div class="footer-meta">
+            <span>&copy; 2026 Jinfa Huang</span>
+            <span class="footer-updated">Last updated <time datetime="2026-11">Nov 2026</time></span>
           </div>
         </div>
       </div>
@@ -4239,7 +4471,7 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
     const syncControls = () => {
       const allOpen = disclosures.every(item => item.open);
       button.setAttribute('aria-expanded', String(allOpen));
-      button.replaceChildren(document.createTextNode(allOpen ? 'Hide all work ' : 'Show all work '));
+      button.replaceChildren(document.createTextNode(allOpen ? 'Collapse all ' : 'Expand all '));
       const sign = document.createElement('span');
       sign.setAttribute('aria-hidden', 'true');
       sign.textContent = allOpen ? '−' : '+';

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="48 104 864 648" fill="none">
+  <title>Jinfa Huang rainbow eye</title>
+  <defs>
+    <linearGradient id="gold" x1="222" y1="243" x2="777" y2="244" gradientUnits="userSpaceOnUse"><stop stop-color="#fff384"/><stop offset=".42" stop-color="#ffca4b"/><stop offset="1" stop-color="#ff4a1d"/></linearGradient>
+    <linearGradient id="flame" x1="190" y1="360" x2="799" y2="241" gradientUnits="userSpaceOnUse"><stop stop-color="#ff7320"/><stop offset=".3" stop-color="#ff004f"/><stop offset=".7" stop-color="#fb007b"/><stop offset="1" stop-color="#94005b"/></linearGradient>
+    <linearGradient id="pink" x1="246" y1="300" x2="699" y2="435" gradientUnits="userSpaceOnUse"><stop stop-color="#ffb47e"/><stop offset=".34" stop-color="#ff3b80"/><stop offset=".78" stop-color="#ff087f"/><stop offset="1" stop-color="#ac005c"/></linearGradient>
+    <linearGradient id="rose" x1="419" y1="276" x2="591" y2="426" gradientUnits="userSpaceOnUse"><stop stop-color="#ed0066"/><stop offset="1" stop-color="#90005c"/></linearGradient>
+    <linearGradient id="iris" x1="374" y1="329" x2="562" y2="563" gradientUnits="userSpaceOnUse"><stop stop-color="#00ffdf"/><stop offset=".38" stop-color="#00d6e8"/><stop offset=".73" stop-color="#0069c9"/><stop offset="1" stop-color="#171d9e"/></linearGradient>
+    <linearGradient id="pupil" x1="421" y1="393" x2="510" y2="505" gradientUnits="userSpaceOnUse"><stop stop-color="#01f8dc"/><stop offset=".5" stop-color="#00b9db"/><stop offset="1" stop-color="#1737be"/></linearGradient>
+    <linearGradient id="ocean" x1="446" y1="488" x2="538" y2="704" gradientUnits="userSpaceOnUse"><stop stop-color="#00ffe0"/><stop offset=".42" stop-color="#00c9e6"/><stop offset=".72" stop-color="#0068c9"/><stop offset="1" stop-color="#151c9b"/></linearGradient>
+    <linearGradient id="leaf" x1="347" y1="505" x2="489" y2="662" gradientUnits="userSpaceOnUse"><stop stop-color="#c1ff50"/><stop offset=".47" stop-color="#a4f344"/><stop offset="1" stop-color="#00a77f"/></linearGradient>
+    <linearGradient id="curl" x1="106" y1="346" x2="273" y2="563" gradientUnits="userSpaceOnUse"><stop stop-color="#00f5e1"/><stop offset=".4" stop-color="#008ccc"/><stop offset="1" stop-color="#004355"/></linearGradient>
+  </defs>
+  <path fill="url(#gold)" d="M164 441C188 321 265 231 377 187c106-42 204-30 299 26-102-48-199-42-292-9-100 35-163 115-202 245Z"/>
+  <path fill="#0b1034" d="M180 444C258 294 365 199 510 186c108-10 185 55 247 44 40-7 50-42 28-59-16-12-25 8-9 15-20 10-26-13-15-26 17-20 43-2 57 17 22 30 25 61 10 87-18 33-55 51-96 54l14 34c-76-19-134-49-176-69-78-37-156-36-221 2-69 41-116 95-145 165Z"/>
+  <path fill="url(#flame)" d="M182 440C271 289 381 203 515 186c87-11 163 47 232 47 47 0 65-36 51-62-5-11-14-16-23-19 24-4 44 18 48 38 11 51-21 99-71 110-58 12-106-15-152-36-78-35-132-25-191-4-101 36-164 109-200 190Z"/>
+  <path fill="url(#gold)" d="M357 282c72-72 153-108 229-93 64 12 111 42 161 42 37 0 51-18 49-40-1-14-12-27-22-23-11 4-9 15 5 19-15 13-31-7-20-23 18-27 51-4 56 21 9 39-17 70-55 78-51 12-96-17-156-33-84-24-163-5-247 52Z"/>
+  <circle cx="468" cy="445" r="154" fill="#0b0d32"/>
+  <circle cx="468" cy="445" r="136" fill="url(#iris)"/>
+  <circle cx="468" cy="445" r="116" fill="#00e7d8" fill-opacity=".35"/>
+  <circle cx="468" cy="445" r="97" fill="#10123b"/>
+  <circle cx="468" cy="445" r="74" fill="url(#pupil)"/>
+  <circle cx="468" cy="445" r="55" fill="#009bd3"/>
+  <circle cx="470" cy="445" r="35" fill="#0b1039"/>
+  <path stroke="#fff" stroke-width="18" stroke-linecap="round" d="M351 431c8-54 49-98 105-103"/>
+  <path fill="#fff" d="M405 404c13-25 43-39 64-30 17 7 23 23 15 34-5 7-15 8-29 11 14 23 2 43-20 42-32-1-44-30-30-57Z"/>
+  <path fill="url(#rose)" d="M80 684c12-37 18-70 18-105 28-23 44-69 63-112 51-114 146-192 250-207 96-14 166 13 229 49 70 41 125 92 167 93 27 1 43-22 34-41-8-18-29-15-32-1-1 6 4 12 12 12-26 10-37-16-28-35 8-17 26-26 43-24 37 3 54 36 52 70-2 51-35 78-85 79-74 1-112-31-168-81-63-56-113-86-176-85-77 1-152 61-216 136-50 58-91 119-98 171Z"/>
+  <path fill="url(#pink)" d="M80 684c19-53 34-102 53-144 45-107 109-202 209-251 90-44 162-42 237-11 63 26 108 61 159 96 31 22 54 31 77 27 23-5 34-26 23-45-9-17-32-16-37 1-2 8 2 14 12 17-25 3-29-23-20-40 11-21 39-26 59-15 28 15 33 44 21 69-16 36-44 45-81 40-65-9-108-53-158-93-63-50-112-65-172-59-97 9-170 80-232 151-62 71-98 158-150 257Z"/>
+  <path fill="#0b1034" d="M169 476c34 82 61 139 116 181 79 60 169 65 263 45 87-19 143-64 197-130 25-31 57-52 78-36 27 20 14 48-3 45-13-3-12-15-3-22-25-4-35 21-24 40 14 25 50 26 70 3 29-33 14-89-26-115-48-31-112-22-168 14-40 27-74 64-118 83-76 33-144 28-206 8-74-24-120-70-176-116Z"/>
+  <path fill="url(#ocean)" d="M174 481c52 91 95 145 160 180 92 49 204 28 285-29 48-33 87-94 127-122 41-29 81-26 107 0 34 34 25 75 8 91-17 17-44 18-61-1-17-21-9-38 13-41-13 10-17 26 0 32 19 7 36-11 34-31-2-30-31-51-60-46-44 8-64 55-111 99-67 64-152 101-242 96-124-6-209-89-260-228Z"/>
+  <path fill="url(#leaf)" d="M177 478c68 67 150 116 227 124 95 12 155-23 214-75 30-25 62-43 93-52-56 23-82 62-119 103-42 47-105 79-172 83-94 4-173-60-243-183Z"/>
+  <path fill="#b7fa44" d="M181 484c79 75 142 111 224 119 85 10 144-14 208-71-46 66-104 103-193 102-89 0-164-51-239-150Z"/>
+  <path fill="url(#curl)" d="M400 586c-67-11-121-40-174-71-41-24-72-30-98-40-45-16-59-51-52-88 5-29 27-52 50-54 20-2 31 10 31 24l-1 6c-9-21-34-15-44 5-13 24-5 50 16 62 27 15 66 17 104 40 74 43 101 90 168 116Z"/>
+  <path fill="#00e9dc" d="M157 356c-13-18-37-12-49 5-27 40-17 80 30 103-51-16-69-48-61-79 7-27 23-47 48-51 17-3 30 6 32 22Z"/>
+  <path fill="url(#leaf)" d="M111 419c24 17 62 20 100 38 53 25 94 65 147 116-61-31-107-70-158-89-43-16-71-31-89-65Z"/>
+  <path fill="#d0ff71" fill-opacity=".65" d="M114 423c65 18 107 29 157 68 31 25 56 50 87 82-56-53-115-84-170-106-33-13-58-25-74-44Z"/>
+</svg>

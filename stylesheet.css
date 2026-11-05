@@ -1,12 +1,14 @@
 /* =========================================
-   1. Fonts — Geist (display + body) + Geist Mono (numerals) + LXGW WenKai (CJK)
-   Loaded from Google Fonts in index.html.
+   1. Fonts — Hanken Grotesk (text + visuals), Google Sans Code (code), LXGW WenKai (CJK)
+   English fonts load from Google Fonts; the Chinese name keeps its local font stack.
    ========================================= */
 
 /* =========================================
    2. 全局变量 (Variables)
    ========================================= */
 :root {
+  --font-sans: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-code: 'Google Sans Code', ui-monospace, SFMono-Regular, Menlo, monospace;
   /* Apple-minimal with subtle Monet-inspired palette */
   --primary-color: #5f7fa3;
   --primary-hover: #4f6f92;
@@ -98,7 +100,7 @@ a {
 }
 
 .nav-name {
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--nav-text);
@@ -136,7 +138,7 @@ a {
 
 .nav-links a {
   flex-shrink: 0;
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 600;
   /* Bolder weight as requested */
@@ -191,7 +193,7 @@ html {
    4. 基础样式 (Global Reset & Base)
    ========================================= */
 body {
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   font-size: 15px;
   line-height: 1.6;
   color: var(--text-color);
@@ -213,7 +215,25 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+}
+
+
+button,
+input,
+select,
+textarea,
+svg text,
+svg tspan {
+  font-family: var(--font-sans);
+}
+
+pre,
+code,
+kbd,
+samp,
+.code-block {
+  font-family: var(--font-code);
 }
 
 a {
@@ -236,7 +256,7 @@ a:focus {
 
 /* 兼容旧代码的辅助类 */
 heading {
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   font-size: 22px;
   font-weight: bold;
   display: block;
@@ -337,7 +357,7 @@ h2.section-title {
 }
 
 .name-en-center {
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(2.4rem, 5.5vw, 3.6rem);
   font-weight: 700;
   color: var(--text-color);
@@ -615,7 +635,7 @@ h2.section-title {
   letter-spacing: 0.03em;
   font-variant-numeric: tabular-nums;
   line-height: 1.45;
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
 }
 
 /* =========================================
@@ -785,7 +805,7 @@ h2.section-title {
   min-width: 78px;
   color: var(--text-muted);
   font-size: 0.82em;
-  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-sans);
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
   line-height: 1.4;
@@ -1303,7 +1323,7 @@ h2.section-title {
 
 .service-years time {
   color: var(--text-muted);
-  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-sans);
   font-size: 0.8rem;
   font-variant-numeric: tabular-nums;
 }
@@ -1819,7 +1839,7 @@ h2.section-title {
 }
 
 /* =========================================
-14. Bilibili 视频与讲座
+14. 讲座
 ========================================= */
 .talks-list {
   list-style: none;
@@ -1846,7 +1866,7 @@ h2.section-title {
 
 .talk-date {
   color: var(--text-muted);
-  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-sans);
   font-size: 0.8rem;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -1881,26 +1901,7 @@ h2.section-title {
   }
 }
 
-.video-container {
-  position: relative;
-  width: 80%;
-  padding-bottom: 45%;
-  /* 16:9 aspect ratio */
-  height: 0;
-  background: var(--bg-color);
-  border-radius: 12px;
-  overflow: hidden;
-  margin-top: 15px;
-  box-shadow: 0 4px 16px var(--shadow-color);
-}
 
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
 
 .interests-container {
   display: flex;
@@ -2148,6 +2149,183 @@ a:hover {
   color: var(--primary-hover);
 }
 
-[data-theme="dark"] .video-container {
-  box-shadow: 0 8px 24px var(--shadow-color);
+
+/* Consistent card outlines and spacing across the full homepage. */
+:root {
+  --outer-radius: 16px;
+  --inner-radius: 8px;
+}
+[data-theme="dark"] {
+  --bg-color: #191c22;
+  --bg-card: #181c23;
+  --highlight-bg: #232833;
+  --text-color: #edf0f6;
+  --text-muted: #aab1bf;
+  --border-color: rgba(194, 209, 235, .14);
+  --primary-color: #b8cce8;
+  --primary-hover: #d9e4f5;
+  --nav-bg: rgba(25, 28, 34, .9);
+  --nav-border: rgba(194, 209, 235, .14);
+  --nav-text: #edf0f6;
+  --nav-link: #aab1bf;
+}
+[data-theme="dark"] body {
+  background-image:
+    radial-gradient(ellipse at 0 0, rgba(101, 87, 125, .13), transparent 45%),
+    radial-gradient(ellipse at 100% 70%, rgba(73, 117, 103, .08), transparent 45%);
+}
+.top-nav { padding-inline: 24px; }
+.nav-inner { max-width: 1100px; height: 60px; }
+.nav-name { font-size: 17px; font-weight: 650; }
+.nav-links { gap: 14px; }
+.nav-links a { font-size: 12px; }
+.container { width: calc(100% - 48px); max-width: 1100px; margin: 20px auto 38px; gap: 24px; }
+.section-card { padding: 34px 38px; border-radius: var(--outer-radius); box-shadow: none; }
+h2.section-title,
+.news-header { padding-bottom: 0; border-bottom: 0; margin-bottom: 22px; }
+h2.section-title:not(#news)::after,
+.news-header::after { content: none; }
+h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
+.profile-body {
+  --profile-start: #34415c;
+  --profile-middle: #45475d;
+  --profile-end: #565061;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  grid-template-areas: "name name" "bio photo";
+  column-gap: 34px;
+  padding: 36px 38px;
+  border-radius: var(--outer-radius);
+}
+[data-theme="dark"] .profile-body {
+  --profile-start: #2b354d;
+  --profile-middle: #3d3d51;
+  --profile-end: #484252;
+}
+.main-header-container { justify-content: space-between; align-items: center; flex-wrap: nowrap; text-align: left; margin: 0 0 22px; gap: 16px; }
+.profile-name { display: flex; align-items: baseline; flex-shrink: 0; gap: 8px 14px; }
+.profile-name > span { white-space: nowrap; }
+.main-header-container .social-links-bar { flex-wrap: nowrap; justify-content: flex-end; margin: 0 0 0 auto; gap: 7px; }
+.main-header-container .social-btn { padding: 6px 10px; white-space: nowrap; }
+.name-en-center { font-size: 44px; line-height: 1.2; letter-spacing: -.04em; }
+.name-cn-center { font-size: 19px; }
+.profile-bio > .bio-text { max-width: none; margin: 0 0 18px; font-size: 14px; line-height: 1.85; text-wrap: wrap; }
+.profile-bio > .research-statement {
+  max-width: 520px;
+  text-wrap: balance;
+  padding: 12px 15px;
+  border-radius: var(--inner-radius);
+  border-color: rgba(211, 224, 255, .16);
+  background: rgba(211, 224, 255, .05);
+  line-height: 1.65;
+}
+.research-statement .keep-together { white-space: nowrap; }
+.research-directions { max-width: none; gap: 10px; margin-bottom: 18px; }
+.research-directions-label { font-size: 10px; letter-spacing: .1em; }
+.research-direction { padding: 13px 15px; border-radius: var(--inner-radius); border-color: rgba(211, 224, 255, .16); background: rgba(211, 224, 255, .035); }
+.research-direction-disclosure summary { font-size: 13px; }
+.research-direction > p { font-size: 12px; line-height: 1.65; }
+.social-btn { padding: 6px 13px; font-size: 11px; }
+.profile-photo-box { width: 190px; }
+.profile-photo-switch { height: 254px; }
+.avatar-img { border-radius: var(--inner-radius); box-shadow: none; }
+.photo-caption { font-size: 11px; }
+#research-map .rm-columns { gap: 24px; }
+#research-map .rm-axis-header {
+  --rm-corner-length: 16px;
+  --rm-corner-stroke: 1px;
+  border-radius: var(--inner-radius);
+  border-color: var(--border-color);
+}
+#research-map .rm-axis-header::before { border-radius: inherit; opacity: .6; }
+#research-map .rm-axis-header::after { opacity: .2; }
+#research-map .rm-viewfinder-status { opacity: .6; }
+#research-map .rm-axis-header h3 { font-size: 20px; }
+#research-map .rm-topic,
+#research-map .rm-toggle-all,
+.rv-section .rv-view-tabs { border-radius: var(--inner-radius); }
+#research-map .rm-topic > summary { border-radius: var(--inner-radius); }
+#research-map .rm-topic[open] > summary { border-radius: var(--inner-radius) var(--inner-radius) 0 0; }
+.rv-section .rv-view-tab { min-height: 38px; border-radius: 5px; font-size: 12px; font-weight: 500; }
+.rv-section .rv-view-tab[aria-selected="true"] { box-shadow: none; }
+.experience-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 34px; align-items: start; }
+#research-experience-card .experience-item {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  align-items: start;
+  gap: 16px;
+  margin: 0;
+  padding: 20px 0;
+  border-top: 1px solid var(--border-color);
+}
+#research-experience-card .logo-box { width: 100px; min-width: 0; height: 38px; align-items: center; }
+#research-experience-card .logo-box a { display: block; width: var(--company-logo-width, 100%); }
+#research-experience-card .logo-box .meta-logo { --company-logo-width: 90%; }
+#research-experience-card .logo-box .google-logo { --company-logo-width: 82%; }
+#research-experience-card .logo-box .amazon-logo { --company-logo-width: 88%; }
+#research-experience-card .logo-box .bytedance-logo { --company-logo-width: 100%; }
+#research-experience-card .logo-box img { width: 100%; height: auto; max-height: none; }
+#research-experience-card .experience-details strong,
+#research-experience-card .experience-details h3 { margin: 0 0 5px; font-size: 14px; line-height: 1.5; font-weight: 600; }
+#research-experience-card .experience-details span,
+#research-experience-card .experience-details em { font-size: 12px; line-height: 1.65; }
+#research-experience-card .experience-details strong a { color: inherit; font-weight: inherit; }
+#research-experience-card .experience-details strong a:hover { color: var(--primary-color); }
+#research-experience-card .experience-role { margin-top: 5px; }
+#research-experience-card .experience-role + .experience-role { margin-top: 7px; }
+#research-experience-card .experience-position { display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px 10px; }
+#research-experience-card .experience-position .experience-award { font-size: 11px; white-space: nowrap; }
+@media (max-width: 1000px) and (min-width: 769px) {
+  .profile-body { column-gap: 24px; grid-template-columns: minmax(0, 1fr) 170px; padding-inline: 28px; }
+  .profile-photo-box { width: 170px; }
+  .profile-photo-switch { height: 232px; }
+  .name-en-center { font-size: 32px; }
+  .name-cn-center { font-size: 17px; }
+  .main-header-container { gap: 12px; }
+  .profile-name { gap: 9px; }
+  .main-header-container .social-links-bar { gap: 5px; }
+  .main-header-container .social-btn { padding: 5px 6px; font-size: 10px; }
+}
+@media (max-width: 900px) {
+  .experience-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 768px) {
+  .top-nav { padding-inline: 16px; }
+  .nav-inner { height: 56px; }
+  .nav-name { font-size: 16px; }
+  .container { width: calc(100% - 32px); margin: 16px auto 30px; gap: 20px; }
+  .section-card { padding: 25px 24px; }
+  .profile-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 150px;
+    grid-template-areas: "name photo" "bio bio";
+    align-items: center;
+    gap: 22px 20px;
+    padding: 26px 24px;
+  }
+  .profile-body > .main-header-container { margin: 0; align-self: center; align-items: flex-start; flex-wrap: wrap; }
+  .profile-name { flex-wrap: wrap; flex-shrink: 1; }
+  .main-header-container .social-links-bar { flex-wrap: wrap; justify-content: flex-start; margin-left: 0; }
+  .main-header-container .social-btn { padding: 5px 8px; font-size: 10px; }
+  .name-en-center { font-size: 34px; line-height: 1.2; }
+  .name-cn-center { font-size: 18px; }
+  .profile-photo-box { width: 150px; }
+  .profile-photo-switch { height: 200px; }
+  .research-directions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 540px) {
+  .section-card { padding: 24px 20px; }
+  .profile-body { grid-template-columns: minmax(0, 1fr) 104px; gap: 20px 12px; padding: 24px 20px; }
+  .main-header-container { gap: 9px; }
+  .name-en-center { font-size: 30px; }
+  .name-cn-center { font-size: 17px; }
+  .profile-photo-box { width: 104px; }
+  .profile-photo-switch { height: 142px; }
+  .photo-controls { margin-top: 2px; }
+  .photo-caption { font-size: 9px; }
+  .profile-bio > .bio-text { font-size: 13px; line-height: 1.8; }
+  .research-directions { grid-template-columns: minmax(0, 1fr); }
+  #research-map .rm-axis-header h3 { font-size: 18px; }
+  #research-map .rm-topic-title { font-size: 13px; }
+  #research-experience-card .experience-item { grid-template-columns: 80px minmax(0, 1fr); gap: 13px; }
+  #research-experience-card .logo-box { width: 80px; }
 }

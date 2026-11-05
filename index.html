@@ -2935,26 +2935,170 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
 #research-map .rm-axis-generation { --rm-button-bg: #4b506b; }
 [data-theme="dark"] #research-map .rm-axis-generation { --rm-button-bg: #51526f; }
 #research-map .rm-topic { border-color: var(--control-border); }
-#research-map .rm-topic > summary { background: var(--control-idle-bg); }
+#research-map .rm-topic > summary { grid-template-columns: 34px minmax(0, 1fr) 10px; background: var(--control-idle-bg); }
 #research-map .rm-topic > summary:hover { background: var(--control-hover-bg); }
-#research-map .rm-topic > summary .rm-index { opacity: 1; }
+#research-map .rm-topic > summary .rm-index { opacity: 1; white-space: nowrap; }
 #research-map .rm-topic > summary .rm-topic-title { color: var(--control-text); }
 #research-map .rm-topic[open] > summary { background: var(--rm-button-bg); }
 #research-map .rm-topic[open] > summary .rm-topic-title,
 #research-map .rm-topic[open] > summary .rm-index { color: var(--control-active-text); }
 #research-map .rm-topic[open] > summary .rm-chevron { border-color: var(--control-active-text); }
+#research-map .rm-focus-scale {
+  --rm-color: #eef3f8;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 260px;
+  padding: 6px 14px;
+  border: 1px solid #5b687c;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #475164 0%, #263345 14%, #182332 50%, #253143 86%, #414c5f 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), inset 0 -1px 0 rgba(0, 0, 0, .45), 0 2px 4px rgba(24, 35, 50, .12);
+}
+#research-map .rm-focus-scale::before,
+#research-map .rm-focus-scale::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  bottom: 7px;
+  width: 6px;
+  border-radius: 3px;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .18) 0 1px, rgba(0, 0, 0, .3) 1px 3px);
+  pointer-events: none;
+}
+#research-map .rm-focus-scale::before { left: 3px; }
+#research-map .rm-focus-scale::after { right: 3px; }
+#research-map .rm-focus-scale .rm-focus-ticks button { color: #c3cddc; }
+#research-map .rm-focus-scale .rm-focus-ticks button:hover,
+#research-map .rm-focus-scale .rm-focus-ticks button[data-rm-active] {
+  color: #ffffff;
+  background: rgba(255, 255, 255, .13);
+}
+#research-map .rm-focus-scale .rm-focus-ticks button[data-rm-active] { font-weight: 600; }
+#research-map .rm-focus-readout { margin-top: 6px; }
+#research-map .rm-focus-ticks button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+#research-map .rm-focus-unit { font-size: 8px; }
 #research-map .rm-columns { gap: 24px; }
 #research-map .rm-axis-header {
-  --rm-corner-length: 16px;
-  --rm-corner-stroke: 1px;
-  border-radius: var(--inner-radius);
-  border-color: var(--border-color);
+  --rm-corner-length: 24px;
+  --rm-corner-stroke: 1.5px;
+  padding: 12px 18px;
+  border-radius: 3px;
+  border-color: color-mix(in srgb, var(--rm-color) 16%, var(--bg-card));
+  background: var(--control-idle-bg);
 }
-#research-map .rm-axis-header::before { border-radius: inherit; opacity: .6; }
-#research-map .rm-axis-header::after { opacity: .2; }
-#research-map .rm-viewfinder-status { opacity: .6; }
-#research-map .rm-axis-header h3 { font-size: 20px; align-items: center; justify-content: center; text-align: center; }
+#research-map .rm-axis-header::before { border-radius: inherit; opacity: .75; }
+#research-map .rm-axis-header::after { opacity: .25; }
+#research-map .rm-viewfinder-status { margin-bottom: 8px; opacity: .85; }
+#research-map .rm-viewfinder-setting { gap: 6px; }
+#research-map .rm-focal-display { font-variant-numeric: tabular-nums; white-space: nowrap; letter-spacing: .02em; }
+#research-map .rm-camera-trim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+#research-map .rm-camera-trim::before,
+#research-map .rm-camera-trim::after {
+  content: "";
+  position: absolute;
+  top: 28px;
+  width: 4px;
+  height: 14px;
+  border: 1px solid color-mix(in srgb, var(--rm-color) 40%, var(--bg-card));
+  border-radius: 2px;
+  background: var(--control-idle-bg);
+}
+#research-map .rm-camera-trim::before { left: -5px; }
+#research-map .rm-camera-trim::after { right: -5px; }
+#research-map .rm-camera-viewfinder {
+  position: absolute;
+  top: -8px;
+  left: calc(50% - 22px);
+  width: 44px;
+  height: 8px;
+  clip-path: polygon(0 100%, 9px 0, 35px 0, 100% 100%);
+  background: color-mix(in srgb, var(--rm-color) 45%, var(--bg-card));
+}
+#research-map .rm-camera-viewfinder::after {
+  content: "";
+  position: absolute;
+  inset: 1px 1px 0;
+  clip-path: inherit;
+  background: var(--control-idle-bg);
+}
+#research-map .rm-camera-grip {
+  position: absolute;
+  top: 32px;
+  right: 4px;
+  bottom: 12px;
+  width: 5px;
+  border-radius: 2px;
+  opacity: .35;
+  background: repeating-linear-gradient(0deg, var(--rm-color) 0 1px, transparent 1px 3px);
+}
+#research-map .rm-focus-target {
+  position: relative;
+  box-sizing: border-box;
+  width: min(100%, 220px);
+  height: 64px;
+  margin: 10px auto 0;
+  border: 1px solid color-mix(in srgb, var(--rm-color) 14%, var(--bg-card));
+  background:
+    linear-gradient(color-mix(in srgb, var(--rm-color) 10%, transparent), color-mix(in srgb, var(--rm-color) 10%, transparent)) center / 1px 100% no-repeat,
+    linear-gradient(color-mix(in srgb, var(--rm-color) 10%, transparent), color-mix(in srgb, var(--rm-color) 10%, transparent)) center / 100% 1px no-repeat;
+}
+#research-map .rm-framing-stage { position: absolute; inset: 4px; }
+#research-map .rm-framing-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--rm-frame-size, 100%);
+  height: var(--rm-frame-size, 100%);
+  transform: translate(-50%, -50%);
+  transition: width .22s ease-out, height .22s ease-out;
+  pointer-events: none;
+}
+#research-map .rm-focus-brackets {
+  position: absolute;
+  inset: 0;
+  opacity: .5;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--rm-color), var(--rm-color)),
+    linear-gradient(var(--rm-color), var(--rm-color)),
+    linear-gradient(var(--rm-color), var(--rm-color)),
+    linear-gradient(var(--rm-color), var(--rm-color)),
+    linear-gradient(var(--rm-color), var(--rm-color)),
+    linear-gradient(var(--rm-color), var(--rm-color)),
+    linear-gradient(var(--rm-color), var(--rm-color)),
+    linear-gradient(var(--rm-color), var(--rm-color));
+  background-size: 8px 1px, 1px 5px, 8px 1px, 1px 5px, 8px 1px, 1px 5px, 8px 1px, 1px 5px;
+  background-position: left top, left top, right top, right top, left bottom, left bottom, right bottom, right bottom;
+  background-repeat: no-repeat;
+}
+#research-map .rm-axis-header[data-rm-focus-locked] .rm-focus-brackets { opacity: .9; }
+#research-map .rm-axis-header h3 {
+  margin: 0;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 #research-map .rm-axis-header .rm-axis-icon { margin-top: 0; }
+#research-map .rm-viewfinder-meter { margin-top: 12px; }
+#research-map .rm-focus-scale::before,
+#research-map .rm-focus-scale::after { width: 7px; }
+@media (prefers-reduced-motion: reduce) {
+  #research-map .rm-focus-brackets,
+  #research-map .rm-framing-window { animation: none; transition: none; }
+}
 #research-map .rm-topic,
 #research-map .rm-toggle-all,
 .rv-section .rv-view-tabs { border-radius: var(--inner-radius); }
@@ -3221,7 +3365,7 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
 }
 
 /* Keep research actions compact while questions expand below them. */
-#research-map .rm-header-controls { position: relative; }
+#research-map .rm-header-controls { position: relative; margin-top: 8px; padding-inline: 2px; }
 #research-map .rm-header-controls .rm-questions > summary {
   display: flex;
   align-items: center;
@@ -3569,7 +3713,7 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
     <!-- Research overview: two independent, expandable research threads. -->
     <section class="section-card rm-section rv-section" id="research-map" aria-labelledby="rv-title" data-rv-merged="true">
       <h2 class="section-title rv-heading" id="rv-title" data-section-tone="periwinkle" tabindex="-1">
-        Research Map
+        Research Viewfinder
         <a class="research-all-link" href="https://scholar.google.com/citations?user=2t7iBnkAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener noreferrer" aria-label="All publications on Google Scholar">[ALL]</a>
         <span class="research-heading-meta">
           <a href="https://scholar.google.com/citations?user=2t7iBnkAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener noreferrer">
@@ -3598,9 +3742,10 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
       <div class="rm-columns">
         <section class="rm-axis rm-axis-understanding" aria-labelledby="rm-understanding-title">
           <header class="rm-axis-header">
+            <span class="rm-camera-trim" aria-hidden="true"><span class="rm-camera-viewfinder"></span><span class="rm-camera-grip"></span></span>
             <div class="rm-viewfinder-status" aria-hidden="true">
               <span><svg viewBox="0 0 24 24" focusable="false"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/><rect x="9" y="9" width="6" height="6"/></svg>AF-S</span>
-              <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m14.31 8 5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16 3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>
+              <span class="rm-viewfinder-setting"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m14.31 8 5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16 3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg><span class="rm-focal-display">24mm · Overview</span></span>
             </div>
             <h3 id="rm-understanding-title">
               <svg class="rm-axis-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -3609,34 +3754,39 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
               </svg>
               <span>Multimodal Perception<br>and Understanding</span>
             </h3>
-            <div class="rm-header-controls">
-              <details class="rm-questions">
-                <summary><span>Research questions</span><span class="rm-chevron" aria-hidden="true"></span></summary>
-                <p>How should machines represent and understand the multimodal world?</p>
-                <p>How can multimodal models become capable and efficient agents?</p>
-              </details>
-              <button type="button" class="rm-toggle-all" data-rm-axis="understanding" aria-expanded="false" aria-controls="rm-understanding-topics" hidden>Expand all <span aria-hidden="true">+</span></button>
-            </div>
-            <div class="rm-viewfinder-meter" hidden>
-              <div class="rm-focus-scale">
-                <div class="rm-focus-ticks" role="group" aria-label="Focus a research topic: Multimodal Perception and Understanding">
-                  <button type="button" data-rm-focus="0" data-rm-active>00</button>
-                  <button type="button" data-rm-focus="1" aria-expanded="false">01</button>
-                  <button type="button" data-rm-focus="2" aria-expanded="false">02</button>
-                  <button type="button" data-rm-focus="3" aria-expanded="false">03</button>
-                  <button type="button" data-rm-focus="4" aria-expanded="false">04</button>
-                </div>
-                <input class="rm-focus-range" type="range" min="0" max="4" step="1" value="0"
-                  aria-label="Research focus: Multimodal Perception and Understanding" aria-controls="rm-understanding-topics"
-                  aria-valuetext="Overview; all topics collapsed">
+            <div class="rm-focus-target" aria-hidden="true">
+              <div class="rm-framing-stage">
+                <div class="rm-framing-window"><span class="rm-focus-brackets"></span></div>
               </div>
-              <span class="rm-focus-readout" aria-live="polite" aria-atomic="true">Overview · drag to explore</span>
             </div>
           </header>
+          <div class="rm-viewfinder-meter" hidden>
+            <div class="rm-focus-scale">
+              <div class="rm-focus-ticks" role="group" aria-label="Focus a research topic: Multimodal Perception and Understanding">
+                <button type="button" data-rm-focus="0" data-rm-focal="24mm" data-rm-active aria-label="24mm · Overview: collapse all topics" title="24mm · Overview: collapse all topics">24<span class="rm-focus-unit">mm</span></button>
+                <button type="button" data-rm-focus="1" data-rm-focal="35mm" aria-expanded="false">35<span class="rm-focus-unit">mm</span></button>
+                <button type="button" data-rm-focus="2" data-rm-focal="50mm" aria-expanded="false">50<span class="rm-focus-unit">mm</span></button>
+                <button type="button" data-rm-focus="3" data-rm-focal="70mm" aria-expanded="false">70<span class="rm-focus-unit">mm</span></button>
+                <button type="button" data-rm-focus="4" data-rm-focal="120mm" aria-expanded="false">120<span class="rm-focus-unit">mm</span></button>
+              </div>
+              <input class="rm-focus-range" type="range" min="0" max="4" step="1" value="0"
+                aria-label="Research focus: Multimodal Perception and Understanding" aria-controls="rm-understanding-topics"
+                aria-valuetext="24mm · Overview; all topics collapsed">
+            </div>
+            <span class="rm-focus-readout" aria-live="polite" aria-atomic="true">24mm · Overview · click or drag to explore</span>
+          </div>
+          <div class="rm-header-controls">
+            <details class="rm-questions">
+              <summary><span>Research questions</span><span class="rm-chevron" aria-hidden="true"></span></summary>
+              <p>How should machines represent and understand the multimodal world?</p>
+              <p>How can multimodal models become capable and efficient agents?</p>
+            </details>
+            <button type="button" class="rm-toggle-all" data-rm-axis="understanding" aria-expanded="false" aria-controls="rm-understanding-topics" hidden>Expand all <span aria-hidden="true">+</span></button>
+          </div>
 
           <div class="rm-topics" id="rm-understanding-topics">
             <details class="rm-topic" id="rm-representations">
-              <summary><span class="rm-index" aria-hidden="true">01</span><span class="rm-topic-title">Representation Learning</span><span class="rm-chevron" aria-hidden="true"></span></summary>
+              <summary><span class="rm-index" aria-hidden="true">35<span class="rm-focus-unit">mm</span></span><span class="rm-topic-title">Representation Learning</span><span class="rm-chevron" aria-hidden="true"></span></summary>
               <div class="rm-topic-body">
                 <p class="rm-focus">Learn dense visual features, align modalities, and organize relational and spatial information.</p>
                 <ul class="rm-methods">
@@ -3659,7 +3809,7 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
             </details>
 
             <details class="rm-topic" id="rm-vlm">
-              <summary><span class="rm-index" aria-hidden="true">02</span><span class="rm-topic-title">Vision-Language Modeling</span><span class="rm-chevron" aria-hidden="true"></span></summary>
+              <summary><span class="rm-index" aria-hidden="true">50<span class="rm-focus-unit">mm</span></span><span class="rm-topic-title">Vision-Language Modeling</span><span class="rm-chevron" aria-hidden="true"></span></summary>
               <div class="rm-topic-body">
                 <p class="rm-focus">Develop multimodal architectures and video representations, and evaluate and strengthen model capabilities.</p>
                 <ul class="rm-methods">
@@ -3677,7 +3827,7 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
             </details>
 
             <details class="rm-topic" id="rm-agentic">
-              <summary><span class="rm-index" aria-hidden="true">03</span><span class="rm-topic-title">Agentic Perception and Reasoning</span><span class="rm-chevron" aria-hidden="true"></span></summary>
+              <summary><span class="rm-index" aria-hidden="true">70<span class="rm-focus-unit">mm</span></span><span class="rm-topic-title">Agentic Perception and Reasoning</span><span class="rm-chevron" aria-hidden="true"></span></summary>
               <div class="rm-topic-body">
                 <p class="rm-focus">Acquire evidence, coordinate planning and execution, and maintain working memory.</p>
                 <ul class="rm-methods">
@@ -3694,7 +3844,7 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
             </details>
 
             <details class="rm-topic" id="rm-efficient">
-              <summary><span class="rm-index" aria-hidden="true">04</span><span class="rm-topic-title">Efficient Multimodal Inference</span><span class="rm-chevron" aria-hidden="true"></span></summary>
+              <summary><span class="rm-index" aria-hidden="true">120<span class="rm-focus-unit">mm</span></span><span class="rm-topic-title">Efficient Multimodal Inference</span><span class="rm-chevron" aria-hidden="true"></span></summary>
               <div class="rm-topic-body">
                 <p class="rm-focus">Spend computation on the information that matters for the task.</p>
                 <ul class="rm-methods">
@@ -3716,9 +3866,10 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
 
         <section class="rm-axis rm-axis-generation" aria-labelledby="rm-generation-title">
           <header class="rm-axis-header">
+            <span class="rm-camera-trim" aria-hidden="true"><span class="rm-camera-viewfinder"></span><span class="rm-camera-grip"></span></span>
             <div class="rm-viewfinder-status" aria-hidden="true">
               <span><svg viewBox="0 0 24 24" focusable="false"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/><rect x="9" y="9" width="6" height="6"/></svg>AF-S</span>
-              <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m14.31 8 5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16 3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>
+              <span class="rm-viewfinder-setting"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m14.31 8 5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16 3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg><span class="rm-focal-display">24mm · Overview</span></span>
             </div>
             <h3 id="rm-generation-title">
               <svg class="rm-axis-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -3728,34 +3879,39 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
               </svg>
               <span>Multimodal Understanding<br>for Visual Generation</span>
             </h3>
-            <div class="rm-header-controls">
-              <details class="rm-questions">
-                <summary><span>Research questions</span><span class="rm-chevron" aria-hidden="true"></span></summary>
-                <p>How can understanding improve generation data, control, and feedback?</p>
-                <p>How can we reliably measure generation capabilities and progress?</p>
-              </details>
-              <button type="button" class="rm-toggle-all" data-rm-axis="generation" aria-expanded="false" aria-controls="rm-generation-topics" hidden>Expand all <span aria-hidden="true">+</span></button>
-            </div>
-            <div class="rm-viewfinder-meter" hidden>
-              <div class="rm-focus-scale">
-                <div class="rm-focus-ticks" role="group" aria-label="Focus a research topic: Visual Generation">
-                  <button type="button" data-rm-focus="0" data-rm-active>00</button>
-                  <button type="button" data-rm-focus="1" aria-expanded="false">01</button>
-                  <button type="button" data-rm-focus="2" aria-expanded="false">02</button>
-                  <button type="button" data-rm-focus="3" aria-expanded="false">03</button>
-                  <button type="button" data-rm-focus="4" aria-expanded="false">04</button>
-                </div>
-                <input class="rm-focus-range" type="range" min="0" max="4" step="1" value="0"
-                  aria-label="Research focus: Visual Generation" aria-controls="rm-generation-topics"
-                  aria-valuetext="Overview; all topics collapsed">
+            <div class="rm-focus-target" aria-hidden="true">
+              <div class="rm-framing-stage">
+                <div class="rm-framing-window"><span class="rm-focus-brackets"></span></div>
               </div>
-              <span class="rm-focus-readout" aria-live="polite" aria-atomic="true">Overview · drag to explore</span>
             </div>
           </header>
+          <div class="rm-viewfinder-meter" hidden>
+            <div class="rm-focus-scale">
+              <div class="rm-focus-ticks" role="group" aria-label="Focus a research topic: Visual Generation">
+                <button type="button" data-rm-focus="0" data-rm-focal="24mm" data-rm-active aria-label="24mm · Overview: collapse all topics" title="24mm · Overview: collapse all topics">24<span class="rm-focus-unit">mm</span></button>
+                <button type="button" data-rm-focus="1" data-rm-focal="35mm" aria-expanded="false">35<span class="rm-focus-unit">mm</span></button>
+                <button type="button" data-rm-focus="2" data-rm-focal="50mm" aria-expanded="false">50<span class="rm-focus-unit">mm</span></button>
+                <button type="button" data-rm-focus="3" data-rm-focal="70mm" aria-expanded="false">70<span class="rm-focus-unit">mm</span></button>
+                <button type="button" data-rm-focus="4" data-rm-focal="120mm" aria-expanded="false">120<span class="rm-focus-unit">mm</span></button>
+              </div>
+              <input class="rm-focus-range" type="range" min="0" max="4" step="1" value="0"
+                aria-label="Research focus: Visual Generation" aria-controls="rm-generation-topics"
+                aria-valuetext="24mm · Overview; all topics collapsed">
+            </div>
+            <span class="rm-focus-readout" aria-live="polite" aria-atomic="true">24mm · Overview · click or drag to explore</span>
+          </div>
+          <div class="rm-header-controls">
+            <details class="rm-questions">
+              <summary><span>Research questions</span><span class="rm-chevron" aria-hidden="true"></span></summary>
+              <p>How can understanding improve generation data, control, and feedback?</p>
+              <p>How can we reliably measure generation capabilities and progress?</p>
+            </details>
+            <button type="button" class="rm-toggle-all" data-rm-axis="generation" aria-expanded="false" aria-controls="rm-generation-topics" hidden>Expand all <span aria-hidden="true">+</span></button>
+          </div>
 
           <div class="rm-topics" id="rm-generation-topics">
             <details class="rm-topic" id="rm-description">
-              <summary><span class="rm-index" aria-hidden="true">01</span><span class="rm-topic-title">Data and Supervision</span><span class="rm-chevron" aria-hidden="true"></span></summary>
+              <summary><span class="rm-index" aria-hidden="true">35<span class="rm-focus-unit">mm</span></span><span class="rm-topic-title">Data and Supervision</span><span class="rm-chevron" aria-hidden="true"></span></summary>
               <div class="rm-topic-body">
                 <p class="rm-focus">How can visual understanding become supervision that generation models can learn from?</p>
                 <ul class="rm-methods">
@@ -3775,7 +3931,7 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
             </details>
 
             <details class="rm-topic" id="rm-conditioning">
-              <summary><span class="rm-index" aria-hidden="true">02</span><span class="rm-topic-title">Controllable Generation</span><span class="rm-chevron" aria-hidden="true"></span></summary>
+              <summary><span class="rm-index" aria-hidden="true">50<span class="rm-focus-unit">mm</span></span><span class="rm-topic-title">Controllable Generation</span><span class="rm-chevron" aria-hidden="true"></span></summary>
               <div class="rm-topic-body">
                 <p class="rm-focus">How can semantic, reference, spatial, and dynamic constraints shape generated results?</p>
                 <ul class="rm-methods">
@@ -3797,7 +3953,7 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
             </details>
 
             <details class="rm-topic" id="rm-feedback">
-              <summary><span class="rm-index" aria-hidden="true">03</span><span class="rm-topic-title">Feedback and Alignment</span><span class="rm-chevron" aria-hidden="true"></span></summary>
+              <summary><span class="rm-index" aria-hidden="true">70<span class="rm-focus-unit">mm</span></span><span class="rm-topic-title">Feedback and Alignment</span><span class="rm-chevron" aria-hidden="true"></span></summary>
               <div class="rm-topic-body">
                 <p class="rm-focus">How can we identify generation errors and use these judgments to improve generation?</p>
                 <ul class="rm-methods">
@@ -3814,7 +3970,7 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
             </details>
 
             <details class="rm-topic" id="rm-task-evaluation">
-              <summary><span class="rm-index" aria-hidden="true">04</span><span class="rm-topic-title">Evaluation and Benchmarking</span><span class="rm-chevron" aria-hidden="true"></span></summary>
+              <summary><span class="rm-index" aria-hidden="true">120<span class="rm-focus-unit">mm</span></span><span class="rm-topic-title">Evaluation and Benchmarking</span><span class="rm-chevron" aria-hidden="true"></span></summary>
               <div class="rm-topic-body">
                 <p class="rm-focus">How can we reliably assess generation capabilities and determine whether improvements work?</p>
                 <ul class="rm-methods">
@@ -4637,7 +4793,13 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
     const range = meter.querySelector('.rm-focus-range');
     const ticks = [...meter.querySelectorAll('[data-rm-focus]')];
     const readout = meter.querySelector('.rm-focus-readout');
+    const viewfinder = axis.querySelector('.rm-axis-header');
+    const focalDisplay = viewfinder.querySelector('.rm-focal-display');
+    const focusBrackets = viewfinder.querySelector('.rm-focus-brackets');
+    let previousFocused = null;
+    let focusAnimation = null;
     const names = topics.map(topic => topic.querySelector('.rm-topic-title').textContent.trim());
+    const focalLengths = ticks.map(tick => tick.dataset.rmFocal || 'Overview');
     const syncControls = () => {
       const allOpen = disclosures.every(item => item.open);
       button.setAttribute('aria-expanded', String(allOpen));
@@ -4659,13 +4821,32 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
         if (index) tick.setAttribute('aria-expanded', String(active));
       });
       const count = openIndices.length;
-      const selection = focused ? `${String(focused).padStart(2, '0')} · ${names[focused - 1]}` : 'Overview';
+      focalDisplay.textContent = focused
+        ? `${focalLengths[focused]}${count > 1 ? ` +${count - 1}` : ''}`
+        : `${focalLengths[0]} · Overview`;
+      viewfinder.toggleAttribute('data-rm-focus-locked', count > 0);
+      const frameSize = 100 * parseFloat(focalLengths[0]) / parseFloat(focalLengths[focused]);
+      viewfinder.style.setProperty('--rm-frame-size', `${frameSize}%`);
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion || previousFocused !== focused) {
+        if (focusAnimation) focusAnimation.cancel();
+        focusAnimation = null;
+        if (!reduceMotion && previousFocused !== null && focused && focusBrackets.animate) {
+          focusAnimation = focusBrackets.animate([
+            { transform: 'scale(1.055, 1.12)', opacity: .25 },
+            { transform: 'scale(.99, .98)', opacity: 1, offset: .65 },
+            { transform: 'scale(1)', opacity: .9 }
+          ], { duration: 260, easing: 'ease-out' });
+        }
+      }
+      previousFocused = focused;
+      const selection = focused ? `${focalLengths[focused]} · ${names[focused - 1]}` : `${focalLengths[0]} · Overview`;
       const status = count === topics.length ? 'All topics open' : `${count} topics open`;
-      const description = count > 1 ? status : focused ? selection : 'Overview · drag to explore';
+      const description = count > 1 ? status : focused ? selection : `${selection} · click or drag to explore`;
       if (readout.textContent !== description) readout.textContent = description;
       range.setAttribute('aria-valuetext', focused
         ? `${selection}; ${count === 1 ? '1 topic open' : status}`
-        : 'Overview; all topics collapsed');
+        : `${focalLengths[0]} · Overview; all topics collapsed`);
     };
     const focusTopic = index => {
       range.value = String(index);
@@ -4674,7 +4855,7 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
     };
     ticks.forEach(tick => {
       const index = Number(tick.dataset.rmFocus);
-      const label = index ? `Focus topic ${String(index).padStart(2, '0')}: ${names[index - 1]}` : 'Overview: collapse all topics';
+      const label = index ? `Focus ${focalLengths[index]}: ${names[index - 1]}` : `${focalLengths[0]} · Overview: collapse all topics`;
       tick.setAttribute('aria-label', label);
       tick.title = label;
       tick.setAttribute('aria-controls', index ? topics[index - 1].id : button.getAttribute('aria-controls'));

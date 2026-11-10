@@ -1,13 +1,14 @@
 /* =========================================
-   1. Fonts — Hanken Grotesk (text + visuals), Google Sans Code (code), LXGW WenKai (CJK)
-   English fonts load from Google Fonts; the Chinese name keeps its local font stack.
+   1. Fonts — Hanken Grotesk (text + visuals), Google Sans Code (code), Ma Shan Zheng (CJK)
+   Web fonts load from Google Fonts; the CJK stack falls back to local Kai fonts.
    ========================================= */
 
 /* =========================================
    2. 全局变量 (Variables)
    ========================================= */
 :root {
-  --font-sans: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-cjk: 'Ma Shan Zheng', 'Kaiti SC', 'STKaiti', 'KaiTi', 'BiauKai', serif;
+  --font-sans: 'Hanken Grotesk', var(--font-cjk), system-ui, -apple-system, sans-serif;
   --font-code: 'Google Sans Code', ui-monospace, SFMono-Regular, Menlo, monospace;
   /* Apple-minimal with subtle Monet-inspired palette */
   --primary-color: #5f7fa3;
@@ -366,7 +367,7 @@ h2.section-title {
 }
 
 .name-cn-center {
-  font-family: "LXGW WenKai", "KaiTi", "STKaiti", serif;
+  font-family: var(--font-cjk);
   font-size: 1.3rem;
   font-weight: 400;
   color: var(--text-muted);

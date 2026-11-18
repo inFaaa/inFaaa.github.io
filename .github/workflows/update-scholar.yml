@@ -1,9 +1,7 @@
-name: Update Google Scholar citations
+name: Update Google Scholar citations (manual)
 
 on:
-  schedule:
-    - cron: '23 8 * * *'
-      timezone: America/Los_Angeles
+  # Google Scholar rejects GitHub-hosted requests. The Mac LaunchAgent runs daily.
   workflow_dispatch:
 
 permissions: {}

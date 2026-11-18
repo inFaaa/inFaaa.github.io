@@ -1,7 +1,7 @@
 name: Update Google Scholar citations (manual)
 
 on:
-  # Google Scholar rejects GitHub-hosted requests. The Mac LaunchAgent runs daily.
+  # Google Scholar can block GitHub-hosted requests. The Mac LaunchAgent runs daily.
   workflow_dispatch:
 
 permissions: {}

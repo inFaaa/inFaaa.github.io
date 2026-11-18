@@ -24,9 +24,9 @@ jobs:
           ref: ${{ github.event.repository.default_branch }}
       - name: Test the citation parser
         run: python3 -m unittest discover -s tests -p 'test_update_scholar.py'
-      - name: Read the public Google Scholar profile
-        run: python3 scripts/update_scholar.py
-      - name: Save the successful result
+      - name: Read Google Scholar or validate a fresh cached result
+        run: python3 scripts/update_scholar.py --use-fresh-cache-if-blocked
+      - name: Save a newly fetched result
         env:
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         run: |

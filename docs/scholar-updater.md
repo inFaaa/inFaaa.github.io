@@ -5,6 +5,15 @@ per-user Mac LaunchAgent fetches the public Scholar profile and publishes only
 that JSON file. GitHub-hosted requests received HTTP 403, so the GitHub Actions
 workflow is manual-only for future diagnostics.
 
+The manual workflow attempts a fresh fetch. If Google returns HTTP 403 or 429,
+it accepts the existing JSON only after validating the profile identity, count,
+and a timestamp no more than 48 hours old and not in the future. Its warning and
+run summary explicitly report **“Fetch blocked; validated cached result”** with
+the cached count and original fetch time. It does not rewrite the cache or
+claim that a new fetch succeeded. Missing, invalid, or older cached data and
+all other fetch/parser errors still fail the workflow. The Mac's daily job
+does not enable this fallback: its fetch must succeed before publishing data.
+
 The job runs at **08:23 in the Mac's local time zone** (currently
 `America/Los_Angeles`) and when the agent loads at login. The Mac must be awake
 and online with this user logged in. A calendar run missed during sleep runs

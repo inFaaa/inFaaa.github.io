@@ -39,7 +39,14 @@
         year: 'numeric', month: 'short', day: 'numeric',
         hour: '2-digit', minute: '2-digit', timeZone: 'UTC', timeZoneName: 'short',
       }).format(updatedAt);
-      badge.textContent = count + ' Google Scholar citations';
+      const citationLabel = count + ' Google Scholar citations';
+      const countElement = badge.querySelector('.scholar-citation-count');
+      if (countElement) {
+        countElement.textContent = count;
+      } else {
+        badge.textContent = citationLabel;
+      }
+      badge.setAttribute('aria-label', citationLabel);
       badge.title = 'Google Scholar · Last updated ' + updatedLabel;
       badge.dataset.updatedAt = stats.updated_at;
     } catch {

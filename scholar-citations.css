@@ -1,0 +1,30 @@
+.research-heading-meta a.scholar-citations {
+  display: inline-flex;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid #55718f;
+  border-radius: 4px;
+  color: #fff;
+  font: 500 11px/1.5 var(--font-sans, sans-serif);
+  text-decoration: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.scholar-citation-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 7px;
+  background: #34475e;
+}
+.scholar-citation-icon { width: 14px; height: 16px; flex: 0 0 14px; }
+.scholar-citation-count {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  background: #456b91;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+.research-heading-meta a.scholar-citations:hover { filter: brightness(1.12); }
+.research-heading-meta a.scholar-citations:focus-visible { outline: 2px solid var(--primary-color, #6098ce); outline-offset: 3px; }

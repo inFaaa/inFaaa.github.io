@@ -13,9 +13,30 @@ const validStats = {
 };
 
 async function render({ hostname = 'infaaa.github.io', stats = validStats,
-  ok = true, networkError = false, absent = false } = {}) {
+  ok = true, networkError = false, absent = false, compact = false } = {}) {
+  const icon = { tagName: 'svg', textContent: '' };
+  const label = { textContent: 'Cited by' };
+  const countElement = { className: 'scholar-citation-count', textContent: '3,533' };
   const badge = {
-    textContent: '3,533 Google Scholar citations',
+    childNodes: compact ? [icon, label, countElement] : [],
+    fallbackText: '3,533 Google Scholar citations',
+    get textContent() {
+      return this.childNodes.length
+        ? this.childNodes.map((node) => node.textContent).join(' ')
+        : this.fallbackText;
+    },
+    set textContent(value) {
+      this.childNodes = [];
+      this.fallbackText = value;
+    },
+    querySelector(selector) {
+      return selector === '.scholar-citation-count'
+        ? this.childNodes.find((node) => node.className === 'scholar-citation-count') || null
+        : null;
+    },
+    attributes: { 'aria-label': '3,533 Google Scholar citations' },
+    setAttribute(name, value) { this.attributes[name] = value; },
+    getAttribute(name) { return this.attributes[name]; },
     title: 'Original update date',
     dataset: { updatedAt: '2026-11-18T21:03:28Z' },
   };
@@ -34,18 +55,37 @@ async function render({ hostname = 'infaaa.github.io', stats = validStats,
     },
   });
   await new Promise(setImmediate);
-  return { badge, requests };
+  return { badge, requests, icon, label, countElement };
 }
 
 test('updates count and timestamp from raw main without cached credentials', async () => {
   const { badge, requests } = await render();
   assert.equal(badge.textContent, '3,600 Google Scholar citations');
+  assert.equal(badge.getAttribute('aria-label'), '3,600 Google Scholar citations');
   assert.match(badge.title, /Last updated Nov 19, 2026/);
   assert.equal(badge.dataset.updatedAt, validStats.updated_at);
   assert.equal(requests[0].url,
     'https://raw.githubusercontent.com/inFaaa/inFaaa.github.io/main/data/scholar-stats.json');
   assert.equal(requests[0].options.cache, 'no-cache');
   assert.equal(requests[0].options.credentials, 'omit');
+});
+
+test('updates only the compact badge count and preserves its icon and label', async () => {
+  const { badge, icon, label, countElement } = await render({ compact: true });
+  assert.equal(countElement.textContent, '3,600');
+  assert.deepEqual(badge.childNodes, [icon, label, countElement]);
+  assert.equal(icon.tagName, 'svg');
+  assert.equal(label.textContent, 'Cited by');
+  assert.equal(badge.getAttribute('aria-label'), '3,600 Google Scholar citations');
+  assert.match(badge.title, /Last updated Nov 19, 2026/);
+});
+
+test('keeps the compact badge intact when its request fails', async () => {
+  const { badge, icon, label, countElement } = await render({ compact: true, networkError: true });
+  assert.equal(countElement.textContent, '3,533');
+  assert.deepEqual(badge.childNodes, [icon, label, countElement]);
+  assert.equal(badge.getAttribute('aria-label'), '3,533 Google Scholar citations');
+  assert.equal(badge.title, 'Original update date');
 });
 
 test('localhost preview uses local JSON', async () => {

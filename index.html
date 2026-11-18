@@ -3540,6 +3540,9 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
 }
 </style>
 
+<link rel="stylesheet" href="recent-focus.css">
+<script defer src="recent-focus-cathedral.js"></script>
+<script defer src="recent-focus-pond.js"></script>
 <link rel="stylesheet" href="research-viewfinder.css">
 <script src="research-viewfinder.js" defer></script>
 <link rel="stylesheet" href="scholar-citations.css">
@@ -3643,17 +3646,99 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
           <p class="research-directions-label"><span aria-hidden="true">🔥</span> Recent Focus</p>
           <article class="research-direction">
             <details class="research-direction-disclosure">
-              <summary role="heading" aria-level="3"><svg class="research-direction-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m7 7-5 5 5 5m10-10 5 5-5 5M14 4l-4 16"/></svg>Visual Coding</summary>
-              <p class="research-direction-note">Visual coding offers structured, editable representations, while diffusion adds flexible generation. Together, they may support controllable world models.</p>
+              <summary aria-labelledby="rf-visual-title" aria-describedby="rf-visual-intro rf-visual-motion">
+                <span class="focus-heading" id="rf-visual-title"><svg class="research-direction-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m7 7-5 5 5 5m10-10 5 5-5 5M14 4l-4 16"/></svg>Visual Coding<span class="focus-marker" aria-hidden="true"></span></span>
+                <span class="focus-intro" id="rf-visual-intro">Exploring visual coding and diffusion for world models through Monet’s Rouen Cathedral.</span>
+                <span class="sr-only" id="rf-visual-motion">Code traces the arches, builds the rose window one petal at a time, and adds brushstrokes. A moving divider reveals the stone façade.</span>
+                <span class="focus-demo" aria-hidden="true">
+                  <svg class="rf-vc-scene" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 86" aria-hidden="true" focusable="false">
+                    <defs>
+                      <clipPath id="rf-vc-cathedral-clip" clipPathUnits="userSpaceOnUse">
+                        <rect class="rf-vc-divider" x="-340" width="340" height="86"/>
+                      </clipPath>
+                      <pattern id="rf-cathedral-grid" width="16" height="16" patternUnits="userSpaceOnUse">
+                        <path d="M16 0H0V16" fill="none" stroke="#7896a1" stroke-width=".5" opacity=".3"/>
+                      </pattern>
+                    </defs>
+                    <image href="image/optimized/visual-coding-cathedral-real.webp" width="320" height="86"/>
+                    <g clip-path="url(#rf-vc-cathedral-clip)">
+                      <g class="rf-build-paper">
+                        <rect width="320" height="86" fill="#1d303c"/>
+                        <rect width="320" height="86" fill="url(#rf-cathedral-grid)"/>
+                      </g>
+                      <g id="rf-cathedral-paint"></g>
+                      <g id="rf-cathedral-guides" fill="none" stroke-linecap="round" stroke-linejoin="round"></g>
+                    </g>
+                    <path class="rf-vc-divider" d="M0 0v86" stroke="#fff4d6" stroke-width=".85" opacity=".95"/>
+                    <g class="rf-code-line" style="--at: 0s; --duration: 1.1s">
+                      <rect x="4" y="70" width="119" height="14" rx="2"/>
+                      <text x="8" y="80">drawPortals(portals)</text>
+                    </g>
+                    <g class="rf-code-line" style="--at: 1.1s; --duration: 1.38s">
+                      <rect x="4" y="70" width="109" height="14" rx="2"/>
+                      <text x="8" y="80">drawRoseWindow(16)</text>
+                    </g>
+                    <g class="rf-code-line" style="--at: 2.48s; --duration: 1.25s">
+                      <rect x="4" y="70" width="78" height="14" rx="2"/>
+                      <text x="8" y="80">paintLayer()</text>
+                    </g>
+                  </svg>
+                </span>
+              </summary>
+              <p class="research-direction-note">Code draws the rose window and pointed arches in short brushstrokes. The divider reveals a generated view of the same façade in carved stone. <a href="recent-focus-cathedral.js">View the drawing code</a></p>
             </details>
-            <p>Exploring hybrid visual coding + diffusion as a pathway toward world models.</p>
           </article>
           <article class="research-direction">
             <details class="research-direction-disclosure">
-              <summary role="heading" aria-level="3"><svg class="research-direction-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 11a8 8 0 0 0-14-4l-3 3m0-6v6h6M4 13a8 8 0 0 0 14 4l3-3m0 6v-6h-6"/><circle cx="12" cy="12" r="2"/></svg>Helmholtz Agent</summary>
-              <p class="research-direction-note">The name connects Helmholtz free energy with Hinton et al.'s wake-sleep algorithm, which we adapt into an agentic learning loop over real and imagined experience.</p>
+              <summary aria-labelledby="rf-agent-title" aria-describedby="rf-agent-intro rf-agent-demo-description">
+                <span class="focus-heading" id="rf-agent-title"><svg class="research-direction-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 11a8 8 0 0 0-14-4l-3 3m0-6v6h6M4 13a8 8 0 0 0 14 4l3-3m0 6v-6h-6"/><circle cx="12" cy="12" r="2"/></svg>Helmholtz Agent<span class="focus-marker" aria-hidden="true"></span></span>
+                <span class="focus-intro" id="rf-agent-intro">Using generative models to construct environments toward Multimodal RSI.</span>
+                <span class="sr-only" id="rf-agent-demo-description">The sun marks waking experience. The moon marks a dream in which the agent tries a detour around lily pads. When a similar patch appears on its return trip, it uses the detour to reach the other bank.</span>
+                <span class="focus-demo" aria-hidden="true">
+                  <svg class="rf-ha-scene" xmlns="http://www.w3.org/2000/svg" viewBox="0 10 320 86" focusable="false">
+                    <defs>
+                      <path id="rf-ha-direct" d="M34 55H286" pathLength="1" fill="none"/>
+                      <path id="rf-ha-dream-detour" d="M286 55H210C184 55 186 81 163 81H137C112 81 112 55 89 55H34" pathLength="1" fill="none"/>
+                      <path id="rf-ha-real-detour" d="M286 55H239C216 55 217 85 195 85H169C146 85 143 55 119 55H34" pathLength="1" fill="none"/>
+                      <mask id="rf-ha-rehearsal" maskUnits="userSpaceOnUse" x="0" y="10" width="320" height="86">
+                        <use href="#rf-ha-dream-detour" id="rf-ha-dream-ink" stroke="white" stroke-width="4" stroke-dasharray="1 1" stroke-dashoffset="0"/>
+                      </mask>
+                    </defs>
+                    <image href="image/optimized/helmholtz-pond-sleep.webp" width="320" height="104" preserveAspectRatio="xMidYMid slice"/>
+                    <rect width="320" height="104" fill="#122638" opacity=".2"/>
+                    <use href="#rf-ha-direct" stroke="#f6f3cf" stroke-width="1" stroke-dasharray=".009 .018" opacity=".6"/>
+                    <use href="#rf-ha-direct" id="rf-ha-outbound-ink" class="rf-ha-wake-trail" stroke-dashoffset="1"/>
+                    <use href="#rf-ha-dream-detour" id="rf-ha-dream-trail" mask="url(#rf-ha-rehearsal)" fill="none" stroke="#ffd494" stroke-width="2.1" stroke-linecap="round" stroke-dasharray=".008 .016" opacity=".35"/>
+                    <use href="#rf-ha-real-detour" id="rf-ha-return-ink" class="rf-ha-wake-trail" stroke-dashoffset="0"/>
+                    <g id="rf-ha-lilies" transform="translate(185 55) rotate(-14)">
+                      <image href="image/optimized/helmholtz-water-lilies.webp" x="-20" y="-18" width="40" height="36"/>
+                    </g>
+                    <g fill="#23453f" stroke="#d6f2d9" stroke-width="1.25" opacity=".9">
+                      <circle cx="34" cy="55" r="3.6"/><circle cx="286" cy="55" r="3.6"/>
+                    </g>
+                    <g id="rf-ha-ghost" transform="translate(34 55)" opacity="0">
+                      <circle r="3.3" fill="#ffda9e" stroke="#6c513e" stroke-width=".9"/>
+                    </g>
+                    <g id="rf-ha-boat" transform="translate(34 55) rotate(180)" stroke-linejoin="round">
+                      <path d="M-5 -2.6Q1 -3.6 6 0Q1 3.6 -5 2.6Z" fill="#e4faef" stroke="#275757" stroke-width="1"/>
+                      <path d="M-2.7 -1.2 2.2 0 -2.7 1.2Z" fill="#4c7e7b"/>
+                    </g>
+                    <g transform="translate(17 27)">
+                      <circle r="10" fill="#172c38" fill-opacity=".88"/>
+                      <g id="rf-ha-sun" fill="none" stroke="#ffe0a0" stroke-width="1.25" stroke-linecap="round">
+                        <circle r="3.1" fill="#ffe0a0" stroke="none"/>
+                        <path d="M0-6.6v1.3M0 5.3v1.3M-6.6 0h1.3M5.3 0h1.3M-4.7-4.7l.9.9m7.6 7.6.9.9m0-9.4-.9.9m-7.6 7.6-.9.9"/>
+                      </g>
+                      <g id="rf-ha-moon" opacity="0">
+                        <path d="M3.6-5.5A6.2 6.2 0 1 0 6 3.8 5.4 5.4 0 0 1 3.6-5.5Z" fill="#e9dcff"/>
+                        <circle cx="5.4" cy="-4.9" r=".85" fill="#fff0cb"/>
+                      </g>
+                    </g>
+                  </svg>
+                </span>
+              </summary>
+              <p class="research-direction-note">The name connects Helmholtz free energy with <a href="https://www.cs.toronto.edu/~hinton/absps/ws.htm">Hinton et al.'s wake-sleep algorithm</a>, which we adapt into an agentic learning loop over real and imagined experience.</p>
             </details>
-            <p>Using generative models to construct environments toward Multimodal RSI.</p>
           </article>
         </section>
 
@@ -5351,6 +5436,33 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
 })();
 </script>
 
+<script>
+(() => {
+  const scene = document.querySelector('.rf-vc-scene');
+  const details = scene.closest('details');
+  let observer;
+  function play() {
+    observer?.disconnect();
+    if (scene.classList.contains('rf-vc-playing')) {
+      for (const animation of scene.getAnimations({ subtree: true })) {
+        animation.currentTime = 0;
+        animation.play();
+      }
+    } else {
+      scene.classList.add('rf-vc-playing');
+    }
+  }
+  if ('IntersectionObserver' in window) {
+    observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) play();
+    }, { threshold: 0.5 });
+    observer.observe(scene);
+  } else {
+    play();
+  }
+  details.addEventListener('toggle', () => { if (details.open) play(); });
+})();
+</script>
 </body>
 
 </html>

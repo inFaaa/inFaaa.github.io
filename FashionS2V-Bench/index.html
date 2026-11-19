@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2ec">
+  <meta name="description" content="FashionS2V-Bench: a benchmark for reference image to video generation in fashion ecommerce, with a leaderboard of 51 video models.">
+  <title>FashionS2V-Bench: Reference Image to Video for Fashion Ecommerce</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/common.js" defer></script>
+  <script src="assets/js/cases.js" defer></script>
+  <script src="assets/js/leaderboard.js" defer></script>
+</head>
+<body class="cover-page">
+<header class="site-header">
+  <a class="brand" href="./">FashionS2V<small>Bench</small><span class="brand-dot">.</span></a>
+  <nav aria-label="Main navigation">
+    <a href="#overview">Overview</a><a href="#evaluation">Evaluation</a><a href="#leaderboard">Leaderboard</a>
+    <a href="#examples">Examples</a><a href="benchmark.html">Benchmark</a><a href="#citation">Citation</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+</header>
+
+<main>
+<section class="cover" id="top" aria-labelledby="cover-title">
+  <div class="cover-perspective"><div id="wall" class="wall"></div></div>
+  <div class="cover-shade" aria-hidden="true"></div><div class="cover-grain" aria-hidden="true"></div>
+  <div class="cover-content">
+    <p class="cover-kicker">REFERENCE IMAGE TO VIDEO · FASHION ECOMMERCE</p>
+    <h1 id="cover-title">FashionS2V<span>-</span>Bench</h1>
+    <p class="cover-tagline">Can a video model keep the product true to its photo while it sells it?<br>A benchmark and leaderboard for reference image to video generation in fashion ecommerce.</p>
+    <div class="cover-buttons">
+      <a class="btn" href="#" aria-label="Paper, link coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M8 13h8M8 17h6"/></svg>Paper <small>soon</small></a>
+      <a class="btn" href="#" aria-label="Code, link coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg>Code <small>soon</small></a>
+      <a class="btn" href="#leaderboard"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Leaderboard</a>
+      <a class="btn ghost" href="benchmark.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Benchmark</a>
+    </div>
+    <div class="cover-links"><a href="#overview">What it tests &#8595;</a><a href="#examples">See model outputs &#8595;</a></div>
+  </div>
+  <div class="cover-bottom"><span>110 CORE CASES · 51 MODELS<br>CASE BY CASE WIN RATE</span><a href="#overview">SCROLL TO EXPLORE &#8595;</a><button id="motion-toggle" aria-pressed="true">PAUSE MOTION</button></div>
+</section>
+
+<section class="section" id="overview">
+  <div class="section-top reveal"><span class="eyebrow">01 / OVERVIEW</span></div>
+  <h2 class="reveal">From one product photo to a video that still shows the same product</h2>
+  <p class="lead reveal">Fashion sellers want short product videos made from the photos they already have. FashionS2V-Bench gives each model one or two white background product images and a written description of the video, and then checks the result the way a buyer would: <strong>is it the same product, is anything visibly broken, does the video follow the brief, and does the product move as asked.</strong> Every model receives the same references and the same description.</p>
+  <div class="cards reveal">
+    <article class="card"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16l-1.5 12a2 2 0 0 1-2 1.8h-9a2 2 0 0 1-2-1.8Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></span><h3>Real catalog products</h3><p>90 products across clothing, footwear, accessories and jewelry, shown on plain white catalog photos. 30 cases ask for two products in one video, so the model must keep each one correct and in its place.</p></article>
+    <article class="card"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h3M8 17h6"/></svg></span><h3>Briefs that sellers write</h3><p>Five prompt types cover cinematic selling shots, simulated live streams, side by side comparisons, try on and plain real seller style clips. Combined with the categories they form 11 prompt families of 10 cases each.</p></article>
+    <article class="card"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3>Measured, then grouped honestly</h3><p>Four measured dimensions are averaged into a Score per video. The headline Win rate then compares models case by case, and models whose difference is not statistically significant share a tier.</p></article>
+  </div>
+  <div class="stats reveal">
+    <div><strong>110</strong><span>Core cases</span></div>
+    <div><strong>4</strong><span>Product categories</span></div>
+    <div><strong>11</strong><span>Prompt families</span></div>
+    <div><strong>51</strong><span>Models evaluated</span></div>
+  </div>
+</section>
+
+<section class="section" id="evaluation">
+  <div class="section-top reveal"><span class="eyebrow">02 / EVALUATION</span></div>
+  <div class="section-heading reveal"><h2>Four dimensions, two numbers</h2><p>Each generated video gets four scores between 0 and 1. Their mean is the video’s Score. The headline Win rate compares that Score with every other model on the same case.</p></div>
+  <div class="cards four reveal">
+    <article class="card"><span class="key">ID · I6</span><h3>Product identity</h3><p>The product is cut out of the video frames and compared with the reference image attribute by attribute, for example color and shape. The score is the share of attributes judged the same. On two product cases a second check catches products that were swapped.</p></article>
+    <article class="card"><span class="key">DEF</span><h3>No major defect</h3><p>A vision language model looks for visible defects such as a garbled logo, a floating product, broken hardware, a distorted shape or a product missing from a comparison. A clean video scores 1, a video whose worst defect is minor scores 0.5 and a video with a major defect scores 0.</p></article>
+    <article class="card"><span class="key">CTX</span><h3>Scene and action</h3><p>Does the video show the requested scene, people and actions from the description? On two product cases the composition, with both products present and placed as asked, is part of this score.</p></article>
+    <article class="card"><span class="key">MOT</span><h3>Product motion</h3><p>A motion gate checks that the product actually moves, turns or is handled as the brief asks, instead of a frozen frame. It counts only on the 90 cases whose prompt asks for product motion and is left out on the other 20.</p></article>
+  </div>
+  <div class="tier-explain reveal">
+    <div>
+      <h3>Win rate, raw score and tiers</h3>
+      <p><strong>Win rate</strong> (headline, 0 to 100) is the share of the other models a model beats on the same case, with ties counting half, averaged over its cases, so 50 is the field average.</p>
+      <p style="margin-top:10px"><strong>Score</strong> (0 to 100) is the raw v6 score, the mean of the four dimensions over the model’s videos, shown next to the Win rate.</p>
+      <p style="margin-top:10px"><strong>Tiers.</strong> Models are sorted by v6. A model opens a new tier when its paired difference to the current tier leader, tested on the cases both completed with a Wilcoxon signed rank test, stays significant after Holm correction at 0.05. Inside a tier the order carries no meaning. The lowest tier merges the two lowest statistical tiers. The pairwise Elo from a Gemini based video arena is shown for reference only and is not part of the score.</p>
+    </div>
+    <div class="tier-strip" id="tier-strip" aria-label="Tier sizes">
+      <div style="--n:25;background:var(--t1)"><b>25</b>Tier 1</div>
+      <div style="--n:10;background:var(--t2)"><b>10</b>Tier 2</div>
+      <div style="--n:5;background:var(--t3)"><b>5</b>Tier 3</div>
+      <div style="--n:7;background:var(--t4)"><b>7</b>Tier 4</div>
+      <div class="light" style="--n:4;background:var(--t5)"><b>4</b>Tier 5</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="leaderboard">
+  <div class="section-top reveal"><span class="eyebrow">03 / LEADERBOARD</span><span class="mono" style="font-size:11px;color:var(--muted)">v6 · LOCKED RELEASE</span></div>
+  <div class="section-heading reveal"><h2>FashionS2V-Bench leaderboard</h2><p>51 models on the 110 Core cases, with the headline Win rate and the Score side by side. Switch to a category, prompt type or case structure to compare models on that slice only. Hover any cell for the exact value.</p></div>
+  <div class="board-controls">
+    <div class="control-row"><span class="control-label">BOARD</span><div class="tabs" id="slice-groups" role="group" aria-label="Board"></div></div>
+    <div class="tabs sub" id="slice-tabs" role="group" aria-label="Slice" hidden></div>
+    <div class="control-row">
+      <span class="control-label">MODELS</span>
+      <div class="seg" id="access-seg" role="group" aria-label="Access"><button data-a="all" aria-pressed="true">All</button><button data-a="closed" aria-pressed="false">Closed</button><button data-a="open" aria-pressed="false">Open</button></div>
+      <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="board-search" type="search" placeholder="Search model or vendor" aria-label="Search model or vendor"></label>
+      <span class="board-meta" id="board-meta"></span>
+    </div>
+  </div>
+  <div class="board-wrap">
+    <div class="board-scroll" role="region" aria-label="Leaderboard table" tabindex="0">
+      <table class="board" id="board">
+        <thead><tr>
+          <th class="rank c" scope="col">#</th>
+          <th class="model l sortable" scope="col" data-k="name">Model <span class="arrow">↓</span></th>
+          <th class="l sortable" scope="col" data-k="date" data-tip="Release year and month, where known">Released <span class="arrow">↓</span></th>
+          <th class="c" scope="col">Access</th>
+          <th class="c sortable" scope="col" data-k="tier" data-tip="Statistically tied models share a tier"><span id="tier-col-label">Tier</span> <span class="arrow">↓</span></th>
+          <th class="sortable" scope="col" data-k="win" data-tip="Share of the other models beaten on the same case, ties count half, averaged over the model’s cases. 50 is the field average"><span id="score-col-label">Win rate</span> <span class="arrow">↓</span><small>0 to 100</small></th>
+          <th class="sortable" scope="col" data-k="v6" data-tip="Score: the raw v6 score, mean of the four dimensions over the Core videos">Score <span class="arrow">↓</span><small>0 to 100</small></th>
+          <th class="c sortable" scope="col" data-k="I6" data-tip="Share of product attributes judged the same as in the reference">Identity <span class="arrow">↓</span><small>ID</small></th>
+          <th class="c sortable" scope="col" data-k="D" data-tip="1 clean, 0.5 minor defect, 0 major defect">No defect <span class="arrow">↓</span><small>DEF</small></th>
+          <th class="c sortable" scope="col" data-k="CTX" data-tip="Scene and action adherence, composition on two product cases">Scene <span class="arrow">↓</span><small>CTX</small></th>
+          <th class="c sortable" scope="col" data-k="MOT" data-tip="Product moves as the prompt asks">Motion <span class="arrow">↓</span><small>MOT</small></th>
+          <th class="sortable" scope="col" data-k="n" data-tip="Number of scored videos">n <span class="arrow">↓</span></th>
+          <th class="sortable" scope="col" data-k="elo" data-tip="Gemini pairwise arena Elo, reference only">Arena Elo <span class="arrow">↓</span><small>reference</small></th>
+        </tr></thead>
+        <tbody id="board-body"><tr class="empty-row"><td colspan="13">Loading the leaderboard</td></tr></tbody>
+      </table>
+    </div>
+    <div class="board-foot">
+      <span class="legend">Tier <span class="tiers" id="tier-swatches"></span> 1 to 5</span>
+      <span class="legend">Dimension score 40 <span class="ramp" id="heat-ramp"></span> 100</span>
+      <span>All values on a 0 to 100 scale. Win rate bars run from 0 to 100. OPEN marks models with public weights.</span>
+    </div>
+  </div>
+  <p class="note" id="slice-note" hidden>Slice boards compute the Win rate and the Score over the slice’s cases only, 10 to 44 cases, so small gaps are noisy. The tier badge always shows the overall tier.</p>
+</section>
+
+<section class="section" id="profiles">
+  <div class="section-top reveal"><span class="eyebrow">04 / PROFILES</span></div>
+  <div class="section-heading reveal"><h2>Where each model gains and loses</h2><p>Pick up to four models. Each panel shows one model on the four dimensions (scale 40 to 100), with the median of all 51 models in gray for reference.</p></div>
+  <div class="picker"><select id="profile-select" aria-label="Add a model to compare"></select><div class="picker" id="profile-chips"></div></div>
+  <div class="multiples" id="multiples"></div>
+</section>
+
+<section class="section" id="findings">
+  <div class="section-top reveal"><span class="eyebrow">05 / KEY FINDINGS</span></div>
+  <h2 class="reveal" style="margin-bottom:24px">What the board shows</h2>
+  <ul class="findings reveal">
+    <li><b class="big">25</b><p><strong>The top tier is crowded.</strong> 25 of 51 models are statistically tied with the leader. Tier sizes are 25, 10, 5, 7 and 4.</p></li>
+    <li><b class="big">T3</b><p><strong>Open source models trail.</strong> Every open source model sits in tier 3 or below. The best of them, VACE 14B, has a Win rate of 34.6 against 67.4 for the leader.</p></li>
+    <li><b class="big">0.794</b><p><strong>The score separates known groups.</strong> A random video from a commercial model outscores a random video from an open source model with probability 0.794 (AUROC).</p></li>
+    <li><b class="big">82.1%</b><p><strong>It agrees with pairwise judgments.</strong> On 304 held out video pairs judged in the Gemini arena, v6 picks the same winner in 82.1 percent of pairs, against 74.0 percent for the earlier v3 score.</p></li>
+    <li><b class="big">67.4</b><p><strong>Gemini Omni 1.2 Flash leads.</strong> It has the highest Win rate (67.4) and Score (95.2), and the highest no major defect score of all 51 models (95.5).</p></li>
+    <li><b class="big">20</b><p><strong>Motion is judged only where asked.</strong> 20 of the 110 Core cases ask for no product motion, so the motion gate is left out of their score.</p></li>
+  </ul>
+</section>
+
+<section class="section" id="examples">
+  <div class="section-top reveal"><span class="eyebrow">06 / EXAMPLES</span><a class="text-link" href="benchmark.html#cases">Browse by category and prompt type <span>&#8599;</span></a></div>
+  <div class="section-heading reveal"><h2>Same references, same brief, four models</h2><p>One case from each prompt family. Each clip shows its Win rate on that case, its Score and the four dimension scores. Clips are cut to 5 seconds and downscaled for the web.</p></div>
+  <div id="examples-viewer"></div>
+</section>
+
+<section class="section" id="citation">
+  <div class="section-top reveal"><span class="eyebrow">07 / CITATION</span><button class="cite-copy" type="button" data-copy-cite>COPY BIBTEX</button></div>
+  <pre class="cite reveal"><code>@misc{fashions2vbench2026,
+  title  = {FashionS2V-Bench: Evaluating Reference Image to Video Generation for Fashion Ecommerce},
+  author = {Anonymous},
+  year   = {2026},
+  note   = {Placeholder entry, the paper link will be added here}
+}</code></pre>
+  <p class="cite-status" aria-live="polite"></p>
+</section>
+</main>
+
+<footer>
+  <a class="brand" href="./">FashionS2V<small>Bench</small><span class="brand-dot">.</span></a>
+  <p>© 2026 The FashionS2V-Bench authors. Scores come from the locked v6 release of the leaderboard.</p>
+  <a class="text-link" href="benchmark.html">Explore the benchmark <span>&#8599;</span></a>
+</footer>
+<noscript><p class="note" style="padding:20px">Enable JavaScript to load the interactive leaderboard and the case viewer.</p></noscript>
+</body>
+</html>

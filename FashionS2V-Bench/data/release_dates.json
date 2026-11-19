@@ -1,0 +1,413 @@
+{
+ "note": "Release month per model (YYYY-MM, or YYYY when no month is known). Not verified. Edit freely, null hides the date.",
+ "models": [
+  {
+   "tag": "omni12flash",
+   "name": "Gemini Omni 1.2 Flash",
+   "date": "2026-11",
+   "confidence": "medium",
+   "source": "first public availability, approximate",
+   "verified": false
+  },
+  {
+   "tag": "bach10pro",
+   "name": "Bach 1.0 Pro",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "seedance25flash",
+   "name": "Seedance 2.5 Flash",
+   "date": "2026-11",
+   "confidence": "high",
+   "source": "vendor model documentation: released November 12, 2026",
+   "verified": false
+  },
+  {
+   "tag": "seedance20mini",
+   "name": "Seedance 2.0 Mini",
+   "date": "2026",
+   "confidence": "low",
+   "source": "vendor model documentation: mid 2026, no month stated",
+   "verified": false
+  },
+  {
+   "tag": "seedance20fast",
+   "name": "Seedance 2.0 Fast",
+   "date": "2026-03",
+   "confidence": "medium",
+   "source": "vendor model documentation: available on CapCut and Dreamina as of March 2026",
+   "verified": false
+  },
+  {
+   "tag": "wan30",
+   "name": "Wan 3.0",
+   "date": "2026-08",
+   "confidence": "high",
+   "source": "vendor announcement",
+   "verified": false
+  },
+  {
+   "tag": "vega15lite",
+   "name": "Vega 1.5 Lite",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "h3",
+   "name": "MiniMax H3",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "vega10pro",
+   "name": "Vega 1.0 Pro",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "vega10profast",
+   "name": "Vega 1.0 Pro Fast",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "viduq4preview",
+   "name": "Vidu Q4 Preview",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "vega10lite",
+   "name": "Vega 1.0 Lite",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "seedance25",
+   "name": "Seedance 2.5",
+   "date": "2026-06",
+   "confidence": "high",
+   "source": "vendor model documentation: unveiled June 23, 2026",
+   "verified": false
+  },
+  {
+   "tag": "grok15",
+   "name": "Grok Imagine 1.5",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "seedance20",
+   "name": "Seedance 2.0",
+   "date": "2026-02",
+   "confidence": "medium",
+   "source": "first public availability, approximate",
+   "verified": false
+  },
+  {
+   "tag": "kling40flash",
+   "name": "Kling 4.0 Flash",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "vega10promini",
+   "name": "Vega 1.0 Pro Mini",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "h3max",
+   "name": "MiniMax H3 Max",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "h3fast",
+   "name": "MiniMax H3 Fast",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "vega15pro",
+   "name": "Vega 1.5 Pro",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "omni11flash",
+   "name": "Gemini Omni 1.1 Flash",
+   "date": "2026-08",
+   "confidence": "medium",
+   "source": "first public availability, approximate",
+   "verified": false
+  },
+  {
+   "tag": "kling40",
+   "name": "Kling 4.0",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "omniflash",
+   "name": "Gemini Omni Flash",
+   "date": "2026-05",
+   "confidence": "high",
+   "source": "vendor announcement",
+   "verified": false
+  },
+  {
+   "tag": "grok10",
+   "name": "Grok Imagine 1.0",
+   "date": "2026-02",
+   "confidence": "high",
+   "source": "vendor announcement",
+   "verified": false
+  },
+  {
+   "tag": "wan30prime",
+   "name": "Wan 3.0 Prime",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "viduq2",
+   "name": "Vidu Q2",
+   "date": "2025-09",
+   "confidence": "medium",
+   "source": "approximate, not verified",
+   "verified": false
+  },
+  {
+   "tag": "happyhorse11",
+   "name": "HappyHorse 1.1",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "klingo3std",
+   "name": "Kling O3 Std",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "viduq3mix",
+   "name": "Vidu Q3 Mix",
+   "date": "2026-01",
+   "confidence": "medium",
+   "source": "vendor model documentation: same family documentation as Vidu Q3, released January 30, 2026",
+   "verified": false
+  },
+  {
+   "tag": "viduq3",
+   "name": "Vidu Q3",
+   "date": "2026-01",
+   "confidence": "high",
+   "source": "vendor model documentation: Vidu Q3 released January 30, 2026",
+   "verified": false
+  },
+  {
+   "tag": "happyhorse10",
+   "name": "HappyHorse 1.0",
+   "date": "2026-05",
+   "confidence": "medium",
+   "source": "first public availability, approximate",
+   "verified": false
+  },
+  {
+   "tag": "klingo3pro",
+   "name": "Kling O3 Pro",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "viduq2pro",
+   "name": "Vidu Q2 Pro",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "pixversec1",
+   "name": "PixVerse C1",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "pixverse6",
+   "name": "PixVerse v6",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "wan27",
+   "name": "Wan 2.7",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "open_veo31",
+   "name": "Veo 3.1",
+   "date": "2025-10",
+   "confidence": "medium",
+   "source": "first public availability, approximate",
+   "verified": false
+  },
+  {
+   "tag": "open_viduq2",
+   "name": "Vidu Q2 (2025)",
+   "date": "2025-09",
+   "confidence": "medium",
+   "source": "approximate, not verified",
+   "verified": false
+  },
+  {
+   "tag": "open_vace14b",
+   "name": "VACE 14B",
+   "date": "2025-05",
+   "confidence": "medium",
+   "source": "approximate, not verified",
+   "verified": false
+  },
+  {
+   "tag": "open_veo2",
+   "name": "Veo 2",
+   "date": "2024-12",
+   "confidence": "high",
+   "source": "vendor announcement",
+   "verified": false
+  },
+  {
+   "tag": "vidur2v20",
+   "name": "Vidu R2V 2.0",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "viduq1",
+   "name": "Vidu Q1",
+   "date": "2025-04",
+   "confidence": "medium",
+   "source": "approximate, not verified",
+   "verified": false
+  },
+  {
+   "tag": "open_magref",
+   "name": "MAGREF",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "open_skyreelsa2",
+   "name": "SkyReels A2",
+   "date": "2025-04",
+   "confidence": "medium",
+   "source": "approximate, not verified",
+   "verified": false
+  },
+  {
+   "tag": "vidur2vq1",
+   "name": "Vidu R2V Q1",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "open_phantom14b",
+   "name": "Phantom 14B",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "open_videox",
+   "name": "VideoX",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "open_hunyuancustom",
+   "name": "HunyuanCustom",
+   "date": "2025-05",
+   "confidence": "medium",
+   "source": "first public availability, approximate",
+   "verified": false
+  },
+  {
+   "tag": "open_vacea13b",
+   "name": "VACE A1.3B",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "open_phantom13b",
+   "name": "Phantom 1.3B",
+   "date": null,
+   "confidence": null,
+   "source": null,
+   "verified": false
+  },
+  {
+   "tag": "open_vace13b",
+   "name": "VACE 1.3B",
+   "date": "2025-03",
+   "confidence": "medium",
+   "source": "approximate, not verified",
+   "verified": false
+  }
+ ]
+}

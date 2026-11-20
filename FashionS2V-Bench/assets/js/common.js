@@ -112,7 +112,7 @@
     if (!wall) return;
     // spread cases and models across the columns
     const ordered = [];
-    for (let k = 0; k < 4; k++) bench.cases.forEach(c => ordered.push({c, o: c.outputs[(k + bench.cases.indexOf(c)) % 4]}));
+    for (let k = 0; k < 2; k++) bench.cases.forEach((c, ci) => ordered.push({c, o: c.outputs[(k * 3 + ci) % c.outputs.length]}));
     const cols = 5, per = 5, colsArr = Array.from({length: cols}, () => []);
     for (let i = 0; i < cols * per; i++) colsArr[i % cols].push(ordered[(i * 3) % ordered.length]);
     // every second tile plays video, the rest show a still frame, which keeps decoding light
@@ -163,9 +163,9 @@
     };
     const cells = DIMS.map(d => cell(d, o[d.key], d.key === 'MOT' && !o.motion_required ? '<br><span class=k>Not counted here: the prompt asks for no product motion</span>' : '')).join('');
     return `<article class="out"><header><h4 title="${esc(m.name)}">${esc(m.name)}</h4>
-      <span class="tbadge${tierLight(m.tier) ? ' light' : ''}" style="--tc:${tierColor(m.tier)}" data-tip="Overall tier ${m.tier} of 5">T${m.tier}</span></header>
+      <span class="tbadge${tierLight(m.tier) ? ' light' : ''}" style="--tc:${tierColor(m.tier)}" data-tip="Overall v6 tier ${m.tier} of 5">T${m.tier}</span></header>
       <video muted loop playsinline preload="none" poster="${esc(o.poster)}" data-src="${esc(o.video)}" aria-label="${esc(m.name)} output"></video>
-      <div class="scores"><div class="total" data-tip="<b>Win rate on this case</b><br>${raw(o.win)}<br><span class=k>Share of the other models this video beats on the same case, ties count half</span>"><small>WIN</small><b>${pct(o.win)}</b></div><div class="raw" data-tip="<b>Score of this video</b><br>${raw(o.v6)}<br><span class=k>Raw v6 score, the mean of the four dimensions</span>"><small>SCORE</small>${pct(o.v6)}</div>${cells}</div></article>`;
+      <div class="scores"><div class="total" data-tip="<b>Win rate on this case</b><br>${raw(o.win)}<br><span class=k>Share of the other models this video beats on the same case, ties count half</span>"><small>WIN</small><b>${pct(o.win)}</b></div><div class="raw" data-tip="<b>Score of this video</b><br>${raw(o.v6)}<br><span class=k>Raw v6 score, the mean of the four dimensions</span>"><small>SCORE</small>${pct(o.v6)}</div>${cells}</div>${o.v7 != null ? `<div class="v7line" data-tip="<b>v7 (open judges) on this video</b><br>Win rate ${raw(o.win7)}<br>Score ${raw(o.v7)}"><span>v7</span>Win rate ${pct(o.win7)} · Score ${pct(o.v7)}</div>` : ''}</article>`;
   }
 
   window.FS2V = {$, $$, esc, reduceMotion, tierColor, tierLight, heat, WIN_LO, WIN_HI, pct, raw, DIMS, loadJSON, showTip, hideTip, bindTips,

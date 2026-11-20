@@ -40,7 +40,7 @@
     initProfiles(board);
     initFormula(board);
     const ex = $('#examples-viewer');
-    if (ex) FS2V.initCases(ex, bench, meta, 'simple');
+    if (ex) FS2V.initCases(ex, bench, meta, 'taxonomy');
   }).catch(err => {
     const el = $('#board-body');
     if (el) el.innerHTML = `<tr class="empty-row"><td colspan="12">The leaderboard data could not be loaded (${esc(err.message)}). Serve this folder over HTTP to view it.</td></tr>`;

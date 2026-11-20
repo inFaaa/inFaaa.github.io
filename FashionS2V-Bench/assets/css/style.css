@@ -236,7 +236,9 @@ td.n{color:var(--muted);font-size:12px}
 .subtle:hover{color:var(--accent)}
 .attr{display:inline-block;font:10px var(--mono);letter-spacing:.5px;padding:3px 7px;border-radius:3px;background:var(--surface);border:1px solid var(--line);color:var(--ink2)}
 .attr.hard{background:var(--accent);border-color:var(--accent);color:#fff}
-.outputs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding:20px}
+.outputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding:20px}
+.v7line{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.v7line span{font:600 10px var(--mono);padding:2px 6px;border-radius:3px;border:1px solid var(--line);color:var(--muted)}
 .out{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:12px;min-width:0;transition:border-color .2s,transform .25s var(--ease)}
 .out:hover{border-color:var(--accent-line);transform:translateY(-2px)}
 .out header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}

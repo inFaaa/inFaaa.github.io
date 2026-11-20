@@ -158,10 +158,11 @@ table.board{width:100%;border-collapse:separate;border-spacing:0;min-width:1060p
 .board thead th[aria-sort] .arrow{opacity:1}
 .board .l{text-align:left}
 .board .c{text-align:center}
-.board td.rank{width:46px;color:var(--muted);font-size:12px;text-align:center;position:sticky;left:0;background:var(--surface);z-index:2;box-shadow:inset 4px 0 0 var(--tc)}
+.board td.rank{width:56px;min-width:56px;color:var(--muted);font-size:12px;text-align:center;position:sticky;left:0;background:var(--surface);z-index:2;box-shadow:inset 4px 0 0 var(--tc)}
 .board th.rank{position:sticky;left:0;z-index:4}
-.board td.model{position:sticky;left:46px;background:var(--surface);z-index:2;min-width:210px;box-shadow:1px 0 0 var(--line2)}
-.board th.model{position:sticky;left:46px;z-index:4}
+.board td.model{position:sticky;left:56px;background:var(--surface);z-index:2;min-width:210px;box-shadow:1px 0 0 var(--line2)}
+.board th.model{position:sticky;left:56px;z-index:4}
+.board td.model .tag{margin-left:4px;padding:1px 5px;font-size:9px}
 .board tr.band-alt td.rank,.board tr.band-alt td.model,.board tr.band-alt td{background:#f7f4ee}
 .board tbody tr:not(.tier-head):hover td{background:#f0ebe2!important}
 .model-name{font-weight:600;font-size:14px}

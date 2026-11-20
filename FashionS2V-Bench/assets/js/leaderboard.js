@@ -24,7 +24,7 @@
     if (ex) FS2V.initCases(ex, bench, meta, 'taxonomy');
   }).catch(err => {
     const el = $('#board-body');
-    if (el) el.innerHTML = `<tr class="empty-row"><td colspan="12">The leaderboard data could not be loaded (${esc(err.message)}). Serve this folder over HTTP to view it.</td></tr>`;
+    if (el) el.innerHTML = `<tr class="empty-row"><td colspan="11">The leaderboard data could not be loaded (${esc(err.message)}). Serve this folder over HTTP to view it.</td></tr>`;
   });
 
   function initBoard(board) {
@@ -43,8 +43,8 @@
       $$('[data-g]', groupTabs).forEach(b => b.onclick = () => {
         state.group = b.dataset.g;
         state.slice = board.slices.find(s => s.group === state.group).id;
-        if (state.slice !== 'all' && state.key === 'tier') { state.key = 'win'; state.dir = -1; }
-        if (state.slice === 'all' && state.key === 'win') { state.key = 'tier'; state.dir = 1; }
+        if (state.slice !== 'all' && state.key === 'tier') { state.key = 'score'; state.dir = -1; }
+        if (state.slice === 'all' && state.key === 'score') { state.key = 'tier'; state.dir = 1; }
         drawTabs(); draw();
       });
       $$('[data-s]', sliceTabs).forEach(b => b.onclick = () => { state.slice = b.dataset.s; drawTabs(); draw(); });
@@ -109,9 +109,9 @@
         const a = $('.arrow', th); if (a) a.textContent = th.dataset.k === k ? (d === 1 ? '↑' : '↓') : '↓';
       });
       $('#tier-col-label').textContent = state.slice === 'all' ? 'Tier' : 'Overall tier';
-      $('#score-col-label').textContent = state.slice === 'all' ? 'Win rate' : `Win rate on ${s.label}`;
+      $('#score-col-label').textContent = state.slice === 'all' ? 'Score' : `Score on ${s.label}`;
 
-      const ncol = 13;
+      const ncol = 11;
       let html = '', lastTier = null, band = 0;
       rows.forEach(r => {
         const tc = tierColor(r.tier);
@@ -128,15 +128,14 @@
           return `<td class="heat"><span style="background:${h.bg};color:${h.fg}" data-tip="<b>${tipName}</b><br>${esc(dm.name)}: ${raw(v)}<br><span class=k>${esc(dm.help)}</span>">${pct(v)}</span></td>`;
         }).join('');
         const elo = r.elo == null ? 'n/a' : Math.round(r.elo);
+        const dateTxt = r.date ? esc(r.date.replace('-', '.')) : '';
         html += `<tr class="${alt}" style="--tc:${tc}">
-          <td class="rank">${rank.get(r.id)}</td>
-          <td class="model l"><span class="model-name">${esc(r.name)}</span><span class="model-vendor">${esc(r.vendor)}</span></td>
-          <td class="date"${r.date ? ` data-tip="<b>${tipName}</b><br>Released ${esc(r.date.replace('-', '.'))}<br><span class=k>Year and month of release</span>"` : ''}>${r.date ? esc(r.date.replace('-', '.')) : ''}</td>
-          <td class="c"><span class="tag${r.open ? ' open' : ''}">${r.open ? 'OPEN' : 'CLOSED'}</span></td>
-          <td class="c"><span class="tbadge${tierLight(r.tier) ? ' light' : ''}" data-tip="<b>${tipName}</b><br>Tier ${r.tier} of 5 on the overall board">T${r.tier}</span></td>
-          ${`<td class="c">${r.detail ? `<span class="dcell" data-tip="<b>${tipName}</b><br>Detail sub tier D${r.detail} inside tier 1<br>Score ties won on detail: ${raw(r.detail_win)}<br><span class=k>Share of the cases tied on the base score that it wins by local point matching against the other tier 1 models. The ranking order does not change</span>"><span class="dbadge">D${r.detail}</span><span class="dnum">${pct(r.detail_win)}</span></span>` : ''}</td>`}
-          <td><div class="score" data-tip="<b>${tipName}</b><br>Win rate: ${raw(r.win)}${state.slice === 'all' ? '' : ` on ${esc(s.label)}`}<br><span class=k>Share of the other models it beats on the same case, ties count half, averaged over its cases. 50 is the field average</span>"><div class="bar" aria-hidden="true"><i style="width:${r.win == null ? 0 : (r.win * 100).toFixed(1)}%"></i></div><b>${pct(r.win)}</b></div></td>
-          <td class="raw" data-tip="<b>${tipName}</b><br>Score: ${raw(r.score)}${state.slice === 'all' ? '' : ` on ${esc(s.label)}`}<br><span class=k>Mean of the four dimensions over its videos. The Win rate compares these per case scores with the other models</span>">${pct(r.score)}</td>
+          <td class="rank c"><span class="tbadge${tierLight(r.tier) ? ' light' : ''}" data-tip="<b>${tipName}</b><br>Tier ${r.tier} of 5 on the overall board">T${r.tier}</span></td>
+          <td class="c">${r.detail ? `<span class="dcell" data-tip="<b>${tipName}</b><br>Detail sub tier D${r.detail} inside tier 1<br>Score ties won on detail: ${raw(r.detail_win)}<br><span class=k>Share of the cases tied on the base score that it wins by local point matching against the other tier 1 models. The ranking order does not change</span>"><span class="dbadge">D${r.detail}</span><span class="dnum">${pct(r.detail_win)}</span></span>` : ''}</td>
+          <td class="model l"><span class="model-name">${esc(r.name)}</span><span class="model-vendor">${esc(r.vendor)} <span class="tag${r.open ? ' open' : ''}">${r.open ? 'OPEN' : 'CLOSED'}</span></span></td>
+          <td class="date"${r.date ? ` data-tip="<b>${tipName}</b><br>Released ${dateTxt}<br><span class=k>Year and month of release</span>"` : ''}>${dateTxt}</td>
+          <td><div class="score" data-tip="<b>${tipName}</b><br>Score: ${raw(r.score)}${state.slice === 'all' ? '' : ` on ${esc(s.label)}`}<br><span class=k>Weighted mean of the four dimensions over its videos</span>"><div class="bar" aria-hidden="true"><i style="width:${r.score == null ? 0 : (r.score * 100).toFixed(1)}%"></i></div><b>${pct(r.score)}</b></div></td>
+          <td class="raw" data-tip="<b>${tipName}</b><br>Win rate: ${raw(r.win)}${state.slice === 'all' ? '' : ` on ${esc(s.label)}`}<br><span class=k>Reference: share of the other models it beats on the same case, ties count half, averaged over its cases. 50 is the field average</span>">${pct(r.win)}</td>
           ${cells}
           <td class="muted" data-tip="<b>${tipName}</b><br>Gemini arena Elo ${elo}<br>Bootstrap interval ${r.elo_lo == null ? 'n/a' : Math.round(r.elo_lo)} to ${r.elo_hi == null ? 'n/a' : Math.round(r.elo_hi)}<br><span class=k>Reference only, not part of the score</span>">${elo}</td></tr>`;
       });
@@ -170,7 +169,7 @@
         const xs = ms.map(m => m[d.key]).filter(v => v != null).sort((a, b) => a - b);
         const n = xs.length; median[d.key] = n % 2 ? xs[(n - 1) / 2] : (xs[n / 2 - 1] + xs[n / 2]) / 2;
       });
-      sel.innerHTML = '<option value="">Add a model</option>' + ms.map(m => `<option value="${m.id}">${esc(m.name)} (T${m.tier}, win rate ${pct(m.win)})</option>`).join('');
+      sel.innerHTML = '<option value="">Add a model</option>' + ms.map(m => `<option value="${m.id}">${esc(m.name)} (T${m.tier}, Score ${pct(m.score)})</option>`).join('');
     }
     refresh();
     let picked = ['omni12flash', 'klingo3pro', 'open_vace14b', 'open_phantom14b'].filter(id => byId[id]);
@@ -211,7 +210,7 @@
       sel.disabled = picked.length >= 4;
       const cards = picked.map(id => {
         const m = byId[id];
-        return `<article class="mult"><h4>${esc(m.name)}</h4><div class="sub"><span class="tbadge${tierLight(m.tier) ? ' light' : ''}" style="--tc:${tierColor(m.tier)}">T${m.tier}</span><span>${esc(m.vendor)} · ${m.open ? 'Open' : 'Closed'} · Win rate ${pct(m.win)} · Score ${pct(m.score)}</span></div>
+        return `<article class="mult"><h4>${esc(m.name)}</h4><div class="sub"><span class="tbadge${tierLight(m.tier) ? ' light' : ''}" style="--tc:${tierColor(m.tier)}">T${m.tier}</span><span>${esc(m.vendor)} · ${m.open ? 'Open' : 'Closed'} · Score ${pct(m.score)} · Win rate ${pct(m.win)}</span></div>
           ${radar(m)}<dl>${DIMS.map(d => `<div><dt>${d.short}</dt><dd>${pct(m[d.key])}</dd></div>`).join('')}</dl></article>`;
       });
       for (let i = picked.length; i < 4; i++) cards.push('<div class="mult placeholder">Pick a model above</div>');

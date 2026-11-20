@@ -84,19 +84,19 @@
 
   function drawSpread(board) {
     const slices = board.slices;
-    const W = 520, L = 120, rowH = 26, top = 4, lo = 0, hi = 0.8;
+    const W = 520, L = 120, rowH = 26, top = 4, lo = 0.4, hi = 1.0;
     const x = v => L + (W - L - 16) * (v - lo) / (hi - lo);
     const name = Object.fromEntries(board.models.map(m => [m.id, m]));
     let s = '';
-    [0, 0.2, 0.4, 0.6, 0.8].forEach(t => { s += `<line x1="${x(t)}" x2="${x(t)}" y1="0" y2="${top + slices.length * rowH}" stroke="#e1ddd3"/><text x="${x(t)}" y="${top + slices.length * rowH + 14}" font-size="10" fill="#899298" text-anchor="middle">${Math.round(t * 100)}</text>`; });
+    [0.4, 0.6, 0.8, 1.0].forEach(t => { s += `<line x1="${x(t)}" x2="${x(t)}" y1="0" y2="${top + slices.length * rowH}" stroke="#e1ddd3"/><text x="${x(t)}" y="${top + slices.length * rowH + 14}" font-size="10" fill="#899298" text-anchor="middle">${Math.round(t * 100)}</text>`; });
     slices.forEach((sl, i) => {
-      const ent = Object.entries(sl.scores).filter(([, v]) => v.win != null).map(([id, v]) => ({id, v: v.win}));
+      const ent = Object.entries(sl.scores).filter(([, v]) => v.score != null).map(([id, v]) => ({id, v: v.score}));
       ent.sort((a, b) => a.v - b.v);
       const n = ent.length, med = n % 2 ? ent[(n - 1) / 2].v : (ent[n / 2 - 1].v + ent[n / 2].v) / 2;
       const best = ent[n - 1], worst = ent[0];
       const bestOpen = ent.filter(e => name[e.id].open).pop();
       const y = top + i * rowH + rowH / 2;
-      const tipTxt = `<b>${esc(sl.label)}</b> (${sl.cases} cases), Win rate<br>Best: ${esc(name[best.id].name)} ${raw(best.v)}<br>Median model: ${raw(med)}<br>Best open source: ${esc(name[bestOpen.id].name)} ${raw(bestOpen.v)}<br>Lowest: ${esc(name[worst.id].name)} ${raw(worst.v)}`;
+      const tipTxt = `<b>${esc(sl.label)}</b> (${sl.cases} cases), Score<br>Best: ${esc(name[best.id].name)} ${raw(best.v)}<br>Median model: ${raw(med)}<br>Best open source: ${esc(name[bestOpen.id].name)} ${raw(bestOpen.v)}<br>Lowest: ${esc(name[worst.id].name)} ${raw(worst.v)}`;
       s += `<g data-tip="${tipTxt}"><rect x="0" y="${y - rowH / 2}" width="${W}" height="${rowH}" fill="transparent"/>
         ${i === 0 || sl.group !== slices[i - 1].group ? `<line x1="0" x2="${W}" y1="${y - rowH / 2}" y2="${y - rowH / 2}" stroke="#d5d0c6"/>` : ''}
         <text x="${L - 10}" y="${y + 4}" font-size="12" fill="#3f4d53" text-anchor="end" ${sl.id === 'all' ? 'font-weight="600"' : ''}>${esc(sl.label === 'All Core cases' ? 'All Core' : sl.label)}</text>
@@ -115,7 +115,7 @@
   function drawSliceTable(board) {
     const cols = board.slices;
     const short = {all: 'Overall', single: 'Single', dual: 'Two prod.', hard: 'Core Hard'};
-    const state = {key: 'all', dir: -1, access: 'all', q: '', metric: 'win'};
+    const state = {key: 'all', dir: -1, access: 'all', q: '', metric: 'score'};
     const bestOf = (c, k) => Math.max(...Object.values(c.scores).map(v => v[k] ?? -1));
     const groupLabel = {overall: '', category: 'CATEGORY', prompt: 'PROMPT TYPE', structure: 'STRUCTURE'};
     const head = $('#mx-head');

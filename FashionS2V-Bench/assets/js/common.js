@@ -165,7 +165,7 @@
     return `<article class="out"><header><h4 title="${esc(m.name)}">${esc(m.name)}</h4>
       <span class="tbadge${tierLight(m.tier) ? ' light' : ''}" style="--tc:${tierColor(m.tier)}" data-tip="Overall tier ${m.tier} of 5">T${m.tier}</span></header>
       <video muted loop playsinline preload="none" poster="${esc(o.poster)}" data-src="${esc(o.video)}" aria-label="${esc(m.name)} output"></video>
-      <div class="scores"><div class="total" data-tip="<b>Win rate on this case</b><br>${raw(o.win)}<br><span class=k>Share of the other models this video beats on the same case, ties count half</span>"><small>WIN</small><b>${pct(o.win)}</b></div><div class="raw" data-tip="<b>Score of this video</b><br>${raw(o.score)}<br><span class=k>Mean of the four dimensions</span>"><small>SCORE</small>${pct(o.score)}</div>${cells}</div></article>`;
+      <div class="scores"><div class="total" data-tip="<b>Score of this video</b><br>${raw(o.score)}<br><span class=k>Weighted mean of the four dimensions</span>"><small>SCORE</small><b>${pct(o.score)}</b></div><div class="raw" data-tip="<b>Win rate on this case</b><br>${raw(o.win)}<br><span class=k>Reference: share of the other models this video beats on the same case, ties count half</span>"><small>WIN</small>${pct(o.win)}</div>${cells}</div></article>`;
   }
 
   window.FS2V = {$, $$, esc, reduceMotion, tierColor, tierLight, heat, WIN_LO, WIN_HI, pct, raw, DIMS, loadJSON, showTip, hideTip, bindTips,

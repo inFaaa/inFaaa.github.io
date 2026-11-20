@@ -154,7 +154,7 @@
         <td class="c"><span class="tbadge${tierLight(m.tier) ? ' light' : ''}">T${m.tier}</span></td>
         ${cols.map(c => {
           const s = c.scores[m.id], v = s[mk], h = mk === 'win' ? heat(v, WIN_LO, WIN_HI) : heat(v), top = v != null && Math.abs(v - bestOf(c, mk)) < 1e-9;
-          return `<td class="heat"><span style="background:${h.bg};color:${h.fg};${top ? 'box-shadow:inset 0 0 0 2px #1d282d;font-weight:700' : ''}" data-tip="<b>${esc(m.name)}</b> on ${esc(c.label)}<br>Win rate: ${raw(s.win)}<br>Score: ${raw(s.v6)}${top ? '<br>Best on this slice' : ''}">${pct(v)}</span></td>`;
+          return `<td class="heat"><span style="background:${h.bg};color:${h.fg};${top ? 'box-shadow:inset 0 0 0 2px #1d282d;font-weight:700' : ''}" data-tip="<b>${esc(m.name)}</b> on ${esc(c.label)}<br>Win rate: ${raw(s.win)}<br>Score: ${raw(s.score)}${top ? '<br>Best on this slice' : ''}">${pct(v)}</span></td>`;
         }).join('')}</tr>`).join('') : '<tr class="empty-row"><td colspan="16">No model matches this filter.</td></tr>';
       const lo = mk === 'win' ? WIN_LO : 0.4, hi = mk === 'win' ? WIN_HI : 1.0;
       $('#heat-ramp').innerHTML = Array.from({length: 13}, (_, i) => `<i style="background:${heat(lo + i * (hi - lo) / 12, lo, hi).bg}"></i>`).join('');

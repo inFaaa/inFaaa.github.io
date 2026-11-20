@@ -29,8 +29,8 @@
   const raw = v => v == null ? 'n/a' : v.toFixed(4);
 
   const DIMS = [
-    {key: 'I6', short: 'ID', name: 'Product identity', help: 'Share of product attributes judged the same as in the reference image'},
-    {key: 'D', short: 'DEF', name: 'No major defect', help: '1 without a visible defect, 0.5 when the worst defect is minor, 0 when a major defect is visible'},
+    {key: 'I', short: 'ID', name: 'Product identity', help: 'Share of product attributes judged the same as in the reference image, 0 when the product never appears'},
+    {key: 'no_major', short: 'DEF', name: 'No major defect', help: 'Share of videos without a major visible defect. Inside the Score a clean video counts 1, a minor defect 0.5 and a major defect 0'},
     {key: 'CTX', short: 'CTX', name: 'Scene and action', help: 'Adherence to the requested scene and action, plus composition on two product cases'},
     {key: 'MOT', short: 'MOT', name: 'Product motion', help: 'Motion gate: the product moves as the prompt asks. Enters the score only where the prompt asks for product motion'}
   ];
@@ -163,9 +163,9 @@
     };
     const cells = DIMS.map(d => cell(d, o[d.key], d.key === 'MOT' && !o.motion_required ? '<br><span class=k>Not counted here: the prompt asks for no product motion</span>' : '')).join('');
     return `<article class="out"><header><h4 title="${esc(m.name)}">${esc(m.name)}</h4>
-      <span class="tbadge${tierLight(m.tier) ? ' light' : ''}" style="--tc:${tierColor(m.tier)}" data-tip="Overall v6 tier ${m.tier} of 5">T${m.tier}</span></header>
+      <span class="tbadge${tierLight(m.tier) ? ' light' : ''}" style="--tc:${tierColor(m.tier)}" data-tip="Overall tier ${m.tier} of 5">T${m.tier}</span></header>
       <video muted loop playsinline preload="none" poster="${esc(o.poster)}" data-src="${esc(o.video)}" aria-label="${esc(m.name)} output"></video>
-      <div class="scores"><div class="total" data-tip="<b>Win rate on this case</b><br>${raw(o.win)}<br><span class=k>Share of the other models this video beats on the same case, ties count half</span>"><small>WIN</small><b>${pct(o.win)}</b></div><div class="raw" data-tip="<b>Score of this video</b><br>${raw(o.v6)}<br><span class=k>Raw v6 score, the mean of the four dimensions</span>"><small>SCORE</small>${pct(o.v6)}</div>${cells}</div>${o.v7 != null ? `<div class="v7line" data-tip="<b>v7 (open judges) on this video</b><br>Win rate ${raw(o.win7)}<br>Score ${raw(o.v7)}"><span>v7</span>Win rate ${pct(o.win7)} · Score ${pct(o.v7)}</div>` : ''}</article>`;
+      <div class="scores"><div class="total" data-tip="<b>Win rate on this case</b><br>${raw(o.win)}<br><span class=k>Share of the other models this video beats on the same case, ties count half</span>"><small>WIN</small><b>${pct(o.win)}</b></div><div class="raw" data-tip="<b>Score of this video</b><br>${raw(o.score)}<br><span class=k>Mean of the four dimensions</span>"><small>SCORE</small>${pct(o.score)}</div>${cells}</div></article>`;
   }
 
   window.FS2V = {$, $$, esc, reduceMotion, tierColor, tierLight, heat, WIN_LO, WIN_HI, pct, raw, DIMS, loadJSON, showTip, hideTip, bindTips,

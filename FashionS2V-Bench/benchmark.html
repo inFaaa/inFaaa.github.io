@@ -30,7 +30,7 @@
   <div class="cards reveal">
     <article class="card"><span class="num">01</span><h3>Fashion specific task coverage</h3><p>110 Core cases cover 4 product categories and 5 prompt types, forming 11 prompt families. 80 cases show one product and 30 put two products side by side.</p></article>
     <article class="card"><span class="num">02</span><h3>Directly measured dimensions</h3><p>Product identity, visible defects, scene and action adherence and product motion are scored per video and averaged with equal weight into a Score. The headline Win rate compares Scores case by case.</p></article>
-    <article class="card"><span class="num">03</span><h3>51 models, tied where tied</h3><p>39 commercial models and 12 open source or earlier releases. Holm corrected paired tests group models into tiers so that close scores are read as ties. The board shows 5 tiers, the lowest merging the two lowest statistical tiers.</p></article>
+    <article class="card"><span class="num">03</span><h3>51 models, tied where tied</h3><p>39 commercial models and 12 open source or earlier releases. Holm corrected paired tests group models into 5 tiers so that close scores are read as ties. Every judge is an open weight model.</p></article>
   </div>
 
   <div class="taxo reveal" id="taxonomy">
@@ -68,7 +68,7 @@
     <span class="control-label">MODELS</span>
     <div class="seg" id="mx-access" role="group" aria-label="Access"><button data-a="all" aria-pressed="true">All</button><button data-a="closed" aria-pressed="false">Closed</button><button data-a="open" aria-pressed="false">Open</button></div>
     <span class="control-label">SHOW</span>
-    <div class="seg" id="mx-metric" role="group" aria-label="Metric"><button data-m="win" aria-pressed="true">Win rate</button><button data-m="v6" aria-pressed="false">Score</button></div>
+    <div class="seg" id="mx-metric" role="group" aria-label="Metric"><button data-m="win" aria-pressed="true">Win rate</button><button data-m="score" aria-pressed="false">Score</button></div>
     <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="mx-search" type="search" placeholder="Search model or vendor" aria-label="Search model or vendor"></label>
   </div></div>
   <div class="board-wrap reveal">
@@ -79,15 +79,15 @@
 
 <section class="section" id="cases">
   <div class="section-top reveal"><span class="eyebrow">CASES</span></div>
-  <div class="section-heading reveal"><h2>Explore benchmark cases</h2><p>Four cases per prompt family, 44 in total. Six models answer the same references and description: Gemini Omni 1.2 Flash (tier 1), Seedance 2.0 (tier 1), Kling O3 Pro (tier 2), VACE 14B (tier 3, open source), Phantom 14B (tier 4, open source) and HunyuanCustom (tier 5, open source). Tiers are from the v6 board.</p></div>
+  <div class="section-heading reveal"><h2>Explore benchmark cases</h2><p>Four cases per prompt family, 44 in total. Six models answer the same references and description: Gemini Omni 1.2 Flash (tier 1), Seedance 2.0 (tier 1), Kling O3 Pro (tier 2), VACE 14B (tier 3, open source), Phantom 14B (tier 4, open source) and HunyuanCustom (tier 5, open source). Tiers are from the overall board.</p></div>
   <div id="case-browser"></div>
-  <p class="note">Each clip shows its v6 Win rate on that case, its Score and the four dimension scores of that video, plus its v7 Win rate and Score, all 0 to 100. Clips are cut to 5 seconds and downscaled to 480p for the web. Descriptions are shown exactly as sent to the models.</p>
+  <p class="note">Each clip shows its Win rate on that case, its Score and the four dimension scores of that video, all 0 to 100. Clips are cut to 5 seconds and downscaled to 480p for the web. Descriptions are shown exactly as sent to the models.</p>
 </section>
 </main>
 
 <footer>
   <a class="brand" href="./">FashionS2V<small>Bench</small><span class="brand-dot">.</span></a>
-  <p>© 2026 The FashionS2V-Bench authors. Scores come from the locked v6 release of the leaderboard.</p>
+  <p>© 2026 The FashionS2V-Bench authors. Scores come from the v7.6 release of the leaderboard.</p>
   <a class="text-link" href="./"><span>&#8592;</span> Back to the overview</a>
 </footer>
 <noscript><p class="note" style="padding:20px">Enable JavaScript to load the charts, the slice table and the case browser.</p></noscript>

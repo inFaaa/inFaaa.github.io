@@ -85,9 +85,13 @@
 </section>
 
 <section class="section" id="leaderboard">
-  <div class="section-top reveal"><span class="eyebrow">03 / LEADERBOARD</span><span class="mono" style="font-size:11px;color:var(--muted)">v6 · LOCKED RELEASE</span></div>
+  <div class="section-top reveal"><span class="eyebrow">03 / LEADERBOARD</span><span class="mono" id="release-label" style="font-size:11px;color:var(--muted)">v6 · LOCKED RELEASE</span></div>
   <div class="section-heading reveal"><h2>FashionS2V-Bench leaderboard</h2><p>51 models on the 110 Core cases, with the headline Win rate and the Score side by side. Switch to a category, prompt type or case structure to compare models on that slice only. Hover any cell for the exact value.</p></div>
   <div class="board-controls">
+    <div class="control-row"><span class="control-label">FORMULA</span>
+      <div class="seg" id="formula-seg" role="group" aria-label="Scoring formula"><button data-f="v6" aria-pressed="true">v6 <small style="opacity:.7">locked release</small></button><button data-f="v7" aria-pressed="false">v7 <small style="opacity:.7">open judges</small></button></div>
+    </div>
+    <p class="note" id="formula-note" hidden style="margin:0;max-width:880px;padding:12px 16px;border:1px solid var(--accent-line);border-radius:6px;background:var(--accent-soft);color:var(--ink2)"><strong>v7 replaces the closed source judge with open weight Qwen judges</strong>, so anyone can reproduce the scores. On 417 held out same case pairs judged in the Gemini arena it picks the same winner in 75.8 percent of pairs against 76.6 percent for v6, a difference that is not significant, and its rank correlation with the arena Elo is 0.931. Win rate, Score, tiers and dimensions below are all recomputed with v7, and the lowest tier again merges the two lowest statistical tiers. The v6 release stays the default.</p>
     <div class="control-row"><span class="control-label">BOARD</span><div class="tabs" id="slice-groups" role="group" aria-label="Board"></div></div>
     <div class="tabs sub" id="slice-tabs" role="group" aria-label="Slice" hidden></div>
     <div class="control-row">
@@ -106,16 +110,16 @@
           <th class="l sortable" scope="col" data-k="date" data-tip="Release year and month, where known">Released <span class="arrow">↓</span></th>
           <th class="c" scope="col">Access</th>
           <th class="c sortable" scope="col" data-k="tier" data-tip="Statistically tied models share a tier"><span id="tier-col-label">Tier</span> <span class="arrow">↓</span></th>
+          <th class="c" scope="col" id="detail-th" hidden data-tip="v7 only: detail sub tiers inside tier 1">Detail<small>tier 1</small></th>
           <th class="sortable" scope="col" data-k="win" data-tip="Share of the other models beaten on the same case, ties count half, averaged over the model’s cases. 50 is the field average"><span id="score-col-label">Win rate</span> <span class="arrow">↓</span><small>0 to 100</small></th>
           <th class="sortable" scope="col" data-k="v6" data-tip="Score: the raw v6 score, mean of the four dimensions over the Core videos">Score <span class="arrow">↓</span><small>0 to 100</small></th>
           <th class="c sortable" scope="col" data-k="I6" data-tip="Share of product attributes judged the same as in the reference">Identity <span class="arrow">↓</span><small>ID</small></th>
           <th class="c sortable" scope="col" data-k="D" data-tip="1 clean, 0.5 minor defect, 0 major defect">No defect <span class="arrow">↓</span><small>DEF</small></th>
           <th class="c sortable" scope="col" data-k="CTX" data-tip="Scene and action adherence, composition on two product cases">Scene <span class="arrow">↓</span><small>CTX</small></th>
           <th class="c sortable" scope="col" data-k="MOT" data-tip="Product moves as the prompt asks">Motion <span class="arrow">↓</span><small>MOT</small></th>
-          <th class="sortable" scope="col" data-k="n" data-tip="Number of scored videos">n <span class="arrow">↓</span></th>
           <th class="sortable" scope="col" data-k="elo" data-tip="Gemini pairwise arena Elo, reference only">Arena Elo <span class="arrow">↓</span><small>reference</small></th>
         </tr></thead>
-        <tbody id="board-body"><tr class="empty-row"><td colspan="13">Loading the leaderboard</td></tr></tbody>
+        <tbody id="board-body"><tr class="empty-row"><td colspan="12">Loading the leaderboard</td></tr></tbody>
       </table>
     </div>
     <div class="board-foot">
@@ -124,6 +128,7 @@
       <span>All values on a 0 to 100 scale. Win rate bars run from 0 to 100. OPEN marks models with public weights.</span>
     </div>
   </div>
+  <p class="note" id="detail-note" hidden><strong>Detail (v7 only).</strong> Detail sub tiers D1 to D3 come from local point matching on the product, an open method, and apply only where the base score ties within a case. They are shown for tier 1 models only and do not change the ranking order. The number next to each badge is the share of score ties won on detail within tier 1. They separate 5 of 66 tier 1 pairs, and agreement with the reference judge is unchanged (0.707 against 0.701). On the small set of tied held out pairs, the reference judge could not confirm them (0.52, n 25).</p>
   <p class="note" id="slice-note" hidden>Slice boards compute the Win rate and the Score over the slice’s cases only, 10 to 44 cases, so small gaps are noisy. The tier badge always shows the overall tier.</p>
 </section>
 
@@ -141,7 +146,7 @@
     <li><b class="big">25</b><p><strong>The top tier is crowded.</strong> 25 of 51 models are statistically tied with the leader. Tier sizes are 25, 10, 5, 7 and 4.</p></li>
     <li><b class="big">T3</b><p><strong>Open source models trail.</strong> Every open source model sits in tier 3 or below. The best of them, VACE 14B, has a Win rate of 34.6 against 67.4 for the leader.</p></li>
     <li><b class="big">0.794</b><p><strong>The score separates known groups.</strong> A random video from a commercial model outscores a random video from an open source model with probability 0.794 (AUROC).</p></li>
-    <li><b class="big">82.1%</b><p><strong>It agrees with pairwise judgments.</strong> On 304 held out video pairs judged in the Gemini arena, v6 picks the same winner in 82.1 percent of pairs, against 74.0 percent for the earlier v3 score.</p></li>
+    <li><b class="big">76.6%</b><p><strong>It agrees with pairwise judgments.</strong> On 417 held out same case video pairs judged in the Gemini arena, v6 picks the same winner in 76.6 percent of pairs, v7 in 75.8 percent and v3 in 72.4 percent.</p></li>
     <li><b class="big">67.4</b><p><strong>Gemini Omni 1.2 Flash leads.</strong> It has the highest Win rate (67.4) and Score (95.2), and the highest no major defect score of all 51 models (95.5).</p></li>
     <li><b class="big">20</b><p><strong>Motion is judged only where asked.</strong> 20 of the 110 Core cases ask for no product motion, so the motion gate is left out of their score.</p></li>
   </ul>

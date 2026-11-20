@@ -11,6 +11,24 @@
     {id: 'structure', label: 'By case structure'}
   ];
 
+  // Formula views. v6 is the locked release, v7 uses open weight judges. Both expose the same fields so one
+  // renderer serves both: the internal key "v6" always holds the Score of the selected formula.
+  const FORMULA = {v6: 'v6', v7: 'v7'};
+  let formula = 'v6';
+  const views = {};
+  function view(board, f) {
+    if (views[f]) return views[f];
+    if (f === 'v6' || !board.v7) return (views[f] = {models: board.models, slices: board.slices});
+    const v7 = board.v7;
+    const models = board.models.map(m => ({...m, ...v7.models[m.id], v6: v7.models[m.id].v7}));
+    const slices = board.slices.map(s => {
+      const s7 = v7.slices.find(z => z.id === s.id);
+      return {...s, scores: Object.fromEntries(Object.entries(s7.scores).map(([k, v]) => [k, {...v, v6: v.v7}]))};
+    });
+    return (views[f] = {models, slices});
+  }
+  const formulaListeners = [];
+
   // release months live in an editable file, a missing file only hides the dates
   const dates = loadJSON('data/release_dates.json').catch(() => ({models: []}));
   Promise.all([loadJSON('data/leaderboard.json'), loadJSON('data/benchmark.json'), dates]).then(([board, bench, rel]) => {
@@ -20,17 +38,19 @@
     buildWall(bench, meta);
     initBoard(board);
     initProfiles(board);
+    initFormula(board);
     const ex = $('#examples-viewer');
     if (ex) FS2V.initCases(ex, bench, meta, 'simple');
   }).catch(err => {
     const el = $('#board-body');
-    if (el) el.innerHTML = `<tr class="empty-row"><td colspan="13">The leaderboard data could not be loaded (${esc(err.message)}). Serve this folder over HTTP to view it.</td></tr>`;
+    if (el) el.innerHTML = `<tr class="empty-row"><td colspan="12">The leaderboard data could not be loaded (${esc(err.message)}). Serve this folder over HTTP to view it.</td></tr>`;
   });
 
   function initBoard(board) {
     // default view keeps the official board order: tiers, then v6 inside a tier
     const state = {group: 'overall', slice: 'all', access: 'all', q: '', key: 'tier', dir: 1};
-    const sliceById = Object.fromEntries(board.slices.map(s => [s.id, s]));
+    const sliceOf = id => view(board, formula).slices.find(s => s.id === id);
+    formulaListeners.push(() => draw());
     const groupTabs = $('#slice-groups'), sliceTabs = $('#slice-tabs');
     const body = $('#board-body'), table = $('#board');
     bindTips(table);
@@ -68,8 +88,8 @@
     });
 
     function rowsFor() {
-      const s = sliceById[state.slice];
-      return board.models.map(m => {
+      const s = sliceOf(state.slice);
+      return view(board, formula).models.map(m => {
         const v = state.slice === 'all' ? m : {...m, ...s.scores[m.id]};
         return {...v, date: m.date, tier: m.tier, tier_stat: m.tier_stat, elo: m.elo, elo_lo: m.elo_lo, elo_hi: m.elo_hi};
       }).filter(r => r.v6 != null)
@@ -78,7 +98,7 @@
     }
 
     function draw() {
-      const s = sliceById[state.slice];
+      const s = sliceOf(state.slice);
       const rows = rowsFor();
       const k = state.key, d = state.dir;
       // overall board: tier bands stay intact when sorting by tier, win rate or v6 (best first)
@@ -102,7 +122,7 @@
       const tierCount = {};
       rows.forEach(r => { tierCount[r.tier] = (tierCount[r.tier] || 0) + 1; });
       const totalTier = {};
-      board.models.forEach(m => { totalTier[m.tier] = (totalTier[m.tier] || 0) + 1; });
+      view(board, formula).models.forEach(m => { totalTier[m.tier] = (totalTier[m.tier] || 0) + 1; });
 
       $$('#board thead th.sortable').forEach(th => {
         if (th.dataset.k === k) th.setAttribute('aria-sort', d === 1 ? 'ascending' : 'descending'); else th.removeAttribute('aria-sort');
@@ -111,6 +131,8 @@
       $('#tier-col-label').textContent = state.slice === 'all' ? 'Tier' : 'Overall tier';
       $('#score-col-label').textContent = state.slice === 'all' ? 'Win rate' : `Win rate on ${s.label}`;
 
+      const v7 = formula === 'v7', ncol = v7 ? 13 : 12;
+      $('#detail-th').hidden = !v7;
       let html = '', lastTier = null, band = 0;
       rows.forEach(r => {
         const tc = tierColor(r.tier);
@@ -118,7 +140,7 @@
           band++; lastTier = r.tier;
           const n = totalTier[r.tier];
           const what = r.tier === 1 ? 'statistically tied with the leader' : r.tier === 5 ? 'in the lowest tier, which merges the two lowest statistical tiers' : 'tied with this tier’s leader';
-          html += `<tr class="tier-head" style="--tc:${tc}"><td colspan="13"><div class="th-inner"><b>Tier ${r.tier}</b><span>${n} ${n === 1 ? 'model' : 'models'} ${what}${tierCount[r.tier] !== n ? ` (${tierCount[r.tier]} shown)` : ''}</span></div></td></tr>`;
+          html += `<tr class="tier-head" style="--tc:${tc}"><td colspan="${ncol}"><div class="th-inner"><b>Tier ${r.tier}</b><span>${n} ${n === 1 ? 'model' : 'models'} ${what}${tierCount[r.tier] !== n ? ` (${tierCount[r.tier]} shown)` : ''}</span></div></td></tr>`;
         }
         const alt = grouped && band % 2 === 0 ? ' band-alt' : '';
         const tipName = esc(r.name);
@@ -133,19 +155,33 @@
           <td class="date"${r.date ? ` data-tip="<b>${tipName}</b><br>Released ${esc(r.date.replace('-', '.'))}<br><span class=k>Year and month of release</span>"` : ''}>${r.date ? esc(r.date.replace('-', '.')) : ''}</td>
           <td class="c"><span class="tag${r.open ? ' open' : ''}">${r.open ? 'OPEN' : 'CLOSED'}</span></td>
           <td class="c"><span class="tbadge${tierLight(r.tier) ? ' light' : ''}" data-tip="<b>${tipName}</b><br>Tier ${r.tier} of 5 on the overall board${r.tier_stat !== r.tier ? `<br><span class=k>Statistical tier ${r.tier_stat}, merged into the lowest tier</span>` : ''}">T${r.tier}</span></td>
+          ${v7 ? `<td class="c">${r.detail ? `<span class="dcell" data-tip="<b>${tipName}</b><br>Detail sub tier D${r.detail} inside tier 1<br>Score ties won on detail: ${raw(r.detail_win)}<br><span class=k>Share of the cases tied on the base score that it wins by local point matching against the other tier 1 models. The ranking order does not change</span>"><span class="dbadge">D${r.detail}</span><span class="dnum">${pct(r.detail_win)}</span></span>` : ''}</td>` : ''}
           <td><div class="score" data-tip="<b>${tipName}</b><br>Win rate: ${raw(r.win)}${state.slice === 'all' ? '' : ` on ${esc(s.label)}`}<br><span class=k>Share of the other models it beats on the same case, ties count half, averaged over its cases. 50 is the field average</span>"><div class="bar" aria-hidden="true"><i style="width:${r.win == null ? 0 : (r.win * 100).toFixed(1)}%"></i></div><b>${pct(r.win)}</b></div></td>
-          <td class="raw" data-tip="<b>${tipName}</b><br>Score (raw v6): ${raw(r.v6)}${state.slice === 'all' ? '' : ` on ${esc(s.label)}`}<br><span class=k>Mean of the four dimensions over its videos. The Win rate compares these per case scores with the other models</span>">${pct(r.v6)}</td>
+          <td class="raw" data-tip="<b>${tipName}</b><br>Score (raw ${FORMULA[formula]}): ${raw(r.v6)}${state.slice === 'all' ? '' : ` on ${esc(s.label)}`}<br><span class=k>Mean of the four dimensions over its videos. The Win rate compares these per case scores with the other models</span>">${pct(r.v6)}</td>
           ${cells}
-          <td class="n" data-tip="${r.n} scored videos">${r.n}</td>
           <td class="muted" data-tip="<b>${tipName}</b><br>Gemini arena Elo ${elo}<br>Bootstrap interval ${r.elo_lo == null ? 'n/a' : Math.round(r.elo_lo)} to ${r.elo_hi == null ? 'n/a' : Math.round(r.elo_hi)}<br><span class=k>Reference only, not part of the score</span>">${elo}</td></tr>`;
       });
-      if (!rows.length) html = '<tr class="empty-row"><td colspan="13">No model matches this filter.</td></tr>';
+      if (!rows.length) html = `<tr class="empty-row"><td colspan="${ncol}">No model matches this filter.</td></tr>`;
       body.innerHTML = html;
-      $('#board-meta').textContent = `${rows.length} of ${board.models.length} models · ${s.cases} cases${state.slice === 'all' ? '' : ' in this slice'}`;
+      $('#board-meta').textContent = `${FORMULA[formula]} · ${rows.length} of ${board.models.length} models · ${s.cases} cases${state.slice === 'all' ? '' : ' in this slice'}`;
       $('#slice-note').hidden = state.slice === 'all';
     }
     drawTabs(); draw();
     drawLegend();
+  }
+
+  function initFormula(board) {
+    const seg = $('#formula-seg');
+    if (!seg) return;
+    if (!board.v7) { seg.closest('.control-row').hidden = true; return; }
+    $$('button', seg).forEach(b => b.onclick = () => {
+      formula = b.dataset.f;
+      $$('button', seg).forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      $('#formula-note').hidden = formula !== 'v7';
+      $('#detail-note').hidden = formula !== 'v7';
+      $('#release-label').textContent = formula === 'v7' ? 'v7 · OPEN JUDGES' : 'v6 · LOCKED RELEASE';
+      formulaListeners.forEach(fn => fn());
+    });
   }
 
   function drawLegend() {
@@ -160,14 +196,20 @@
     const host = $('#multiples'), sel = $('#profile-select'), chips = $('#profile-chips');
     if (!host) return;
     bindTips(host);
-    const byId = Object.fromEntries(board.models.map(m => [m.id, m]));
-    const median = {};
-    DIMS.forEach(d => {
-      const xs = board.models.map(m => m[d.key]).filter(v => v != null).sort((a, b) => a - b);
-      const n = xs.length; median[d.key] = n % 2 ? xs[(n - 1) / 2] : (xs[n / 2 - 1] + xs[n / 2]) / 2;
-    });
+    let byId, median;
+    function refresh() {
+      const ms = view(board, formula).models;
+      byId = Object.fromEntries(ms.map(m => [m.id, m]));
+      median = {};
+      DIMS.forEach(d => {
+        const xs = ms.map(m => m[d.key]).filter(v => v != null).sort((a, b) => a - b);
+        const n = xs.length; median[d.key] = n % 2 ? xs[(n - 1) / 2] : (xs[n / 2 - 1] + xs[n / 2]) / 2;
+      });
+      sel.innerHTML = '<option value="">Add a model</option>' + ms.map(m => `<option value="${m.id}">${esc(m.name)} (T${m.tier}, win rate ${pct(m.win)})</option>`).join('');
+    }
+    refresh();
+    formulaListeners.push(() => { refresh(); draw(); });
     let picked = ['omni12flash', 'klingo3pro', 'open_vace14b', 'open_phantom14b'].filter(id => byId[id]);
-    sel.innerHTML = '<option value="">Add a model</option>' + board.models.map(m => `<option value="${m.id}">${esc(m.name)} (T${m.tier}, win rate ${pct(m.win)})</option>`).join('');
     sel.addEventListener('change', () => {
       if (sel.value && !picked.includes(sel.value) && picked.length < 4) picked.push(sel.value);
       sel.value = ''; draw();
@@ -205,7 +247,7 @@
       sel.disabled = picked.length >= 4;
       const cards = picked.map(id => {
         const m = byId[id];
-        return `<article class="mult"><h4>${esc(m.name)}</h4><div class="sub"><span class="tbadge${tierLight(m.tier) ? ' light' : ''}" style="--tc:${tierColor(m.tier)}">T${m.tier}</span><span>${esc(m.vendor)} · ${m.open ? 'Open' : 'Closed'} · Win rate ${pct(m.win)} · Score ${pct(m.v6)}</span></div>
+        return `<article class="mult"><h4>${esc(m.name)}</h4><div class="sub"><span class="tbadge${tierLight(m.tier) ? ' light' : ''}" style="--tc:${tierColor(m.tier)}">T${m.tier}</span><span>${esc(m.vendor)} · ${m.open ? 'Open' : 'Closed'} · Win rate ${pct(m.win)} · Score ${pct(m.v6)} (${FORMULA[formula]})</span></div>
           ${radar(m)}<dl>${DIMS.map(d => `<div><dt>${d.short}</dt><dd>${pct(m[d.key])}</dd></div>`).join('')}</dl></article>`;
       });
       for (let i = picked.length; i < 4; i++) cards.push('<div class="mult placeholder">Pick a model above</div>');

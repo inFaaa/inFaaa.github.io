@@ -248,6 +248,9 @@ td.n{color:var(--muted);font-size:12px}
 .out .scores .total{background:var(--ink);color:var(--bg)}
 .out .scores .total b{font-size:13px}
 .out .scores .raw{border:1px solid var(--line);color:var(--ink2)}
+.dbadge{display:inline-block;font:600 10px var(--mono);letter-spacing:.5px;padding:3px 7px;border-radius:3px;border:1px solid var(--t1);color:var(--t1);background:var(--surface)}
+.dcell{display:inline-flex;align-items:center;gap:6px}
+.dnum{font-size:12px;font-weight:600;color:var(--ink2);font-variant-numeric:tabular-nums}
 .board td.date{text-align:left;font:11px var(--mono);color:#899298;padding-left:4px}
 .board td.raw{font-weight:600;font-size:14px;color:var(--ink2);padding-right:16px}
 .case-nav{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:22px}

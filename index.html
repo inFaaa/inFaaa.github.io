@@ -3465,6 +3465,7 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
   border-left: 2px solid currentColor;
   vertical-align: -.12em;
 }
+.profile-tagline[data-complete] .profile-tagline-text::after { visibility: hidden; }
 .profile-tagline[data-animating] .profile-tagline-text::after { animation: profile-caret 1s step-end infinite; }
 .profile-tagline-toggle {
   display: grid;
@@ -4952,7 +4953,6 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
       const phrase = segments.map(segment => segment.value).join('');
       const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
       let characterCount = 0;
-      let deleting = false;
       let paused = false;
       let visible = true;
       let timer;
@@ -4969,37 +4969,39 @@ h2.section-title { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
           remaining -= segment.value.length;
         });
       };
-      const isRunning = () => !paused && !motion.matches && !document.hidden && visible;
-      const schedule = delay => { timer = window.setTimeout(tick, delay); };
       const tick = () => {
-        if (!isRunning()) return;
-        characterCount += deleting ? -1 : 1;
-        renderText(characterCount);
-        if (characterCount === 0) {
-          deleting = false;
-          schedule(300);
-        } else if (characterCount === phrase.length) {
-          deleting = true;
-          schedule(5000);
-        } else {
-          schedule(deleting ? 35 : 65);
-        }
+        renderText(++characterCount);
+        if (characterCount === phrase.length) sync();
+        else timer = window.setTimeout(tick, 65);
       };
       const sync = () => {
         window.clearTimeout(timer);
-        toggle.hidden = motion.matches;
-        toggle.toggleAttribute('data-paused', paused);
-        toggle.setAttribute('aria-label', paused ? 'Resume animated research tagline' : 'Pause animated research tagline');
-        toggle.title = paused ? 'Resume animation' : 'Pause animation';
-        tagline.toggleAttribute('data-animating', isRunning());
-        if (paused || motion.matches) {
+        if (motion.matches) {
           characterCount = phrase.length;
           renderText(characterCount);
-          deleting = true;
+          paused = false;
         }
-        if (isRunning()) schedule(characterCount === phrase.length ? 5000 : 65);
+        const complete = characterCount === phrase.length;
+        const running = !complete && !paused && visible && !document.hidden;
+        const action = complete ? 'Replay' : paused ? 'Resume' : 'Pause';
+        toggle.hidden = motion.matches;
+        toggle.toggleAttribute('data-paused', paused);
+        toggle.setAttribute('aria-label', action + ' animated research tagline');
+        toggle.title = action + ' animation';
+        tagline.toggleAttribute('data-animating', running);
+        tagline.toggleAttribute('data-complete', complete);
+        if (running) timer = window.setTimeout(tick, 65);
       };
-      toggle.addEventListener('click', () => { paused = !paused; sync(); });
+      toggle.addEventListener('click', () => {
+        if (characterCount === phrase.length) {
+          characterCount = 0;
+          renderText(0);
+          paused = false;
+        } else {
+          paused = !paused;
+        }
+        sync();
+      });
       motion.addEventListener('change', sync);
       document.addEventListener('visibilitychange', sync);
       if ('IntersectionObserver' in window) {

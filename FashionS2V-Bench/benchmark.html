@@ -8,6 +8,7 @@
   <title>FashionS2V-Bench Benchmark: Taxonomy, Statistics and Cases</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/inline_data.js" defer></script>
   <script src="assets/js/common.js" defer></script>
   <script src="assets/js/cases.js" defer></script>
   <script src="assets/js/benchmark.js" defer></script>
@@ -28,9 +29,9 @@
   <div class="section-heading reveal"><h1 id="bench-title" style="font-size:clamp(38px,4.5vw,52px);line-height:1.1;letter-spacing:-1px;font-weight:600">FashionS2V-Bench</h1><p>How well do video models keep a fashion product true to its catalog photo while following a seller’s brief?</p></div>
   <nav class="cover-links reveal" style="margin:0 0 8px;flex-wrap:wrap" aria-label="Benchmark sections"><a href="#taxonomy">Task taxonomy &#8595;</a><a href="#statistics">Statistics &#8595;</a><a href="#slices">Results by slice &#8595;</a><a href="#cases">Cases &#8595;</a><a href="./#leaderboard">Leaderboard &#8599;</a></nav>
   <div class="cards reveal">
-    <article class="card"><span class="num">01</span><h3>Fashion specific task coverage</h3><p>110 Core cases cover 4 product categories and 5 prompt types, forming 11 prompt families. 80 cases show one product and 30 put two products side by side.</p></article>
+    <article class="card"><span class="num">01</span><h3>Fashion specific task coverage</h3><p>110 Core cases cover 4 product categories and 5 prompt types across 11 prompt families (80 single-product and 30 two-product cases; 481 single-product and 85 two-product across all 566 Full cases).</p></article>
     <article class="card"><span class="num">02</span><h3>Directly measured dimensions</h3><p>Product identity, visible defects, scene and action adherence and product motion are scored per video and combined into a weighted Score, with no major defect weighted 0.40 and the other three 0.20 each. A case by case Win rate is shown for reference.</p></article>
-    <article class="card"><span class="num">03</span><h3>51 models, tied where tied</h3><p>39 commercial models and 12 open source or earlier releases. Holm corrected paired tests group models into 5 tiers so that close scores are read as ties. Every judge is an open weight model.</p></article>
+    <article class="card"><span class="num">03</span><h3>52 Core models + Full-566 suite</h3><p>42 commercial endpoints and 10 open-weight checkpoints on Core-110 (now led on Identity by MiniMax-H3 Open at 95.2), plus 5,714 videos evaluated across all 566 benchmark cases and 75 subcategories.</p></article>
   </div>
 
   <div class="taxo reveal" id="taxonomy">
@@ -51,8 +52,8 @@
 
 <section class="section" id="statistics">
   <div class="section-top reveal"><span class="eyebrow">STATISTICS</span></div>
-  <div class="section-heading reveal"><h2>What is inside the Core set</h2><p>Counts over the 110 Core cases. Core Hard keeps the cases with at least two of six difficulty attributes, all read from the references and the prompt before any video was scored.</p></div>
-  <div class="stats five reveal" id="bench-stats"></div>
+  <div class="section-heading reveal"><h2>What is inside the benchmark</h2><p>Counts over the 110 Core cases alongside Full-566 totals (481 single-product + 85 two-product = 566 cases). Core Hard keeps the 44 Core cases with at least two of six difficulty attributes, all read from the references and the prompt before any video was scored.</p></div>
+  <div class="stats six reveal" id="bench-stats"></div>
   <div class="charts">
     <figure class="chart reveal" style="margin:0"><h3>Core Hard attributes</h3><p class="cap">Core cases with each attribute, out of 110. A case can carry several.</p><svg id="chart-attrs" role="img" aria-label="Core cases per Core Hard attribute"></svg></figure>
     <figure class="chart reveal" style="margin:0"><h3>Score spread by slice</h3><p class="cap">Range of model Scores on each slice (0 to 100), with the median model, the best model and the best open source model.</p><div class="legend" id="spread-legend" style="margin-top:10px;gap:16px;font-size:12px;color:var(--muted)"></div><svg id="chart-spread" role="img" aria-label="Spread of model scores by slice"></svg></figure>
@@ -65,6 +66,8 @@
   <div class="section-top reveal"><span class="eyebrow">RESULTS BY SLICE</span></div>
   <div class="section-heading reveal"><h2>Model comparison across categories and briefs</h2><p>Score or Win rate of every model on each slice, 0 to 100. A slice Win rate compares models on that slice’s cases only. The best value per column is marked. Click a column to sort, hover a cell for both numbers.</p></div>
   <div class="board-controls"><div class="control-row">
+    <span class="control-label">DATASET</span>
+    <div class="seg" id="mx-dataset" role="group" aria-label="Dataset scope"><button data-ds="core" aria-pressed="true">Core-110 (52 models)</button><button data-ds="full566" aria-pressed="false">Full-566 (12 models · 5,714 clips)</button></div>
     <span class="control-label">MODELS</span>
     <div class="seg" id="mx-access" role="group" aria-label="Access"><button data-a="all" aria-pressed="true">All</button><button data-a="closed" aria-pressed="false">Closed</button><button data-a="open" aria-pressed="false">Open</button></div>
     <span class="control-label">SHOW</span>
@@ -73,13 +76,18 @@
   </div></div>
   <div class="board-wrap reveal">
     <div class="board-scroll" role="region" aria-label="Scores by slice" tabindex="0"><table class="board" id="mx-table"><thead id="mx-head"></thead><tbody id="mx-body"><tr class="empty-row"><td colspan="15">Loading</td></tr></tbody></table></div>
-    <div class="board-foot"><span class="legend">Tier <span class="tiers" id="tier-swatches"></span> 1 to 5</span><span class="legend"><span id="ramp-label">Score</span> <span id="ramp-lo">40</span> <span class="ramp" id="heat-ramp"></span> <span id="ramp-hi">100</span></span><span>Slices hold 10 to 44 cases per model, so small gaps are noisy. Tiers come from the overall board.</span></div>
+    <div class="board-foot"><span class="legend">Tier <span class="tiers" id="tier-swatches"></span> 1 to 5</span><span class="legend"><span id="ramp-label">Score</span> <span id="ramp-lo">40</span> <span class="ramp" id="heat-ramp"></span> <span id="ramp-hi">100</span></span><span>Switch between Core-110 (52 models, 13 slices) and Full-566 (12 models, 15 slices across 5,714 clips).</span></div>
+  </div>
+  <div class="subhead"><h3>Full-566 long-tail difficulty across 75 merchandise subcategories</h3><span style="font-size:12px;color:var(--muted)">Mean Score across all 9 complete 566-case open-weight models (subcategories with ≥2 cases)</span></div>
+  <div class="subcat-grid reveal">
+    <article class="chart"><h3>10 hardest subcategories</h3><p class="cap">Fine jewelry, micro-engravings, and multi-strap hardware remain the sharpest open-weight bottlenecks.</p><div class="subcat-list" id="subcat-hardest"></div></article>
+    <article class="chart"><h3>10 highest-scoring subcategories</h3><p class="cap">Structured apparel and clean silhouette footwear achieve >80 mean Score across open checkpoints.</p><div class="subcat-list" id="subcat-easiest"></div></article>
   </div>
 </section>
 
 <section class="section" id="cases">
   <div class="section-top reveal"><span class="eyebrow">CASES</span></div>
-  <div class="section-heading reveal"><h2>Explore benchmark cases</h2><p>Four cases per prompt family, 44 in total. Six models answer the same references and description: Gemini Omni 1.2 Flash (tier 1), Seedance 2.0 (tier 1), Kling O3 Pro (tier 2), VACE 14B (tier 3, open source), Phantom 14B (tier 4, open source) and HunyuanCustom (tier 5, open source). Tiers are from the overall board.</p></div>
+  <div class="section-heading reveal"><h2>Explore benchmark cases</h2><p>Four cases per prompt family, 44 in total. Compare Gemini Omni 1.2 Flash (T1), Seedance 2.0 (T1), Kling O3 Pro (T2), newly added public-weight MiniMax-H3 (Open, T1), VACE 14B (T3, open), Phantom 14B (T4, open), and HunyuanCustom (T5, open).</p></div>
   <div id="case-browser"></div>
   <p class="note">Each clip shows its Score, its Win rate on that case and the four dimension scores of that video, all 0 to 100. Clips are cut to 5 seconds and downscaled to 480p for the web. Descriptions are shown exactly as sent to the models.</p>
 </section>

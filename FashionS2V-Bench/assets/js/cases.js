@@ -1,5 +1,5 @@
 /* Case viewer shared by the main page and the benchmark page.
-   mode "taxonomy": category tabs, prompt type sub tabs and a pager. mode "simple": one pager over every case. */
+   Default shows 6 models (3 closed + 3 open led by MiniMax-H3 Open); toggle reveals all 7 (+ HunyuanCustom). */
 (() => {
   'use strict';
   const {$, $$, esc, watchVideo, unwatchVideos, outputCard} = window.FS2V;
@@ -24,17 +24,33 @@
 
   function init(root, bench, meta, mode) {
     const cases = bench.cases, ptypes = bench.stats.prompt_types;
-    let cat = 0, pt = 0, idx = 0, visible = cases.map((c, i) => i);
+    let cat = 0, pt = 0, idx = 0, showAll7 = false, visible = cases.map((c, i) => i);
     root.innerHTML = `${mode === 'taxonomy' ? '<div class="tabs" data-cats role="group" aria-label="Product category"></div><div class="tabs sub" data-pts role="group" aria-label="Prompt type"></div>' : ''}
-      <div class="case-nav"><span class="where" data-where></span><div class="pager"><button class="round-button" data-prev aria-label="Previous case">&#8592;</button><span data-pos aria-live="polite"></span><button class="round-button" data-next aria-label="Next case">&#8594;</button></div></div>
+      <div class="case-nav">
+        <span class="where" data-where></span>
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+          <div class="seg" data-mcount role="group" aria-label="Models shown">
+            <button type="button" data-all="0" aria-pressed="true">6 models (3 closed + 3 open)</button>
+            <button type="button" data-all="1" aria-pressed="false">All 7 (+ HunyuanCustom)</button>
+          </div>
+          <div class="pager"><button class="round-button" data-prev aria-label="Previous case">&#8592;</button><span data-pos aria-live="polite"></span><button class="round-button" data-next aria-label="Next case">&#8594;</button></div>
+        </div>
+      </div>
       <div class="case-console" data-console></div>`;
     const cons = $('[data-console]', root);
     FS2V.bindTips(cons);
 
+    $$('[data-mcount] button', root).forEach(b => b.onclick = () => {
+      showAll7 = b.dataset.all === '1';
+      $$('[data-mcount] button', root).forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      render(idx);
+    });
+
     function render(i) {
       idx = i; const c = cases[i];
       unwatchVideos(cons);
-      cons.innerHTML = caseRail(c, ptypes) + `<div class="outputs">${c.outputs.map(o => outputCard(o, meta)).join('')}</div>`;
+      const outs = showAll7 ? c.outputs : c.outputs.filter(o => o.model !== 'open_hunyuancustom');
+      cons.innerHTML = caseRail(c, ptypes) + `<div class="outputs">${outs.map(o => outputCard(o, meta)).join('')}</div>`;
       $$('video', cons).forEach(watchVideo);
       const btn = $('[data-expand]', cons);
       btn.addEventListener('click', () => {

@@ -25,8 +25,8 @@
     const c = a.map((v0, k) => Math.round(v0 + (b[k] - v0) * f));
     return {bg: `rgb(${c.join(',')})`, fg: t >= 0.62 ? '#ffffff' : '#1d282d'};
   }
-  const pct = v => v == null ? 'n/a' : (v * 100).toFixed(1);
-  const raw = v => v == null ? 'n/a' : v.toFixed(4);
+  const pct = v => v == null ? '—' : (v * 100).toFixed(1);
+  const raw = v => v == null ? '—' : v.toFixed(4);
 
   const DIMS = [
     {key: 'I', short: 'ID', name: 'Product identity', help: 'Share of product attributes judged the same as in the reference image, 0 when the product never appears'},
@@ -36,10 +36,16 @@
   ];
 
   const cache = {};
-  const loadJSON = url => cache[url] || (cache[url] = fetch(url).then(r => {
-    if (!r.ok) throw new Error(url + ' ' + r.status);
-    return r.json();
-  }));
+  const loadJSON = url => cache[url] || (cache[url] = (location.protocol.startsWith('http')
+    ? fetch(url).then(r => { if (!r.ok) throw new Error(url + ' ' + r.status); return r.json(); }).catch(() => {
+        if (window.FS2V_INLINE_DATA && window.FS2V_INLINE_DATA[url]) return window.FS2V_INLINE_DATA[url];
+        throw new Error('Could not load ' + url);
+      })
+    : Promise.resolve().then(() => {
+        if (window.FS2V_INLINE_DATA && window.FS2V_INLINE_DATA[url]) return window.FS2V_INLINE_DATA[url];
+        return fetch(url).then(r => r.json());
+      })
+  ));
 
   // Tooltip: one shared element, follows the pointer, also shown on keyboard focus.
   let tip;
@@ -165,7 +171,7 @@
     return `<article class="out"><header><h4 title="${esc(m.name)}">${esc(m.name)}</h4>
       <span class="tbadge${tierLight(m.tier) ? ' light' : ''}" style="--tc:${tierColor(m.tier)}" data-tip="Overall tier ${m.tier} of 5">T${m.tier}</span></header>
       <video muted loop playsinline preload="none" poster="${esc(o.poster)}" data-src="${esc(o.video)}" aria-label="${esc(m.name)} output"></video>
-      <div class="scores"><div class="total" data-tip="<b>Score of this video</b><br>${raw(o.score)}<br><span class=k>Weighted mean of the four dimensions</span>"><small>SCORE</small><b>${pct(o.score)}</b></div><div class="raw" data-tip="<b>Win rate on this case</b><br>${raw(o.win)}<br><span class=k>Reference: share of the other models this video beats on the same case, ties count half</span>"><small>WIN</small>${pct(o.win)}</div>${cells}</div></article>`;
+      <div class="scores"><div class="total" data-tip="<b>Score of this video</b><br>${raw(o.score)}<br><span class=k>Weighted mean of the four dimensions</span>"><small>SCORE</small><b>${pct(o.score)}</b></div><div class="raw" data-tip="<b>Win rate on this case</b><br>${o.win == null ? 'Evaluated post-freeze on identical Core-110 protocol (51-pool win rate not recomputed)' : raw(o.win) + '<br><span class=k>Reference: share of the 51-model reference pool beaten on this case</span>'}"><small>WIN</small>${pct(o.win)}</div>${cells}</div></article>`;
   }
 
   window.FS2V = {$, $$, esc, reduceMotion, tierColor, tierLight, heat, WIN_LO, WIN_HI, pct, raw, DIMS, loadJSON, showTip, hideTip, bindTips,

@@ -1,413 +1,617 @@
 {
- "note": "Release month per model (YYYY-MM, or YYYY when no month is known). Not verified. Edit freely, null hides the date.",
+ "note": "Researched model release months (YYYY-MM, YYYY, or null when unverified).",
+ "researched_at": "2026-11-25",
+ "summary": {
+  "total_models": 55,
+  "with_yyyy_mm": 54,
+  "with_yyyy_only": 0,
+  "null_unverified": 1
+ },
  "models": [
   {
    "tag": "omni12flash",
    "name": "Gemini Omni 1.2 Flash",
+   "vendor": "Google",
    "date": "2026-11",
-   "confidence": "medium",
-   "source": "first public availability, approximate",
-   "verified": false
+   "exact_date": "2026-11-05",
+   "confidence": "high",
+   "verified": true,
+   "source": "Google announced rollout and Gemini API availability. https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
+   "source_note": "Google announced rollout and Gemini API availability"
   },
   {
    "tag": "bach10pro",
    "name": "Bach 1.0 Pro",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
-  },
-  {
-   "tag": "seedance25flash",
-   "name": "Seedance 2.5 Flash",
-   "date": "2026-11",
-   "confidence": "high",
-   "source": "vendor model documentation: released November 12, 2026",
-   "verified": false
+   "vendor": "Video Rebirth",
+   "date": "2026-10",
+   "exact_date": "2026-10-15",
+   "confidence": "medium",
+   "verified": true,
+   "source": "Video Rebirth production launch post. Its homepage also records the earlier September leaderboard appearance. https://x.com/video_rebirth/status/2110747031065202830 https://www.videorebirth.com/ https://runtimewire.com/article/video-rebirth-bach-1-pro-production-video",
+   "source_note": "Video Rebirth production launch post. Its homepage also records the earlier September leaderboard appearance"
   },
   {
    "tag": "seedance20mini",
    "name": "Seedance 2.0 Mini",
-   "date": "2026",
-   "confidence": "low",
-   "source": "vendor model documentation: mid 2026, no month stated",
-   "verified": false
-  },
-  {
-   "tag": "seedance20fast",
-   "name": "Seedance 2.0 Fast",
-   "date": "2026-03",
+   "vendor": "ByteDance",
+   "date": "2026-06",
+   "exact_date": "2026-06-15",
    "confidence": "medium",
-   "source": "vendor model documentation: available on CapCut and Dreamina as of March 2026",
-   "verified": false
+   "verified": true,
+   "source": "Volcano Engine opened the model in its Ark experience center, as reported at launch. BytePlus documents the model's later official API availability. https://www.thepaper.cn/newsDetail_forward_33388740 https://www.byteplus.com/en/activity/TTS-agency-sd",
+   "source_note": "Volcano Engine opened the model in its Ark experience center, as reported at launch. BytePlus documents the model's later official API availability"
   },
   {
    "tag": "wan30",
    "name": "Wan 3.0",
+   "vendor": "Alibaba",
    "date": "2026-08",
+   "exact_date": "2026-08-06",
    "confidence": "high",
-   "source": "vendor announcement",
-   "verified": false
+   "verified": true,
+   "source": "Alibaba Cloud Model Studio lists the first global release of wan3.0-video, which opened as a public beta. https://docs.bailian.console.aliyun.com/en/model-studio/newly-released-models",
+   "source_note": "Alibaba Cloud Model Studio lists the first global release of wan3.0-video, which opened as a public beta"
+  },
+  {
+   "tag": "seedance25flash",
+   "name": "Seedance 2.5 Flash",
+   "vendor": "ByteDance",
+   "date": "2026-11",
+   "exact_date": "2026-11-12",
+   "confidence": "medium",
+   "verified": true,
+   "source": "Contemporaneous launch reporting dates the Volcano Engine release to November 12. BytePlus lists the API model as a new November release. https://www.ithome.com/1/026/069.htm https://docs.byteplus.com/en/docs/modelark/model-release-announcement",
+   "source_note": "Contemporaneous launch reporting dates the Volcano Engine release to November 12. BytePlus lists the API model as a new November release"
   },
   {
    "tag": "vega15lite",
    "name": "Vega 1.5 Lite",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "vendor": "Tencent",
+   "date": "2026-11",
+   "exact_date": "2026-11-14",
+   "confidence": "medium",
+   "verified": true,
+   "source": "Moonheart's integration changelog announces public TokenHub API support for the exact 1.5 Lite model ID. https://docs.moonheart.space/wand/notice/48.en",
+   "source_note": "Moonheart's integration changelog announces public TokenHub API support for the exact 1.5 Lite model ID"
   },
   {
-   "tag": "h3",
-   "name": "MiniMax H3",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
-  },
-  {
-   "tag": "vega10pro",
-   "name": "Vega 1.0 Pro",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
-  },
-  {
-   "tag": "vega10profast",
-   "name": "Vega 1.0 Pro Fast",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "tag": "seedance20fast",
+   "name": "Seedance 2.0 Fast",
+   "vendor": "ByteDance",
+   "date": "2026-02",
+   "exact_date": null,
+   "confidence": "medium",
+   "verified": true,
+   "source": "Securities Times observed Seedance 2.0 Fast in Jimeng on February 14. Volcano Engine documents API support in April. https://finance.sina.com.cn/roll/2026-02-15/doc-inhmwwme7027663.shtml https://console.volcengine.com/ark/region:cn-beijing/docs/product-update-announcements",
+   "source_note": "Securities Times observed Seedance 2.0 Fast in Jimeng on February 14. Volcano Engine documents API support in April"
   },
   {
    "tag": "viduq4preview",
    "name": "Vidu Q4 Preview",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "vendor": "Vidu",
+   "date": "2026-10",
+   "exact_date": "2026-10-07",
+   "confidence": "high",
+   "verified": true,
+   "source": "Vidu's launch announcement and API update log date the first public Q4 preview. https://www.prnewswire.com/news-releases/vidu-launches-q4-preview-making-flagship-ai-video-creation-accessible-to-everyone-302901266.html https://platform.vidu.com/docs/api-reference/updates",
+   "source_note": "Vidu's launch announcement and API update log date the first public Q4 preview"
   },
   {
-   "tag": "vega10lite",
-   "name": "Vega 1.0 Lite",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "tag": "open_minimaxh3",
+   "name": "MiniMax-H3 (Open)",
+   "vendor": "MiniMax",
+   "date": "2026-08",
+   "exact_date": "2026-08-03",
+   "confidence": "high",
+   "verified": true,
+   "source": "MiniMax announced the public weights on August 3. The first public Hugging Face commit is also dated August 3 UTC. Repository metadata records creation on July 28, and the license bears an August 2 date. https://www.minimax.io/news/minimax-h3-open-source https://huggingface.co/MiniMaxAI/MiniMax-H3/commit/5d9b308a59ab12e67147f191e184baf704185bd1",
+   "source_note": "MiniMax announced the public weights on August 3. The first public Hugging Face commit is also dated August 3 UTC. Repository metadata records creation on July 28, and the license bears an August 2 date"
   },
   {
    "tag": "seedance25",
    "name": "Seedance 2.5",
-   "date": "2026-06",
+   "vendor": "ByteDance",
+   "date": "2026-07",
+   "exact_date": "2026-07-31",
    "confidence": "high",
-   "source": "vendor model documentation: unveiled June 23, 2026",
-   "verified": false
+   "verified": true,
+   "source": "ByteDance Seed's official launch announcement for Seedance 2.5. https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5",
+   "source_note": "ByteDance Seed's official launch announcement for Seedance 2.5"
   },
   {
-   "tag": "grok15",
-   "name": "Grok Imagine 1.5",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
-  },
-  {
-   "tag": "seedance20",
-   "name": "Seedance 2.0",
-   "date": "2026-02",
+   "tag": "vega10profast",
+   "name": "Vega 1.0 Pro Fast",
+   "vendor": "Tencent",
+   "date": "2026-11",
+   "exact_date": "2026-11-14",
    "confidence": "medium",
-   "source": "first public availability, approximate",
-   "verified": false
+   "verified": true,
+   "source": "Moonheart's integration changelog announces TokenHub API support for the exact 1.0 Pro Fast model ID. This date refers to the documented API rollout, which requires approval for access. https://docs.moonheart.space/wand/notice/48.en",
+   "source_note": "Moonheart's integration changelog announces TokenHub API support for the exact 1.0 Pro Fast model ID. This date refers to the documented API rollout, which requires approval for access"
   },
   {
-   "tag": "kling40flash",
-   "name": "Kling 4.0 Flash",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "tag": "vega10pro",
+   "name": "Vega 1.0 Pro",
+   "vendor": "Tencent",
+   "date": "2026-09",
+   "exact_date": "2026-09-02",
+   "confidence": "medium",
+   "verified": true,
+   "source": "Moonheart's September 2 changelog announces addition of Vega 1.0 Pro and 1.0 Lite. https://docs.moonheart.space/wand/notice/20.zh",
+   "source_note": "Moonheart's September 2 changelog announces addition of Vega 1.0 Pro and 1.0 Lite"
   },
   {
-   "tag": "vega10promini",
-   "name": "Vega 1.0 Pro Mini",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "tag": "h3",
+   "name": "MiniMax H3",
+   "vendor": "MiniMax",
+   "date": "2026-07",
+   "exact_date": "2026-07-31",
+   "confidence": "high",
+   "verified": true,
+   "source": "MiniMax's official H3 launch announcement. The public Hugging Face weights followed on August 3. https://www.minimax.io/blog/minimax-h3 https://www.minimax.io/news/minimax-h3-open-source",
+   "source_note": "MiniMax's official H3 launch announcement. The public Hugging Face weights followed on August 3"
   },
   {
    "tag": "h3max",
    "name": "MiniMax H3 Max",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "vendor": "MiniMax",
+   "date": "2026-08",
+   "exact_date": "2026-08-26",
+   "confidence": "high",
+   "verified": true,
+   "source": "fal announced public availability for its H3 Max post-trained model. Reference-to-video support followed the initial launch. https://fal.ai/learn/devs/introducing-h3-max-by-fal https://fal.ai/learn/devs/minimax-h3-vs-minimax-h3-max",
+   "source_note": "fal announced public availability for its H3 Max post-trained model. Reference-to-video support followed the initial launch"
   },
   {
-   "tag": "h3fast",
-   "name": "MiniMax H3 Fast",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "tag": "vega10lite",
+   "name": "Vega 1.0 Lite",
+   "vendor": "Tencent",
+   "date": "2026-09",
+   "exact_date": "2026-09-02",
+   "confidence": "medium",
+   "verified": true,
+   "source": "Moonheart's September 2 changelog announces addition of Vega 1.0 Pro and 1.0 Lite. Tencent's TokenHub guide independently lists the Lite endpoint in October. https://docs.moonheart.space/wand/notice/20.zh https://intl.cloud.tencent.com/zh/document/product/1300/84930",
+   "source_note": "Moonheart's September 2 changelog announces addition of Vega 1.0 Pro and 1.0 Lite. Tencent's TokenHub guide independently lists the Lite endpoint in October"
   },
   {
-   "tag": "vega15pro",
-   "name": "Vega 1.5 Pro",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "tag": "vega10promini",
+   "name": "Vega 1.0 Pro Mini",
+   "vendor": "Tencent",
+   "date": "2026-11",
+   "exact_date": "2026-11-14",
+   "confidence": "medium",
+   "verified": true,
+   "source": "Moonheart's integration changelog announces TokenHub API support for the exact 1.0 Pro Mini model ID. This date refers to the documented API rollout, which requires approval for access. https://docs.moonheart.space/wand/notice/48.en",
+   "source_note": "Moonheart's integration changelog announces TokenHub API support for the exact 1.0 Pro Mini model ID. This date refers to the documented API rollout, which requires approval for access"
+  },
+  {
+   "tag": "kling40flash",
+   "name": "Kling 4.0 Flash",
+   "vendor": "Kuaishou",
+   "date": "2026-09",
+   "exact_date": null,
+   "confidence": "high",
+   "verified": true,
+   "source": "Kuaishou's third-quarter results date the initial limited-user rollout of Kling 4.0 Flash to September. https://ir.kuaishou.com/news-releases/news-release-details/kuaishou-technology-announces-third-quarter-2026-unaudited/",
+   "source_note": "Kuaishou's third-quarter results date the initial limited-user rollout of Kling 4.0 Flash to September"
+  },
+  {
+   "tag": "seedance20",
+   "name": "Seedance 2.0",
+   "vendor": "ByteDance",
+   "date": "2026-02",
+   "exact_date": "2026-02-12",
+   "confidence": "high",
+   "verified": true,
+   "source": "ByteDance Seed's official Seedance 2.0 launch announcement. https://seed.bytedance.com/en/blog/official-launch-of-seedance-2-0",
+   "source_note": "ByteDance Seed's official Seedance 2.0 launch announcement"
   },
   {
    "tag": "omni11flash",
    "name": "Gemini Omni 1.1 Flash",
+   "vendor": "Google",
    "date": "2026-08",
-   "confidence": "medium",
-   "source": "first public availability, approximate",
-   "verified": false
-  },
-  {
-   "tag": "kling40",
-   "name": "Kling 4.0",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "exact_date": "2026-08-27",
+   "confidence": "high",
+   "verified": true,
+   "source": "Google's Gemini API deprecation table lists the release date for gemini-omni-1.1-flash. https://ai.google.dev/gemini-api/docs/deprecations?hl=de",
+   "source_note": "Google's Gemini API deprecation table lists the release date for gemini-omni-1.1-flash"
   },
   {
    "tag": "omniflash",
    "name": "Gemini Omni Flash",
+   "vendor": "Google",
    "date": "2026-05",
+   "exact_date": "2026-05-19",
    "confidence": "high",
-   "source": "vendor announcement",
-   "verified": false
+   "verified": true,
+   "source": "Google's Gemini app release notes date the public subscriber rollout. DeepMind's model card names the model as Gemini Omni Flash. https://gemini.google/release-notes/?a289adb9_page=2 https://deepmind.google/models/model-cards/gemini-omni-flash/",
+   "source_note": "Google's Gemini app release notes date the public subscriber rollout. DeepMind's model card names the model as Gemini Omni Flash"
+  },
+  {
+   "tag": "vega15pro",
+   "name": "Vega 1.5 Pro",
+   "vendor": "Tencent",
+   "date": "2026-09",
+   "exact_date": "2026-09-25",
+   "confidence": "medium",
+   "verified": true,
+   "source": "Moonheart's dated integration notice announces that Vega Video 1.5 Pro was added. https://docs.moonheart.space/wand/notice/24.zh",
+   "source_note": "Moonheart's dated integration notice announces that Vega Video 1.5 Pro was added"
+  },
+  {
+   "tag": "grok15",
+   "name": "Grok Imagine 1.5",
+   "vendor": "xAI",
+   "date": "2026-06",
+   "exact_date": "2026-06-16",
+   "confidence": "high",
+   "verified": true,
+   "source": "xAI announced general API availability for grok-imagine-video-1.5. The preview arrived June 3, and reference inputs followed in a later update. https://x.ai/news/grok-imagine-video-1-5 https://x.ai/news/grok-imagine-1-5 https://x.ai/news/grok-imagine-video-1-5-references",
+   "source_note": "xAI announced general API availability for grok-imagine-video-1.5. The preview arrived June 3, and reference inputs followed in a later update"
   },
   {
    "tag": "grok10",
    "name": "Grok Imagine 1.0",
-   "date": "2026-02",
+   "vendor": "xAI",
+   "date": "2026-01",
+   "exact_date": "2026-01-28",
    "confidence": "high",
-   "source": "vendor announcement",
-   "verified": false
+   "verified": true,
+   "source": "xAI announced the original Grok Imagine video API under the grok-imagine-video model ID. https://x.ai/news/grok-imagine-api",
+   "source_note": "xAI announced the original Grok Imagine video API under the grok-imagine-video model ID"
   },
   {
    "tag": "wan30prime",
    "name": "Wan 3.0 Prime",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "vendor": "Alibaba",
+   "date": "2026-08",
+   "exact_date": "2026-08-20",
+   "confidence": "high",
+   "verified": true,
+   "source": "Alibaba Cloud Model Studio release log lists wan3.0-video-prime as released on August 20. https://docs.bailian.console.aliyun.com/en/model-studio/newly-released-models",
+   "source_note": "Alibaba Cloud Model Studio release log lists wan3.0-video-prime as released on August 20"
+  },
+  {
+   "tag": "h3fast",
+   "name": "MiniMax H3 Fast",
+   "vendor": "MiniMax",
+   "date": "2026-09",
+   "exact_date": "2026-09-09",
+   "confidence": "high",
+   "verified": true,
+   "source": "Runware's rollout announced public availability of minimax:h3@fast with reference-to-video. MiniMax identifies the partner build as MiniMax-H3-Fast. https://runware.ai/docs/changelog https://www.minimax.io/h3-family",
+   "source_note": "Runware's rollout announced public availability of minimax:h3@fast with reference-to-video. MiniMax identifies the partner build as MiniMax-H3-Fast"
+  },
+  {
+   "tag": "kling40",
+   "name": "Kling 4.0",
+   "vendor": "Kuaishou",
+   "date": "2026-10",
+   "exact_date": "2026-10-15",
+   "confidence": "high",
+   "verified": true,
+   "source": "Kuaishou's October 16 press release dates the official Kling 4.0 launch to October 15. https://kuaishou.gcs-web.com/node/11766/pdf",
+   "source_note": "Kuaishou's October 16 press release dates the official Kling 4.0 launch to October 15"
   },
   {
    "tag": "viduq2",
    "name": "Vidu Q2",
+   "vendor": "Vidu",
    "date": "2025-09",
+   "exact_date": null,
    "confidence": "medium",
-   "source": "approximate, not verified",
-   "verified": false
+   "verified": true,
+   "source": "Pollo AI's September 25 release confirms launch of the Vidu Q2 family. Vidu added reference-to-video to the base viduq2 API on October 21. https://www.prnewswire.com/news-releases/pollo-ai-has-launched-vidu-q2-and-kling-2-5-turbo-ai-video-models-empowering-creators-with-studio-level-cinematics-302566885.html https://platform.vidu.com/docs/api-reference/updates",
+   "source_note": "Pollo AI's September 25 release confirms launch of the Vidu Q2 family. Vidu added reference-to-video to the base viduq2 API on October 21"
   },
   {
    "tag": "happyhorse11",
    "name": "HappyHorse 1.1",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "vendor": "Alibaba",
+   "date": "2026-06",
+   "exact_date": "2026-06-22",
+   "confidence": "high",
+   "verified": true,
+   "source": "Alibaba Cloud announced that HappyHorse 1.1 was available in Model Studio. https://developer.aliyun.com/article/1742768",
+   "source_note": "Alibaba Cloud announced that HappyHorse 1.1 was available in Model Studio"
   },
   {
    "tag": "klingo3std",
    "name": "Kling O3 Std",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
-  },
-  {
-   "tag": "viduq3mix",
-   "name": "Vidu Q3 Mix",
-   "date": "2026-01",
-   "confidence": "medium",
-   "source": "vendor model documentation: same family documentation as Vidu Q3, released January 30, 2026",
-   "verified": false
+   "vendor": "Kuaishou",
+   "date": "2026-02",
+   "exact_date": null,
+   "confidence": "high",
+   "verified": true,
+   "source": "Kuaishou's February 5 launch includes Kling Video 3.0 Omni. fal's launch lists the 3.0 Omni standard endpoints. https://ir.kuaishou.com/zh-hans/news-releases/news-release-details/keling30xiliemoxingquanmianshangxian https://blog.fal.ai/kling-3-0-is-now-available-on-fal/",
+   "source_note": "Kuaishou's February 5 launch includes Kling Video 3.0 Omni. fal's launch lists the 3.0 Omni standard endpoints"
   },
   {
    "tag": "viduq3",
    "name": "Vidu Q3",
+   "vendor": "Vidu",
    "date": "2026-01",
+   "exact_date": null,
    "confidence": "high",
-   "source": "vendor model documentation: Vidu Q3 released January 30, 2026",
-   "verified": false
+   "verified": true,
+   "source": "ShengShu's January 30 release announces the Vidu Q3 family. Its API changelog dates Q3 Pro text and image support to January 27 and base viduq3 reference-to-video to April 13. https://www.prnewswire.com/news-releases/vidu-showcases-china-speed-in-advancing-ai-video-into-production-at-global-creativity-week-302675040.html https://platform.vidu.com/docs/api-reference/updates",
+   "source_note": "ShengShu's January 30 release announces the Vidu Q3 family. Its API changelog dates Q3 Pro text and image support to January 27 and base viduq3 reference-to-video to April 13"
+  },
+  {
+   "tag": "viduq3mix",
+   "name": "Vidu Q3 Mix",
+   "vendor": "Vidu",
+   "date": "2026-04",
+   "exact_date": "2026-04-13",
+   "confidence": "high",
+   "verified": true,
+   "source": "Vidu's API update notice dates the addition of the exact viduq3-mix reference-to-video model ID. https://platform.vidu.com/docs/api-reference/updates",
+   "source_note": "Vidu's API update notice dates the addition of the exact viduq3-mix reference-to-video model ID"
   },
   {
    "tag": "happyhorse10",
    "name": "HappyHorse 1.0",
-   "date": "2026-05",
-   "confidence": "medium",
-   "source": "first public availability, approximate",
-   "verified": false
+   "vendor": "Alibaba",
+   "date": "2026-04",
+   "exact_date": "2026-04-28",
+   "confidence": "high",
+   "verified": true,
+   "source": "Alibaba Cloud announced limited beta access through its API and consumer products. https://www.alibabacloud.com/blog/alibaba-rolls-out-happyhorse-1-0-in-limited-beta_603068/",
+   "source_note": "Alibaba Cloud announced limited beta access through its API and consumer products"
   },
   {
    "tag": "klingo3pro",
    "name": "Kling O3 Pro",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "vendor": "Kuaishou",
+   "date": "2026-02",
+   "exact_date": null,
+   "confidence": "high",
+   "verified": true,
+   "source": "Kuaishou's February 5 launch includes Kling Video 3.0 Omni. fal's launch lists the 3.0 Omni pro endpoints. https://ir.kuaishou.com/zh-hans/news-releases/news-release-details/keling30xiliemoxingquanmianshangxian https://blog.fal.ai/kling-3-0-is-now-available-on-fal/",
+   "source_note": "Kuaishou's February 5 launch includes Kling Video 3.0 Omni. fal's launch lists the 3.0 Omni pro endpoints"
   },
   {
    "tag": "viduq2pro",
    "name": "Vidu Q2 Pro",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
-  },
-  {
-   "tag": "pixversec1",
-   "name": "PixVerse C1",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
-  },
-  {
-   "tag": "pixverse6",
-   "name": "PixVerse v6",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "vendor": "Vidu",
+   "date": "2025-09",
+   "exact_date": "2025-09-24",
+   "confidence": "high",
+   "verified": true,
+   "source": "Vidu's API changelog records the first viduq2-pro release for image-to-video and start/end frames, followed by reference-to-video support on January 27, 2026. https://platform.vidu.com/docs/api-reference/updates",
+   "source_note": "Vidu's API changelog records the first viduq2-pro release for image-to-video and start/end frames, followed by reference-to-video support on January 27, 2026"
   },
   {
    "tag": "wan27",
    "name": "Wan 2.7",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "vendor": "Alibaba",
+   "date": "2026-04",
+   "exact_date": "2026-04-03",
+   "confidence": "high",
+   "verified": true,
+   "source": "Alibaba Cloud Model Studio lists the initial Wan 2.7 video release. https://docs.bailian.console.aliyun.com/en/model-studio/newly-released-models",
+   "source_note": "Alibaba Cloud Model Studio lists the initial Wan 2.7 video release"
+  },
+  {
+   "tag": "pixverse6",
+   "name": "PixVerse v6",
+   "vendor": "PixVerse",
+   "date": "2026-03",
+   "exact_date": "2026-03-29",
+   "confidence": "high",
+   "verified": true,
+   "source": "PixVerse's API changelog records the v6 launch. Fusion reference-to-video arrived in a later update. https://docs.platform.pixverse.ai/change-logs-906383m0",
+   "source_note": "PixVerse's API changelog records the v6 launch. Fusion reference-to-video arrived in a later update"
   },
   {
    "tag": "open_veo31",
    "name": "Veo 3.1",
+   "vendor": "Google",
    "date": "2025-10",
-   "confidence": "medium",
-   "source": "first public availability, approximate",
-   "verified": false
+   "exact_date": "2025-10-15",
+   "confidence": "high",
+   "verified": true,
+   "source": "Google introduced Veo 3.1 in Flow and announced Gemini API and Vertex AI availability. https://blog.google/innovation-and-ai/products/veo-updates-flow/",
+   "source_note": "Google introduced Veo 3.1 in Flow and announced Gemini API and Vertex AI availability"
+  },
+  {
+   "tag": "pixversec1",
+   "name": "PixVerse C1",
+   "vendor": "PixVerse",
+   "date": "2026-04",
+   "exact_date": "2026-04-07",
+   "confidence": "high",
+   "verified": true,
+   "source": "PixVerse's API changelog records the C1 release, including Fusion reference-to-video. https://docs.platform.pixverse.ai/change-logs-906383m0",
+   "source_note": "PixVerse's API changelog records the C1 release, including Fusion reference-to-video"
   },
   {
    "tag": "open_viduq2",
    "name": "Vidu Q2 (2025)",
+   "vendor": "Vidu",
    "date": "2025-09",
+   "exact_date": null,
    "confidence": "medium",
-   "source": "approximate, not verified",
-   "verified": false
+   "verified": true,
+   "source": "Historical benchmark entry for the Vidu Q2 family, available from Pollo AI in September. ShengShu launched Q2 reference-to-video on October 21. https://www.prnewswire.com/news-releases/pollo-ai-has-launched-vidu-q2-and-kling-2-5-turbo-ai-video-models-empowering-creators-with-studio-level-cinematics-302566885.html https://www.prnewswire.com/news-releases/vidu-launches-q2-reference-to-video-pioneering-a-new-era-of-high-consistency-and-creative-control-302590002.html",
+   "source_note": "Historical benchmark entry for the Vidu Q2 family, available from Pollo AI in September. ShengShu launched Q2 reference-to-video on October 21"
   },
   {
    "tag": "open_vace14b",
    "name": "VACE 14B",
+   "vendor": "Alibaba",
    "date": "2025-05",
-   "confidence": "medium",
-   "source": "approximate, not verified",
-   "verified": false
+   "exact_date": "2025-05-14",
+   "confidence": "high",
+   "verified": true,
+   "source": "VACE authors' release log dates public Wan2.1-VACE-14B weights. https://github.com/ali-vilab/VACE",
+   "source_note": "VACE authors' release log dates public Wan2.1-VACE-14B weights"
   },
   {
    "tag": "open_veo2",
    "name": "Veo 2",
+   "vendor": "Google",
    "date": "2024-12",
+   "exact_date": "2024-12-16",
    "confidence": "high",
-   "source": "vendor announcement",
-   "verified": false
-  },
-  {
-   "tag": "vidur2v20",
-   "name": "Vidu R2V 2.0",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
-  },
-  {
-   "tag": "viduq1",
-   "name": "Vidu Q1",
-   "date": "2025-04",
-   "confidence": "medium",
-   "source": "approximate, not verified",
-   "verified": false
+   "verified": true,
+   "source": "Google announced the rollout of Veo 2 through VideoFX. https://blog.google/innovation-and-ai/models-and-research/google-labs/video-image-generation-update-december-2024/",
+   "source_note": "Google announced the rollout of Veo 2 through VideoFX"
   },
   {
    "tag": "open_magref",
    "name": "MAGREF",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
-  },
-  {
-   "tag": "open_skyreelsa2",
-   "name": "SkyReels A2",
-   "date": "2025-04",
-   "confidence": "medium",
-   "source": "approximate, not verified",
-   "verified": false
-  },
-  {
-   "tag": "vidur2vq1",
-   "name": "Vidu R2V Q1",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "vendor": "Research release",
+   "date": "2025-06",
+   "exact_date": "2025-06-17",
+   "confidence": "high",
+   "verified": true,
+   "source": "The authors announced checkpoints June 16. Their Hugging Face repository shows the original checkpoint shards uploaded June 17 UTC. https://github.com/MAGREF-Video/MAGREF https://huggingface.co/MAGREF-Video/MAGREF/commits/main",
+   "source_note": "The authors announced checkpoints June 16. Their Hugging Face repository shows the original checkpoint shards uploaded June 17 UTC"
   },
   {
    "tag": "open_phantom14b",
    "name": "Phantom 14B",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "vendor": "ByteDance",
+   "date": "2025-05",
+   "exact_date": "2025-05-27",
+   "confidence": "high",
+   "verified": true,
+   "source": "ByteDance's Phantom model card dates public Phantom-Wan-14B weights. https://huggingface.co/bytedance-research/Phantom",
+   "source_note": "ByteDance's Phantom model card dates public Phantom-Wan-14B weights"
+  },
+  {
+   "tag": "viduq1",
+   "name": "Vidu Q1",
+   "vendor": "Vidu",
+   "date": "2025-04",
+   "exact_date": "2025-04-21",
+   "confidence": "high",
+   "verified": true,
+   "source": "ShengShu's global launch announcement dates the base Vidu Q1 model. https://www.prnewswire.com/news-releases/vidu-q1-model-launches-globally-offering-unmatched-realistic-vfx-capabilities-from-generating-cinematic-transitions-to-high-fidelity-sound-effects-with-just-a-few-simple-inputs-302433278.html",
+   "source_note": "ShengShu's global launch announcement dates the base Vidu Q1 model"
+  },
+  {
+   "tag": "vidur2v20",
+   "name": "Vidu R2V 2.0",
+   "vendor": "Vidu",
+   "date": "2025-01",
+   "exact_date": "2025-01-15",
+   "confidence": "high",
+   "verified": true,
+   "source": "ShengShu's Vidu 2.0 launch announcement describes the updated reference-to-video capability. https://www.prnewswire.com/news-releases/shengshu-technology-announces-vidu-2-0--offering-the-industrys-fastest-generative-video-302351677.html",
+   "source_note": "ShengShu's Vidu 2.0 launch announcement describes the updated reference-to-video capability"
+  },
+  {
+   "tag": "open_skyreelsa2",
+   "name": "SkyReels A2",
+   "vendor": "Skywork",
+   "date": "2025-04",
+   "exact_date": "2025-04-03",
+   "confidence": "high",
+   "verified": true,
+   "source": "Skywork's SkyReels-A2 repository announces the preview checkpoints and inference code. https://github.com/SkyworkAI/SkyReels-A2",
+   "source_note": "Skywork's SkyReels-A2 repository announces the preview checkpoints and inference code"
+  },
+  {
+   "tag": "vidur2vq1",
+   "name": "Vidu R2V Q1",
+   "vendor": "Vidu",
+   "date": "2025-07",
+   "exact_date": "2025-07-08",
+   "confidence": "high",
+   "verified": true,
+   "source": "ShengShu launched the seven-image reference-to-video feature for Vidu Q1. https://www.prnewswire.com/news-releases/vidu-q1-model-update-unveils-multi-reference-feature-supporting-up-to-seven-image-inputs-302499846.html",
+   "source_note": "ShengShu launched the seven-image reference-to-video feature for Vidu Q1"
   },
   {
    "tag": "open_videox",
    "name": "VideoX",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "vendor": "Research release",
+   "date": "2025-09",
+   "exact_date": null,
+   "confidence": "high",
+   "verified": true,
+   "source": "The full leaderboard identifies Wan2.2-VACE-Fun. Alibaba PAI's public Wan2.2-VACE-Fun-A14B history records the initial high- and low-noise model uploads in September. https://huggingface.co/alibaba-pai/Wan2.2-VACE-Fun-A14B/commits/main",
+   "source_note": "The full leaderboard identifies Wan2.2-VACE-Fun. Alibaba PAI's public Wan2.2-VACE-Fun-A14B history records the initial high- and low-noise model uploads in September"
   },
   {
    "tag": "open_hunyuancustom",
    "name": "HunyuanCustom",
+   "vendor": "Tencent",
    "date": "2025-05",
-   "confidence": "medium",
-   "source": "first public availability, approximate",
-   "verified": false
+   "exact_date": "2025-05-08",
+   "confidence": "high",
+   "verified": true,
+   "source": "Tencent's HunyuanCustom model card dates the public inference code and weights. https://huggingface.co/tencent/HunyuanCustom",
+   "source_note": "Tencent's HunyuanCustom model card dates the public inference code and weights"
   },
   {
    "tag": "open_vacea13b",
    "name": "VACE A1.3B",
+   "vendor": "Research release",
    "date": null,
+   "exact_date": null,
    "confidence": null,
-   "source": null,
-   "verified": false
-  },
-  {
-   "tag": "open_phantom13b",
-   "name": "Phantom 1.3B",
-   "date": null,
-   "confidence": null,
-   "source": null,
-   "verified": false
+   "verified": false,
+   "source": "Local Results/VACE_A1.3B contains 401 video filenames prefixed vace-14B and 165 prefixed vace-1.3B. The archived generation records identify the source folder without a checkpoint ID. The public VACE release log does not identify a model under the A1.3B tag. https://github.com/ali-vilab/VACE",
+   "source_note": "Local Results/VACE_A1.3B contains 401 video filenames prefixed vace-14B and 165 prefixed vace-1.3B. The archived generation records identify the source folder without a checkpoint ID. The public VACE release log does not identify a model under the A1.3B tag"
   },
   {
    "tag": "open_vace13b",
    "name": "VACE 1.3B",
-   "date": "2025-03",
-   "confidence": "medium",
-   "source": "approximate, not verified",
-   "verified": false
+   "vendor": "Alibaba",
+   "date": "2025-05",
+   "exact_date": "2025-05-14",
+   "confidence": "high",
+   "verified": true,
+   "source": "Inference/VACE/vace_wan_batch_inference.py names Wan2.1-VACE-1.3B. The authors' May 14 release covers that checkpoint. The separate 1.3B preview was announced in March. https://github.com/ali-vilab/VACE https://huggingface.co/Wan-AI/Wan2.1-VACE-1.3B",
+   "source_note": "Inference/VACE/vace_wan_batch_inference.py names Wan2.1-VACE-1.3B. The authors' May 14 release covers that checkpoint. The separate 1.3B preview was announced in March"
+  },
+  {
+   "tag": "open_phantom13b",
+   "name": "Phantom 1.3B",
+   "vendor": "ByteDance",
+   "date": "2025-04",
+   "exact_date": "2025-04-21",
+   "confidence": "high",
+   "verified": true,
+   "source": "ByteDance's Phantom model card dates the Phantom-Wan-1.3B inference code and checkpoint release. https://huggingface.co/bytedance-research/Phantom",
+   "source_note": "ByteDance's Phantom model card dates the Phantom-Wan-1.3B inference code and checkpoint release"
+  },
+  {
+   "tag": "kling16",
+   "name": "Kling 1.6",
+   "vendor": "Kuaishou",
+   "date": "2024-12",
+   "exact_date": "2024-12-19",
+   "confidence": "high",
+   "verified": true,
+   "source": "Kuaishou's earnings call dates the official Kling 1.6 rollout. Its investor presentation confirms the month. https://6ix.com/event/kuaishou-technology-b-kuasf-q4-2024-earnings-call https://ir.kuaishou.com/system/files-encrypted/nasdaq_kms/assets/2026/11/19/17-03-15/2026%E5%B9%B4%E7%AC%AC%E4%B8%89%E5%AD%A3%E5%BA%A6%E5%BF%AB%E6%89%8B%E7%A7%91%E6%8A%80%E6%BC%94%E7%A4%BA%E6%9D%90%E6%96%99_CN_FINAL.pdf",
+   "source_note": "Kuaishou's earnings call dates the official Kling 1.6 rollout. Its investor presentation confirms the month"
+  },
+  {
+   "tag": "sora2",
+   "name": "Sora 2",
+   "vendor": "OpenAI",
+   "date": "2025-09",
+   "exact_date": "2025-09-30",
+   "confidence": "high",
+   "verified": true,
+   "source": "OpenAI's Sora 2 launch announcement began the invitation-based public rollout. https://openai.com/index/sora-2/",
+   "source_note": "OpenAI's Sora 2 launch announcement began the invitation-based public rollout"
+  },
+  {
+   "tag": "sora2pro",
+   "name": "Sora 2 Pro",
+   "vendor": "OpenAI",
+   "date": "2025-09",
+   "exact_date": "2025-09-30",
+   "confidence": "high",
+   "verified": true,
+   "source": "OpenAI's launch announcement lists the experimental Sora 2 Pro model for ChatGPT Pro subscribers on sora.com. https://openai.com/index/sora-2/",
+   "source_note": "OpenAI's launch announcement lists the experimental Sora 2 Pro model for ChatGPT Pro subscribers on sora.com"
   }
  ]
 }

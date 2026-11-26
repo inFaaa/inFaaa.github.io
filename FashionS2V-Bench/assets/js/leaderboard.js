@@ -1,4 +1,4 @@
-/* Leaderboard, dimension profiles and the main page case viewer. */
+/* Leaderboard (Core-110 52-model & Full-566 12-model switcher), dimension profiles and main page case viewer. */
 (() => {
   'use strict';
   const {$, $$, esc, tierColor, tierLight, heat, WIN_LO, WIN_HI, pct, raw, DIMS, loadJSON, bindTips, initChrome, buildWall, modelMeta} = window.FS2V;
@@ -11,38 +11,60 @@
     {id: 'structure', label: 'By case structure'}
   ];
 
-  // release months live in an editable file, a missing file only hides the dates
   const dates = loadJSON('data/release_dates.json').catch(() => ({models: []}));
-  Promise.all([loadJSON('data/leaderboard.json'), loadJSON('data/benchmark.json'), dates]).then(([board, bench, rel]) => {
-    const when = Object.fromEntries((rel.models || []).filter(x => x.date).map(x => [x.tag, x.date]));
-    board.models.forEach(m => { m.date = when[m.id] || null; });
-    const meta = modelMeta(board);
+  Promise.all([
+    loadJSON('data/leaderboard.json'),
+    loadJSON('data/leaderboard_full566.json'),
+    loadJSON('data/benchmark.json'),
+    dates
+  ]).then(([boardCore, boardFull, bench, rel]) => {
+    const relMap = Object.fromEntries((rel.models || []).map(x => [x.tag, x]));
+    const attachRelease = m => {
+      const info = relMap[m.id] || {};
+      m.date = info.date || null;
+      m.exact_date = info.exact_date || null;
+      m.date_note = info.source_note || '';
+    };
+    boardCore.models.forEach(attachRelease);
+    boardFull.models.forEach(attachRelease);
+    const meta = modelMeta(boardCore);
     buildWall(bench, meta);
-    initBoard(board);
-    initProfiles(board);
+    initBoard(boardCore, boardFull);
+    initProfiles(boardCore);
     const ex = $('#examples-viewer');
     if (ex) FS2V.initCases(ex, bench, meta, 'taxonomy');
   }).catch(err => {
     const el = $('#board-body');
-    if (el) el.innerHTML = `<tr class="empty-row"><td colspan="11">The leaderboard data could not be loaded (${esc(err.message)}). Serve this folder over HTTP to view it.</td></tr>`;
+    if (el) el.innerHTML = `<tr class="empty-row"><td colspan="11">The leaderboard data could not be loaded (${esc(err.message)}).</td></tr>`;
   });
 
-  function initBoard(board) {
-    // default view keeps the official board order: tiers, then Score inside a tier
-    const state = {group: 'overall', slice: 'all', access: 'all', q: '', key: 'tier', dir: 1};
-    const sliceOf = id => board.slices.find(s => s.id === id);
-    const groupTabs = $('#slice-groups'), sliceTabs = $('#slice-tabs');
+  function initBoard(boardCore, boardFull) {
+    const state = {dataset: 'core', group: 'overall', slice: 'all', access: 'all', q: '', key: 'tier', dir: 1};
+    const curBoard = () => state.dataset === 'core' ? boardCore : boardFull;
+    const sliceOf = id => curBoard().slices.find(s => s.id === id) || curBoard().slices[0];
+    const groupTabs = $('#slice-groups'), sliceTabs = $('#slice-tabs'), scopeBanner = $('#scope-banner');
     const body = $('#board-body'), table = $('#board');
     bindTips(table);
 
+    $$('#dataset-seg button').forEach(b => b.onclick = () => {
+      state.dataset = b.dataset.ds;
+      $$('#dataset-seg button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      state.group = 'overall';
+      state.slice = 'all';
+      state.key = 'tier';
+      state.dir = 1;
+      drawTabs(); draw();
+    });
+
     function drawTabs() {
+      const board = curBoard();
       groupTabs.innerHTML = SLICE_GROUPS.map(g => `<button data-g="${g.id}" aria-pressed="${g.id === state.group}">${g.label}</button>`).join('');
       const subs = board.slices.filter(s => s.group === state.group);
       sliceTabs.hidden = state.group === 'overall';
       sliceTabs.innerHTML = subs.map(s => `<button data-s="${s.id}" aria-pressed="${s.id === state.slice}">${esc(s.label)} <span style="opacity:.7">(${s.cases})</span></button>`).join('');
       $$('[data-g]', groupTabs).forEach(b => b.onclick = () => {
         state.group = b.dataset.g;
-        state.slice = board.slices.find(s => s.group === state.group).id;
+        state.slice = curBoard().slices.find(s => s.group === state.group).id;
         if (state.slice !== 'all' && state.key === 'tier') { state.key = 'score'; state.dir = -1; }
         if (state.slice === 'all' && state.key === 'score') { state.key = 'tier'; state.dir = 1; }
         drawTabs(); draw();
@@ -68,41 +90,44 @@
     });
 
     function rowsFor() {
-      const s = sliceOf(state.slice);
+      const board = curBoard(), s = sliceOf(state.slice);
       return board.models.map(m => {
         const v = state.slice === 'all' ? m : {...m, ...s.scores[m.id]};
-        return {...v, date: m.date, tier: m.tier, detail: m.detail, detail_win: m.detail_win, elo: m.elo, elo_lo: m.elo_lo, elo_hi: m.elo_hi};
-      }).filter(r => r.score != null)
+        return {...v, date: m.date, exact_date: m.exact_date, date_note: m.date_note, tier: m.tier, tier_method: m.tier_method, detail: m.detail, detail_win: m.detail_win, elo: m.elo, elo_lo: m.elo_lo, elo_hi: m.elo_hi};
+      }).filter(r => r.score != null && r.n > 0)
         .filter(r => state.access === 'all' || (state.access === 'open') === r.open)
         .filter(r => !state.q || r.name.toLowerCase().includes(state.q) || r.vendor.toLowerCase().includes(state.q));
     }
 
     function draw() {
-      const s = sliceOf(state.slice);
+      const board = curBoard(), s = sliceOf(state.slice);
       const rows = rowsFor();
       const k = state.key, d = state.dir;
-      // overall board: tier bands stay intact when sorting by tier, win rate or Score (best first)
       const grouped = state.slice === 'all' && (k === 'tier' || ((k === 'win' || k === 'score') && d === -1));
       const inner = k === 'tier' ? 'score' : k;
       rows.sort((a, b) => {
         if (grouped && a.tier !== b.tier) return (k === 'tier' ? d : 1) * (a.tier - b.tier);
         const kk = grouped ? inner : k, dd = grouped && k === 'tier' ? -1 : d;
         const x = a[kk], y = b[kk];
-        if (x == null && y == null) return 0;
+        if (x == null && y == null) return b.score - a.score;
         if (x == null) return 1;
         if (y == null) return -1;
         if (typeof x === 'string') return dd * x.localeCompare(y);
         if (x !== y) return dd * (x - y);
         return b.score - a.score;
       });
-      // rank: official order (tier, then Score) on the overall board, win rate order on a slice
-      const rk = state.slice === 'all' ? 'score' : 'win';
-      const byScore = [...rows].sort((a, b) => (b[rk] ?? -1) - (a[rk] ?? -1));
-      const rank = new Map(byScore.map((r, i) => [r.id, i + 1]));
-      const tierCount = {};
+
+      const tierCount = {}, totalTier = {};
       rows.forEach(r => { tierCount[r.tier] = (tierCount[r.tier] || 0) + 1; });
-      const totalTier = {};
       board.models.forEach(m => { totalTier[m.tier] = (totalTier[m.tier] || 0) + 1; });
+
+      if (scopeBanner) {
+        if (state.dataset === 'core') {
+          scopeBanner.innerHTML = `<strong>Core-110 Official Leaderboard (52 models · 5,692 videos).</strong> Includes newly evaluated <strong>MiniMax-H3 (Open, Ref2VA)</strong> under raw prompts (Score <strong>90.9</strong>, #9 overall, #1 Product Identity at <strong>95.2</strong> vs. 89.5 for hosted MiniMax H3; placed in Tier 1 by its score inside [87.8, 93.5] and sole Tier 1 across all 10 open-weight models at <em>p</em> = 1.0×10⁻⁵).`;
+        } else {
+          scopeBanner.innerHTML = `<strong>Full-566 Extended v7.8 Suite (12 models · 5,714 videos / 5,712 scored across all 566 benchmark cases).</strong> Covers all 9 complete 566-case open-weight models plus historical commercial checkpoints linking to the 15-model human study (<strong>Kling 1.6</strong> <em>n</em>=434, <strong>Sora 2</strong> <em>n</em>=94 Core, <strong>Sora 2 Pro</strong> <em>n</em>=93 Core). Across the 9 complete open-weight models, Full-566 vs. Core-110 rank correlation is <strong>Spearman ρ = 0.9333</strong> (recomputed vs. locked Core ρ = 1.0000), and 13-model Core human preference correlation (excluding native 10s Sora clips) is <strong>ρ = 0.8516</strong> (15-model Core realism <em>r</em> = 0.8244 / ρ = 0.7821).`;
+        }
+      }
 
       $$('#board thead th.sortable').forEach(th => {
         if (th.dataset.k === k) th.setAttribute('aria-sort', d === 1 ? 'ascending' : 'descending'); else th.removeAttribute('aria-sort');
@@ -110,16 +135,27 @@
       });
       $('#tier-col-label').textContent = state.slice === 'all' ? 'Tier' : 'Overall tier';
       $('#score-col-label').textContent = state.slice === 'all' ? 'Score' : `Score on ${s.label}`;
+      const scoreTh = $('#score-th') || $('#board thead th[data-k="score"]');
+      if (scoreTh) {
+        scoreTh.dataset.tip = state.slice === 'all'
+          ? (state.dataset === 'core'
+            ? 'Headline: weighted mean of the four dimensions over each model’s scored Core-110 videos'
+            : 'Headline: weighted mean of the four dimensions over each model’s scored Full-566 videos')
+          : `Headline: weighted mean of the four dimensions over each model’s scored videos in ${s.label} (${s.cases} ${state.dataset === 'core' ? 'Core-110' : 'Full-566'} cases)`;
+      }
+      $('#elo-th').hidden = state.dataset === 'full566';
 
-      const ncol = 11;
+      const ncol = state.dataset === 'full566' ? 10 : 11;
       let html = '', lastTier = null, band = 0;
       rows.forEach(r => {
         const tc = tierColor(r.tier);
         if (grouped && r.tier !== lastTier) {
           band++; lastTier = r.tier;
           const n = totalTier[r.tier];
-          const what = r.tier === 1 ? 'statistically tied with the leader' : 'tied with this tier’s leader';
-          html += `<tr class="tier-head" style="--tc:${tc}"><td colspan="${ncol}"><div class="th-inner"><b>Tier ${r.tier}</b><span>${n} ${n === 1 ? 'model' : 'models'} ${what}${tierCount[r.tier] !== n ? ` (${tierCount[r.tier]} shown)` : ''}</span></div></td></tr>`;
+          const what = r.tier === 1
+            ? (state.dataset === 'core' ? '25 tied by step-down Wilcoxon + MiniMax-H3 (Open) in [87.8, 93.5]' : 'statistically tied with the leader on shared cases')
+            : 'tied with this tier’s leader';
+          html += `<tr class="tier-head" style="--tc:${tc}"><td colspan="${ncol}"><div class="th-inner"><b>Tier ${r.tier}</b><span>${n} ${n === 1 ? 'model' : 'models'} · ${what}${tierCount[r.tier] !== n ? ` (${tierCount[r.tier]} shown)` : ''}</span></div></td></tr>`;
         }
         const alt = grouped && band % 2 === 0 ? ' band-alt' : '';
         const tipName = esc(r.name);
@@ -127,22 +163,45 @@
           const v = r[dm.key], h = heat(v);
           return `<td class="heat"><span style="background:${h.bg};color:${h.fg}" data-tip="<b>${tipName}</b><br>${esc(dm.name)}: ${raw(v)}<br><span class=k>${esc(dm.help)}</span>">${pct(v)}</span></td>`;
         }).join('');
-        const elo = r.elo == null ? 'n/a' : Math.round(r.elo);
-        const dateTxt = r.date ? esc(r.date.replace('-', '.')) : '';
+        const elo = r.elo == null ? '—' : Math.round(r.elo);
+        const dateTxt = r.date ? esc(r.date.replace('-', '.')) : '—';
+        const dateTip = r.date
+          ? `<b>${tipName}</b><br>Released: ${esc(r.exact_date || r.date)}${r.date_note ? `<br><span class=k>${esc(r.date_note)}</span>` : ''}`
+          : `<b>${tipName}</b><br>Release date unverified<br><span class=k>${esc(r.date_note || 'No single public checkpoint date verified')}</span>`;
+        const newTag = r.id === 'open_minimaxh3' ? ' <span class="tag new">NEW</span>' : '';
+        const nBadge = (state.dataset === 'full566' || r.n !== s.cases) ? `<span class="model-n" title="${r.n} of ${s.cases} cases scored">n=${r.n}</span>` : '';
+        const tierTip = r.tier_method
+          ? `<b>${tipName}</b><br>Placed in Tier 1 by Score (90.9) inside locked Tier 1 interval [87.8, 93.5]; sole Tier 1 in 10-model open-weight Holm-Wilcoxon test (p = 1.0e-5)`
+          : `<b>${tipName}</b><br>Tier ${r.tier} on the ${state.dataset === 'core' ? '51-model Core-110' : 'Full-566'} Holm-Wilcoxon board`;
+        const winTip = r.win == null
+          ? `<b>${tipName}</b><br>Evaluated post-freeze on identical v7.8 Open-Judge protocol; 51-model pool win rate not recomputed (Open-10 cohort win rate: 87.1%)`
+          : `<b>${tipName}</b><br>Win rate: ${raw(r.win)}${state.slice === 'all' ? '' : ` on ${esc(s.label)}`}<br><span class=k>Share of other models beaten on the same case (ties count half)</span>`;
+        const eloCell = state.dataset === 'full566'
+          ? ''
+          : `<td class="muted" data-tip="<b>${tipName}</b><br>${r.elo == null ? 'Not included in the earlier Gemini pairwise arena run' : `Gemini arena Elo ${elo}<br>Bootstrap interval ${r.elo_lo == null ? '—' : Math.round(r.elo_lo)} to ${r.elo_hi == null ? '—' : Math.round(r.elo_hi)}`}"><span class="mono" style="font-size:12px">${elo}</span></td>`;
+
         html += `<tr class="${alt}" style="--tc:${tc}">
-          <td class="rank c"><span class="tbadge${tierLight(r.tier) ? ' light' : ''}" data-tip="<b>${tipName}</b><br>Tier ${r.tier} of 5 on the overall board">T${r.tier}</span></td>
-          <td class="c">${r.detail ? `<span class="dcell" data-tip="<b>${tipName}</b><br>Detail sub tier D${r.detail} inside tier 1<br>Score ties won on detail: ${raw(r.detail_win)}<br><span class=k>Share of the cases tied on the base score that it wins by local point matching against the other tier 1 models. The ranking order does not change</span>"><span class="dbadge">D${r.detail}</span><span class="dnum">${pct(r.detail_win)}</span></span>` : ''}</td>
-          <td class="model l"><span class="model-name">${esc(r.name)}</span><span class="model-vendor">${esc(r.vendor)} <span class="tag${r.open ? ' open' : ''}">${r.open ? 'OPEN' : 'CLOSED'}</span></span></td>
-          <td class="date"${r.date ? ` data-tip="<b>${tipName}</b><br>Released ${dateTxt}<br><span class=k>Year and month of release</span>"` : ''}>${dateTxt}</td>
-          <td><div class="score" data-tip="<b>${tipName}</b><br>Score: ${raw(r.score)}${state.slice === 'all' ? '' : ` on ${esc(s.label)}`}<br><span class=k>Weighted mean of the four dimensions over its videos</span>"><div class="bar" aria-hidden="true"><i style="width:${r.score == null ? 0 : (r.score * 100).toFixed(1)}%"></i></div><b>${pct(r.score)}</b></div></td>
-          <td class="raw" data-tip="<b>${tipName}</b><br>Win rate: ${raw(r.win)}${state.slice === 'all' ? '' : ` on ${esc(s.label)}`}<br><span class=k>Reference: share of the other models it beats on the same case, ties count half, averaged over its cases. 50 is the field average</span>">${pct(r.win)}</td>
+          <td class="rank c"><span class="tbadge${tierLight(r.tier) ? ' light' : ''}" data-tip="${tierTip}">T${r.tier}</span></td>
+          <td class="c">${r.detail ? `<span class="dcell" data-tip="<b>${tipName}</b><br>Detail sub tier D${r.detail} inside pre-release tier 1<br>Score ties won on detail: ${raw(r.detail_win)}"><span class="dbadge">D${r.detail}</span><span class="dnum">${pct(r.detail_win)}</span></span>` : ''}</td>
+          <td class="model l"><span class="model-name">${esc(r.name)}${nBadge}</span><span class="model-vendor">${esc(r.vendor)} <span class="tag${r.open ? ' open' : ''}">${r.open ? 'OPEN' : 'CLOSED'}</span>${newTag}</span></td>
+          <td class="date" data-tip="${dateTip}">${dateTxt}</td>
+          <td><div class="score" data-tip="<b>${tipName}</b><br>Score: ${raw(r.score)} (${r.n} videos)${state.slice === 'all' ? '' : ` on ${esc(s.label)}`}<br><span class=k>Weighted mean of the four dimensions</span>"><div class="bar" aria-hidden="true"><i style="width:${r.score == null ? 0 : (r.score * 100).toFixed(1)}%"></i></div><b>${pct(r.score)}</b></div></td>
+          <td class="raw" data-tip="${winTip}">${pct(r.win)}</td>
           ${cells}
-          <td class="muted" data-tip="<b>${tipName}</b><br>Gemini arena Elo ${elo}<br>Bootstrap interval ${r.elo_lo == null ? 'n/a' : Math.round(r.elo_lo)} to ${r.elo_hi == null ? 'n/a' : Math.round(r.elo_hi)}<br><span class=k>Reference only, not part of the score</span>">${elo}</td></tr>`;
+          ${eloCell}</tr>`;
       });
       if (!rows.length) html = `<tr class="empty-row"><td colspan="${ncol}">No model matches this filter.</td></tr>`;
       body.innerHTML = html;
       $('#board-meta').textContent = `${rows.length} of ${board.models.length} models · ${s.cases} cases${state.slice === 'all' ? '' : ' in this slice'}`;
-      $('#slice-note').hidden = state.slice === 'all';
+      const sn = $('#slice-note');
+      if (sn) {
+        sn.hidden = state.slice === 'all';
+        sn.textContent = state.dataset === 'core'
+          ? 'Slice boards compute the Win rate and the Score over the slice’s cases only (10 to 80 cases), so small gaps are noisy. The tier badge always shows the overall tier.'
+          : 'Slice boards compute the Win rate and the Score over the slice’s cases only (20 to 481 cases), so small gaps on smaller slices are noisy. The tier badge always shows the overall tier.';
+      }
+      const dn = $('#detail-note');
+      if (dn) dn.hidden = state.dataset === 'full566';
     }
     drawTabs(); draw();
     drawLegend();
@@ -155,7 +214,6 @@
     if (tiers) tiers.innerHTML = [1, 2, 3, 4, 5].map(t => `<i style="background:${tierColor(t)}" title="Tier ${t}"></i>`).join('');
   }
 
-  // Small multiples: one radar per picked model, the median of all 51 models as a gray reference shape.
   function initProfiles(board) {
     const host = $('#multiples'), sel = $('#profile-select'), chips = $('#profile-chips');
     if (!host) return;
@@ -172,7 +230,7 @@
       sel.innerHTML = '<option value="">Add a model</option>' + ms.map(m => `<option value="${m.id}">${esc(m.name)} (T${m.tier}, Score ${pct(m.score)})</option>`).join('');
     }
     refresh();
-    let picked = ['omni12flash', 'klingo3pro', 'open_vace14b', 'open_phantom14b'].filter(id => byId[id]);
+    let picked = ['omni12flash', 'open_minimaxh3', 'h3', 'open_vace14b'].filter(id => byId[id]);
     sel.addEventListener('change', () => {
       if (sel.value && !picked.includes(sel.value) && picked.length < 4) picked.push(sel.value);
       sel.value = ''; draw();
@@ -198,7 +256,7 @@
       const tc = tierColor(m.tier);
       const dots = DIMS.map((d, i) => {
         const [x, y] = pt(i, m[d.key]);
-        return `<g data-tip="<b>${esc(m.name)}</b><br>${esc(d.name)}: ${raw(m[d.key])}<br><span class=k>Median of all models: ${raw(median[d.key])}</span>"><circle cx="${x}" cy="${y}" r="13" fill="transparent"/><circle cx="${x}" cy="${y}" r="5" fill="${tc}" stroke="#fbf9f5" stroke-width="2"/></g>`;
+        return `<g data-tip="<b>${esc(m.name)}</b><br>${esc(d.name)}: ${raw(m[d.key])}<br><span class=k>Median of all 52 models: ${raw(median[d.key])}</span>"><circle cx="${x}" cy="${y}" r="13" fill="transparent"/><circle cx="${x}" cy="${y}" r="5" fill="${tc}" stroke="#fbf9f5" stroke-width="2"/></g>`;
       }).join('');
       return `<svg viewBox="0 0 240 240" role="img" aria-label="${esc(m.name)} profile on four dimensions">${rings}${axes}${ringLabels}
         <polygon points="${poly(med)}" fill="rgba(103,115,122,.10)" stroke="#9aa3a8" stroke-width="1.5"/>
@@ -210,7 +268,7 @@
       sel.disabled = picked.length >= 4;
       const cards = picked.map(id => {
         const m = byId[id];
-        return `<article class="mult"><h4>${esc(m.name)}</h4><div class="sub"><span class="tbadge${tierLight(m.tier) ? ' light' : ''}" style="--tc:${tierColor(m.tier)}">T${m.tier}</span><span>${esc(m.vendor)} · ${m.open ? 'Open' : 'Closed'} · Score ${pct(m.score)} · Win rate ${pct(m.win)}</span></div>
+        return `<article class="mult"><h4>${esc(m.name)}</h4><div class="sub"><span class="tbadge${tierLight(m.tier) ? ' light' : ''}" style="--tc:${tierColor(m.tier)}">T${m.tier}</span><span>${esc(m.vendor)} · ${m.open ? 'Open' : 'Closed'} · Score ${pct(m.score)}${m.win != null ? ' · Win ' + pct(m.win) : ''}</span></div>
           ${radar(m)}<dl>${DIMS.map(d => `<div><dt>${d.short}</dt><dd>${pct(m[d.key])}</dd></div>`).join('')}</dl></article>`;
       });
       for (let i = picked.length; i < 4; i++) cards.push('<div class="mult placeholder">Pick a model above</div>');

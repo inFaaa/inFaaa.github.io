@@ -4,10 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f2ec">
-  <meta name="description" content="FashionS2V-Bench: a benchmark for reference image to video generation in fashion ecommerce, with a leaderboard of 51 video models.">
+  <meta name="description" content="FashionS2V-Bench: a benchmark for reference image to video generation in fashion ecommerce, with a leaderboard of 52 Core-110 video models and a 5,714-video Full-566 extended evaluation.">
   <title>FashionS2V-Bench: Reference Image to Video for Fashion Ecommerce</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/inline_data.js" defer></script>
   <script src="assets/js/common.js" defer></script>
   <script src="assets/js/cases.js" defer></script>
   <script src="assets/js/leaderboard.js" defer></script>
@@ -38,7 +39,7 @@
     </div>
     <div class="cover-links"><a href="#overview">What it tests &#8595;</a><a href="#examples">See model outputs &#8595;</a></div>
   </div>
-  <div class="cover-bottom"><span>110 CORE CASES · 51 MODELS<br>CASE BY CASE WIN RATE</span><a href="#overview">SCROLL TO EXPLORE &#8595;</a><button id="motion-toggle" aria-pressed="true">PAUSE MOTION</button></div>
+  <div class="cover-bottom"><span>110 CORE CASES (52 MODELS) · 566 FULL CASES (5,714 CLIPS)<br>PURE OPEN-WEIGHT v7.8 JUDGES</span><a href="#overview">SCROLL TO EXPLORE &#8595;</a><button id="motion-toggle" aria-pressed="true">PAUSE MOTION</button></div>
 </section>
 
 <section class="section" id="overview">
@@ -54,7 +55,7 @@
     <div><strong>110</strong><span>Core cases</span></div>
     <div><strong>4</strong><span>Product categories</span></div>
     <div><strong>11</strong><span>Prompt families</span></div>
-    <div><strong>51</strong><span>Models evaluated</span></div>
+    <div><strong>52</strong><span>Models on Core-110 (+ Full-566)</span></div>
   </div>
 </section>
 
@@ -72,11 +73,11 @@
       <h3>Win rate, Score and tiers</h3>
       <p><strong>Score</strong> (headline, 0 to 100) is a weighted mean of the four parts: no major defect counts 0.40 and identity, scene and motion 0.20 each. Where the prompt asks for no product motion, motion is dropped and the other weights are renormalised. A model’s Score is the mean over its videos.</p>
       <p style="margin-top:10px"><strong>Win rate</strong> (reference, 0 to 100) is the share of the other models a model beats on the same case, with ties counting half, averaged over its cases, so 50 is the field average.</p>
-      <p style="margin-top:10px"><strong>Tiers.</strong> Models are sorted by Score. A model opens a new tier when its paired difference to the current tier leader, tested on the cases both completed with a Wilcoxon signed rank test, stays significant after Holm correction at 0.05. Inside a tier the order carries no meaning. The pairwise Elo from a Gemini based video arena is shown for reference only and is not part of the score.</p>
+      <p style="margin-top:10px"><strong>Tiers.</strong> Models are sorted by Score. Across the 51 pre-release Core models (and independently on Full-566), a model opens a new tier when its paired Wilcoxon signed-rank difference to the current tier leader stays significant after Holm correction at 0.05 (grouping the 51 Core models into 25, 8, 7, 7 and 4, where order within a tier carries no meaning). Post-freeze <strong>MiniMax-H3 (Open)</strong> (Score 90.9) is placed in Tier 1 by its score inside the locked Tier 1 interval [87.8, 93.5] (yielding 26, 8, 7, 7 and 4) and forms the sole Tier 1 across all 10 open-weight models under Holm-Wilcoxon testing (<em>p</em> = 1.0×10⁻⁵). Pairwise Elo from the earlier 51-model Gemini video arena is shown for reference only.</p>
       <p style="margin-top:10px"><strong>Validation.</strong> On held out video pairs judged in the Gemini arena, the board picks the same winner in 81.8 percent of pairs at model level (435 pairs) and 73.6 percent per case (417 pairs). Its rank correlation with the arena Elo is 0.914.</p>
     </div>
     <div class="tier-strip" id="tier-strip" aria-label="Tier sizes">
-      <div style="--n:25;background:var(--t1)"><b>25</b>Tier 1</div>
+      <div style="--n:26;background:var(--t1)"><b>26</b>Tier 1</div>
       <div style="--n:8;background:var(--t2)"><b>8</b>Tier 2</div>
       <div style="--n:7;background:var(--t3)"><b>7</b>Tier 3</div>
       <div style="--n:7;background:var(--t4)"><b>7</b>Tier 4</div>
@@ -87,8 +88,16 @@
 
 <section class="section" id="leaderboard">
   <div class="section-top reveal"><span class="eyebrow">03 / LEADERBOARD</span><span class="mono" id="release-label" style="font-size:11px;color:var(--muted)">v7.8 · OPEN JUDGES</span></div>
-  <div class="section-heading reveal"><h2>FashionS2V-Bench leaderboard</h2><p>51 models on the 110 Core cases, with the headline Score and the Win rate for reference. Switch to a category, prompt type or case structure to compare models on that slice only. Hover any cell for the exact value.</p></div>
+  <div class="section-heading reveal"><h2>FashionS2V-Bench leaderboard</h2><p>52 models on the 110 Core cases (now including public-weight MiniMax-H3 Ref2VA and researched release months), plus the 5,714-video Full-566 extended suite. Switch dataset, category, prompt type or case structure to inspect any slice.</p></div>
+  <div class="scope-note" id="scope-banner"></div>
   <div class="board-controls">
+    <div class="control-row">
+      <span class="control-label">DATASET</span>
+      <div class="seg" id="dataset-seg" role="group" aria-label="Dataset scope">
+        <button data-ds="core" aria-pressed="true">Core-110 · 52 Models</button>
+        <button data-ds="full566" aria-pressed="false">Full-566 Extended · 12 Models (5,714 clips)</button>
+      </div>
+    </div>
     <div class="control-row"><span class="control-label">BOARD</span><div class="tabs" id="slice-groups" role="group" aria-label="Board"></div></div>
     <div class="tabs sub" id="slice-tabs" role="group" aria-label="Slice" hidden></div>
     <div class="control-row">
@@ -102,17 +111,17 @@
     <div class="board-scroll" role="region" aria-label="Leaderboard table" tabindex="0">
       <table class="board" id="board">
         <thead><tr>
-          <th class="rank c sortable" scope="col" data-k="tier" data-tip="Statistically tied models share a tier"><span id="tier-col-label">Tier</span> <span class="arrow">↓</span></th>
+          <th class="rank c sortable" scope="col" data-k="tier" data-tip="Holm-Wilcoxon statistical tiers on the 51 pre-release Core models (25/8/7/7/4) and Full-566; post-freeze MiniMax-H3 (Open) is placed in Core Tier 1 by score interval [87.8, 93.5]"><span id="tier-col-label">Tier</span> <span class="arrow">↓</span></th>
           <th class="c" scope="col" id="detail-th" data-tip="Detail sub tiers inside tier 1">Detail<small>tier 1</small></th>
           <th class="model l sortable" scope="col" data-k="name">Model <span class="arrow">↓</span></th>
           <th class="l sortable" scope="col" data-k="date" data-tip="Release year and month, where known">Released <span class="arrow">↓</span></th>
-          <th class="sortable" scope="col" data-k="score" data-tip="Headline: weighted mean of the four dimensions over the Core videos"><span id="score-col-label">Score</span> <span class="arrow">↓</span><small>0 to 100</small></th>
+          <th class="sortable" scope="col" id="score-th" data-k="score" data-tip="Headline: weighted mean of the four dimensions over each model’s scored Core-110 videos"><span id="score-col-label">Score</span> <span class="arrow">↓</span><small>0 to 100</small></th>
           <th class="sortable" scope="col" data-k="win" data-tip="Reference: share of the other models beaten on the same case, ties count half. 50 is the field average">Win rate <span class="arrow">↓</span><small>reference</small></th>
           <th class="c sortable" scope="col" data-k="I" data-tip="Share of product attributes judged the same as in the reference">Identity <span class="arrow">↓</span><small>ID · 0.20</small></th>
           <th class="c sortable" scope="col" data-k="no_major" data-tip="Share of videos without a major visible defect">No defect <span class="arrow">↓</span><small>DEF · 0.40</small></th>
           <th class="c sortable" scope="col" data-k="CTX" data-tip="Scene and action adherence, composition on two product cases">Scene <span class="arrow">↓</span><small>CTX · 0.20</small></th>
           <th class="c sortable" scope="col" data-k="MOT" data-tip="Product moves as the prompt asks, counted only on motion cases">Motion <span class="arrow">↓</span><small>MOT · 0.20</small></th>
-          <th class="sortable" scope="col" data-k="elo" data-tip="Gemini pairwise arena Elo, reference only">Arena Elo <span class="arrow">↓</span><small>reference</small></th>
+          <th class="sortable" scope="col" id="elo-th" data-k="elo" data-tip="Gemini pairwise arena Elo, reference only">Arena Elo <span class="arrow">↓</span><small>reference</small></th>
         </tr></thead>
         <tbody id="board-body"><tr class="empty-row"><td colspan="11">Loading the leaderboard</td></tr></tbody>
       </table>
@@ -123,13 +132,13 @@
       <span>All values on a 0 to 100 scale. Score bars run from 0 to 100. OPEN marks models with public weights.</span>
     </div>
   </div>
-  <p class="note" id="detail-note"><strong>Detail.</strong> Detail sub tiers D1 and D2 come from local point matching on the product, an open method, and apply only where the base score ties within a case. They are shown for tier 1 models only and do not change the ranking order. The number next to each badge is the share of score ties won on detail within tier 1. They separate 5 of 300 tier 1 pairs. On tied pairs from the selection set they agree with the reference judge in 59.1 percent of cases (n 55), and overall agreement is 0.626 against 0.645 without them, a difference that is not significant. On the small set of tied held out pairs, the reference judge could not confirm them (0.375, n 16).</p>
-  <p class="note" id="slice-note" hidden>Slice boards compute the Win rate and the Score over the slice’s cases only, 10 to 44 cases, so small gaps are noisy. The tier badge always shows the overall tier.</p>
+  <p class="note" id="detail-note"><strong>Detail.</strong> Detail sub tiers D1 and D2 come from local point matching on the product, an open method, and apply only where the base score ties within a case. They are shown for the 25 pre-release tier 1 models (post-freeze MiniMax-H3 Open leaves Detail unset) and do not change the ranking order. The number next to each badge is the share of score ties won on detail within those 25 models, separating 5 of their 300 pairs. On tied pairs from the selection set they agree with the reference judge in 59.1 percent of cases (n 55), and overall agreement is 0.626 against 0.645 without them, a difference that is not significant. On the small set of tied held out pairs, the reference judge could not confirm them (0.375, n 16).</p>
+  <p class="note" id="slice-note" hidden>Slice boards compute the Win rate and the Score over the slice’s cases only (10 to 80 cases), so small gaps are noisy. The tier badge always shows the overall tier.</p>
 </section>
 
 <section class="section" id="profiles">
   <div class="section-top reveal"><span class="eyebrow">04 / PROFILES</span></div>
-  <div class="section-heading reveal"><h2>Where each model gains and loses</h2><p>Pick up to four models. Each panel shows one model on the four dimensions (scale 40 to 100), with the median of all 51 models in gray for reference.</p></div>
+  <div class="section-heading reveal"><h2>Where each model gains and loses</h2><p>Pick up to four models. Default compares Gemini Omni 1.2 Flash, public-weight MiniMax-H3 (Open), hosted MiniMax H3 (API), and VACE 14B against the 52-model median in gray.</p></div>
   <div class="picker"><select id="profile-select" aria-label="Add a model to compare"></select><div class="picker" id="profile-chips"></div></div>
   <div class="multiples" id="multiples"></div>
 </section>
@@ -138,18 +147,46 @@
   <div class="section-top reveal"><span class="eyebrow">05 / KEY FINDINGS</span></div>
   <h2 class="reveal" style="margin-bottom:24px">What the board shows</h2>
   <ul class="findings reveal">
-    <li><b class="big">25</b><p><strong>The top tier is crowded.</strong> 25 of 51 models are statistically tied with the leader. Tier sizes are 25, 8, 7, 7 and 4.</p></li>
-    <li><b class="big">T3</b><p><strong>Open source models trail.</strong> Every open source model sits in tier 3 or below. The best of them, VACE 14B, has a Score of 78.4 against 93.5 for the first model.</p></li>
-    <li><b class="big">0.767</b><p><strong>The score separates known groups.</strong> A random video from a commercial model outscores a random video from an open source model with probability 0.767 (AUROC).</p></li>
-    <li><b class="big">81.8%</b><p><strong>It agrees with pairwise judgments.</strong> On held out video pairs judged in the Gemini arena, the board picks the same winner in 81.8 percent of pairs at model level (435 pairs) and 73.6 percent per case (417 pairs). Its rank correlation with the arena Elo is 0.914.</p></li>
-    <li><b class="big">93.5</b><p><strong>Gemini Omni 1.2 Flash has the top Score.</strong> It has the highest Score (93.5) and the highest share of videos without a major defect (95.5), inside a tier of 25 tied models. Bach 1.0 Pro has the highest Win rate (68.9).</p></li>
-    <li><b class="big">20</b><p><strong>Motion is judged only where asked.</strong> 20 of the 110 Core cases ask for no product motion, so the motion gate is left out of their score.</p></li>
+    <li><b class="big">26</b><p><strong>A crowded top group, now entered by one open checkpoint.</strong> Step-down Wilcoxon tests group the 51 pre-release models into 25, 8, 7, 7 and 4; MiniMax-H3 (Open) enters the Tier 1 score interval [87.8, 93.5] (#9 of 52, yielding 26, 8, 7, 7 and 4).</p></li>
+    <li><b class="big">90.9</b><p><strong>MiniMax-H3 (Open) bridges the cohort gap.</strong> Running public Ref2VA weights at 768p under raw prompts reaches 90.9 (vs. 90.1 for hosted MiniMax H3) and #1 Identity (95.2), while all other 9 open models sit in Tier 3 (VACE 14B, 78.4) or lower.</p></li>
+    <li><b class="big">+7.9</b><p><strong>Hosted pipeline vs. raw Ref2VA trade-off.</strong> Direct reference conditioning leads on Identity (95.2 vs. 89.5), whereas the complete hosted MiniMax H3 pipeline (combining closed prompt rewriting and 2K regeneration) leads on overall Real-Seller slice Score (97.7 vs. 89.8) and Scene (96.9 vs. 95.0).</p></li>
+    <li><b class="big">0.933</b><p><strong>High rank stability at 5× scale on Full-566 (5,714 videos).</strong> Across the 9 open-weight models with complete 566-case coverage, Full-566 correlates strongly with Core-110 (Spearman ρ = 0.933, keeping top-2 VACE 14B and MAGREF with minor mid-pack swaps; Core recompute ρ = 1.000).</p></li>
+    <li><b class="big">0.852</b><p><strong>Validated against human preference &amp; video arena.</strong> On the 13-model Core human-study subset (excluding native 10s Sora clips), Score correlates with human overall preference at Spearman ρ = 0.852 (15-model Core realism r = 0.824 / ρ = 0.782). On 51-model Core validation, Gemini Arena agreement is 81.8% (Elo ρ = 0.914).</p></li>
+    <li><b class="big">93.5</b><p><strong>Gemini Omni 1.2 Flash leads overall.</strong> Top Score (93.5) and highest major-defect-free share (95.5%), while Bach 1.0 Pro leads 51-pool Win rate (68.9%) and MiniMax-H3 (Open) leads Product Identity (95.2%).</p></li>
   </ul>
+  <div class="sys-compare reveal">
+    <article class="sys-box">
+      <span class="eyebrow">CONTROLLED SYSTEM COMPARISON · CORE-110</span>
+      <h3>MiniMax-H3 (Open, Ref2VA 768p) vs. Hosted MiniMax H3 API</h3>
+      <p>Hosted MiniMax H3 bundles a closed multimodal prompt rewriter (<code>H3-Context-IR</code>), <code>H3-Base Ref2VA</code>, and closed <code>2K</code> regeneration. Evaluating the public <code>Ref2VA</code> weights directly on raw prompts quantifies their end-to-end system trade-off across all 110 Core cases:</p>
+      <div class="sys-grid">
+        <div class="sys-kpi"><b>90.89 <em>(+0.75)</em></b><span>Overall Score vs. H3 API (90.14)</span></div>
+        <div class="sys-kpi"><b>95.23 <em>(+5.72)</em></b><span>Identity ID (#1 of 52 vs. 89.51)</span></div>
+        <div class="sys-kpi"><b>87.27 <em>(+2.72)</em></b><span>No Major Defect vs. H3 API (84.55)</span></div>
+        <div class="sys-kpi"><b>94.99 <em class="neg">(-1.91)</em></b><span>Scene CTX vs. H3 API (96.90)</span></div>
+        <div class="sys-kpi"><b>89.75 <em class="neg">(-7.93)</em></b><span>Real-Seller (20) vs. H3 API (97.68)</span></div>
+        <div class="sys-kpi"><b>96.61 <em>(+3.55)</em></b><span>Live Stream (20) vs. H3 API (93.06)</span></div>
+      </div>
+    </article>
+    <article class="sys-box">
+      <span class="eyebrow">EXTENDED SCALE VALIDATION · FULL-566</span>
+      <h3>5,714 Videos Across All 566 Cases &amp; 75 Subcategories</h3>
+      <p>Scaling the v7.8 Open-Judge suite from 110 Core cases to all 566 benchmark cases (481 single-item + 85 dual-item across 75 fine-grained merchandise types) confirms high rank stability and exposes long-tail bottlenecks:</p>
+      <div class="sys-grid">
+        <div class="sys-kpi"><b>5,712 / 5,714</b><span>Videos scored (12 models)</span></div>
+        <div class="sys-kpi"><b>ρ = 0.9333</b><span>Open-9 Full-566 vs. Core Spearman</span></div>
+        <div class="sys-kpi"><b>+6.59 pts</b><span>Mean Non-Core minus Core (Open-9)</span></div>
+        <div class="sys-kpi"><b>82.1 / 81.3</b><span>Kling 1.6 (n=434) / VACE 14B (566)</span></div>
+        <div class="sys-kpi"><b>75.0 / 71.4</b><span>Sora 2 (n=94) / Sora 2 Pro (n=93)</span></div>
+        <div class="sys-kpi"><b>ρ = 0.8516</b><span>13-model Core Human Pref. (excl. Sora)</span></div>
+      </div>
+    </article>
+  </div>
 </section>
 
 <section class="section" id="examples">
   <div class="section-top reveal"><span class="eyebrow">06 / EXAMPLES</span><a class="text-link" href="benchmark.html#cases">Browse by category and prompt type <span>&#8599;</span></a></div>
-  <div class="section-heading reveal"><h2>Same references, same brief, six models</h2><p>44 cases, four from each of the 11 prompt families, picked to include the widest spread, the hardest and the easiest case of each family. Each clip shows its Score, its Win rate on that case and the four dimension scores. Clips are cut to 5 seconds and downscaled for the web.</p></div>
+  <div class="section-heading reveal"><h2>Same references, same brief, side-by-side outputs</h2><p>44 cases, four from each of the 11 prompt families, comparing three commercial systems (Gemini Omni 1.2 Flash, Seedance 2.0, Kling O3 Pro) with public-weight MiniMax-H3 (Open), VACE 14B, Phantom 14B and HunyuanCustom.</p></div>
   <div id="examples-viewer"></div>
 </section>
 
